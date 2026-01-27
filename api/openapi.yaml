@@ -1,0 +1,2842 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: support@mtnmanager.com
+    name: MtnManager Support
+    url: https://mtnmanager.com
+  description: "The MtnManager API provides real-time access to your ski resort’s\
+    \ public operational data. Use it to display current conditions on your website,\
+    \ mobile app, or digital signage."
+  license:
+    name: MIT
+  termsOfService: https://mtnmanager.com/terms
+  title: MtnManager API
+  version: 1.0.0
+servers:
+- url: "https://{subdomain}.mtnmanager.com"
+  variables:
+    subdomain:
+      default: your-resort
+      description: Your resort's unique subdomain
+paths:
+  /api/v1/report:
+    get:
+      operationId: getFullReport
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                resort:
+                  uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Powder Mountain Resort
+                  slug: powder-mountain
+                  timezone: America/Denver
+                  unit_preference: imperial
+                status:
+                  status: open
+                  opens_at: 09:00
+                  closes_at: 16:00
+                  season: winter
+                  news: Fresh powder overnight! All lifts spinning.
+                  news_html: <p>Fresh powder overnight! All lifts spinning.</p>
+                  news_updated_at: 2026-01-27T00:26:42.016587295+00:00
+                  open_runs: 42
+                  groomed_runs: 38
+                  total_runs: 50
+                  runs_updated_at: 2026-01-27T00:26:42.016590020+00:00
+                  open_lifts: 8
+                  total_lifts: 10
+                  lifts_updated_at: 2026-01-27T00:26:42.016590190+00:00
+                  total_summer_trails: 0
+                  summer_trails_updated_at: 2026-01-27T00:26:42.016590321+00:00
+                  open_terrain_parks: 3
+                  total_terrain_parks: 4
+                  terrain_parks_updated_at: 2026-01-27T00:26:42.016590461+00:00
+                snow:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  area_name: Lower Mountain
+                  area_display_order: 1
+                  base_depth_cm: 152
+                  base_depth_in: 60
+                  surface_condition: BS
+                  secondary_surface_condition: PP
+                  condition_notes: "Machine groomed on main runs, natural powder in\
+                    \ tree areas."
+                  snowfall_cm:
+                    overnight: 8
+                    last_24h: 12
+                    last_48h: 18
+                    last_7days: 36
+                    season_total: 156
+                  snowfall_in:
+                    overnight: 8
+                    last_24h: 12
+                    last_48h: 18
+                    last_7days: 36
+                    season_total: 156
+                  reported_at: 2026-01-27T00:26:42.016600750+00:00
+                lifts:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Summit Express
+                  slug: summit-express
+                  number: 1
+                  lift_type: gondola
+                  high_speed: true
+                  status: open
+                  wait_time_minutes: 5
+                  area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  area_name: Lower Mountain
+                  area_display_order: 1
+                  updated_at: 2026-01-27T00:26:42.016600199+00:00
+                runs:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Main Street
+                  slug: main-street
+                  number: 1
+                  difficulty: advanced
+                  status: open
+                  last_groomed: 2026-01-27T00:26:42.016591513+00:00
+                  groomed_today: true
+                  condition_notes: Groomer's choice!
+                  area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  area_name: Lower Mountain
+                  area_display_order: 1
+                  updated_at: 2026-01-27T00:26:42.016594899+00:00
+                terrain_parks:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Main Park
+                  slug: main-park
+                  number: 1
+                  status: open
+                  condition_notes: "Freshly shaped features, park crew out daily"
+                  area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  area_name: Lower Mountain
+                  area_display_order: 1
+                  features:
+                  - uuid: 550e8400-e29b-41d4-a716-446655440000
+                    name: Flat Rail
+                    slug: flat-rail
+                    number: 1
+                    feature_type: rail
+                    size: m
+                    status: unknown
+                  updated_at: 2026-01-27T00:26:42.016602052+00:00
+                summer_trails:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Ridgeline Trail
+                  slug: ridgeline-trail
+                  number: 1
+                  trail_type:
+                  - hiking
+                  difficulty: intermediate
+                  status: open
+                  condition_notes: Trail is dry and in excellent condition.
+                  area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  area_name: Lower Mountain
+                  area_display_order: 1
+                  updated_at: 2026-01-27T00:26:42.016596993+00:00
+                hours:
+                  schedules:
+                  - days_string: Saturday & Sunday
+                    days_of_week:
+                    - Sunday
+                    - Saturday
+                    time_string: 9:00 a.m. to 4:00 p.m.
+                    opens_at: 09:00
+                    closes_at: 16:00
+                    in_effect: true
+                    effective_string: "November 1, 2024 to April 15, 2025"
+                    effective_from: 2024-11-01
+                    effective_to: 2025-04-15
+                  calendar_days:
+                  - date: 2024-12-25
+                    day_of_week: Wednesday
+                    is_open: true
+                    opens_at: 09:00
+                    closes_at: 16:00
+                weather:
+                  current:
+                    imperial:
+                      temperature: 28
+                      feels_like: 22
+                      snowfall: 2
+                      precipitation: 0
+                      wind_speed: 12
+                      wind_gust: 18
+                    metric:
+                      temperature: -2
+                      feels_like: -6
+                      snowfall: 5
+                      precipitation: 0
+                      wind_speed: 19
+                      wind_gust: 29
+                    condition: Light Snow
+                    condition_code: Snow
+                    wind_direction: 270
+                    wind_direction_cardinal: W
+                    timestamp: 2026-01-27T00:26:42.016610889+00:00
+                  hourly_forecast:
+                  - timestamp: 2026-01-27T00:26:42.016611079+00:00
+                    imperial:
+                      temperature: 28
+                      feels_like: 22
+                      snowfall: 1
+                      precipitation: 0
+                      wind_speed: 12
+                      wind_gust: 18
+                    metric:
+                      temperature: -2
+                      feels_like: -6
+                      snowfall: 3
+                      precipitation: 0
+                      wind_speed: 19
+                      wind_gust: 29
+                    condition: Light Snow
+                    condition_code: Snow
+                    precipitation_probability: 65
+                  daily_forecast:
+                  - date: 2024-12-26
+                    imperial:
+                      temperature_high: 32
+                      temperature_low: 18
+                      snowfall_total: 6
+                      precipitation_total: 0
+                      wind_speed_max: 25
+                      wind_gust_max: 35
+                    metric:
+                      temperature_high: 0
+                      temperature_low: -8
+                      snowfall_total: 15
+                      precipitation_total: 0
+                      wind_speed_max: 40
+                      wind_gust_max: 56
+                    condition: Light Snow
+                    condition_code: Snow
+                    precipitation_probability: 65
+                    sunrise: 2026-01-27T00:26:42.016611841+00:00
+                    sunset: 2026-01-27T00:26:42.016611951+00:00
+                  attribution: https://developer.apple.com/weatherkit/data-source-attribution/
+                  updated_at: 2026-01-27T00:26:42.016612242+00:00
+              schema:
+                $ref: "#/components/schemas/FullReport"
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get full report
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getFullReport();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetFullReport(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getFullReport();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getFullReport(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/overview:
+    get:
+      operationId: getOverview
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                status: open
+                opens_at: 09:00
+                closes_at: 16:00
+                season: winter
+                news: Fresh powder overnight! All lifts spinning.
+                news_html: <p>Fresh powder overnight! All lifts spinning.</p>
+                news_updated_at: 2026-01-27T00:26:42.020043205+00:00
+                open_runs: 42
+                groomed_runs: 38
+                total_runs: 50
+                runs_updated_at: 2026-01-27T00:26:42.020044127+00:00
+                open_lifts: 8
+                total_lifts: 10
+                lifts_updated_at: 2026-01-27T00:26:42.020044257+00:00
+                total_summer_trails: 0
+                summer_trails_updated_at: 2026-01-27T00:26:42.020044398+00:00
+                open_terrain_parks: 3
+                total_terrain_parks: 4
+                terrain_parks_updated_at: 2026-01-27T00:26:42.020044508+00:00
+              schema:
+                $ref: "#/components/schemas/Overview"
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get overview
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getOverview();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetOverview(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getOverview();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getOverview(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/runs:
+    get:
+      operationId: getRuns
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Main Street
+                slug: main-street
+                number: 1
+                difficulty: advanced
+                status: open
+                last_groomed: 2026-01-27T00:26:42.020185151+00:00
+                groomed_today: true
+                condition_notes: Groomer's choice!
+                area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                area_name: Lower Mountain
+                area_display_order: 1
+                updated_at: 2026-01-27T00:26:42.020186093+00:00
+              schema:
+                $ref: "#/components/schemas/RunsResponse"
+          description: |-
+            List of all runs at the resort with their current status,
+             grooming information, and difficulty rating.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get runs
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getRuns();\n    console.log(data);\n} catch (error) {\n\
+          \    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetRuns(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getRuns();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getRuns(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/summer-trails:
+    get:
+      operationId: getSummerTrails
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Ridgeline Trail
+                slug: ridgeline-trail
+                number: 1
+                trail_type:
+                - hiking
+                difficulty: intermediate
+                status: open
+                condition_notes: Trail is dry and in excellent condition.
+                area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                area_name: Lower Mountain
+                area_display_order: 1
+                updated_at: 2026-01-27T00:26:42.020379716+00:00
+              schema:
+                $ref: "#/components/schemas/SummerTrailsResponse"
+          description: |-
+            List of all summer trails at the resort with their current status,
+             type (e.g. hiking, mountain biking), and optional difficulty rating.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get summer trails
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getSummerTrails();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetSummerTrails(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getSummerTrails();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getSummerTrails(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/lifts:
+    get:
+      operationId: getLifts
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Summit Express
+                slug: summit-express
+                number: 1
+                lift_type: gondola
+                high_speed: true
+                status: open
+                wait_time_minutes: 5
+                area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                area_name: Lower Mountain
+                area_display_order: 1
+                updated_at: 2026-01-27T00:26:42.020597114+00:00
+              schema:
+                $ref: "#/components/schemas/LiftsResponse"
+          description: |-
+            List of all lifts at the resort with their current operational status,
+             type, and optional wait time information.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get lifts
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getLifts();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetLifts(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getLifts();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getLifts(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/snow:
+    get:
+      operationId: getSnow
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                area_name: Lower Mountain
+                area_display_order: 1
+                base_depth_cm: 152
+                base_depth_in: 60
+                surface_condition: BS
+                secondary_surface_condition: PP
+                condition_notes: "Machine groomed on main runs, natural powder in\
+                  \ tree areas."
+                snowfall_cm:
+                  overnight: 8
+                  last_24h: 12
+                  last_48h: 18
+                  last_7days: 36
+                  season_total: 156
+                snowfall_in:
+                  overnight: 8
+                  last_24h: 12
+                  last_48h: 18
+                  last_7days: 36
+                  season_total: 156
+                reported_at: 2026-01-27T00:26:42.020796518+00:00
+              schema:
+                $ref: "#/components/schemas/SnowResponse"
+          description: |-
+            Provides current snow conditions including base depth, surface conditions,
+             and snowfall totals in both metric and imperial units.
+
+             May contain multiple, representing different reporting areas.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get snow conditions
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getSnow();\n    console.log(data);\n} catch (error) {\n\
+          \    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetSnow(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getSnow();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getSnow(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/hours:
+    get:
+      operationId: getHours
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                schedules:
+                - days_string: Saturday & Sunday
+                  days_of_week:
+                  - Sunday
+                  - Saturday
+                  time_string: 9:00 a.m. to 4:00 p.m.
+                  opens_at: 09:00
+                  closes_at: 16:00
+                  in_effect: true
+                  effective_string: "November 1, 2024 to April 15, 2025"
+                  effective_from: 2024-11-01
+                  effective_to: 2025-04-15
+                calendar_days:
+                - date: 2024-12-25
+                  day_of_week: Wednesday
+                  is_open: true
+                  opens_at: 09:00
+                  closes_at: 16:00
+              schema:
+                $ref: "#/components/schemas/OperatingHours"
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get operating hours
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getHours();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetHours(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getHours();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getHours(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/weather:
+    get:
+      operationId: getWeather
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                current:
+                  imperial:
+                    temperature: 28
+                    feels_like: 22
+                    snowfall: 2
+                    precipitation: 0
+                    wind_speed: 12
+                    wind_gust: 18
+                  metric:
+                    temperature: -2
+                    feels_like: -6
+                    snowfall: 5
+                    precipitation: 0
+                    wind_speed: 19
+                    wind_gust: 29
+                  condition: Light Snow
+                  condition_code: Snow
+                  wind_direction: 270
+                  wind_direction_cardinal: W
+                  timestamp: 2026-01-27T00:26:42.021124252+00:00
+                hourly_forecast:
+                - timestamp: 2026-01-27T00:26:42.021125214+00:00
+                  imperial:
+                    temperature: 28
+                    feels_like: 22
+                    snowfall: 1
+                    precipitation: 0
+                    wind_speed: 12
+                    wind_gust: 18
+                  metric:
+                    temperature: -2
+                    feels_like: -6
+                    snowfall: 3
+                    precipitation: 0
+                    wind_speed: 19
+                    wind_gust: 29
+                  condition: Light Snow
+                  condition_code: Snow
+                  precipitation_probability: 65
+                daily_forecast:
+                - date: 2024-12-26
+                  imperial:
+                    temperature_high: 32
+                    temperature_low: 18
+                    snowfall_total: 6
+                    precipitation_total: 0
+                    wind_speed_max: 25
+                    wind_gust_max: 35
+                  metric:
+                    temperature_high: 0
+                    temperature_low: -8
+                    snowfall_total: 15
+                    precipitation_total: 0
+                    wind_speed_max: 40
+                    wind_gust_max: 56
+                  condition: Light Snow
+                  condition_code: Snow
+                  precipitation_probability: 65
+                  sunrise: 2026-01-27T00:26:42.021126106+00:00
+                  sunset: 2026-01-27T00:26:42.021126246+00:00
+                attribution: https://developer.apple.com/weatherkit/data-source-attribution/
+                updated_at: 2026-01-27T00:26:42.021126627+00:00
+              schema:
+                $ref: "#/components/schemas/Weather"
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get weather
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getWeather();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetWeather(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getWeather();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getWeather(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/terrain-parks:
+    get:
+      operationId: getTerrainParks
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Main Park
+                slug: main-park
+                number: 1
+                status: open
+                condition_notes: "Freshly shaped features, park crew out daily"
+                area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                area_name: Lower Mountain
+                area_display_order: 1
+                features:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Flat Rail
+                  slug: flat-rail
+                  number: 1
+                  feature_type: rail
+                  size: m
+                  status: unknown
+                updated_at: 2026-01-27T00:26:42.021408115+00:00
+              schema:
+                $ref: "#/components/schemas/TerrainParksResponse"
+          description: |-
+            List of all terrain parks at the resort with their current status,
+             condition notes, and list of features (jumps, boxes, rails, etc.) within them.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get terrain parks
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getTerrainParks();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetTerrainParks(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getTerrainParks();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getTerrainParks(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+components:
+  schemas:
+    FullReport:
+      description: |-
+        The all-in-one endpoint containing the full report — resort information, current status,
+         runs, lifts, snow, terrain parks, summer trails, hours, and weather.
+      example:
+        summer_trails:
+        - difficulty: ""
+          area_name: area_name
+          number: 9
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 9
+          uuid: uuid
+          slug: slug
+          trail_type:
+          - hiking
+          - hiking
+          status: ""
+        - difficulty: ""
+          area_name: area_name
+          number: 9
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 9
+          uuid: uuid
+          slug: slug
+          trail_type:
+          - hiking
+          - hiking
+          status: ""
+        hours:
+          calendar_days:
+          - date: 2000-01-23
+            opens_at: opens_at
+            is_open: true
+            special_event: special_event
+            closes_at: closes_at
+            closure_reason: ""
+            day_of_week: ""
+          - date: 2000-01-23
+            opens_at: opens_at
+            is_open: true
+            special_event: special_event
+            closes_at: closes_at
+            closure_reason: ""
+            day_of_week: ""
+          schedules:
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+        terrain_parks:
+        - area_name: area_name
+          number: 1
+          features:
+          - feature_type: ""
+            number: 5
+            size: ""
+            name: name
+            uuid: uuid
+            slug: slug
+            status: ""
+          - feature_type: ""
+            number: 5
+            size: ""
+            name: name
+            uuid: uuid
+            slug: slug
+            status: ""
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 4
+          uuid: uuid
+          slug: slug
+          status: ""
+        - area_name: area_name
+          number: 1
+          features:
+          - feature_type: ""
+            number: 5
+            size: ""
+            name: name
+            uuid: uuid
+            slug: slug
+            status: ""
+          - feature_type: ""
+            number: 5
+            size: ""
+            name: name
+            uuid: uuid
+            slug: slug
+            status: ""
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 4
+          uuid: uuid
+          slug: slug
+          status: ""
+        snow:
+        - area_name: area_name
+          snowfall_cm: ""
+          surface_condition: ""
+          base_depth_cm: 4
+          secondary_surface_condition: ""
+          reported_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_display_order: 2
+          uuid: uuid
+          base_depth_in: 7
+          snowfall_in: ""
+        - area_name: area_name
+          snowfall_cm: ""
+          surface_condition: ""
+          base_depth_cm: 4
+          secondary_surface_condition: ""
+          reported_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_display_order: 2
+          uuid: uuid
+          base_depth_in: 7
+          snowfall_in: ""
+        weather: ""
+        lifts:
+        - area_name: area_name
+          number: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          wait_time_minutes: 1
+          lift_type: ""
+          high_speed: true
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 1
+          uuid: uuid
+          slug: slug
+          status: ""
+        - area_name: area_name
+          number: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          wait_time_minutes: 1
+          lift_type: ""
+          high_speed: true
+          name: name
+          area_uuid: area_uuid
+          area_display_order: 1
+          uuid: uuid
+          slug: slug
+          status: ""
+        resort:
+          timezone: timezone
+          name: name
+          uuid: uuid
+          unit_preference: ""
+          slug: slug
+        runs:
+        - area_name: area_name
+          area_uuid: area_uuid
+          uuid: uuid
+          difficulty: ""
+          number: 6
+          groomed_today: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          area_display_order: 7
+          slug: slug
+          status: ""
+        - area_name: area_name
+          area_uuid: area_uuid
+          uuid: uuid
+          difficulty: ""
+          number: 6
+          groomed_today: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          condition_notes: condition_notes
+          name: name
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          area_display_order: 7
+          slug: slug
+          status: ""
+        status:
+          news: news
+          runs_updated_at: 2000-01-23T04:56:07.000+00:00
+          total_lifts: 5
+          open_summer_trails: 2
+          open_terrain_parks: 9
+          opens_at: opens_at
+          total_runs: 1
+          summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
+          open_runs: 0
+          season: ""
+          groomed_runs: 6
+          news_html: news_html
+          lifts_updated_at: 2000-01-23T04:56:07.000+00:00
+          total_terrain_parks: 3
+          closes_at: closes_at
+          news_updated_at: 2000-01-23T04:56:07.000+00:00
+          total_summer_trails: 7
+          status: ""
+          open_lifts: 5
+          terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        resort:
+          $ref: "#/components/schemas/ResortInfo"
+        status:
+          $ref: "#/components/schemas/Overview"
+        snow:
+          description: |-
+            Provides current snow conditions including base depth, surface conditions,
+             and snowfall totals in both metric and imperial units.
+
+             May contain multiple, representing different reporting areas.
+          items:
+            $ref: "#/components/schemas/SnowReport"
+          type: array
+        lifts:
+          description: |-
+            List of all lifts at the resort with their current operational status,
+             type, and optional wait time information.
+          items:
+            $ref: "#/components/schemas/Lift"
+          type: array
+        runs:
+          description: |-
+            List of all runs at the resort with their current status,
+             grooming information, and difficulty rating.
+          items:
+            $ref: "#/components/schemas/Run"
+          type: array
+        terrain_parks:
+          description: |-
+            List of all terrain parks at the resort with their current status,
+             condition notes, and list of features (jumps, boxes, rails, etc.) within them.
+          items:
+            $ref: "#/components/schemas/TerrainPark"
+          type: array
+        summer_trails:
+          description: |-
+            List of all summer trails at the resort with their current status,
+             type (e.g. hiking, mountain biking), and optional difficulty rating.
+          items:
+            $ref: "#/components/schemas/SummerTrail"
+          type: array
+        hours:
+          $ref: "#/components/schemas/OperatingHours"
+        weather:
+          allOf:
+          - $ref: "#/components/schemas/Weather"
+          nullable: true
+      required:
+      - hours
+      - lifts
+      - resort
+      - runs
+      - snow
+      - status
+      - summer_trails
+      - terrain_parks
+    ResortInfo:
+      description: Contains general information about the ski resort and its MtnManager
+        account.
+      example:
+        timezone: timezone
+        name: name
+        uuid: uuid
+        unit_preference: ""
+        slug: slug
+      properties:
+        uuid:
+          description: Unique identifier for the resort.
+          type: string
+        name:
+          description: Display name of the resort.
+          type: string
+        slug:
+          description: "URL-friendly identifier for the resort, used in account subdomain."
+          type: string
+        timezone:
+          description: IANA timezone identifier for the resort's local time.
+          type: string
+        unit_preference:
+          allOf:
+          - $ref: "#/components/schemas/UnitPreference"
+          description: Preferred unit system for measurements (metric or imperial).
+      required:
+      - name
+      - slug
+      - timezone
+      - unit_preference
+      - uuid
+    UnitPreference:
+      description: "Unit preference (cm/in, km/miles, etc.)"
+      enum:
+      - metric
+      - imperial
+      type: string
+    Overview:
+      description: |-
+        Provides a snapshot of the resort's current operational state including
+         today's scheduled hours (calculated from operating hour rules), run/lift
+         overview counts, the current season, and written news.
+      example:
+        news: news
+        runs_updated_at: 2000-01-23T04:56:07.000+00:00
+        total_lifts: 5
+        open_summer_trails: 2
+        open_terrain_parks: 9
+        opens_at: opens_at
+        total_runs: 1
+        summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
+        open_runs: 0
+        season: ""
+        groomed_runs: 6
+        news_html: news_html
+        lifts_updated_at: 2000-01-23T04:56:07.000+00:00
+        total_terrain_parks: 3
+        closes_at: closes_at
+        news_updated_at: 2000-01-23T04:56:07.000+00:00
+        total_summer_trails: 7
+        status: ""
+        open_lifts: 5
+        terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        status:
+          allOf:
+          - $ref: "#/components/schemas/ResortStatus"
+          description: |-
+            Current operational status of the resort (open or closed).
+             This is calculated based on the current time relative to today's scheduled hours.
+        opens_at:
+          description: |-
+            Today's scheduled opening time in 24-hour format (HH:MM).
+             `null` if the resort is not scheduled to open today.
+          nullable: true
+          type: string
+        closes_at:
+          description: |-
+            Today's scheduled closing time in 24-hour format (HH:MM).
+             `null` if the resort is not scheduled to open today.
+          nullable: true
+          type: string
+        season:
+          allOf:
+          - $ref: "#/components/schemas/SeasonType"
+          description: "Current operating season (winter, summer, or closed/off-season)."
+        news:
+          description: "Written news — daily update, announcements, etc. (Markdown\
+            \ source)."
+          type: string
+        news_html:
+          description: "Written news — daily update, announcements, etc. (rendered\
+            \ as HTML from Markdown)."
+          type: string
+        news_updated_at:
+          description: When the written news was last updated.
+          format: date-time
+          type: string
+        open_runs:
+          description: |-
+            Number of runs currently open.
+             Not included if the runs status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        groomed_runs:
+          description: |-
+            Number of runs groomed within the last 24 hours.
+             Not included if the runs grooming feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        total_runs:
+          description: Total number of runs at the resort.
+          format: int64
+          type: integer
+        runs_updated_at:
+          description: When the most recent update to run status was made.
+          format: date-time
+          type: string
+        open_lifts:
+          description: |-
+            Number of lifts currently open.
+             Not included if the lifts status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        total_lifts:
+          description: Total number of lifts at the resort.
+          format: int64
+          type: integer
+        lifts_updated_at:
+          description: When the most recent update to lift status was made.
+          format: date-time
+          type: string
+        open_summer_trails:
+          description: |-
+            Number of summer trails currently open.
+             Not included if the summer trails status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        total_summer_trails:
+          description: Total number of summer trails at the resort.
+          format: int64
+          type: integer
+        summer_trails_updated_at:
+          description: When the most recent update to summer trail status was made.
+          format: date-time
+          type: string
+        open_terrain_parks:
+          description: |-
+            Number of terrain parks currently open.
+             Not included if the terrain parks status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        total_terrain_parks:
+          description: Total number of terrain parks at the resort.
+          format: int64
+          type: integer
+        terrain_parks_updated_at:
+          description: When the most recent update to terrain park status was made.
+          format: date-time
+          type: string
+      required:
+      - lifts_updated_at
+      - news
+      - news_html
+      - news_updated_at
+      - runs_updated_at
+      - season
+      - status
+      - summer_trails_updated_at
+      - terrain_parks_updated_at
+      - total_lifts
+      - total_runs
+      - total_summer_trails
+      - total_terrain_parks
+    ResortStatus:
+      description: Current operational status of the resort.
+      enum:
+      - open
+      - closed
+      type: string
+    SeasonType:
+      description: Current operating season of the resort.
+      enum:
+      - winter
+      - summer
+      - closed
+      type: string
+    SnowReport:
+      description: |-
+        Provides current snow conditions for a specific area or the entire resort,
+         including base depth, surface conditions, and snowfall totals in both
+         metric and imperial units.
+      example:
+        area_name: area_name
+        snowfall_cm: ""
+        surface_condition: ""
+        base_depth_cm: 4
+        secondary_surface_condition: ""
+        reported_at: 2000-01-23T04:56:07.000+00:00
+        condition_notes: condition_notes
+        area_uuid: area_uuid
+        area_display_order: 2
+        uuid: uuid
+        base_depth_in: 7
+        snowfall_in: ""
+      properties:
+        uuid:
+          description: Unique identifier for this snow report.
+          type: string
+        area_uuid:
+          description: |-
+            UUID of the area this report covers, if area-specific.
+             `null` for resort-wide reports.
+          nullable: true
+          type: string
+        area_name:
+          description: "Name of the area this report covers, if area-specific."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "Display order of the area this report covers, if area-specific,\
+            \ for sorting purposes."
+          format: int32
+          nullable: true
+          type: integer
+        base_depth_cm:
+          description: |-
+            Current base depth in centimeters.
+             Not included if the base depth feature is disabled.
+          format: int32
+          nullable: true
+          type: integer
+        base_depth_in:
+          description: |-
+            Current base depth in inches.
+             Not included if the base depth feature is disabled.
+          format: int32
+          nullable: true
+          type: integer
+        surface_condition:
+          allOf:
+          - $ref: "#/components/schemas/SurfaceCondition"
+          nullable: true
+        secondary_surface_condition:
+          allOf:
+          - $ref: "#/components/schemas/SurfaceCondition"
+          nullable: true
+        condition_notes:
+          description: "Additional notes about current snow conditions, e.g. groomer's\
+            \ notes"
+          type: string
+        snowfall_cm:
+          allOf:
+          - $ref: "#/components/schemas/SnowMetrics"
+          description: Snowfall accumulation metrics in centimeters.
+        snowfall_in:
+          allOf:
+          - $ref: "#/components/schemas/SnowMetrics"
+          description: Snowfall accumulation metrics in inches.
+        reported_at:
+          description: When this snow report was last updated.
+          format: date-time
+          type: string
+      required:
+      - condition_notes
+      - reported_at
+      - snowfall_cm
+      - snowfall_in
+      - uuid
+    SurfaceCondition:
+      description: Industry-standard letter codes describing snow surface conditions.
+      enum:
+      - BS
+      - CO
+      - FG
+      - HP
+      - IP
+      - IS
+      - LG
+      - MG
+      - P
+      - PP
+      - SC
+      - TC
+      - V
+      - WG
+      - WP
+      type: string
+    SnowMetrics:
+      description: |-
+        Contains snowfall totals for various time periods. Values are provided
+         in the unit indicated by the parent field name (cm or inches).
+      properties:
+        overnight:
+          description: Snowfall during the overnight window (midnight to 9 AM local
+            timezone).
+          format: int32
+          type: integer
+        last_24h:
+          description: Snowfall in the last 24 hours.
+          format: int32
+          type: integer
+        last_48h:
+          description: Snowfall in the last 48 hours.
+          format: int32
+          type: integer
+        last_7days:
+          description: Snowfall in the last 7 days.
+          format: int32
+          type: integer
+        season_total:
+          description: Total snowfall for the current season.
+          format: int32
+          type: integer
+      required:
+      - last_24h
+      - last_48h
+      - last_7days
+      - overnight
+      - season_total
+    Lift:
+      description: |-
+        Represents a single lift at the resort with its current operational status,
+         type, and optional wait time information.
+      example:
+        area_name: area_name
+        number: 1
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        wait_time_minutes: 1
+        lift_type: ""
+        high_speed: true
+        name: name
+        area_uuid: area_uuid
+        area_display_order: 1
+        uuid: uuid
+        slug: slug
+        status: ""
+      properties:
+        uuid:
+          description: Unique identifier for the lift.
+          type: string
+        name:
+          description: Display name of the lift.
+          type: string
+        slug:
+          description: URL-friendly name of the lift.
+          type: string
+        number:
+          description: Optional lift number.
+          format: int32
+          nullable: true
+          type: integer
+        lift_type:
+          allOf:
+          - $ref: "#/components/schemas/LiftType"
+          description: "Type of lift (e.g. gondola, quad)."
+        high_speed:
+          description: Whether this is a high-speed/detachable lift.
+          type: boolean
+        status:
+          allOf:
+          - $ref: "#/components/schemas/LiftStatus"
+          description: "Current operational status (open, closed, on_hold, or unknown)."
+        wait_time_minutes:
+          description: "Current estimated wait time in minutes, if available."
+          format: int64
+          nullable: true
+          type: integer
+        area_uuid:
+          description: "UUID of the area this lift belongs to, if assigned."
+          nullable: true
+          type: string
+        area_name:
+          description: "Name of the area this lift belongs to, if assigned."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "Display order of the area this lift belongs to, if assigned,\
+            \ for sorting purposes."
+          format: int32
+          nullable: true
+          type: integer
+        updated_at:
+          description: When this lift's information was last updated.
+          format: date-time
+          type: string
+      required:
+      - high_speed
+      - lift_type
+      - name
+      - slug
+      - status
+      - updated_at
+      - uuid
+    LiftType:
+      description: Type of ski lift
+      enum:
+      - gondola
+      - tram
+      - eight_pack
+      - six_pack
+      - quad
+      - triple
+      - double
+      - magic_carpet
+      - t_bar
+      - platter
+      - rope_tow
+      - funicular
+      - other
+      type: string
+    LiftStatus:
+      description: Operational status of a ski lift.
+      enum:
+      - open
+      - closed
+      - on_hold
+      - unknown
+      type: string
+    Run:
+      description: |-
+        Represents a single run at the resort with its current status,
+         grooming information, and difficulty rating.
+      example:
+        area_name: area_name
+        area_uuid: area_uuid
+        uuid: uuid
+        difficulty: ""
+        number: 6
+        groomed_today: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        condition_notes: condition_notes
+        name: name
+        last_groomed: 2000-01-23T04:56:07.000+00:00
+        area_display_order: 7
+        slug: slug
+        status: ""
+      properties:
+        uuid:
+          description: Unique identifier for the run.
+          type: string
+        name:
+          description: Display name of the run.
+          type: string
+        slug:
+          description: URL-friendly name of the run.
+          type: string
+        number:
+          description: Optional run number.
+          format: int32
+          nullable: true
+          type: integer
+        difficulty:
+          allOf:
+          - $ref: "#/components/schemas/RunDifficulty"
+          description: Difficulty rating of the run.
+        status:
+          allOf:
+          - $ref: "#/components/schemas/RunStatus"
+          description: "Current operational status (open, closed, or unknown)."
+        last_groomed:
+          description: |-
+            When the run was last groomed.
+             `null` if never groomed, or if the runs grooming feature is disabled.
+          format: date-time
+          nullable: true
+          type: string
+        groomed_today:
+          description: Whether the run was groomed within the last 24 hours.
+          type: boolean
+        condition_notes:
+          description: Notes about current conditions on this run.
+          type: string
+        area_uuid:
+          description: "UUID of the area this run belongs to, if assigned."
+          nullable: true
+          type: string
+        area_name:
+          description: "Name of the area this run belongs to, if assigned."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "Display order of the area this run belongs to, if assigned,\
+            \ for sorting purposes."
+          format: int32
+          nullable: true
+          type: integer
+        updated_at:
+          description: When this run's information was last updated.
+          format: date-time
+          type: string
+      required:
+      - condition_notes
+      - difficulty
+      - groomed_today
+      - name
+      - slug
+      - status
+      - updated_at
+      - uuid
+    RunDifficulty:
+      description: Difficulty rating for a ski run.
+      enum:
+      - beginner
+      - intermediate
+      - advanced
+      - expert
+      - terrain_park
+      type: string
+    RunStatus:
+      description: Operational status of a ski run.
+      enum:
+      - open
+      - closed
+      - unknown
+      type: string
+    TerrainPark:
+      description: |-
+        Represents a terrain park at the resort with its current status,
+         condition notes, and list of features (jumps, boxes, rails, etc.) within it.
+      example:
+        area_name: area_name
+        number: 1
+        features:
+        - feature_type: ""
+          number: 5
+          size: ""
+          name: name
+          uuid: uuid
+          slug: slug
+          status: ""
+        - feature_type: ""
+          number: 5
+          size: ""
+          name: name
+          uuid: uuid
+          slug: slug
+          status: ""
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        condition_notes: condition_notes
+        name: name
+        area_uuid: area_uuid
+        area_display_order: 4
+        uuid: uuid
+        slug: slug
+        status: ""
+      properties:
+        uuid:
+          description: Unique identifier for the terrain park.
+          type: string
+        name:
+          description: Display name of the terrain park.
+          type: string
+        slug:
+          description: URL-friendly name of the terrain park.
+          type: string
+        number:
+          description: Optional terrain park number.
+          format: int32
+          nullable: true
+          type: integer
+        status:
+          allOf:
+          - $ref: "#/components/schemas/TerrainParkStatus"
+          description: "Current operational status (open, closed, or unknown)."
+        condition_notes:
+          description: Notes about current conditions in this terrain park.
+          type: string
+        area_uuid:
+          description: "UUID of the area this terrain park belongs to, if assigned."
+          nullable: true
+          type: string
+        area_name:
+          description: "Name of the area this terrain park belongs to, if assigned."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "Display order of the area this terrain park belongs to, if\
+            \ assigned, for sorting purposes."
+          format: int32
+          nullable: true
+          type: integer
+        features:
+          description: "Features within this terrain park (jumps, boxes, rails, etc.)."
+          items:
+            $ref: "#/components/schemas/TerrainParkFeature"
+          type: array
+        updated_at:
+          description: When this terrain park or any of its features was last updated.
+          format: date-time
+          type: string
+      required:
+      - condition_notes
+      - features
+      - name
+      - slug
+      - status
+      - updated_at
+      - uuid
+    TerrainParkStatus:
+      description: Operational status of a terrain park.
+      enum:
+      - open
+      - closed
+      - unknown
+      type: string
+    TerrainParkFeature:
+      description: |-
+        Represents a single feature within a terrain park (jump, box, rail, etc.)
+         with its current status and size rating.
+      example:
+        feature_type: ""
+        number: 5
+        size: ""
+        name: name
+        uuid: uuid
+        slug: slug
+        status: ""
+      properties:
+        uuid:
+          description: Unique identifier for the feature.
+          type: string
+        name:
+          description: Display name of the feature.
+          type: string
+        slug:
+          description: URL-friendly name of the run.
+          type: string
+        number:
+          description: Optional feature number.
+          format: int32
+          nullable: true
+          type: integer
+        feature_type:
+          allOf:
+          - $ref: "#/components/schemas/FeatureType"
+          description: "Type of feature (jump, box, rail, other)."
+        size:
+          allOf:
+          - $ref: "#/components/schemas/FeatureSize"
+          nullable: true
+        status:
+          allOf:
+          - $ref: "#/components/schemas/TerrainParkFeatureStatus"
+          description: |-
+            Current operational status (open, closed, or unknown).
+             `unknown` unless the terrain park feature status is enabled.
+      required:
+      - feature_type
+      - name
+      - slug
+      - status
+      - uuid
+    FeatureType:
+      description: Type of terrain park feature.
+      enum:
+      - jump
+      - box
+      - rail
+      - other
+      type: string
+    FeatureSize:
+      description: Size rating of terrain park feature.
+      enum:
+      - s
+      - m
+      - l
+      - xl
+      type: string
+    TerrainParkFeatureStatus:
+      description: Operational status of a terrain park feature.
+      enum:
+      - open
+      - closed
+      - unknown
+      type: string
+    SummerTrail:
+      description: |-
+        Represents a single summer trail at the resort with its current status,
+         type (e.g. hiking, mountain biking), and optional difficulty rating.
+      example:
+        difficulty: ""
+        area_name: area_name
+        number: 9
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        condition_notes: condition_notes
+        name: name
+        area_uuid: area_uuid
+        area_display_order: 9
+        uuid: uuid
+        slug: slug
+        trail_type:
+        - hiking
+        - hiking
+        status: ""
+      properties:
+        uuid:
+          description: Unique identifier for the trail.
+          type: string
+        name:
+          description: Display name of the trail.
+          type: string
+        slug:
+          description: URL-friendly name of the trail.
+          type: string
+        number:
+          description: Optional trail number.
+          format: int32
+          nullable: true
+          type: integer
+        trail_type:
+          description: "Type of trail activity (e.g. hiking, mountain_biking). Can\
+            \ have multiple."
+          items:
+            $ref: "#/components/schemas/SummerTrailType"
+          type: array
+        difficulty:
+          allOf:
+          - $ref: "#/components/schemas/SummerTrailDifficulty"
+          nullable: true
+        status:
+          allOf:
+          - $ref: "#/components/schemas/SummerTrailStatus"
+          description: "Current operational status (open, closed, or unknown)."
+        condition_notes:
+          description: Notes about current conditions on this trail.
+          type: string
+        area_uuid:
+          description: "UUID of the area this trail belongs to, if assigned."
+          nullable: true
+          type: string
+        area_name:
+          description: "Name of the area this trail belongs to, if assigned."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "Display order of the area this trail belongs to, if assigned,\
+            \ for sorting purposes."
+          format: int32
+          nullable: true
+          type: integer
+        updated_at:
+          description: When this trail's information was last updated.
+          format: date-time
+          type: string
+      required:
+      - condition_notes
+      - name
+      - slug
+      - status
+      - trail_type
+      - updated_at
+      - uuid
+    SummerTrailType:
+      enum:
+      - hiking
+      - mountain_biking
+      type: string
+    SummerTrailDifficulty:
+      description: Difficulty rating for a summer trail.
+      enum:
+      - beginner
+      - intermediate
+      - advanced
+      - expert
+      type: string
+    SummerTrailStatus:
+      description: Operational status of a summer trail.
+      enum:
+      - open
+      - closed
+      - unknown
+      type: string
+    OperatingHours:
+      description: "Resort's operating hours, including the recurring schedule, and\
+        \ list of individual calendar days."
+      example:
+        calendar_days:
+        - date: 2000-01-23
+          opens_at: opens_at
+          is_open: true
+          special_event: special_event
+          closes_at: closes_at
+          closure_reason: ""
+          day_of_week: ""
+        - date: 2000-01-23
+          opens_at: opens_at
+          is_open: true
+          special_event: special_event
+          closes_at: closes_at
+          closure_reason: ""
+          day_of_week: ""
+        schedules:
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+      properties:
+        schedules:
+          description: |-
+            Recurring operating schedules currently in effect or upcoming.
+             Excludes single-day overrides and past schedules.
+          items:
+            $ref: "#/components/schemas/Schedule"
+          type: array
+        calendar_days:
+          description: |-
+            List of all days the resort is open (or a closure override).
+             Ordered chronologically, spanning from the earliest scheduled date
+             to the latest scheduled date in the currently defined operating hours.
+          items:
+            $ref: "#/components/schemas/CalendarDay"
+          type: array
+      required:
+      - calendar_days
+      - schedules
+    Schedule:
+      description: |-
+        Recurring schedule pattern with human-readable and machine-readable formats.
+
+         Describes a regular operating schedule (e.g., "Weekends 10am-4pm") with
+         both formatted strings for display and structured data for programmatic use.
+      example:
+        days_of_week:
+        - Sunday
+        - Sunday
+        opens_at: opens_at
+        in_effect: true
+        days_string: days_string
+        effective_to: 2000-01-23
+        effective_string: effective_string
+        time_string: time_string
+        closes_at: closes_at
+        effective_from: 2000-01-23
+      properties:
+        days_string:
+          description: |-
+            Human-readable description of which days this schedule applies to.
+             Examples: "Daily", "Saturday & Sunday", "Monday, Wednesday, and Friday"
+          type: string
+        days_of_week:
+          description: |-
+            Array of days of the week this schedule applies to.
+             For programmatic use.
+          items:
+            $ref: "#/components/schemas/DayOfWeek"
+          type: array
+        time_string:
+          description: |-
+            Human-readable time range.
+             Example: "9:00 a.m. to 4:00 p.m."
+          type: string
+        opens_at:
+          description: "Opening time in 24-hour format (HH:MM), in resort's local\
+            \ timezone."
+          pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+          type: string
+        closes_at:
+          description: "Closing time in 24-hour format (HH:MM), in resort's local\
+            \ timezone."
+          pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+          type: string
+        in_effect:
+          description: |-
+            Whether this schedule is currently in effect.
+             `false` for upcoming schedules that haven't started yet.
+          type: boolean
+        effective_string:
+          description: |-
+            Human-readable date range when this schedule is effective.
+             Example: "November 1, 2024 to April 15, 2025"
+          type: string
+        effective_from:
+          description: Start date of the effective period (YYYY-MM-DD).
+          format: date
+          type: string
+        effective_to:
+          description: End date of the effective period (YYYY-MM-DD).
+          format: date
+          type: string
+      required:
+      - closes_at
+      - days_of_week
+      - days_string
+      - effective_from
+      - effective_string
+      - effective_to
+      - in_effect
+      - opens_at
+      - time_string
+    DayOfWeek:
+      enum:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      type: string
+    CalendarDay:
+      description: |-
+        Operating hours for a specific calendar date.
+
+         Represents the calculated open/close times for a single day, combining
+         information from recurring schedules and any single-day overrides.
+      example:
+        date: 2000-01-23
+        opens_at: opens_at
+        is_open: true
+        special_event: special_event
+        closes_at: closes_at
+        closure_reason: ""
+        day_of_week: ""
+      properties:
+        date:
+          description: Calendar date (YYYY-MM-DD).
+          format: date
+          type: string
+        day_of_week:
+          allOf:
+          - $ref: "#/components/schemas/DayOfWeek"
+          description: Day of the week.
+        is_open:
+          description: Whether the resort is open on this day.
+          type: boolean
+        opens_at:
+          description: |-
+            Opening time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if closed on this day.
+          nullable: true
+          pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+          type: string
+        closes_at:
+          description: |-
+            Closing time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if closed on this day.
+          nullable: true
+          pattern: "^([01]\\d|2[0-3]):[0-5]\\d$"
+          type: string
+        closure_reason:
+          allOf:
+          - $ref: "#/components/schemas/ClosureReason"
+          nullable: true
+        special_event:
+          description: Special event for this day.
+          nullable: true
+          type: string
+      required:
+      - date
+      - day_of_week
+      - is_open
+    ClosureReason:
+      description: Reason for unexpected closure
+      enum:
+      - extreme_cold
+      - high_winds
+      - snow_conditions
+      - mechanical_issues
+      type: string
+    Weather:
+      description: |-
+        Current and forecasted weather conditions for the resort's location.
+         Only included/available if the weather feature is enabled and GPS coordinates are configured.
+      example:
+        current: ""
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        attribution: attribution
+        daily_forecast:
+        - date: 2000-01-23
+          condition: condition
+          sunrise: 2000-01-23T04:56:07.000+00:00
+          metric: ""
+          precipitation_probability: 6
+          sunset: 2000-01-23T04:56:07.000+00:00
+          imperial: ""
+          condition_code: ""
+        - date: 2000-01-23
+          condition: condition
+          sunrise: 2000-01-23T04:56:07.000+00:00
+          metric: ""
+          precipitation_probability: 6
+          sunset: 2000-01-23T04:56:07.000+00:00
+          imperial: ""
+          condition_code: ""
+        hourly_forecast:
+        - condition: condition
+          metric: ""
+          precipitation_probability: 0
+          imperial: ""
+          timestamp: 2000-01-23T04:56:07.000+00:00
+          condition_code: ""
+        - condition: condition
+          metric: ""
+          precipitation_probability: 0
+          imperial: ""
+          timestamp: 2000-01-23T04:56:07.000+00:00
+          condition_code: ""
+      properties:
+        current:
+          allOf:
+          - $ref: "#/components/schemas/CurrentWeather"
+          description: Current weather conditions
+        hourly_forecast:
+          description: Hourly forecast for next 24 hours (including current hour)
+          items:
+            $ref: "#/components/schemas/HourlyForecast"
+          type: array
+        daily_forecast:
+          description: Daily forecast for next 7 days (including today)
+          items:
+            $ref: "#/components/schemas/DailyForecast"
+          type: array
+        attribution:
+          description: Data source attribution
+          type: string
+        updated_at:
+          description: When this data was last updated
+          format: date-time
+          type: string
+      required:
+      - attribution
+      - current
+      - daily_forecast
+      - hourly_forecast
+      - updated_at
+    CurrentWeather:
+      description: Current weather conditions with both metric and imperial units
+      properties:
+        imperial:
+          allOf:
+          - $ref: "#/components/schemas/CurrentWeatherImperial"
+          description: Measurements in imperial units
+        metric:
+          allOf:
+          - $ref: "#/components/schemas/CurrentWeatherMetric"
+          description: Measurements in metric units
+        condition:
+          description: Human-readable weather condition
+          type: string
+        condition_code:
+          allOf:
+          - $ref: "#/components/schemas/WeatherConditionCode"
+          description: Weather condition code
+        wind_direction:
+          description: Wind direction in degrees (0-360)
+          format: int32
+          nullable: true
+          type: integer
+        wind_direction_cardinal:
+          description: "Wind direction as cardinal direction (N, NE, E, SE, S, SW,\
+            \ W, NW)"
+          nullable: true
+          type: string
+        timestamp:
+          description: Timestamp of observation
+          format: date-time
+          type: string
+      required:
+      - condition
+      - condition_code
+      - imperial
+      - metric
+      - timestamp
+    CurrentWeatherImperial:
+      description: Current temperature and precipitation measurements in imperial
+        units
+      properties:
+        temperature:
+          description: Temperature in Fahrenheit
+          format: int32
+          type: integer
+        feels_like:
+          description: Feels like temperature in Fahrenheit
+          format: int32
+          type: integer
+        snowfall:
+          description: Snowfall in inches
+          format: int32
+          nullable: true
+          type: integer
+        precipitation:
+          description: Precipitation in inches
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed:
+          description: Wind speed in mph
+          format: int32
+          type: integer
+        wind_gust:
+          description: Wind gust in mph
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - feels_like
+      - temperature
+      - wind_speed
+    CurrentWeatherMetric:
+      description: Current temperature and precipitation measurements in metric units
+      properties:
+        temperature:
+          description: Temperature in Celsius
+          format: int32
+          type: integer
+        feels_like:
+          description: Feels like temperature in Celsius
+          format: int32
+          type: integer
+        snowfall:
+          description: Snowfall in centimeters
+          format: int32
+          nullable: true
+          type: integer
+        precipitation:
+          description: Precipitation in millimeters
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed:
+          description: Wind speed in km/h
+          format: int32
+          type: integer
+        wind_gust:
+          description: Wind gust in km/h
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - feels_like
+      - temperature
+      - wind_speed
+    WeatherConditionCode:
+      description: Weather condition code
+      enum:
+      - Clear
+      - MostlyClear
+      - PartlyCloudy
+      - MostlyCloudy
+      - Cloudy
+      - Dust
+      - Fog
+      - Haze
+      - Smoke
+      - Breezy
+      - Windy
+      - Drizzle
+      - Rain
+      - Showers
+      - ScatteredShowers
+      - HeavyRain
+      - Flurries
+      - Snow
+      - SnowShowers
+      - ScatteredSnowShowers
+      - HeavySnow
+      - Blizzard
+      - BlowingSnow
+      - MixedRainAndSleet
+      - MixedRainAndSnow
+      - MixedRainfall
+      - MixedSnowAndSleet
+      - Sleet
+      - FreezingDrizzle
+      - FreezingRain
+      - Frigid
+      - Hail
+      - ScatteredThunderstorms
+      - IsolatedThunderstorms
+      - Thunderstorm
+      - SevereThunderstorm
+      - Hurricane
+      - Tornado
+      - TropicalStorm
+      - Hot
+      - Unknown
+      type: string
+    HourlyForecast:
+      description: Hourly weather forecast entry with both metric and imperial units
+      example:
+        condition: condition
+        metric: ""
+        precipitation_probability: 0
+        imperial: ""
+        timestamp: 2000-01-23T04:56:07.000+00:00
+        condition_code: ""
+      properties:
+        timestamp:
+          description: Forecast timestamp
+          format: date-time
+          type: string
+        imperial:
+          allOf:
+          - $ref: "#/components/schemas/HourlyForecastImperial"
+          description: Measurements in imperial units
+        metric:
+          allOf:
+          - $ref: "#/components/schemas/HourlyForecastMetric"
+          description: Measurements in metric units
+        condition:
+          description: Human-readable condition
+          type: string
+        condition_code:
+          allOf:
+          - $ref: "#/components/schemas/WeatherConditionCode"
+          description: Weather condition code
+        precipitation_probability:
+          description: Probability of precipitation (0-100%)
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - condition
+      - condition_code
+      - imperial
+      - metric
+      - timestamp
+    HourlyForecastImperial:
+      description: Hourly forecast measurements in imperial units
+      properties:
+        temperature:
+          description: Temperature in Fahrenheit
+          format: int32
+          type: integer
+        feels_like:
+          description: Feels like temperature in Fahrenheit
+          format: int32
+          nullable: true
+          type: integer
+        snowfall:
+          description: Snowfall amount expected this hour in inches
+          format: int32
+          nullable: true
+          type: integer
+        precipitation:
+          description: Precipitation amount expected this hour in inches
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed:
+          description: Wind speed in mph
+          format: int32
+          type: integer
+        wind_gust:
+          description: Wind gust in mph
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - temperature
+      - wind_speed
+    HourlyForecastMetric:
+      description: Hourly forecast measurements in metric units
+      properties:
+        temperature:
+          description: Temperature in Celsius
+          format: int32
+          type: integer
+        feels_like:
+          description: Feels like temperature in Celsius
+          format: int32
+          nullable: true
+          type: integer
+        snowfall:
+          description: Snowfall amount expected this hour in centimeters
+          format: int32
+          nullable: true
+          type: integer
+        precipitation:
+          description: Precipitation amount expected this hour in millimeters
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed:
+          description: Wind speed in km/h
+          format: int32
+          type: integer
+        wind_gust:
+          description: Wind gust in km/h
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - temperature
+      - wind_speed
+    DailyForecast:
+      description: Daily weather summary with both unit systems
+      example:
+        date: 2000-01-23
+        condition: condition
+        sunrise: 2000-01-23T04:56:07.000+00:00
+        metric: ""
+        precipitation_probability: 6
+        sunset: 2000-01-23T04:56:07.000+00:00
+        imperial: ""
+        condition_code: ""
+      properties:
+        date:
+          description: Date of forecast (YYYY-MM-DD format)
+          format: date
+          type: string
+        imperial:
+          allOf:
+          - $ref: "#/components/schemas/DailyForecastImperial"
+          description: Measurements in imperial units
+        metric:
+          allOf:
+          - $ref: "#/components/schemas/DailyForecastMetric"
+          description: Measurements in metric units
+        condition:
+          description: Human-readable condition
+          type: string
+        condition_code:
+          allOf:
+          - $ref: "#/components/schemas/WeatherConditionCode"
+          description: Condition code
+        precipitation_probability:
+          description: Probability of precipitation (0-100%)
+          format: int32
+          nullable: true
+          type: integer
+        sunrise:
+          description: Sunrise time
+          format: date-time
+          type: string
+        sunset:
+          description: Sunset time
+          format: date-time
+          type: string
+      required:
+      - condition
+      - condition_code
+      - date
+      - imperial
+      - metric
+      - sunrise
+      - sunset
+    DailyForecastImperial:
+      description: Daily forecast measurements in imperial units
+      properties:
+        temperature_high:
+          description: High temperature in Fahrenheit
+          format: int32
+          type: integer
+        temperature_low:
+          description: Low temperature in Fahrenheit
+          format: int32
+          type: integer
+        snowfall_total:
+          description: Total snowfall expected in inches
+          format: int32
+          nullable: true
+          type: integer
+        precipitation_total:
+          description: Total precipitation expected in inches
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed_max:
+          description: Maximum wind speed in mph
+          format: int32
+          nullable: true
+          type: integer
+        wind_gust_max:
+          description: Maximum wind gust in mph
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - temperature_high
+      - temperature_low
+    DailyForecastMetric:
+      description: Daily forecast measurements in metric units
+      properties:
+        temperature_high:
+          description: High temperature in Celsius
+          format: int32
+          type: integer
+        temperature_low:
+          description: Low temperature in Celsius
+          format: int32
+          type: integer
+        snowfall_total:
+          description: Total snowfall expected in centimeters
+          format: int32
+          nullable: true
+          type: integer
+        precipitation_total:
+          description: Total precipitation expected in millimeters
+          format: int32
+          nullable: true
+          type: integer
+        wind_speed_max:
+          description: Maximum wind speed in km/h
+          format: int32
+          nullable: true
+          type: integer
+        wind_gust_max:
+          description: Maximum wind gust in km/h
+          format: int32
+          nullable: true
+          type: integer
+      required:
+      - temperature_high
+      - temperature_low
+    RunsResponse:
+      description: |-
+        List of all runs at the resort with their current status,
+         grooming information, and difficulty rating.
+      items:
+        $ref: "#/components/schemas/Run"
+      type: array
+    SummerTrailsResponse:
+      description: |-
+        List of all summer trails at the resort with their current status,
+         type (e.g. hiking, mountain biking), and optional difficulty rating.
+      items:
+        $ref: "#/components/schemas/SummerTrail"
+      type: array
+    LiftsResponse:
+      description: |-
+        List of all lifts at the resort with their current operational status,
+         type, and optional wait time information.
+      items:
+        $ref: "#/components/schemas/Lift"
+      type: array
+    SnowResponse:
+      description: |-
+        Provides current snow conditions including base depth, surface conditions,
+         and snowfall totals in both metric and imperial units.
+
+         May contain multiple, representing different reporting areas.
+      items:
+        $ref: "#/components/schemas/SnowReport"
+      type: array
+    TerrainParksResponse:
+      description: |-
+        List of all terrain parks at the resort with their current status,
+         condition notes, and list of features (jumps, boxes, rails, etc.) within them.
+      items:
+        $ref: "#/components/schemas/TerrainPark"
+      type: array
