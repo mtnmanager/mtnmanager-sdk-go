@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, or unknown). | 
 **LastGroomed** | Pointer to **NullableTime** | When the run was last groomed.  &#x60;null&#x60; if never groomed, or if the runs grooming feature is disabled. | [optional] 
 **GroomedToday** | **bool** | Whether the run was groomed within the last 24 hours. | 
+**Snowmaking** | **bool** | Whether the run has snowmaking capabilities. | 
+**NightSkiing** | **bool** | Whether the run is available for night skiing. | 
 **ConditionNotes** | **string** | Notes about current conditions on this run. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this run belongs to, if assigned. | [optional] 
 **AreaName** | Pointer to **NullableString** | Name of the area this run belongs to, if assigned. | [optional] 
@@ -22,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewRun
 
-`func NewRun(uuid string, name string, slug string, difficulty RunDifficulty, status RunStatus, groomedToday bool, conditionNotes string, updatedAt time.Time, ) *Run`
+`func NewRun(uuid string, name string, slug string, difficulty RunDifficulty, status RunStatus, groomedToday bool, snowmaking bool, nightSkiing bool, conditionNotes string, updatedAt time.Time, ) *Run`
 
 NewRun instantiates a new Run object
 This constructor will assign default values to properties that have it defined,
@@ -225,6 +227,46 @@ and a boolean to check if the value has been set.
 `func (o *Run) SetGroomedToday(v bool)`
 
 SetGroomedToday sets GroomedToday field to given value.
+
+
+### GetSnowmaking
+
+`func (o *Run) GetSnowmaking() bool`
+
+GetSnowmaking returns the Snowmaking field if non-nil, zero value otherwise.
+
+### GetSnowmakingOk
+
+`func (o *Run) GetSnowmakingOk() (*bool, bool)`
+
+GetSnowmakingOk returns a tuple with the Snowmaking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowmaking
+
+`func (o *Run) SetSnowmaking(v bool)`
+
+SetSnowmaking sets Snowmaking field to given value.
+
+
+### GetNightSkiing
+
+`func (o *Run) GetNightSkiing() bool`
+
+GetNightSkiing returns the NightSkiing field if non-nil, zero value otherwise.
+
+### GetNightSkiingOk
+
+`func (o *Run) GetNightSkiingOk() (*bool, bool)`
+
+GetNightSkiingOk returns a tuple with the NightSkiing field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNightSkiing
+
+`func (o *Run) SetNightSkiing(v bool)`
+
+SetNightSkiing sets NightSkiing field to given value.
 
 
 ### GetConditionNotes

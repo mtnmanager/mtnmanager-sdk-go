@@ -32,6 +32,8 @@ type FullReport struct {
 	Runs []Run `json:"runs"`
 	// List of all terrain parks at the resort with their current status,  condition notes, and list of features (jumps, boxes, rails, etc.) within them.
 	TerrainParks []TerrainPark `json:"terrain_parks"`
+	// List of all parking lots at the resort with their current status and amenities.
+	ParkingLots []ParkingLot `json:"parking_lots"`
 	// List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating.
 	SummerTrails []SummerTrail `json:"summer_trails"`
 	Hours OperatingHours `json:"hours"`
@@ -44,7 +46,7 @@ type _FullReport FullReport
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFullReport(resort ResortInfo, status Overview, snow []SnowReport, lifts []Lift, runs []Run, terrainParks []TerrainPark, summerTrails []SummerTrail, hours OperatingHours) *FullReport {
+func NewFullReport(resort ResortInfo, status Overview, snow []SnowReport, lifts []Lift, runs []Run, terrainParks []TerrainPark, parkingLots []ParkingLot, summerTrails []SummerTrail, hours OperatingHours) *FullReport {
 	this := FullReport{}
 	this.Resort = resort
 	this.Status = status
@@ -52,6 +54,7 @@ func NewFullReport(resort ResortInfo, status Overview, snow []SnowReport, lifts 
 	this.Lifts = lifts
 	this.Runs = runs
 	this.TerrainParks = terrainParks
+	this.ParkingLots = parkingLots
 	this.SummerTrails = summerTrails
 	this.Hours = hours
 	return &this
@@ -209,6 +212,30 @@ func (o *FullReport) SetTerrainParks(v []TerrainPark) {
 	o.TerrainParks = v
 }
 
+// GetParkingLots returns the ParkingLots field value
+func (o *FullReport) GetParkingLots() []ParkingLot {
+	if o == nil {
+		var ret []ParkingLot
+		return ret
+	}
+
+	return o.ParkingLots
+}
+
+// GetParkingLotsOk returns a tuple with the ParkingLots field value
+// and a boolean to check if the value has been set.
+func (o *FullReport) GetParkingLotsOk() ([]ParkingLot, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ParkingLots, true
+}
+
+// SetParkingLots sets field value
+func (o *FullReport) SetParkingLots(v []ParkingLot) {
+	o.ParkingLots = v
+}
+
 // GetSummerTrails returns the SummerTrails field value
 func (o *FullReport) GetSummerTrails() []SummerTrail {
 	if o == nil {
@@ -315,6 +342,7 @@ func (o FullReport) ToMap() (map[string]interface{}, error) {
 	toSerialize["lifts"] = o.Lifts
 	toSerialize["runs"] = o.Runs
 	toSerialize["terrain_parks"] = o.TerrainParks
+	toSerialize["parking_lots"] = o.ParkingLots
 	toSerialize["summer_trails"] = o.SummerTrails
 	toSerialize["hours"] = o.Hours
 	if o.Weather.IsSet() {
@@ -334,6 +362,7 @@ func (o *FullReport) UnmarshalJSON(data []byte) (err error) {
 		"lifts",
 		"runs",
 		"terrain_parks",
+		"parking_lots",
 		"summer_trails",
 		"hours",
 	}

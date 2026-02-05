@@ -40,19 +40,21 @@ paths:
                   season: winter
                   news: Fresh powder overnight! All lifts spinning.
                   news_html: <p>Fresh powder overnight! All lifts spinning.</p>
-                  news_updated_at: 2026-01-27T00:26:42.016587295+00:00
+                  news_updated_at: 2026-01-26T16:26:33+00:00
                   open_runs: 42
                   groomed_runs: 38
                   total_runs: 50
-                  runs_updated_at: 2026-01-27T00:26:42.016590020+00:00
+                  open_acres: 850
+                  total_acres: 1200
+                  runs_updated_at: 2026-01-26T16:26:33+00:00
                   open_lifts: 8
                   total_lifts: 10
-                  lifts_updated_at: 2026-01-27T00:26:42.016590190+00:00
+                  lifts_updated_at: 2026-01-26T16:26:33+00:00
                   total_summer_trails: 0
-                  summer_trails_updated_at: 2026-01-27T00:26:42.016590321+00:00
+                  summer_trails_updated_at: 2026-01-26T16:26:33+00:00
                   open_terrain_parks: 3
                   total_terrain_parks: 4
-                  terrain_parks_updated_at: 2026-01-27T00:26:42.016590461+00:00
+                  terrain_parks_updated_at: 2026-01-26T16:26:33+00:00
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -76,7 +78,7 @@ paths:
                     last_48h: 18
                     last_7days: 36
                     season_total: 156
-                  reported_at: 2026-01-27T00:26:42.016600750+00:00
+                  reported_at: 2026-01-26T16:26:33+00:00
                 lifts:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Summit Express
@@ -84,12 +86,14 @@ paths:
                   number: 1
                   lift_type: gondola
                   high_speed: true
+                  bubble: true
+                  heated: true
                   status: open
                   wait_time_minutes: 5
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
                   area_display_order: 1
-                  updated_at: 2026-01-27T00:26:42.016600199+00:00
+                  updated_at: 2026-01-26T16:26:33+00:00
                 runs:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Main Street
@@ -97,13 +101,15 @@ paths:
                   number: 1
                   difficulty: advanced
                   status: open
-                  last_groomed: 2026-01-27T00:26:42.016591513+00:00
+                  last_groomed: 2026-01-26T16:26:33+00:00
                   groomed_today: true
+                  snowmaking: true
+                  night_skiing: false
                   condition_notes: Groomer's choice!
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
                   area_display_order: 1
-                  updated_at: 2026-01-27T00:26:42.016594899+00:00
+                  updated_at: 2026-01-26T16:26:33+00:00
                 terrain_parks:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Main Park
@@ -122,7 +128,17 @@ paths:
                     feature_type: rail
                     size: m
                     status: unknown
-                  updated_at: 2026-01-27T00:26:42.016602052+00:00
+                  updated_at: 2026-01-26T16:26:33+00:00
+                parking_lots:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  name: Main Parking Lot
+                  slug: main-parking-lot
+                  status: open
+                  capacity: 500
+                  shuttle: false
+                  paid: false
+                  reservation_required: false
+                  updated_at: 2026-01-26T16:26:33+00:00
                 summer_trails:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Ridgeline Trail
@@ -136,7 +152,7 @@ paths:
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
                   area_display_order: 1
-                  updated_at: 2026-01-27T00:26:42.016596993+00:00
+                  updated_at: 2026-01-26T16:26:33+00:00
                 hours:
                   schedules:
                   - days_string: Saturday & Sunday
@@ -176,9 +192,9 @@ paths:
                     condition_code: Snow
                     wind_direction: 270
                     wind_direction_cardinal: W
-                    timestamp: 2026-01-27T00:26:42.016610889+00:00
+                    timestamp: 2026-01-26T16:26:33+00:00
                   hourly_forecast:
-                  - timestamp: 2026-01-27T00:26:42.016611079+00:00
+                  - timestamp: 2026-01-26T16:26:33+00:00
                     imperial:
                       temperature: 28
                       feels_like: 22
@@ -215,10 +231,10 @@ paths:
                     condition: Light Snow
                     condition_code: Snow
                     precipitation_probability: 65
-                    sunrise: 2026-01-27T00:26:42.016611841+00:00
-                    sunset: 2026-01-27T00:26:42.016611951+00:00
+                    sunrise: 2026-01-26T16:26:33+00:00
+                    sunset: 2026-01-26T16:26:33+00:00
                   attribution: https://developer.apple.com/weatherkit/data-source-attribution/
-                  updated_at: 2026-01-27T00:26:42.016612242+00:00
+                  updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/FullReport"
           description: ""
@@ -301,19 +317,21 @@ paths:
                 season: winter
                 news: Fresh powder overnight! All lifts spinning.
                 news_html: <p>Fresh powder overnight! All lifts spinning.</p>
-                news_updated_at: 2026-01-27T00:26:42.020043205+00:00
+                news_updated_at: 2026-01-26T16:26:33+00:00
                 open_runs: 42
                 groomed_runs: 38
                 total_runs: 50
-                runs_updated_at: 2026-01-27T00:26:42.020044127+00:00
+                open_acres: 850
+                total_acres: 1200
+                runs_updated_at: 2026-01-26T16:26:33+00:00
                 open_lifts: 8
                 total_lifts: 10
-                lifts_updated_at: 2026-01-27T00:26:42.020044257+00:00
+                lifts_updated_at: 2026-01-26T16:26:33+00:00
                 total_summer_trails: 0
-                summer_trails_updated_at: 2026-01-27T00:26:42.020044398+00:00
+                summer_trails_updated_at: 2026-01-26T16:26:33+00:00
                 open_terrain_parks: 3
                 total_terrain_parks: 4
-                terrain_parks_updated_at: 2026-01-27T00:26:42.020044508+00:00
+                terrain_parks_updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/Overview"
           description: ""
@@ -396,13 +414,15 @@ paths:
                 number: 1
                 difficulty: advanced
                 status: open
-                last_groomed: 2026-01-27T00:26:42.020185151+00:00
+                last_groomed: 2026-01-26T16:26:33+00:00
                 groomed_today: true
+                snowmaking: true
+                night_skiing: false
                 condition_notes: Groomer's choice!
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
                 area_display_order: 1
-                updated_at: 2026-01-27T00:26:42.020186093+00:00
+                updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/RunsResponse"
           description: |-
@@ -493,7 +513,7 @@ paths:
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
                 area_display_order: 1
-                updated_at: 2026-01-27T00:26:42.020379716+00:00
+                updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/SummerTrailsResponse"
           description: |-
@@ -578,12 +598,14 @@ paths:
                 number: 1
                 lift_type: gondola
                 high_speed: true
+                bubble: true
+                heated: true
                 status: open
                 wait_time_minutes: 5
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
                 area_display_order: 1
-                updated_at: 2026-01-27T00:26:42.020597114+00:00
+                updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/LiftsResponse"
           description: |-
@@ -684,7 +706,7 @@ paths:
                   last_48h: 18
                   last_7days: 36
                   season_total: 156
-                reported_at: 2026-01-27T00:26:42.020796518+00:00
+                reported_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/SnowResponse"
           description: |-
@@ -878,9 +900,9 @@ paths:
                   condition_code: Snow
                   wind_direction: 270
                   wind_direction_cardinal: W
-                  timestamp: 2026-01-27T00:26:42.021124252+00:00
+                  timestamp: 2026-01-26T16:26:33+00:00
                 hourly_forecast:
-                - timestamp: 2026-01-27T00:26:42.021125214+00:00
+                - timestamp: 2026-01-26T16:26:33+00:00
                   imperial:
                     temperature: 28
                     feels_like: 22
@@ -917,10 +939,10 @@ paths:
                   condition: Light Snow
                   condition_code: Snow
                   precipitation_probability: 65
-                  sunrise: 2026-01-27T00:26:42.021126106+00:00
-                  sunset: 2026-01-27T00:26:42.021126246+00:00
+                  sunrise: 2026-01-26T16:26:33+00:00
+                  sunset: 2026-01-26T16:26:33+00:00
                 attribution: https://developer.apple.com/weatherkit/data-source-attribution/
-                updated_at: 2026-01-27T00:26:42.021126627+00:00
+                updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/Weather"
           description: ""
@@ -1014,7 +1036,7 @@ paths:
                   feature_type: rail
                   size: m
                   status: unknown
-                updated_at: 2026-01-27T00:26:42.021408115+00:00
+                updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/TerrainParksResponse"
           description: |-
@@ -1085,6 +1107,92 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+  /api/v1/report/parking-lots:
+    get:
+      operationId: getParkingLots
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Main Parking Lot
+                slug: main-parking-lot
+                status: open
+                capacity: 500
+                shuttle: false
+                paid: false
+                reservation_required: false
+                updated_at: 2026-01-26T16:26:33+00:00
+              schema:
+                $ref: "#/components/schemas/ParkingLotsResponse"
+          description: List of all parking lots at the resort with their current status
+            and amenities.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get parking lots
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getParkingLots();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetParkingLots(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getParkingLots();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getParkingLots(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
 components:
   schemas:
     FullReport:
@@ -1095,7 +1203,7 @@ components:
         summer_trails:
         - difficulty: ""
           area_name: area_name
-          number: 9
+          number: 8
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
@@ -1109,7 +1217,7 @@ components:
           status: ""
         - difficulty: ""
           area_name: area_name
-          number: 9
+          number: 8
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
@@ -1121,6 +1229,25 @@ components:
           - hiking
           - hiking
           status: ""
+        parking_lots:
+        - reservation_required: true
+          shuttle: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          paid: true
+          uuid: uuid
+          slug: slug
+          status: ""
+          capacity: 6
+        - reservation_required: true
+          shuttle: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          paid: true
+          uuid: uuid
+          slug: slug
+          status: ""
+          capacity: 6
         hours:
           calendar_days:
           - date: 2000-01-23
@@ -1162,17 +1289,17 @@ components:
             effective_from: 2000-01-23
         terrain_parks:
         - area_name: area_name
-          number: 1
+          number: 5
           features:
           - feature_type: ""
-            number: 5
+            number: 9
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 5
+            number: 9
             size: ""
             name: name
             uuid: uuid
@@ -1182,22 +1309,22 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 4
+          area_display_order: 9
           uuid: uuid
           slug: slug
           status: ""
         - area_name: area_name
-          number: 1
+          number: 5
           features:
           - feature_type: ""
-            number: 5
+            number: 9
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 5
+            number: 9
             size: ""
             name: name
             uuid: uuid
@@ -1207,7 +1334,7 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 4
+          area_display_order: 9
           uuid: uuid
           slug: slug
           status: ""
@@ -1215,51 +1342,55 @@ components:
         - area_name: area_name
           snowfall_cm: ""
           surface_condition: ""
-          base_depth_cm: 4
+          base_depth_cm: 1
           secondary_surface_condition: ""
           reported_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           area_uuid: area_uuid
-          area_display_order: 2
+          area_display_order: 7
           uuid: uuid
-          base_depth_in: 7
+          base_depth_in: 1
           snowfall_in: ""
         - area_name: area_name
           snowfall_cm: ""
           surface_condition: ""
-          base_depth_cm: 4
+          base_depth_cm: 1
           secondary_surface_condition: ""
           reported_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           area_uuid: area_uuid
-          area_display_order: 2
+          area_display_order: 7
           uuid: uuid
-          base_depth_in: 7
+          base_depth_in: 1
           snowfall_in: ""
         weather: ""
         lifts:
         - area_name: area_name
+          wait_time_minutes: 6
+          high_speed: true
+          area_uuid: area_uuid
+          uuid: uuid
           number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
-          wait_time_minutes: 1
+          bubble: true
           lift_type: ""
-          high_speed: true
           name: name
-          area_uuid: area_uuid
-          area_display_order: 1
-          uuid: uuid
+          heated: true
+          area_display_order: 7
           slug: slug
           status: ""
         - area_name: area_name
+          wait_time_minutes: 6
+          high_speed: true
+          area_uuid: area_uuid
+          uuid: uuid
           number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
-          wait_time_minutes: 1
+          bubble: true
           lift_type: ""
-          high_speed: true
           name: name
-          area_uuid: area_uuid
-          area_display_order: 1
-          uuid: uuid
+          heated: true
+          area_display_order: 7
           slug: slug
           status: ""
         resort:
@@ -1273,48 +1404,54 @@ components:
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 6
+          number: 1
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
+          snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 7
+          area_display_order: 4
           slug: slug
+          night_skiing: true
           status: ""
         - area_name: area_name
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 6
+          number: 1
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
+          snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 7
+          area_display_order: 4
           slug: slug
+          night_skiing: true
           status: ""
         status:
           news: news
           runs_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_lifts: 5
-          open_summer_trails: 2
-          open_terrain_parks: 9
+          total_lifts: 7
+          open_acres: 5
+          open_summer_trails: 9
+          open_terrain_parks: 2
           opens_at: opens_at
           total_runs: 1
           summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
+          total_acres: 5
           open_runs: 0
           season: ""
           groomed_runs: 6
           news_html: news_html
           lifts_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_terrain_parks: 3
+          total_terrain_parks: 4
           closes_at: closes_at
           news_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_summer_trails: 7
+          total_summer_trails: 3
           status: ""
-          open_lifts: 5
+          open_lifts: 2
           terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         resort:
@@ -1351,6 +1488,12 @@ components:
           items:
             $ref: "#/components/schemas/TerrainPark"
           type: array
+        parking_lots:
+          description: List of all parking lots at the resort with their current status
+            and amenities.
+          items:
+            $ref: "#/components/schemas/ParkingLot"
+          type: array
         summer_trails:
           description: |-
             List of all summer trails at the resort with their current status,
@@ -1367,6 +1510,7 @@ components:
       required:
       - hours
       - lifts
+      - parking_lots
       - resort
       - runs
       - snow
@@ -1419,23 +1563,25 @@ components:
       example:
         news: news
         runs_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_lifts: 5
-        open_summer_trails: 2
-        open_terrain_parks: 9
+        total_lifts: 7
+        open_acres: 5
+        open_summer_trails: 9
+        open_terrain_parks: 2
         opens_at: opens_at
         total_runs: 1
         summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
+        total_acres: 5
         open_runs: 0
         season: ""
         groomed_runs: 6
         news_html: news_html
         lifts_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_terrain_parks: 3
+        total_terrain_parks: 4
         closes_at: closes_at
         news_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_summer_trails: 7
+        total_summer_trails: 3
         status: ""
-        open_lifts: 5
+        open_lifts: 2
         terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         status:
@@ -1489,6 +1635,20 @@ components:
         total_runs:
           description: Total number of runs at the resort.
           format: int64
+          type: integer
+        open_acres:
+          description: |-
+            Total acres of open runs.
+             Not included if acres are not tracked or run status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        total_acres:
+          description: |-
+            Total acres of all runs.
+             Not included if acres are not tracked.
+          format: int64
+          nullable: true
           type: integer
         runs_updated_at:
           description: When the most recent update to run status was made.
@@ -1575,14 +1735,14 @@ components:
         area_name: area_name
         snowfall_cm: ""
         surface_condition: ""
-        base_depth_cm: 4
+        base_depth_cm: 1
         secondary_surface_condition: ""
         reported_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         area_uuid: area_uuid
-        area_display_order: 2
+        area_display_order: 7
         uuid: uuid
-        base_depth_in: 7
+        base_depth_in: 1
         snowfall_in: ""
       properties:
         uuid:
@@ -1705,15 +1865,17 @@ components:
          type, and optional wait time information.
       example:
         area_name: area_name
+        wait_time_minutes: 6
+        high_speed: true
+        area_uuid: area_uuid
+        uuid: uuid
         number: 1
         updated_at: 2000-01-23T04:56:07.000+00:00
-        wait_time_minutes: 1
+        bubble: true
         lift_type: ""
-        high_speed: true
         name: name
-        area_uuid: area_uuid
-        area_display_order: 1
-        uuid: uuid
+        heated: true
+        area_display_order: 7
         slug: slug
         status: ""
       properties:
@@ -1737,6 +1899,12 @@ components:
           description: "Type of lift (e.g. gondola, quad)."
         high_speed:
           description: Whether this is a high-speed/detachable lift.
+          type: boolean
+        bubble:
+          description: Whether the lift has a bubble/cover for weather protection.
+          type: boolean
+        heated:
+          description: Whether the lift has heated seats.
           type: boolean
         status:
           allOf:
@@ -1766,6 +1934,8 @@ components:
           format: date-time
           type: string
       required:
+      - bubble
+      - heated
       - high_speed
       - lift_type
       - name
@@ -1807,14 +1977,16 @@ components:
         area_uuid: area_uuid
         uuid: uuid
         difficulty: ""
-        number: 6
+        number: 1
         groomed_today: true
         updated_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         name: name
+        snowmaking: true
         last_groomed: 2000-01-23T04:56:07.000+00:00
-        area_display_order: 7
+        area_display_order: 4
         slug: slug
+        night_skiing: true
         status: ""
       properties:
         uuid:
@@ -1849,6 +2021,12 @@ components:
         groomed_today:
           description: Whether the run was groomed within the last 24 hours.
           type: boolean
+        snowmaking:
+          description: Whether the run has snowmaking capabilities.
+          type: boolean
+        night_skiing:
+          description: Whether the run is available for night skiing.
+          type: boolean
         condition_notes:
           description: Notes about current conditions on this run.
           type: string
@@ -1875,7 +2053,9 @@ components:
       - difficulty
       - groomed_today
       - name
+      - night_skiing
       - slug
+      - snowmaking
       - status
       - updated_at
       - uuid
@@ -1901,17 +2081,17 @@ components:
          condition notes, and list of features (jumps, boxes, rails, etc.) within it.
       example:
         area_name: area_name
-        number: 1
+        number: 5
         features:
         - feature_type: ""
-          number: 5
+          number: 9
           size: ""
           name: name
           uuid: uuid
           slug: slug
           status: ""
         - feature_type: ""
-          number: 5
+          number: 9
           size: ""
           name: name
           uuid: uuid
@@ -1921,7 +2101,7 @@ components:
         condition_notes: condition_notes
         name: name
         area_uuid: area_uuid
-        area_display_order: 4
+        area_display_order: 9
         uuid: uuid
         slug: slug
         status: ""
@@ -1991,7 +2171,7 @@ components:
          with its current status and size rating.
       example:
         feature_type: ""
-        number: 5
+        number: 9
         size: ""
         name: name
         uuid: uuid
@@ -2055,6 +2235,67 @@ components:
       - closed
       - unknown
       type: string
+    ParkingLot:
+      description: Represents a parking lot at the resort with its current status
+        and amenities.
+      example:
+        reservation_required: true
+        shuttle: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        paid: true
+        uuid: uuid
+        slug: slug
+        status: ""
+        capacity: 6
+      properties:
+        uuid:
+          description: Unique identifier for the parking lot.
+          type: string
+        name:
+          description: Display name of the parking lot.
+          type: string
+        slug:
+          description: URL-friendly name of the parking lot.
+          type: string
+        status:
+          allOf:
+          - $ref: "#/components/schemas/ParkingLotStatus"
+          description: "Current status (open, closed, or full)."
+        capacity:
+          description: "Maximum vehicle capacity, if set."
+          format: int32
+          nullable: true
+          type: integer
+        shuttle:
+          description: Whether shuttle service is available from this lot.
+          type: boolean
+        paid:
+          description: Whether parking is paid/requires payment.
+          type: boolean
+        reservation_required:
+          description: Whether a reservation is required to park here.
+          type: boolean
+        updated_at:
+          description: When this parking lot's information was last updated.
+          format: date-time
+          type: string
+      required:
+      - name
+      - paid
+      - reservation_required
+      - shuttle
+      - slug
+      - status
+      - updated_at
+      - uuid
+    ParkingLotStatus:
+      description: Operational status of a parking lot.
+      enum:
+      - open
+      - closed
+      - full
+      type: string
     SummerTrail:
       description: |-
         Represents a single summer trail at the resort with its current status,
@@ -2062,7 +2303,7 @@ components:
       example:
         difficulty: ""
         area_name: area_name
-        number: 9
+        number: 8
         updated_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         name: name
@@ -2839,4 +3080,10 @@ components:
          condition notes, and list of features (jumps, boxes, rails, etc.) within them.
       items:
         $ref: "#/components/schemas/TerrainPark"
+      type: array
+    ParkingLotsResponse:
+      description: List of all parking lots at the resort with their current status
+        and amenities.
+      items:
+        $ref: "#/components/schemas/ParkingLot"
       type: array

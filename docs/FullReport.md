@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Lifts** | [**[]Lift**](Lift.md) | List of all lifts at the resort with their current operational status,  type, and optional wait time information. | 
 **Runs** | [**[]Run**](Run.md) | List of all runs at the resort with their current status,  grooming information, and difficulty rating. | 
 **TerrainParks** | [**[]TerrainPark**](TerrainPark.md) | List of all terrain parks at the resort with their current status,  condition notes, and list of features (jumps, boxes, rails, etc.) within them. | 
+**ParkingLots** | [**[]ParkingLot**](ParkingLot.md) | List of all parking lots at the resort with their current status and amenities. | 
 **SummerTrails** | [**[]SummerTrail**](SummerTrail.md) | List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. | 
 **Hours** | [**OperatingHours**](OperatingHours.md) |  | 
 **Weather** | Pointer to [**NullableWeather**](Weather.md) |  | [optional] 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewFullReport
 
-`func NewFullReport(resort ResortInfo, status Overview, snow []SnowReport, lifts []Lift, runs []Run, terrainParks []TerrainPark, summerTrails []SummerTrail, hours OperatingHours, ) *FullReport`
+`func NewFullReport(resort ResortInfo, status Overview, snow []SnowReport, lifts []Lift, runs []Run, terrainParks []TerrainPark, parkingLots []ParkingLot, summerTrails []SummerTrail, hours OperatingHours, ) *FullReport`
 
 NewFullReport instantiates a new FullReport object
 This constructor will assign default values to properties that have it defined,
@@ -151,6 +152,26 @@ and a boolean to check if the value has been set.
 `func (o *FullReport) SetTerrainParks(v []TerrainPark)`
 
 SetTerrainParks sets TerrainParks field to given value.
+
+
+### GetParkingLots
+
+`func (o *FullReport) GetParkingLots() []ParkingLot`
+
+GetParkingLots returns the ParkingLots field if non-nil, zero value otherwise.
+
+### GetParkingLotsOk
+
+`func (o *FullReport) GetParkingLotsOk() (*[]ParkingLot, bool)`
+
+GetParkingLotsOk returns a tuple with the ParkingLots field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetParkingLots
+
+`func (o *FullReport) SetParkingLots(v []ParkingLot)`
+
+SetParkingLots sets ParkingLots field to given value.
 
 
 ### GetSummerTrails

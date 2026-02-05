@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **Number** | Pointer to **NullableInt32** | Optional lift number. | [optional] 
 **LiftType** | [**LiftType**](LiftType.md) | Type of lift (e.g. gondola, quad). | 
 **HighSpeed** | **bool** | Whether this is a high-speed/detachable lift. | 
+**Bubble** | **bool** | Whether the lift has a bubble/cover for weather protection. | 
+**Heated** | **bool** | Whether the lift has heated seats. | 
 **Status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **WaitTimeMinutes** | Pointer to **NullableInt64** | Current estimated wait time in minutes, if available. | [optional] 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this lift belongs to, if assigned. | [optional] 
@@ -21,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewLift
 
-`func NewLift(uuid string, name string, slug string, liftType LiftType, highSpeed bool, status LiftStatus, updatedAt time.Time, ) *Lift`
+`func NewLift(uuid string, name string, slug string, liftType LiftType, highSpeed bool, bubble bool, heated bool, status LiftStatus, updatedAt time.Time, ) *Lift`
 
 NewLift instantiates a new Lift object
 This constructor will assign default values to properties that have it defined,
@@ -169,6 +171,46 @@ and a boolean to check if the value has been set.
 `func (o *Lift) SetHighSpeed(v bool)`
 
 SetHighSpeed sets HighSpeed field to given value.
+
+
+### GetBubble
+
+`func (o *Lift) GetBubble() bool`
+
+GetBubble returns the Bubble field if non-nil, zero value otherwise.
+
+### GetBubbleOk
+
+`func (o *Lift) GetBubbleOk() (*bool, bool)`
+
+GetBubbleOk returns a tuple with the Bubble field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBubble
+
+`func (o *Lift) SetBubble(v bool)`
+
+SetBubble sets Bubble field to given value.
+
+
+### GetHeated
+
+`func (o *Lift) GetHeated() bool`
+
+GetHeated returns the Heated field if non-nil, zero value otherwise.
+
+### GetHeatedOk
+
+`func (o *Lift) GetHeatedOk() (*bool, bool)`
+
+GetHeatedOk returns a tuple with the Heated field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHeated
+
+`func (o *Lift) SetHeated(v bool)`
+
+SetHeated sets Heated field to given value.
 
 
 ### GetStatus

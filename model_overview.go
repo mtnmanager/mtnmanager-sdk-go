@@ -43,6 +43,10 @@ type Overview struct {
 	GroomedRuns NullableInt64 `json:"groomed_runs,omitempty"`
 	// Total number of runs at the resort.
 	TotalRuns int64 `json:"total_runs"`
+	// Total acres of open runs.  Not included if acres are not tracked or run status feature is disabled.
+	OpenAcres NullableInt64 `json:"open_acres,omitempty"`
+	// Total acres of all runs.  Not included if acres are not tracked.
+	TotalAcres NullableInt64 `json:"total_acres,omitempty"`
 	// When the most recent update to run status was made.
 	RunsUpdatedAt time.Time `json:"runs_updated_at"`
 	// Number of lifts currently open.  Not included if the lifts status feature is disabled.
@@ -409,6 +413,90 @@ func (o *Overview) SetTotalRuns(v int64) {
 	o.TotalRuns = v
 }
 
+// GetOpenAcres returns the OpenAcres field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Overview) GetOpenAcres() int64 {
+	if o == nil || IsNil(o.OpenAcres.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.OpenAcres.Get()
+}
+
+// GetOpenAcresOk returns a tuple with the OpenAcres field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Overview) GetOpenAcresOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OpenAcres.Get(), o.OpenAcres.IsSet()
+}
+
+// HasOpenAcres returns a boolean if a field has been set.
+func (o *Overview) HasOpenAcres() bool {
+	if o != nil && o.OpenAcres.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOpenAcres gets a reference to the given NullableInt64 and assigns it to the OpenAcres field.
+func (o *Overview) SetOpenAcres(v int64) {
+	o.OpenAcres.Set(&v)
+}
+// SetOpenAcresNil sets the value for OpenAcres to be an explicit nil
+func (o *Overview) SetOpenAcresNil() {
+	o.OpenAcres.Set(nil)
+}
+
+// UnsetOpenAcres ensures that no value is present for OpenAcres, not even an explicit nil
+func (o *Overview) UnsetOpenAcres() {
+	o.OpenAcres.Unset()
+}
+
+// GetTotalAcres returns the TotalAcres field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Overview) GetTotalAcres() int64 {
+	if o == nil || IsNil(o.TotalAcres.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.TotalAcres.Get()
+}
+
+// GetTotalAcresOk returns a tuple with the TotalAcres field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Overview) GetTotalAcresOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TotalAcres.Get(), o.TotalAcres.IsSet()
+}
+
+// HasTotalAcres returns a boolean if a field has been set.
+func (o *Overview) HasTotalAcres() bool {
+	if o != nil && o.TotalAcres.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalAcres gets a reference to the given NullableInt64 and assigns it to the TotalAcres field.
+func (o *Overview) SetTotalAcres(v int64) {
+	o.TotalAcres.Set(&v)
+}
+// SetTotalAcresNil sets the value for TotalAcres to be an explicit nil
+func (o *Overview) SetTotalAcresNil() {
+	o.TotalAcres.Set(nil)
+}
+
+// UnsetTotalAcres ensures that no value is present for TotalAcres, not even an explicit nil
+func (o *Overview) UnsetTotalAcres() {
+	o.TotalAcres.Unset()
+}
+
 // GetRunsUpdatedAt returns the RunsUpdatedAt field value
 func (o *Overview) GetRunsUpdatedAt() time.Time {
 	if o == nil {
@@ -731,6 +819,12 @@ func (o Overview) ToMap() (map[string]interface{}, error) {
 		toSerialize["groomed_runs"] = o.GroomedRuns.Get()
 	}
 	toSerialize["total_runs"] = o.TotalRuns
+	if o.OpenAcres.IsSet() {
+		toSerialize["open_acres"] = o.OpenAcres.Get()
+	}
+	if o.TotalAcres.IsSet() {
+		toSerialize["total_acres"] = o.TotalAcres.Get()
+	}
 	toSerialize["runs_updated_at"] = o.RunsUpdatedAt
 	if o.OpenLifts.IsSet() {
 		toSerialize["open_lifts"] = o.OpenLifts.Get()

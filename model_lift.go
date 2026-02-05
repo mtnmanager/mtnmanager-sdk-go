@@ -35,6 +35,10 @@ type Lift struct {
 	LiftType LiftType `json:"lift_type"`
 	// Whether this is a high-speed/detachable lift.
 	HighSpeed bool `json:"high_speed"`
+	// Whether the lift has a bubble/cover for weather protection.
+	Bubble bool `json:"bubble"`
+	// Whether the lift has heated seats.
+	Heated bool `json:"heated"`
 	// Current operational status (open, closed, on_hold, or unknown).
 	Status LiftStatus `json:"status"`
 	// Current estimated wait time in minutes, if available.
@@ -55,13 +59,15 @@ type _Lift Lift
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLift(uuid string, name string, slug string, liftType LiftType, highSpeed bool, status LiftStatus, updatedAt time.Time) *Lift {
+func NewLift(uuid string, name string, slug string, liftType LiftType, highSpeed bool, bubble bool, heated bool, status LiftStatus, updatedAt time.Time) *Lift {
 	this := Lift{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
 	this.LiftType = liftType
 	this.HighSpeed = highSpeed
+	this.Bubble = bubble
+	this.Heated = heated
 	this.Status = status
 	this.UpdatedAt = updatedAt
 	return &this
@@ -235,6 +241,54 @@ func (o *Lift) GetHighSpeedOk() (*bool, bool) {
 // SetHighSpeed sets field value
 func (o *Lift) SetHighSpeed(v bool) {
 	o.HighSpeed = v
+}
+
+// GetBubble returns the Bubble field value
+func (o *Lift) GetBubble() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Bubble
+}
+
+// GetBubbleOk returns a tuple with the Bubble field value
+// and a boolean to check if the value has been set.
+func (o *Lift) GetBubbleOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Bubble, true
+}
+
+// SetBubble sets field value
+func (o *Lift) SetBubble(v bool) {
+	o.Bubble = v
+}
+
+// GetHeated returns the Heated field value
+func (o *Lift) GetHeated() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Heated
+}
+
+// GetHeatedOk returns a tuple with the Heated field value
+// and a boolean to check if the value has been set.
+func (o *Lift) GetHeatedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Heated, true
+}
+
+// SetHeated sets field value
+func (o *Lift) SetHeated(v bool) {
+	o.Heated = v
 }
 
 // GetStatus returns the Status field value
@@ -471,6 +525,8 @@ func (o Lift) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["lift_type"] = o.LiftType
 	toSerialize["high_speed"] = o.HighSpeed
+	toSerialize["bubble"] = o.Bubble
+	toSerialize["heated"] = o.Heated
 	toSerialize["status"] = o.Status
 	if o.WaitTimeMinutes.IsSet() {
 		toSerialize["wait_time_minutes"] = o.WaitTimeMinutes.Get()
@@ -498,6 +554,8 @@ func (o *Lift) UnmarshalJSON(data []byte) (err error) {
 		"slug",
 		"lift_type",
 		"high_speed",
+		"bubble",
+		"heated",
 		"status",
 		"updated_at",
 	}

@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **OpenRuns** | Pointer to **NullableInt64** | Number of runs currently open.  Not included if the runs status feature is disabled. | [optional] 
 **GroomedRuns** | Pointer to **NullableInt64** | Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled. | [optional] 
 **TotalRuns** | **int64** | Total number of runs at the resort. | 
+**OpenAcres** | Pointer to **NullableInt64** | Total acres of open runs.  Not included if acres are not tracked or run status feature is disabled. | [optional] 
+**TotalAcres** | Pointer to **NullableInt64** | Total acres of all runs.  Not included if acres are not tracked. | [optional] 
 **RunsUpdatedAt** | **time.Time** | When the most recent update to run status was made. | 
 **OpenLifts** | Pointer to **NullableInt64** | Number of lifts currently open.  Not included if the lifts status feature is disabled. | [optional] 
 **TotalLifts** | **int64** | Total number of lifts at the resort. | 
@@ -304,6 +306,76 @@ and a boolean to check if the value has been set.
 SetTotalRuns sets TotalRuns field to given value.
 
 
+### GetOpenAcres
+
+`func (o *Overview) GetOpenAcres() int64`
+
+GetOpenAcres returns the OpenAcres field if non-nil, zero value otherwise.
+
+### GetOpenAcresOk
+
+`func (o *Overview) GetOpenAcresOk() (*int64, bool)`
+
+GetOpenAcresOk returns a tuple with the OpenAcres field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpenAcres
+
+`func (o *Overview) SetOpenAcres(v int64)`
+
+SetOpenAcres sets OpenAcres field to given value.
+
+### HasOpenAcres
+
+`func (o *Overview) HasOpenAcres() bool`
+
+HasOpenAcres returns a boolean if a field has been set.
+
+### SetOpenAcresNil
+
+`func (o *Overview) SetOpenAcresNil(b bool)`
+
+ SetOpenAcresNil sets the value for OpenAcres to be an explicit nil
+
+### UnsetOpenAcres
+`func (o *Overview) UnsetOpenAcres()`
+
+UnsetOpenAcres ensures that no value is present for OpenAcres, not even an explicit nil
+### GetTotalAcres
+
+`func (o *Overview) GetTotalAcres() int64`
+
+GetTotalAcres returns the TotalAcres field if non-nil, zero value otherwise.
+
+### GetTotalAcresOk
+
+`func (o *Overview) GetTotalAcresOk() (*int64, bool)`
+
+GetTotalAcresOk returns a tuple with the TotalAcres field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalAcres
+
+`func (o *Overview) SetTotalAcres(v int64)`
+
+SetTotalAcres sets TotalAcres field to given value.
+
+### HasTotalAcres
+
+`func (o *Overview) HasTotalAcres() bool`
+
+HasTotalAcres returns a boolean if a field has been set.
+
+### SetTotalAcresNil
+
+`func (o *Overview) SetTotalAcresNil(b bool)`
+
+ SetTotalAcresNil sets the value for TotalAcres to be an explicit nil
+
+### UnsetTotalAcres
+`func (o *Overview) UnsetTotalAcres()`
+
+UnsetTotalAcres ensures that no value is present for TotalAcres, not even an explicit nil
 ### GetRunsUpdatedAt
 
 `func (o *Overview) GetRunsUpdatedAt() time.Time`

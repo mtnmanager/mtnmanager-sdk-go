@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetHours**](MtnManagerAPI.md#GetHours) | **Get** /api/v1/report/hours | Get operating hours
 [**GetLifts**](MtnManagerAPI.md#GetLifts) | **Get** /api/v1/report/lifts | Get lifts
 [**GetOverview**](MtnManagerAPI.md#GetOverview) | **Get** /api/v1/report/overview | Get overview
+[**GetParkingLots**](MtnManagerAPI.md#GetParkingLots) | **Get** /api/v1/report/parking-lots | Get parking lots
 [**GetRuns**](MtnManagerAPI.md#GetRuns) | **Get** /api/v1/report/runs | Get runs
 [**GetSnow**](MtnManagerAPI.md#GetSnow) | **Get** /api/v1/report/snow | Get snow conditions
 [**GetSummerTrails**](MtnManagerAPI.md#GetSummerTrails) | **Get** /api/v1/report/summer-trails | Get summer trails
@@ -237,6 +238,65 @@ Other parameters are passed through a pointer to a apiGetOverviewRequest struct 
 ### Return type
 
 [**Overview**](Overview.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetParkingLots
+
+> []ParkingLot GetParkingLots(ctx).Execute()
+
+Get parking lots
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetParkingLots(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetParkingLots``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetParkingLots`: []ParkingLot
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetParkingLots`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetParkingLotsRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]ParkingLot**](ParkingLot.md)
 
 ### Authorization
 

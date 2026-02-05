@@ -39,6 +39,10 @@ type Run struct {
 	LastGroomed NullableTime `json:"last_groomed,omitempty"`
 	// Whether the run was groomed within the last 24 hours.
 	GroomedToday bool `json:"groomed_today"`
+	// Whether the run has snowmaking capabilities.
+	Snowmaking bool `json:"snowmaking"`
+	// Whether the run is available for night skiing.
+	NightSkiing bool `json:"night_skiing"`
 	// Notes about current conditions on this run.
 	ConditionNotes string `json:"condition_notes"`
 	// UUID of the area this run belongs to, if assigned.
@@ -57,7 +61,7 @@ type _Run Run
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewRun(uuid string, name string, slug string, difficulty RunDifficulty, status RunStatus, groomedToday bool, conditionNotes string, updatedAt time.Time) *Run {
+func NewRun(uuid string, name string, slug string, difficulty RunDifficulty, status RunStatus, groomedToday bool, snowmaking bool, nightSkiing bool, conditionNotes string, updatedAt time.Time) *Run {
 	this := Run{}
 	this.Uuid = uuid
 	this.Name = name
@@ -65,6 +69,8 @@ func NewRun(uuid string, name string, slug string, difficulty RunDifficulty, sta
 	this.Difficulty = difficulty
 	this.Status = status
 	this.GroomedToday = groomedToday
+	this.Snowmaking = snowmaking
+	this.NightSkiing = nightSkiing
 	this.ConditionNotes = conditionNotes
 	this.UpdatedAt = updatedAt
 	return &this
@@ -306,6 +312,54 @@ func (o *Run) SetGroomedToday(v bool) {
 	o.GroomedToday = v
 }
 
+// GetSnowmaking returns the Snowmaking field value
+func (o *Run) GetSnowmaking() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Snowmaking
+}
+
+// GetSnowmakingOk returns a tuple with the Snowmaking field value
+// and a boolean to check if the value has been set.
+func (o *Run) GetSnowmakingOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Snowmaking, true
+}
+
+// SetSnowmaking sets field value
+func (o *Run) SetSnowmaking(v bool) {
+	o.Snowmaking = v
+}
+
+// GetNightSkiing returns the NightSkiing field value
+func (o *Run) GetNightSkiing() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.NightSkiing
+}
+
+// GetNightSkiingOk returns a tuple with the NightSkiing field value
+// and a boolean to check if the value has been set.
+func (o *Run) GetNightSkiingOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.NightSkiing, true
+}
+
+// SetNightSkiing sets field value
+func (o *Run) SetNightSkiing(v bool) {
+	o.NightSkiing = v
+}
+
 // GetConditionNotes returns the ConditionNotes field value
 func (o *Run) GetConditionNotes() string {
 	if o == nil {
@@ -502,6 +556,8 @@ func (o Run) ToMap() (map[string]interface{}, error) {
 		toSerialize["last_groomed"] = o.LastGroomed.Get()
 	}
 	toSerialize["groomed_today"] = o.GroomedToday
+	toSerialize["snowmaking"] = o.Snowmaking
+	toSerialize["night_skiing"] = o.NightSkiing
 	toSerialize["condition_notes"] = o.ConditionNotes
 	if o.AreaUuid.IsSet() {
 		toSerialize["area_uuid"] = o.AreaUuid.Get()
@@ -527,6 +583,8 @@ func (o *Run) UnmarshalJSON(data []byte) (err error) {
 		"difficulty",
 		"status",
 		"groomed_today",
+		"snowmaking",
+		"night_skiing",
 		"condition_notes",
 		"updated_at",
 	}
