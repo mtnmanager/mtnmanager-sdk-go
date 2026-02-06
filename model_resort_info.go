@@ -30,6 +30,8 @@ type ResortInfo struct {
 	Slug string `json:"slug"`
 	// IANA timezone identifier for the resort's local time.
 	Timezone string `json:"timezone"`
+	// Region, affects difficulty icon style.
+	Region Region `json:"region"`
 	// Preferred unit system for measurements (metric or imperial).
 	UnitPreference UnitPreference `json:"unit_preference"`
 }
@@ -40,12 +42,13 @@ type _ResortInfo ResortInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResortInfo(uuid string, name string, slug string, timezone string, unitPreference UnitPreference) *ResortInfo {
+func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference) *ResortInfo {
 	this := ResortInfo{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
 	this.Timezone = timezone
+	this.Region = region
 	this.UnitPreference = unitPreference
 	return &this
 }
@@ -154,6 +157,30 @@ func (o *ResortInfo) SetTimezone(v string) {
 	o.Timezone = v
 }
 
+// GetRegion returns the Region field value
+func (o *ResortInfo) GetRegion() Region {
+	if o == nil {
+		var ret Region
+		return ret
+	}
+
+	return o.Region
+}
+
+// GetRegionOk returns a tuple with the Region field value
+// and a boolean to check if the value has been set.
+func (o *ResortInfo) GetRegionOk() (*Region, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Region, true
+}
+
+// SetRegion sets field value
+func (o *ResortInfo) SetRegion(v Region) {
+	o.Region = v
+}
+
 // GetUnitPreference returns the UnitPreference field value
 func (o *ResortInfo) GetUnitPreference() UnitPreference {
 	if o == nil {
@@ -192,6 +219,7 @@ func (o ResortInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
 	toSerialize["timezone"] = o.Timezone
+	toSerialize["region"] = o.Region
 	toSerialize["unit_preference"] = o.UnitPreference
 	return toSerialize, nil
 }
@@ -205,6 +233,7 @@ func (o *ResortInfo) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"slug",
 		"timezone",
+		"region",
 		"unit_preference",
 	}
 

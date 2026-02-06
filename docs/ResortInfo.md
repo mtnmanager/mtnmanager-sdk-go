@@ -8,13 +8,14 @@ Name | Type | Description | Notes
 **Name** | **string** | Display name of the resort. | 
 **Slug** | **string** | URL-friendly identifier for the resort, used in account subdomain. | 
 **Timezone** | **string** | IANA timezone identifier for the resort&#39;s local time. | 
+**Region** | [**Region**](Region.md) | Region, affects difficulty icon style. | 
 **UnitPreference** | [**UnitPreference**](UnitPreference.md) | Preferred unit system for measurements (metric or imperial). | 
 
 ## Methods
 
 ### NewResortInfo
 
-`func NewResortInfo(uuid string, name string, slug string, timezone string, unitPreference UnitPreference, ) *ResortInfo`
+`func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference, ) *ResortInfo`
 
 NewResortInfo instantiates a new ResortInfo object
 This constructor will assign default values to properties that have it defined,
@@ -107,6 +108,26 @@ and a boolean to check if the value has been set.
 `func (o *ResortInfo) SetTimezone(v string)`
 
 SetTimezone sets Timezone field to given value.
+
+
+### GetRegion
+
+`func (o *ResortInfo) GetRegion() Region`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *ResortInfo) GetRegionOk() (*Region, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *ResortInfo) SetRegion(v Region)`
+
+SetRegion sets Region field to given value.
 
 
 ### GetUnitPreference

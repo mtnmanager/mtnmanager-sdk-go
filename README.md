@@ -61,6 +61,7 @@ Class | Method | HTTP request | Description
  - [Overview](docs/Overview.md)
  - [ParkingLot](docs/ParkingLot.md)
  - [ParkingLotStatus](docs/ParkingLotStatus.md)
+ - [Region](docs/Region.md)
  - [ResortInfo](docs/ResortInfo.md)
  - [ResortStatus](docs/ResortStatus.md)
  - [Run](docs/Run.md)

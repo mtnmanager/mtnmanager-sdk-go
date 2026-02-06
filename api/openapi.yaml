@@ -32,6 +32,7 @@ paths:
                   name: Powder Mountain Resort
                   slug: powder-mountain
                   timezone: America/Denver
+                  region: na
                   unit_preference: imperial
                 status:
                   status: open
@@ -1396,6 +1397,7 @@ components:
         resort:
           timezone: timezone
           name: name
+          region: ""
           uuid: uuid
           unit_preference: ""
           slug: slug
@@ -1523,6 +1525,7 @@ components:
       example:
         timezone: timezone
         name: name
+        region: ""
         uuid: uuid
         unit_preference: ""
         slug: slug
@@ -1539,16 +1542,27 @@ components:
         timezone:
           description: IANA timezone identifier for the resort's local time.
           type: string
+        region:
+          allOf:
+          - $ref: "#/components/schemas/Region"
+          description: "Region, affects difficulty icon style."
         unit_preference:
           allOf:
           - $ref: "#/components/schemas/UnitPreference"
           description: Preferred unit system for measurements (metric or imperial).
       required:
       - name
+      - region
       - slug
       - timezone
       - unit_preference
       - uuid
+    Region:
+      description: Region for an account
+      enum:
+      - na
+      - eu
+      type: string
     UnitPreference:
       description: "Unit preference (cm/in, km/miles, etc.)"
       enum:
