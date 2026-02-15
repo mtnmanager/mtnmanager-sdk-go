@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **ClosesAt** | Pointer to **NullableString** | Closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
 **ClosureReason** | Pointer to [**NullableClosureReason**](ClosureReason.md) |  | [optional] 
 **SpecialEvent** | Pointer to **NullableString** | Special event for this day. | [optional] 
-**Amenities** | [**[]AmenityCalendarEntry**](AmenityCalendarEntry.md) | Per-amenity hours for this day. Only included when amenity hours are configured. | 
+**Amenities** | Pointer to [**[]AmenityCalendarEntry**](AmenityCalendarEntry.md) | Per-amenity hours for this day. Only included when amenity hours are configured. | [optional] 
 
 ## Methods
 
 ### NewCalendarDay
 
-`func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, amenities []AmenityCalendarEntry, ) *CalendarDay`
+`func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, ) *CalendarDay`
 
 NewCalendarDay instantiates a new CalendarDay object
 This constructor will assign default values to properties that have it defined,
@@ -251,6 +251,11 @@ and a boolean to check if the value has been set.
 
 SetAmenities sets Amenities field to given value.
 
+### HasAmenities
+
+`func (o *CalendarDay) HasAmenities() bool`
+
+HasAmenities returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

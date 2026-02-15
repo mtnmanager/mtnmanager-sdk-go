@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Schedules** | [**[]Schedule**](Schedule.md) | Recurring operating schedules currently in effect or upcoming.  Excludes single-day overrides and past schedules. | 
 **CalendarDays** | [**[]CalendarDay**](CalendarDay.md) | List of all days the resort is open (or a closure override).  Ordered chronologically, spanning from the earliest scheduled date  to the latest scheduled date in the currently defined operating hours. | 
-**AmenitySchedules** | [**[]AmenitySchedule**](AmenitySchedule.md) | Per-amenity operating schedules. Only included when amenity hours are configured. | 
+**AmenitySchedules** | Pointer to [**[]AmenitySchedule**](AmenitySchedule.md) | Per-amenity operating schedules. Only included when amenity hours are configured. | [optional] 
 
 ## Methods
 
 ### NewOperatingHours
 
-`func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay, amenitySchedules []AmenitySchedule, ) *OperatingHours`
+`func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay, ) *OperatingHours`
 
 NewOperatingHours instantiates a new OperatingHours object
 This constructor will assign default values to properties that have it defined,
@@ -86,6 +86,11 @@ and a boolean to check if the value has been set.
 
 SetAmenitySchedules sets AmenitySchedules field to given value.
 
+### HasAmenitySchedules
+
+`func (o *OperatingHours) HasAmenitySchedules() bool`
+
+HasAmenitySchedules returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

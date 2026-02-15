@@ -36,7 +36,7 @@ type CalendarDay struct {
 	// Special event for this day.
 	SpecialEvent NullableString `json:"special_event,omitempty"`
 	// Per-amenity hours for this day. Only included when amenity hours are configured.
-	Amenities []AmenityCalendarEntry `json:"amenities"`
+	Amenities []AmenityCalendarEntry `json:"amenities,omitempty"`
 }
 
 type _CalendarDay CalendarDay
@@ -45,12 +45,11 @@ type _CalendarDay CalendarDay
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, amenities []AmenityCalendarEntry) *CalendarDay {
+func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool) *CalendarDay {
 	this := CalendarDay{}
 	this.Date = date
 	this.DayOfWeek = dayOfWeek
 	this.IsOpen = isOpen
-	this.Amenities = amenities
 	return &this
 }
 
@@ -302,26 +301,34 @@ func (o *CalendarDay) UnsetSpecialEvent() {
 	o.SpecialEvent.Unset()
 }
 
-// GetAmenities returns the Amenities field value
+// GetAmenities returns the Amenities field value if set, zero value otherwise.
 func (o *CalendarDay) GetAmenities() []AmenityCalendarEntry {
-	if o == nil {
+	if o == nil || IsNil(o.Amenities) {
 		var ret []AmenityCalendarEntry
 		return ret
 	}
-
 	return o.Amenities
 }
 
-// GetAmenitiesOk returns a tuple with the Amenities field value
+// GetAmenitiesOk returns a tuple with the Amenities field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CalendarDay) GetAmenitiesOk() ([]AmenityCalendarEntry, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Amenities) {
 		return nil, false
 	}
 	return o.Amenities, true
 }
 
-// SetAmenities sets field value
+// HasAmenities returns a boolean if a field has been set.
+func (o *CalendarDay) HasAmenities() bool {
+	if o != nil && !IsNil(o.Amenities) {
+		return true
+	}
+
+	return false
+}
+
+// SetAmenities gets a reference to the given []AmenityCalendarEntry and assigns it to the Amenities field.
 func (o *CalendarDay) SetAmenities(v []AmenityCalendarEntry) {
 	o.Amenities = v
 }
@@ -351,7 +358,9 @@ func (o CalendarDay) ToMap() (map[string]interface{}, error) {
 	if o.SpecialEvent.IsSet() {
 		toSerialize["special_event"] = o.SpecialEvent.Get()
 	}
-	toSerialize["amenities"] = o.Amenities
+	if !IsNil(o.Amenities) {
+		toSerialize["amenities"] = o.Amenities
+	}
 	return toSerialize, nil
 }
 
@@ -363,7 +372,6 @@ func (o *CalendarDay) UnmarshalJSON(data []byte) (err error) {
 		"date",
 		"day_of_week",
 		"is_open",
-		"amenities",
 	}
 
 	allProperties := make(map[string]interface{})

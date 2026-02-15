@@ -2688,7 +2688,6 @@ components:
             $ref: "#/components/schemas/AmenitySchedule"
           type: array
       required:
-      - amenity_schedules
       - calendar_days
       - schedules
     Schedule:
@@ -2841,7 +2840,6 @@ components:
             $ref: "#/components/schemas/AmenityCalendarEntry"
           type: array
       required:
-      - amenities
       - date
       - day_of_week
       - is_open
