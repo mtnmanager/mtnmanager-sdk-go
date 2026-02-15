@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Schedules** | [**[]Schedule**](Schedule.md) | Recurring operating schedules currently in effect or upcoming.  Excludes single-day overrides and past schedules. | 
 **CalendarDays** | [**[]CalendarDay**](CalendarDay.md) | List of all days the resort is open (or a closure override).  Ordered chronologically, spanning from the earliest scheduled date  to the latest scheduled date in the currently defined operating hours. | 
+**AmenitySchedules** | [**[]AmenitySchedule**](AmenitySchedule.md) | Per-amenity operating schedules. Only included when amenity hours are configured. | 
 
 ## Methods
 
 ### NewOperatingHours
 
-`func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay, ) *OperatingHours`
+`func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay, amenitySchedules []AmenitySchedule, ) *OperatingHours`
 
 NewOperatingHours instantiates a new OperatingHours object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *OperatingHours) SetCalendarDays(v []CalendarDay)`
 
 SetCalendarDays sets CalendarDays field to given value.
+
+
+### GetAmenitySchedules
+
+`func (o *OperatingHours) GetAmenitySchedules() []AmenitySchedule`
+
+GetAmenitySchedules returns the AmenitySchedules field if non-nil, zero value otherwise.
+
+### GetAmenitySchedulesOk
+
+`func (o *OperatingHours) GetAmenitySchedulesOk() (*[]AmenitySchedule, bool)`
+
+GetAmenitySchedulesOk returns a tuple with the AmenitySchedules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmenitySchedules
+
+`func (o *OperatingHours) SetAmenitySchedules(v []AmenitySchedule)`
+
+SetAmenitySchedules sets AmenitySchedules field to given value.
 
 
 

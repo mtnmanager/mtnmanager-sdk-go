@@ -39,6 +39,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AmenityCalendarEntry](docs/AmenityCalendarEntry.md)
+ - [AmenityCategory](docs/AmenityCategory.md)
+ - [AmenitySchedule](docs/AmenitySchedule.md)
  - [CalendarDay](docs/CalendarDay.md)
  - [ClosureReason](docs/ClosureReason.md)
  - [CurrentWeather](docs/CurrentWeather.md)

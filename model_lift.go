@@ -43,6 +43,10 @@ type Lift struct {
 	Status LiftStatus `json:"status"`
 	// Current estimated wait time in minutes, if available.
 	WaitTimeMinutes NullableInt64 `json:"wait_time_minutes,omitempty"`
+	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today.
+	OpensAt NullableString `json:"opens_at,omitempty"`
+	// Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today.
+	ClosesAt NullableString `json:"closes_at,omitempty"`
 	// UUID of the area this lift belongs to, if assigned.
 	AreaUuid NullableString `json:"area_uuid,omitempty"`
 	// Name of the area this lift belongs to, if assigned.
@@ -357,6 +361,90 @@ func (o *Lift) UnsetWaitTimeMinutes() {
 	o.WaitTimeMinutes.Unset()
 }
 
+// GetOpensAt returns the OpensAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetOpensAt() string {
+	if o == nil || IsNil(o.OpensAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OpensAt.Get()
+}
+
+// GetOpensAtOk returns a tuple with the OpensAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetOpensAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OpensAt.Get(), o.OpensAt.IsSet()
+}
+
+// HasOpensAt returns a boolean if a field has been set.
+func (o *Lift) HasOpensAt() bool {
+	if o != nil && o.OpensAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOpensAt gets a reference to the given NullableString and assigns it to the OpensAt field.
+func (o *Lift) SetOpensAt(v string) {
+	o.OpensAt.Set(&v)
+}
+// SetOpensAtNil sets the value for OpensAt to be an explicit nil
+func (o *Lift) SetOpensAtNil() {
+	o.OpensAt.Set(nil)
+}
+
+// UnsetOpensAt ensures that no value is present for OpensAt, not even an explicit nil
+func (o *Lift) UnsetOpensAt() {
+	o.OpensAt.Unset()
+}
+
+// GetClosesAt returns the ClosesAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetClosesAt() string {
+	if o == nil || IsNil(o.ClosesAt.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ClosesAt.Get()
+}
+
+// GetClosesAtOk returns a tuple with the ClosesAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetClosesAtOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ClosesAt.Get(), o.ClosesAt.IsSet()
+}
+
+// HasClosesAt returns a boolean if a field has been set.
+func (o *Lift) HasClosesAt() bool {
+	if o != nil && o.ClosesAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetClosesAt gets a reference to the given NullableString and assigns it to the ClosesAt field.
+func (o *Lift) SetClosesAt(v string) {
+	o.ClosesAt.Set(&v)
+}
+// SetClosesAtNil sets the value for ClosesAt to be an explicit nil
+func (o *Lift) SetClosesAtNil() {
+	o.ClosesAt.Set(nil)
+}
+
+// UnsetClosesAt ensures that no value is present for ClosesAt, not even an explicit nil
+func (o *Lift) UnsetClosesAt() {
+	o.ClosesAt.Unset()
+}
+
 // GetAreaUuid returns the AreaUuid field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Lift) GetAreaUuid() string {
 	if o == nil || IsNil(o.AreaUuid.Get()) {
@@ -530,6 +618,12 @@ func (o Lift) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	if o.WaitTimeMinutes.IsSet() {
 		toSerialize["wait_time_minutes"] = o.WaitTimeMinutes.Get()
+	}
+	if o.OpensAt.IsSet() {
+		toSerialize["opens_at"] = o.OpensAt.Get()
+	}
+	if o.ClosesAt.IsSet() {
+		toSerialize["closes_at"] = o.ClosesAt.Get()
 	}
 	if o.AreaUuid.IsSet() {
 		toSerialize["area_uuid"] = o.AreaUuid.Get()

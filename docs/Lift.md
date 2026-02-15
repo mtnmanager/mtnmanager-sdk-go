@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Heated** | **bool** | Whether the lift has heated seats. | 
 **Status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **WaitTimeMinutes** | Pointer to **NullableInt64** | Current estimated wait time in minutes, if available. | [optional] 
+**OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
+**ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this lift belongs to, if assigned. | [optional] 
 **AreaName** | Pointer to **NullableString** | Name of the area this lift belongs to, if assigned. | [optional] 
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this lift belongs to, if assigned, for sorting purposes. | [optional] 
@@ -268,6 +270,76 @@ HasWaitTimeMinutes returns a boolean if a field has been set.
 `func (o *Lift) UnsetWaitTimeMinutes()`
 
 UnsetWaitTimeMinutes ensures that no value is present for WaitTimeMinutes, not even an explicit nil
+### GetOpensAt
+
+`func (o *Lift) GetOpensAt() string`
+
+GetOpensAt returns the OpensAt field if non-nil, zero value otherwise.
+
+### GetOpensAtOk
+
+`func (o *Lift) GetOpensAtOk() (*string, bool)`
+
+GetOpensAtOk returns a tuple with the OpensAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOpensAt
+
+`func (o *Lift) SetOpensAt(v string)`
+
+SetOpensAt sets OpensAt field to given value.
+
+### HasOpensAt
+
+`func (o *Lift) HasOpensAt() bool`
+
+HasOpensAt returns a boolean if a field has been set.
+
+### SetOpensAtNil
+
+`func (o *Lift) SetOpensAtNil(b bool)`
+
+ SetOpensAtNil sets the value for OpensAt to be an explicit nil
+
+### UnsetOpensAt
+`func (o *Lift) UnsetOpensAt()`
+
+UnsetOpensAt ensures that no value is present for OpensAt, not even an explicit nil
+### GetClosesAt
+
+`func (o *Lift) GetClosesAt() string`
+
+GetClosesAt returns the ClosesAt field if non-nil, zero value otherwise.
+
+### GetClosesAtOk
+
+`func (o *Lift) GetClosesAtOk() (*string, bool)`
+
+GetClosesAtOk returns a tuple with the ClosesAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClosesAt
+
+`func (o *Lift) SetClosesAt(v string)`
+
+SetClosesAt sets ClosesAt field to given value.
+
+### HasClosesAt
+
+`func (o *Lift) HasClosesAt() bool`
+
+HasClosesAt returns a boolean if a field has been set.
+
+### SetClosesAtNil
+
+`func (o *Lift) SetClosesAtNil(b bool)`
+
+ SetClosesAtNil sets the value for ClosesAt to be an explicit nil
+
+### UnsetClosesAt
+`func (o *Lift) UnsetClosesAt()`
+
+UnsetClosesAt ensures that no value is present for ClosesAt, not even an explicit nil
 ### GetAreaUuid
 
 `func (o *Lift) GetAreaUuid() string`

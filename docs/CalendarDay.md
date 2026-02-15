@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **ClosesAt** | Pointer to **NullableString** | Closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
 **ClosureReason** | Pointer to [**NullableClosureReason**](ClosureReason.md) |  | [optional] 
 **SpecialEvent** | Pointer to **NullableString** | Special event for this day. | [optional] 
+**Amenities** | [**[]AmenityCalendarEntry**](AmenityCalendarEntry.md) | Per-amenity hours for this day. Only included when amenity hours are configured. | 
 
 ## Methods
 
 ### NewCalendarDay
 
-`func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, ) *CalendarDay`
+`func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, amenities []AmenityCalendarEntry, ) *CalendarDay`
 
 NewCalendarDay instantiates a new CalendarDay object
 This constructor will assign default values to properties that have it defined,
@@ -231,6 +232,26 @@ HasSpecialEvent returns a boolean if a field has been set.
 `func (o *CalendarDay) UnsetSpecialEvent()`
 
 UnsetSpecialEvent ensures that no value is present for SpecialEvent, not even an explicit nil
+### GetAmenities
+
+`func (o *CalendarDay) GetAmenities() []AmenityCalendarEntry`
+
+GetAmenities returns the Amenities field if non-nil, zero value otherwise.
+
+### GetAmenitiesOk
+
+`func (o *CalendarDay) GetAmenitiesOk() (*[]AmenityCalendarEntry, bool)`
+
+GetAmenitiesOk returns a tuple with the Amenities field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAmenities
+
+`func (o *CalendarDay) SetAmenities(v []AmenityCalendarEntry)`
+
+SetAmenities sets Amenities field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

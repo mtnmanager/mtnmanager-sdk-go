@@ -26,6 +26,8 @@ type OperatingHours struct {
 	Schedules []Schedule `json:"schedules"`
 	// List of all days the resort is open (or a closure override).  Ordered chronologically, spanning from the earliest scheduled date  to the latest scheduled date in the currently defined operating hours.
 	CalendarDays []CalendarDay `json:"calendar_days"`
+	// Per-amenity operating schedules. Only included when amenity hours are configured.
+	AmenitySchedules []AmenitySchedule `json:"amenity_schedules"`
 }
 
 type _OperatingHours OperatingHours
@@ -34,10 +36,11 @@ type _OperatingHours OperatingHours
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay) *OperatingHours {
+func NewOperatingHours(schedules []Schedule, calendarDays []CalendarDay, amenitySchedules []AmenitySchedule) *OperatingHours {
 	this := OperatingHours{}
 	this.Schedules = schedules
 	this.CalendarDays = calendarDays
+	this.AmenitySchedules = amenitySchedules
 	return &this
 }
 
@@ -97,6 +100,30 @@ func (o *OperatingHours) SetCalendarDays(v []CalendarDay) {
 	o.CalendarDays = v
 }
 
+// GetAmenitySchedules returns the AmenitySchedules field value
+func (o *OperatingHours) GetAmenitySchedules() []AmenitySchedule {
+	if o == nil {
+		var ret []AmenitySchedule
+		return ret
+	}
+
+	return o.AmenitySchedules
+}
+
+// GetAmenitySchedulesOk returns a tuple with the AmenitySchedules field value
+// and a boolean to check if the value has been set.
+func (o *OperatingHours) GetAmenitySchedulesOk() ([]AmenitySchedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AmenitySchedules, true
+}
+
+// SetAmenitySchedules sets field value
+func (o *OperatingHours) SetAmenitySchedules(v []AmenitySchedule) {
+	o.AmenitySchedules = v
+}
+
 func (o OperatingHours) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -109,6 +136,7 @@ func (o OperatingHours) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["schedules"] = o.Schedules
 	toSerialize["calendar_days"] = o.CalendarDays
+	toSerialize["amenity_schedules"] = o.AmenitySchedules
 	return toSerialize, nil
 }
 
@@ -119,6 +147,7 @@ func (o *OperatingHours) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"schedules",
 		"calendar_days",
+		"amenity_schedules",
 	}
 
 	allProperties := make(map[string]interface{})

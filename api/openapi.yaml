@@ -91,6 +91,8 @@ paths:
                   heated: true
                   status: open
                   wait_time_minutes: 5
+                  opens_at: 09:00
+                  closes_at: 16:00
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
                   area_display_order: 1
@@ -173,6 +175,28 @@ paths:
                     is_open: true
                     opens_at: 09:00
                     closes_at: 16:00
+                    amenities:
+                    - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                      name: Tube Park
+                      category: recreation
+                      opens_at: 10:00
+                      closes_at: 16:00
+                  amenity_schedules:
+                  - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    name: Tube Park
+                    category: recreation
+                    schedules:
+                    - days_string: Saturday & Sunday
+                      days_of_week:
+                      - Sunday
+                      - Saturday
+                      time_string: 9:00 a.m. to 4:00 p.m.
+                      opens_at: 09:00
+                      closes_at: 16:00
+                      in_effect: true
+                      effective_string: "November 1, 2024 to April 15, 2025"
+                      effective_from: 2024-11-01
+                      effective_to: 2025-04-15
                 weather:
                   current:
                     imperial:
@@ -603,6 +627,8 @@ paths:
                 heated: true
                 status: open
                 wait_time_minutes: 5
+                opens_at: 09:00
+                closes_at: 16:00
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
                 area_display_order: 1
@@ -806,6 +832,28 @@ paths:
                   is_open: true
                   opens_at: 09:00
                   closes_at: 16:00
+                  amenities:
+                  - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                    name: Tube Park
+                    category: recreation
+                    opens_at: 10:00
+                    closes_at: 16:00
+                amenity_schedules:
+                - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+                  name: Tube Park
+                  category: recreation
+                  schedules:
+                  - days_string: Saturday & Sunday
+                    days_of_week:
+                    - Sunday
+                    - Saturday
+                    time_string: 9:00 a.m. to 4:00 p.m.
+                    opens_at: 09:00
+                    closes_at: 16:00
+                    in_effect: true
+                    effective_string: "November 1, 2024 to April 15, 2025"
+                    effective_from: 2024-11-01
+                    effective_to: 2025-04-15
               schema:
                 $ref: "#/components/schemas/OperatingHours"
           description: ""
@@ -1250,9 +1298,73 @@ components:
           status: ""
           capacity: 6
         hours:
+          amenity_schedules:
+          - schedules:
+            - days_of_week:
+              - Sunday
+              - Sunday
+              opens_at: opens_at
+              in_effect: true
+              days_string: days_string
+              effective_to: 2000-01-23
+              effective_string: effective_string
+              time_string: time_string
+              closes_at: closes_at
+              effective_from: 2000-01-23
+            - days_of_week:
+              - Sunday
+              - Sunday
+              opens_at: opens_at
+              in_effect: true
+              days_string: days_string
+              effective_to: 2000-01-23
+              effective_string: effective_string
+              time_string: time_string
+              closes_at: closes_at
+              effective_from: 2000-01-23
+            name: name
+            category: ""
+            uuid: uuid
+          - schedules:
+            - days_of_week:
+              - Sunday
+              - Sunday
+              opens_at: opens_at
+              in_effect: true
+              days_string: days_string
+              effective_to: 2000-01-23
+              effective_string: effective_string
+              time_string: time_string
+              closes_at: closes_at
+              effective_from: 2000-01-23
+            - days_of_week:
+              - Sunday
+              - Sunday
+              opens_at: opens_at
+              in_effect: true
+              days_string: days_string
+              effective_to: 2000-01-23
+              effective_string: effective_string
+              time_string: time_string
+              closes_at: closes_at
+              effective_from: 2000-01-23
+            name: name
+            category: ""
+            uuid: uuid
           calendar_days:
           - date: 2000-01-23
             opens_at: opens_at
+            amenities:
+            - opens_at: opens_at
+              name: name
+              category: ""
+              closes_at: closes_at
+              uuid: uuid
+            - opens_at: opens_at
+              name: name
+              category: ""
+              closes_at: closes_at
+              uuid: uuid
             is_open: true
             special_event: special_event
             closes_at: closes_at
@@ -1260,6 +1372,17 @@ components:
             day_of_week: ""
           - date: 2000-01-23
             opens_at: opens_at
+            amenities:
+            - opens_at: opens_at
+              name: name
+              category: ""
+              closes_at: closes_at
+              uuid: uuid
+            - opens_at: opens_at
+              name: name
+              category: ""
+              closes_at: closes_at
+              uuid: uuid
             is_open: true
             special_event: special_event
             closes_at: closes_at
@@ -1371,12 +1494,14 @@ components:
           high_speed: true
           area_uuid: area_uuid
           uuid: uuid
+          opens_at: opens_at
           number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
+          closes_at: closes_at
           area_display_order: 7
           slug: slug
           status: ""
@@ -1385,12 +1510,14 @@ components:
           high_speed: true
           area_uuid: area_uuid
           uuid: uuid
+          opens_at: opens_at
           number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
+          closes_at: closes_at
           area_display_order: 7
           slug: slug
           status: ""
@@ -1883,12 +2010,14 @@ components:
         high_speed: true
         area_uuid: area_uuid
         uuid: uuid
+        opens_at: opens_at
         number: 1
         updated_at: 2000-01-23T04:56:07.000+00:00
         bubble: true
         lift_type: ""
         name: name
         heated: true
+        closes_at: closes_at
         area_display_order: 7
         slug: slug
         status: ""
@@ -1929,6 +2058,18 @@ components:
           format: int64
           nullable: true
           type: integer
+        opens_at:
+          description: |-
+            Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if the lift has no scheduled hours for today.
+          nullable: true
+          type: string
+        closes_at:
+          description: |-
+            Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if the lift has no scheduled hours for today.
+          nullable: true
+          type: string
         area_uuid:
           description: "UUID of the area this lift belongs to, if assigned."
           nullable: true
@@ -2411,9 +2552,73 @@ components:
       description: "Resort's operating hours, including the recurring schedule, and\
         \ list of individual calendar days."
       example:
+        amenity_schedules:
+        - schedules:
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+          name: name
+          category: ""
+          uuid: uuid
+        - schedules:
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+          - days_of_week:
+            - Sunday
+            - Sunday
+            opens_at: opens_at
+            in_effect: true
+            days_string: days_string
+            effective_to: 2000-01-23
+            effective_string: effective_string
+            time_string: time_string
+            closes_at: closes_at
+            effective_from: 2000-01-23
+          name: name
+          category: ""
+          uuid: uuid
         calendar_days:
         - date: 2000-01-23
           opens_at: opens_at
+          amenities:
+          - opens_at: opens_at
+            name: name
+            category: ""
+            closes_at: closes_at
+            uuid: uuid
+          - opens_at: opens_at
+            name: name
+            category: ""
+            closes_at: closes_at
+            uuid: uuid
           is_open: true
           special_event: special_event
           closes_at: closes_at
@@ -2421,6 +2626,17 @@ components:
           day_of_week: ""
         - date: 2000-01-23
           opens_at: opens_at
+          amenities:
+          - opens_at: opens_at
+            name: name
+            category: ""
+            closes_at: closes_at
+            uuid: uuid
+          - opens_at: opens_at
+            name: name
+            category: ""
+            closes_at: closes_at
+            uuid: uuid
           is_open: true
           special_event: special_event
           closes_at: closes_at
@@ -2465,7 +2681,14 @@ components:
           items:
             $ref: "#/components/schemas/CalendarDay"
           type: array
+        amenity_schedules:
+          description: Per-amenity operating schedules. Only included when amenity
+            hours are configured.
+          items:
+            $ref: "#/components/schemas/AmenitySchedule"
+          type: array
       required:
+      - amenity_schedules
       - calendar_days
       - schedules
     Schedule:
@@ -2561,6 +2784,17 @@ components:
       example:
         date: 2000-01-23
         opens_at: opens_at
+        amenities:
+        - opens_at: opens_at
+          name: name
+          category: ""
+          closes_at: closes_at
+          uuid: uuid
+        - opens_at: opens_at
+          name: name
+          category: ""
+          closes_at: closes_at
+          uuid: uuid
         is_open: true
         special_event: special_event
         closes_at: closes_at
@@ -2600,7 +2834,14 @@ components:
           description: Special event for this day.
           nullable: true
           type: string
+        amenities:
+          description: Per-amenity hours for this day. Only included when amenity
+            hours are configured.
+          items:
+            $ref: "#/components/schemas/AmenityCalendarEntry"
+          type: array
       required:
+      - amenities
       - date
       - day_of_week
       - is_open
@@ -2612,6 +2853,100 @@ components:
       - snow_conditions
       - mechanical_issues
       type: string
+    AmenityCalendarEntry:
+      description: "Amenity entry within a CalendarDay, showing per-amenity hours\
+        \ for a specific date."
+      example:
+        opens_at: opens_at
+        name: name
+        category: ""
+        closes_at: closes_at
+        uuid: uuid
+      properties:
+        uuid:
+          description: Amenity UUID.
+          type: string
+        name:
+          description: Amenity name.
+          type: string
+        category:
+          allOf:
+          - $ref: "#/components/schemas/AmenityCategory"
+          description: Amenity category.
+        opens_at:
+          description: |-
+            Opening time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if this amenity is closed on this day.
+          nullable: true
+          type: string
+        closes_at:
+          description: |-
+            Closing time in 24-hour format (HH:MM), in resort's local timezone.
+             `null` if this amenity is closed on this day.
+          nullable: true
+          type: string
+      required:
+      - category
+      - name
+      - uuid
+    AmenityCategory:
+      description: Category classification for amenities
+      enum:
+      - food_beverage
+      - retail
+      - recreation
+      - facility
+      type: string
+    AmenitySchedule:
+      description: Amenity schedule for the OperatingHours response
+      example:
+        schedules:
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+        name: name
+        category: ""
+        uuid: uuid
+      properties:
+        uuid:
+          description: Amenity UUID
+          type: string
+        name:
+          description: Amenity name
+          type: string
+        category:
+          allOf:
+          - $ref: "#/components/schemas/AmenityCategory"
+          description: Amenity category
+        schedules:
+          description: Operating schedules for this amenity
+          items:
+            $ref: "#/components/schemas/Schedule"
+          type: array
+      required:
+      - category
+      - name
+      - schedules
+      - uuid
     Weather:
       description: |-
         Current and forecasted weather conditions for the resort's location.

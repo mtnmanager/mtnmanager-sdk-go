@@ -35,6 +35,8 @@ type CalendarDay struct {
 	ClosureReason NullableClosureReason `json:"closure_reason,omitempty"`
 	// Special event for this day.
 	SpecialEvent NullableString `json:"special_event,omitempty"`
+	// Per-amenity hours for this day. Only included when amenity hours are configured.
+	Amenities []AmenityCalendarEntry `json:"amenities"`
 }
 
 type _CalendarDay CalendarDay
@@ -43,11 +45,12 @@ type _CalendarDay CalendarDay
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool) *CalendarDay {
+func NewCalendarDay(date string, dayOfWeek DayOfWeek, isOpen bool, amenities []AmenityCalendarEntry) *CalendarDay {
 	this := CalendarDay{}
 	this.Date = date
 	this.DayOfWeek = dayOfWeek
 	this.IsOpen = isOpen
+	this.Amenities = amenities
 	return &this
 }
 
@@ -299,6 +302,30 @@ func (o *CalendarDay) UnsetSpecialEvent() {
 	o.SpecialEvent.Unset()
 }
 
+// GetAmenities returns the Amenities field value
+func (o *CalendarDay) GetAmenities() []AmenityCalendarEntry {
+	if o == nil {
+		var ret []AmenityCalendarEntry
+		return ret
+	}
+
+	return o.Amenities
+}
+
+// GetAmenitiesOk returns a tuple with the Amenities field value
+// and a boolean to check if the value has been set.
+func (o *CalendarDay) GetAmenitiesOk() ([]AmenityCalendarEntry, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Amenities, true
+}
+
+// SetAmenities sets field value
+func (o *CalendarDay) SetAmenities(v []AmenityCalendarEntry) {
+	o.Amenities = v
+}
+
 func (o CalendarDay) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -324,6 +351,7 @@ func (o CalendarDay) ToMap() (map[string]interface{}, error) {
 	if o.SpecialEvent.IsSet() {
 		toSerialize["special_event"] = o.SpecialEvent.Get()
 	}
+	toSerialize["amenities"] = o.Amenities
 	return toSerialize, nil
 }
 
@@ -335,6 +363,7 @@ func (o *CalendarDay) UnmarshalJSON(data []byte) (err error) {
 		"date",
 		"day_of_week",
 		"is_open",
+		"amenities",
 	}
 
 	allProperties := make(map[string]interface{})
