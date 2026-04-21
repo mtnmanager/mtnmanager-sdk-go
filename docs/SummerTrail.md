@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the trail. | 
 **Number** | Pointer to **NullableInt32** | Optional trail number. | [optional] 
 **TrailType** | [**[]SummerTrailType**](SummerTrailType.md) | Type of trail activity (e.g. hiking, mountain_biking). Can have multiple. | 
-**Difficulty** | Pointer to [**NullableSummerTrailDifficulty**](SummerTrailDifficulty.md) |  | [optional] 
+**Difficulty** | Pointer to [**NullableSummerTrailDifficulty**](SummerTrailDifficulty.md) | Difficulty rating of the trail (optional for summer trails). | [optional] 
 **Status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, or unknown). | 
 **ConditionNotes** | **string** | Notes about current conditions on this trail. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this trail belongs to, if assigned. | [optional] 

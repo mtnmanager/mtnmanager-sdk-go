@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **IsOpen** | **bool** | Whether the resort is open on this day. | 
 **OpensAt** | Pointer to **NullableString** | Opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if closed on this day. | [optional] 
-**ClosureReason** | Pointer to [**NullableClosureReason**](ClosureReason.md) |  | [optional] 
+**ClosureReason** | Pointer to [**NullableClosureReason**](ClosureReason.md) | Optional reason code for closure. | [optional] 
 **SpecialEvent** | Pointer to **NullableString** | Special event for this day. | [optional] 
 **Amenities** | Pointer to [**[]AmenityCalendarEntry**](AmenityCalendarEntry.md) | Per-amenity hours for this day. Only included when amenity hours are configured. | [optional] 
 

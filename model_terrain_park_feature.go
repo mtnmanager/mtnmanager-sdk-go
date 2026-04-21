@@ -32,6 +32,7 @@ type TerrainParkFeature struct {
 	Number NullableInt32 `json:"number,omitempty"`
 	// Type of feature (jump, box, rail, other).
 	FeatureType FeatureType `json:"feature_type"`
+	// Optional size rating of the feature (S, M, L, XL).
 	Size NullableFeatureSize `json:"size,omitempty"`
 	// Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled.
 	Status TerrainParkFeatureStatus `json:"status"`

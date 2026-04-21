@@ -34,11 +34,14 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**GetSnow**](docs/MtnManagerAPI.md#getsnow) | **Get** /api/v1/report/snow | Get snow conditions
 *MtnManagerAPI* | [**GetSummerTrails**](docs/MtnManagerAPI.md#getsummertrails) | **Get** /api/v1/report/summer-trails | Get summer trails
 *MtnManagerAPI* | [**GetTerrainParks**](docs/MtnManagerAPI.md#getterrainparks) | **Get** /api/v1/report/terrain-parks | Get terrain parks
+*MtnManagerAPI* | [**GetTrailMap**](docs/MtnManagerAPI.md#gettrailmap) | **Get** /api/v1/report/trail-map/{uuid} | Get trail map
+*MtnManagerAPI* | [**GetTrailMaps**](docs/MtnManagerAPI.md#gettrailmaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 *MtnManagerAPI* | [**GetWeather**](docs/MtnManagerAPI.md#getweather) | **Get** /api/v1/report/weather | Get weather
 
 
 ## Documentation For Models
 
+ - [Amenity](docs/Amenity.md)
  - [AmenityCalendarEntry](docs/AmenityCalendarEntry.md)
  - [AmenityCategory](docs/AmenityCategory.md)
  - [AmenitySchedule](docs/AmenitySchedule.md)
@@ -54,16 +57,24 @@ Class | Method | HTTP request | Description
  - [FeatureSize](docs/FeatureSize.md)
  - [FeatureType](docs/FeatureType.md)
  - [FullReport](docs/FullReport.md)
+ - [GeoControlPoint](docs/GeoControlPoint.md)
  - [HourlyForecast](docs/HourlyForecast.md)
  - [HourlyForecastImperial](docs/HourlyForecastImperial.md)
  - [HourlyForecastMetric](docs/HourlyForecastMetric.md)
+ - [LabelOffset](docs/LabelOffset.md)
  - [Lift](docs/Lift.md)
  - [LiftStatus](docs/LiftStatus.md)
  - [LiftType](docs/LiftType.md)
+ - [MarkerIcon](docs/MarkerIcon.md)
  - [OperatingHours](docs/OperatingHours.md)
  - [Overview](docs/Overview.md)
  - [ParkingLot](docs/ParkingLot.md)
  - [ParkingLotStatus](docs/ParkingLotStatus.md)
+ - [PathUuid](docs/PathUuid.md)
+ - [PointMarker](docs/PointMarker.md)
+ - [PointMarkerOneOf](docs/PointMarkerOneOf.md)
+ - [PointMarkerOneOf1](docs/PointMarkerOneOf1.md)
+ - [PointMarkerOneOf2](docs/PointMarkerOneOf2.md)
  - [Region](docs/Region.md)
  - [ResortInfo](docs/ResortInfo.md)
  - [ResortStatus](docs/ResortStatus.md)
@@ -83,6 +94,14 @@ Class | Method | HTTP request | Description
  - [TerrainParkFeature](docs/TerrainParkFeature.md)
  - [TerrainParkFeatureStatus](docs/TerrainParkFeatureStatus.md)
  - [TerrainParkStatus](docs/TerrainParkStatus.md)
+ - [TrailMap](docs/TrailMap.md)
+ - [TrailMapElement](docs/TrailMapElement.md)
+ - [TrailMapElementOneOf](docs/TrailMapElementOneOf.md)
+ - [TrailMapElementOneOf1](docs/TrailMapElementOneOf1.md)
+ - [TrailMapElementOneOf2](docs/TrailMapElementOneOf2.md)
+ - [TrailMapElementOneOf3](docs/TrailMapElementOneOf3.md)
+ - [TrailMapElementOneOf4](docs/TrailMapElementOneOf4.md)
+ - [TrailMapSummary](docs/TrailMapSummary.md)
  - [UnitPreference](docs/UnitPreference.md)
  - [Weather](docs/Weather.md)
  - [WeatherConditionCode](docs/WeatherConditionCode.md)

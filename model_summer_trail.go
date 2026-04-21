@@ -33,6 +33,7 @@ type SummerTrail struct {
 	Number NullableInt32 `json:"number,omitempty"`
 	// Type of trail activity (e.g. hiking, mountain_biking). Can have multiple.
 	TrailType []SummerTrailType `json:"trail_type"`
+	// Difficulty rating of the trail (optional for summer trails).
 	Difficulty NullableSummerTrailDifficulty `json:"difficulty,omitempty"`
 	// Current operational status (open, closed, or unknown).
 	Status SummerTrailStatus `json:"status"`

@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
@@ -129,6 +130,31 @@ type MtnManagerAPI interface {
 	// GetTerrainParksExecute executes the request
 	//  @return []TerrainPark
 	GetTerrainParksExecute(r ApiGetTerrainParksRequest) ([]TerrainPark, *http.Response, error)
+
+	/*
+	GetTrailMap Get trail map
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid Resource UUID
+	@return ApiGetTrailMapRequest
+	*/
+	GetTrailMap(ctx context.Context, uuid string) ApiGetTrailMapRequest
+
+	// GetTrailMapExecute executes the request
+	//  @return TrailMap
+	GetTrailMapExecute(r ApiGetTrailMapRequest) (*TrailMap, *http.Response, error)
+
+	/*
+	GetTrailMaps Get trail maps
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetTrailMapsRequest
+	*/
+	GetTrailMaps(ctx context.Context) ApiGetTrailMapsRequest
+
+	// GetTrailMapsExecute executes the request
+	//  @return []TrailMapSummary
+	GetTrailMapsExecute(r ApiGetTrailMapsRequest) ([]TrailMapSummary, *http.Response, error)
 
 	/*
 	GetWeather Get weather
@@ -960,6 +986,204 @@ func (a *MtnManagerAPIService) GetTerrainParksExecute(r ApiGetTerrainParksReques
 	}
 
 	localVarPath := localBasePath + "/api/v1/report/terrain-parks"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetTrailMapRequest struct {
+	ctx context.Context
+	ApiService MtnManagerAPI
+	uuid string
+}
+
+func (r ApiGetTrailMapRequest) Execute() (*TrailMap, *http.Response, error) {
+	return r.ApiService.GetTrailMapExecute(r)
+}
+
+/*
+GetTrailMap Get trail map
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid Resource UUID
+ @return ApiGetTrailMapRequest
+*/
+func (a *MtnManagerAPIService) GetTrailMap(ctx context.Context, uuid string) ApiGetTrailMapRequest {
+	return ApiGetTrailMapRequest{
+		ApiService: a,
+		ctx: ctx,
+		uuid: uuid,
+	}
+}
+
+// Execute executes the request
+//  @return TrailMap
+func (a *MtnManagerAPIService) GetTrailMapExecute(r ApiGetTrailMapRequest) (*TrailMap, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TrailMap
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetTrailMap")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/report/trail-map/{uuid}"
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetTrailMapsRequest struct {
+	ctx context.Context
+	ApiService MtnManagerAPI
+}
+
+func (r ApiGetTrailMapsRequest) Execute() ([]TrailMapSummary, *http.Response, error) {
+	return r.ApiService.GetTrailMapsExecute(r)
+}
+
+/*
+GetTrailMaps Get trail maps
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetTrailMapsRequest
+*/
+func (a *MtnManagerAPIService) GetTrailMaps(ctx context.Context) ApiGetTrailMapsRequest {
+	return ApiGetTrailMapsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []TrailMapSummary
+func (a *MtnManagerAPIService) GetTrailMapsExecute(r ApiGetTrailMapsRequest) ([]TrailMapSummary, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []TrailMapSummary
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetTrailMaps")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/report/trail-maps"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -21,18 +21,36 @@ type AmenityCategory string
 
 // List of AmenityCategory
 const (
-	FOOD_BEVERAGE AmenityCategory = "food_beverage"
+	RESTAURANT AmenityCategory = "restaurant"
+	COFFEE AmenityCategory = "coffee"
+	BAR AmenityCategory = "bar"
+	TUBING AmenityCategory = "tubing"
+	SKI_SCHOOL AmenityCategory = "ski_school"
+	RENTAL_SHOP AmenityCategory = "rental_shop"
+	DAYCARE AmenityCategory = "daycare"
+	TICKETING AmenityCategory = "ticketing"
+	LODGE AmenityCategory = "lodge"
+	HOTEL AmenityCategory = "hotel"
+	LOCKERS AmenityCategory = "lockers"
 	RETAIL AmenityCategory = "retail"
-	RECREATION AmenityCategory = "recreation"
-	FACILITY AmenityCategory = "facility"
+	OTHER AmenityCategory = "other"
 )
 
 // All allowed values of AmenityCategory enum
 var AllowedAmenityCategoryEnumValues = []AmenityCategory{
-	"food_beverage",
+	"restaurant",
+	"coffee",
+	"bar",
+	"tubing",
+	"ski_school",
+	"rental_shop",
+	"daycare",
+	"ticketing",
+	"lodge",
+	"hotel",
+	"lockers",
 	"retail",
-	"recreation",
-	"facility",
+	"other",
 }
 
 func (v *AmenityCategory) UnmarshalJSON(src []byte) error {

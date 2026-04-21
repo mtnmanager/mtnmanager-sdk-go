@@ -89,6 +89,11 @@ paths:
                   high_speed: true
                   bubble: true
                   heated: true
+                  travel_time: 12.0
+                  length_ft: 8500
+                  length_m: 2591
+                  vertical_rise_ft: 2800
+                  vertical_rise_m: 853
                   status: open
                   wait_time_minutes: 5
                   opens_at: 09:00
@@ -178,13 +183,13 @@ paths:
                     amenities:
                     - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                       name: Tube Park
-                      category: recreation
+                      category: tubing
                       opens_at: 10:00
                       closes_at: 16:00
                   amenity_schedules:
                   - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                     name: Tube Park
-                    category: recreation
+                    category: tubing
                     schedules:
                     - days_string: Saturday & Sunday
                       days_of_week:
@@ -625,6 +630,11 @@ paths:
                 high_speed: true
                 bubble: true
                 heated: true
+                travel_time: 12.0
+                length_ft: 8500
+                length_m: 2591
+                vertical_rise_ft: 2800
+                vertical_rise_m: 853
                 status: open
                 wait_time_minutes: 5
                 opens_at: 09:00
@@ -835,13 +845,13 @@ paths:
                   amenities:
                   - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                     name: Tube Park
-                    category: recreation
+                    category: tubing
                     opens_at: 10:00
                     closes_at: 16:00
                 amenity_schedules:
                 - uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   name: Tube Park
-                  category: recreation
+                  category: tubing
                   schedules:
                   - days_string: Saturday & Sunday
                     days_of_week:
@@ -1242,6 +1252,170 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+  /api/v1/report/trail-maps:
+    get:
+      operationId: getTrailMaps
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Winter Trail Map
+                hosted_url: https://powder-mountain.mtnmanager.com/hosted/trail-map/550e8400-e29b-41d4-a716-446655440000
+              schema:
+                $ref: "#/components/schemas/TrailMapsResponse"
+          description: List of trail maps.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get trail maps
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getTrailMaps();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetTrailMaps(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getTrailMaps();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getTrailMaps(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/trail-map/{uuid}:
+    get:
+      operationId: getTrailMap
+      parameters:
+      - description: Resource UUID
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          description: Resource UUID
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TrailMap"
+          description: A public trail map with enriched entity data.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get trail map
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getTrailMap();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetTrailMap(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getTrailMap();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getTrailMap(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
 components:
   schemas:
     FullReport:
@@ -1252,12 +1426,12 @@ components:
         summer_trails:
         - difficulty: ""
           area_name: area_name
-          number: 8
+          number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 9
+          area_display_order: 2
           uuid: uuid
           slug: slug
           trail_type:
@@ -1266,12 +1440,12 @@ components:
           status: ""
         - difficulty: ""
           area_name: area_name
-          number: 8
+          number: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 9
+          area_display_order: 2
           uuid: uuid
           slug: slug
           trail_type:
@@ -1413,17 +1587,17 @@ components:
             effective_from: 2000-01-23
         terrain_parks:
         - area_name: area_name
-          number: 5
+          number: 9
           features:
           - feature_type: ""
-            number: 9
+            number: 3
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 9
+            number: 3
             size: ""
             name: name
             uuid: uuid
@@ -1433,22 +1607,22 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 9
+          area_display_order: 6
           uuid: uuid
           slug: slug
           status: ""
         - area_name: area_name
-          number: 5
+          number: 9
           features:
           - feature_type: ""
-            number: 9
+            number: 3
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 9
+            number: 3
             size: ""
             name: name
             uuid: uuid
@@ -1458,7 +1632,7 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 9
+          area_display_order: 6
           uuid: uuid
           slug: slug
           status: ""
@@ -1490,36 +1664,46 @@ components:
         weather: ""
         lifts:
         - area_name: area_name
-          wait_time_minutes: 6
+          wait_time_minutes: 9
           high_speed: true
+          vertical_rise_ft: 4
           area_uuid: area_uuid
           uuid: uuid
+          travel_time: 6.84685269835264
           opens_at: opens_at
           number: 1
+          vertical_rise_m: 5
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
           closes_at: closes_at
-          area_display_order: 7
+          area_display_order: 9
           slug: slug
+          length_ft: 7
+          length_m: 1
           status: ""
         - area_name: area_name
-          wait_time_minutes: 6
+          wait_time_minutes: 9
           high_speed: true
+          vertical_rise_ft: 4
           area_uuid: area_uuid
           uuid: uuid
+          travel_time: 6.84685269835264
           opens_at: opens_at
           number: 1
+          vertical_rise_m: 5
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
           closes_at: closes_at
-          area_display_order: 7
+          area_display_order: 9
           slug: slug
+          length_ft: 7
+          length_m: 1
           status: ""
         resort:
           timezone: timezone
@@ -1533,14 +1717,14 @@ components:
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 1
+          number: 6
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 4
+          area_display_order: 8
           slug: slug
           night_skiing: true
           status: ""
@@ -1548,14 +1732,14 @@ components:
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 1
+          number: 6
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 4
+          area_display_order: 8
           slug: slug
           night_skiing: true
           status: ""
@@ -1922,10 +2106,48 @@ components:
         surface_condition:
           allOf:
           - $ref: "#/components/schemas/SurfaceCondition"
+          description: |-
+            Primary surface condition using industry standard codes.
+             Not included if the snow surface condition feature is disabled.
+
+             - BS (Bare Spots)
+             - CO (Corn Snow)
+             - FG (Frozen Granular)
+             - HP (Hard Pack)
+             - IP (Ice Patches)
+             - IS (Icy Surface)
+             - LG (Loose Granular)
+             - MG (Machine Groomed)
+             - P (Powder)
+             - PP (Packed Powder)
+             - SC (Spring Conditions)
+             - TC (Thin Cover)
+             - V (Variable)
+             - WG (Wet Granular)
+             - WP (Wet Powder)
           nullable: true
         secondary_surface_condition:
           allOf:
           - $ref: "#/components/schemas/SurfaceCondition"
+          description: |-
+            Secondary surface condition using industry standard codes.
+             Not included if the secondary snow surface condition feature is disabled.
+
+             - BS (Bare Spots)
+             - CO (Corn Snow)
+             - FG (Frozen Granular)
+             - HP (Hard Pack)
+             - IP (Ice Patches)
+             - IS (Icy Surface)
+             - LG (Loose Granular)
+             - MG (Machine Groomed)
+             - P (Powder)
+             - PP (Packed Powder)
+             - SC (Spring Conditions)
+             - TC (Thin Cover)
+             - V (Variable)
+             - WG (Wet Granular)
+             - WP (Wet Powder)
           nullable: true
         condition_notes:
           description: "Additional notes about current snow conditions, e.g. groomer's\
@@ -2006,20 +2228,25 @@ components:
          type, and optional wait time information.
       example:
         area_name: area_name
-        wait_time_minutes: 6
+        wait_time_minutes: 9
         high_speed: true
+        vertical_rise_ft: 4
         area_uuid: area_uuid
         uuid: uuid
+        travel_time: 6.84685269835264
         opens_at: opens_at
         number: 1
+        vertical_rise_m: 5
         updated_at: 2000-01-23T04:56:07.000+00:00
         bubble: true
         lift_type: ""
         name: name
         heated: true
         closes_at: closes_at
-        area_display_order: 7
+        area_display_order: 9
         slug: slug
+        length_ft: 7
+        length_m: 1
         status: ""
       properties:
         uuid:
@@ -2049,6 +2276,31 @@ components:
         heated:
           description: Whether the lift has heated seats.
           type: boolean
+        travel_time:
+          description: Estimated travel time in minutes.
+          format: double
+          nullable: true
+          type: number
+        length_ft:
+          description: Length of the lift in feet.
+          format: int32
+          nullable: true
+          type: integer
+        length_m:
+          description: Length of the lift in meters.
+          format: int32
+          nullable: true
+          type: integer
+        vertical_rise_ft:
+          description: Vertical rise of the lift in feet.
+          format: int32
+          nullable: true
+          type: integer
+        vertical_rise_m:
+          description: Vertical rise of the lift in meters.
+          format: int32
+          nullable: true
+          type: integer
         status:
           allOf:
           - $ref: "#/components/schemas/LiftStatus"
@@ -2132,14 +2384,14 @@ components:
         area_uuid: area_uuid
         uuid: uuid
         difficulty: ""
-        number: 1
+        number: 6
         groomed_today: true
         updated_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         name: name
         snowmaking: true
         last_groomed: 2000-01-23T04:56:07.000+00:00
-        area_display_order: 4
+        area_display_order: 8
         slug: slug
         night_skiing: true
         status: ""
@@ -2236,17 +2488,17 @@ components:
          condition notes, and list of features (jumps, boxes, rails, etc.) within it.
       example:
         area_name: area_name
-        number: 5
+        number: 9
         features:
         - feature_type: ""
-          number: 9
+          number: 3
           size: ""
           name: name
           uuid: uuid
           slug: slug
           status: ""
         - feature_type: ""
-          number: 9
+          number: 3
           size: ""
           name: name
           uuid: uuid
@@ -2256,7 +2508,7 @@ components:
         condition_notes: condition_notes
         name: name
         area_uuid: area_uuid
-        area_display_order: 9
+        area_display_order: 6
         uuid: uuid
         slug: slug
         status: ""
@@ -2326,7 +2578,7 @@ components:
          with its current status and size rating.
       example:
         feature_type: ""
-        number: 9
+        number: 3
         size: ""
         name: name
         uuid: uuid
@@ -2354,6 +2606,7 @@ components:
         size:
           allOf:
           - $ref: "#/components/schemas/FeatureSize"
+          description: "Optional size rating of the feature (S, M, L, XL)."
           nullable: true
         status:
           allOf:
@@ -2458,12 +2711,12 @@ components:
       example:
         difficulty: ""
         area_name: area_name
-        number: 8
+        number: 1
         updated_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         name: name
         area_uuid: area_uuid
-        area_display_order: 9
+        area_display_order: 2
         uuid: uuid
         slug: slug
         trail_type:
@@ -2494,6 +2747,7 @@ components:
         difficulty:
           allOf:
           - $ref: "#/components/schemas/SummerTrailDifficulty"
+          description: Difficulty rating of the trail (optional for summer trails).
           nullable: true
         status:
           allOf:
@@ -2828,6 +3082,7 @@ components:
         closure_reason:
           allOf:
           - $ref: "#/components/schemas/ClosureReason"
+          description: Optional reason code for closure.
           nullable: true
         special_event:
           description: Special event for this day.
@@ -2890,10 +3145,19 @@ components:
     AmenityCategory:
       description: Category classification for amenities
       enum:
-      - food_beverage
+      - restaurant
+      - coffee
+      - bar
+      - tubing
+      - ski_school
+      - rental_shop
+      - daycare
+      - ticketing
+      - lodge
+      - hotel
+      - lockers
       - retail
-      - recreation
-      - facility
+      - other
       type: string
     AmenitySchedule:
       description: Amenity schedule for the OperatingHours response
@@ -3434,3 +3698,419 @@ components:
       items:
         $ref: "#/components/schemas/ParkingLot"
       type: array
+    TrailMapsResponse:
+      description: List of trail maps.
+      items:
+        $ref: "#/components/schemas/TrailMapSummary"
+      type: array
+    TrailMapSummary:
+      description: Summary metadata for a trail map.
+      example:
+        hosted_url: hosted_url
+        name: name
+        uuid: uuid
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        hosted_url:
+          type: string
+      required:
+      - hosted_url
+      - name
+      - uuid
+    PathUuid:
+      properties:
+        uuid:
+          description: Resource UUID
+          type: string
+      required:
+      - uuid
+    TrailMap:
+      description: A public trail map with enriched entity data.
+      example:
+        background_image_url: background_image_url
+        elements:
+        - tension: 6.027456183070403
+          lift: ""
+          type: lift
+          uuid: uuid
+          points:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        - tension: 6.027456183070403
+          lift: ""
+          type: lift
+          uuid: uuid
+          points:
+          - 0.8008281904610115
+          - 0.8008281904610115
+        name: name
+        geo_control_points:
+        - pixel_y: 5.962133916683182
+          lng: 2.3021358869347655
+          pixel_x: 1.4658129805029452
+          lat: 5.637376656633329
+        - pixel_y: 5.962133916683182
+          lng: 2.3021358869347655
+          pixel_x: 1.4658129805029452
+          lat: 5.637376656633329
+        resort:
+          timezone: timezone
+          name: name
+          region: ""
+          uuid: uuid
+          unit_preference: ""
+          slug: slug
+        uuid: uuid
+        slug: slug
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        background_image_url:
+          type: string
+        resort:
+          $ref: "#/components/schemas/ResortInfo"
+        elements:
+          items:
+            $ref: "#/components/schemas/TrailMapElement"
+          type: array
+        geo_control_points:
+          items:
+            $ref: "#/components/schemas/GeoControlPoint"
+          nullable: true
+          type: array
+      required:
+      - background_image_url
+      - elements
+      - name
+      - resort
+      - slug
+      - uuid
+    TrailMapElement:
+      description: A trail map element with full entity data from existing public
+        models.
+      oneOf:
+      - $ref: "#/components/schemas/TrailMapElement_oneOf"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_1"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_2"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_3"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_4"
+    LabelOffset:
+      properties:
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+      required:
+      - x
+      - "y"
+    MarkerIcon:
+      enum:
+      - restaurant
+      - coffee
+      - bar
+      - water
+      - ski_school
+      - rental_shop
+      - tubing
+      - daycare
+      - ticketing
+      - lodge
+      - hotel
+      - restroom
+      - lockers
+      - first_aid
+      - parking
+      - bus
+      - info
+      - help
+      - phone
+      - retail
+      - atm
+      - star
+      type: string
+    Amenity:
+      description: Minimal amenity info for trail map markers.
+      properties:
+        description:
+          type: string
+        uuid:
+          type: string
+        name:
+          type: string
+        category:
+          $ref: "#/components/schemas/AmenityCategory"
+        website:
+          type: string
+        opens_at:
+          description: "Today's scheduled opening time in 24-hour format (HH:MM),\
+            \ in resort's local timezone."
+          nullable: true
+          type: string
+        closes_at:
+          description: "Today's scheduled closing time in 24-hour format (HH:MM),\
+            \ in resort's local timezone."
+          nullable: true
+          type: string
+      required:
+      - category
+      - description
+      - name
+      - uuid
+      - website
+    PointMarker:
+      description: "A point marker on a trail map, enriched with entity data where\
+        \ applicable."
+      oneOf:
+      - $ref: "#/components/schemas/PointMarker_oneOf"
+      - $ref: "#/components/schemas/PointMarker_oneOf_1"
+      - $ref: "#/components/schemas/PointMarker_oneOf_2"
+    GeoControlPoint:
+      example:
+        pixel_y: 5.962133916683182
+        lng: 2.3021358869347655
+        pixel_x: 1.4658129805029452
+        lat: 5.637376656633329
+      properties:
+        pixel_x:
+          format: double
+          type: number
+        pixel_y:
+          format: double
+          type: number
+        lat:
+          format: double
+          type: number
+        lng:
+          format: double
+          type: number
+      required:
+      - lat
+      - lng
+      - pixel_x
+      - pixel_y
+    TrailMapElement_oneOf:
+      example:
+        tension: 6.027456183070403
+        lift: ""
+        type: lift
+        uuid: uuid
+        points:
+        - 0.8008281904610115
+        - 0.8008281904610115
+      properties:
+        type:
+          enum:
+          - lift
+          type: string
+        uuid:
+          type: string
+        points:
+          items:
+            format: double
+            type: number
+          type: array
+        tension:
+          format: double
+          nullable: true
+          type: number
+        lift:
+          allOf:
+          - $ref: "#/components/schemas/Lift"
+          nullable: true
+      required:
+      - points
+      - type
+      - uuid
+    TrailMapElement_oneOf_1:
+      properties:
+        type:
+          enum:
+          - run
+          type: string
+        uuid:
+          type: string
+        points:
+          items:
+            format: double
+            type: number
+          type: array
+        tension:
+          format: double
+          nullable: true
+          type: number
+        run:
+          allOf:
+          - $ref: "#/components/schemas/Run"
+          nullable: true
+      required:
+      - points
+      - type
+      - uuid
+    TrailMapElement_oneOf_2:
+      properties:
+        type:
+          enum:
+          - terrain_park
+          type: string
+        uuid:
+          type: string
+        points:
+          items:
+            format: double
+            type: number
+          type: array
+        tension:
+          format: double
+          nullable: true
+          type: number
+        label_offset:
+          allOf:
+          - $ref: "#/components/schemas/LabelOffset"
+          nullable: true
+        terrain_park:
+          allOf:
+          - $ref: "#/components/schemas/TerrainPark"
+          nullable: true
+      required:
+      - points
+      - type
+      - uuid
+    TrailMapElement_oneOf_3:
+      properties:
+        type:
+          enum:
+          - summer_trail
+          type: string
+        uuid:
+          type: string
+        points:
+          items:
+            format: double
+            type: number
+          type: array
+        tension:
+          format: double
+          nullable: true
+          type: number
+        summer_trail:
+          allOf:
+          - $ref: "#/components/schemas/SummerTrail"
+          nullable: true
+      required:
+      - points
+      - type
+      - uuid
+    TrailMapElement_oneOf_4:
+      allOf:
+      - $ref: "#/components/schemas/PointMarker"
+      - properties:
+          type:
+            enum:
+            - point_marker
+            type: string
+        required:
+        - type
+        type: object
+        example: null
+      example: null
+    PointMarker_oneOf:
+      properties:
+        uuid:
+          type: string
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+        icon:
+          allOf:
+          - $ref: "#/components/schemas/MarkerIcon"
+          nullable: true
+        color:
+          nullable: true
+          type: string
+        amenity:
+          allOf:
+          - $ref: "#/components/schemas/Amenity"
+          nullable: true
+        kind:
+          enum:
+          - amenity
+          type: string
+      required:
+      - kind
+      - uuid
+      - x
+      - "y"
+    PointMarker_oneOf_1:
+      properties:
+        uuid:
+          type: string
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+        icon:
+          allOf:
+          - $ref: "#/components/schemas/MarkerIcon"
+          nullable: true
+        color:
+          nullable: true
+          type: string
+        parking_lot:
+          allOf:
+          - $ref: "#/components/schemas/ParkingLot"
+          nullable: true
+        kind:
+          enum:
+          - parking_lot
+          type: string
+      required:
+      - kind
+      - uuid
+      - x
+      - "y"
+    PointMarker_oneOf_2:
+      properties:
+        uuid:
+          type: string
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+        icon:
+          allOf:
+          - $ref: "#/components/schemas/MarkerIcon"
+          nullable: true
+        color:
+          nullable: true
+          type: string
+        label:
+          type: string
+        searchable:
+          nullable: true
+          type: boolean
+        kind:
+          enum:
+          - generic
+          type: string
+      required:
+      - kind
+      - label
+      - uuid
+      - x
+      - "y"

@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this report covers, if area-specific, for sorting purposes. | [optional] 
 **BaseDepthCm** | Pointer to **NullableInt32** | Current base depth in centimeters.  Not included if the base depth feature is disabled. | [optional] 
 **BaseDepthIn** | Pointer to **NullableInt32** | Current base depth in inches.  Not included if the base depth feature is disabled. | [optional] 
-**SurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) |  | [optional] 
-**SecondarySurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) |  | [optional] 
+**SurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) | Primary surface condition using industry standard codes.  Not included if the snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) | [optional] 
+**SecondarySurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) | Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) | [optional] 
 **ConditionNotes** | **string** | Additional notes about current snow conditions, e.g. groomer&#39;s notes | 
 **SnowfallCm** | [**SnowMetrics**](SnowMetrics.md) | Snowfall accumulation metrics in centimeters. | 
 **SnowfallIn** | [**SnowMetrics**](SnowMetrics.md) | Snowfall accumulation metrics in inches. | 

@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**GetSnow**](MtnManagerAPI.md#GetSnow) | **Get** /api/v1/report/snow | Get snow conditions
 [**GetSummerTrails**](MtnManagerAPI.md#GetSummerTrails) | **Get** /api/v1/report/summer-trails | Get summer trails
 [**GetTerrainParks**](MtnManagerAPI.md#GetTerrainParks) | **Get** /api/v1/report/terrain-parks | Get terrain parks
+[**GetTrailMap**](MtnManagerAPI.md#GetTrailMap) | **Get** /api/v1/report/trail-map/{uuid} | Get trail map
+[**GetTrailMaps**](MtnManagerAPI.md#GetTrailMaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 [**GetWeather**](MtnManagerAPI.md#GetWeather) | **Get** /api/v1/report/weather | Get weather
 
 
@@ -533,6 +535,133 @@ Other parameters are passed through a pointer to a apiGetTerrainParksRequest str
 ### Return type
 
 [**[]TerrainPark**](TerrainPark.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTrailMap
+
+> TrailMap GetTrailMap(ctx, uuid).Execute()
+
+Get trail map
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+	uuid := "uuid_example" // string | Resource UUID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetTrailMap(context.Background(), uuid).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTrailMap``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTrailMap`: TrailMap
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetTrailMap`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | Resource UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTrailMapRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TrailMap**](TrailMap.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetTrailMaps
+
+> []TrailMapSummary GetTrailMaps(ctx).Execute()
+
+Get trail maps
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetTrailMaps(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTrailMaps``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetTrailMaps`: []TrailMapSummary
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetTrailMaps`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetTrailMapsRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]TrailMapSummary**](TrailMapSummary.md)
 
 ### Authorization
 

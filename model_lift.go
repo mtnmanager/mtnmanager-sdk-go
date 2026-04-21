@@ -39,6 +39,16 @@ type Lift struct {
 	Bubble bool `json:"bubble"`
 	// Whether the lift has heated seats.
 	Heated bool `json:"heated"`
+	// Estimated travel time in minutes.
+	TravelTime NullableFloat64 `json:"travel_time,omitempty"`
+	// Length of the lift in feet.
+	LengthFt NullableInt32 `json:"length_ft,omitempty"`
+	// Length of the lift in meters.
+	LengthM NullableInt32 `json:"length_m,omitempty"`
+	// Vertical rise of the lift in feet.
+	VerticalRiseFt NullableInt32 `json:"vertical_rise_ft,omitempty"`
+	// Vertical rise of the lift in meters.
+	VerticalRiseM NullableInt32 `json:"vertical_rise_m,omitempty"`
 	// Current operational status (open, closed, on_hold, or unknown).
 	Status LiftStatus `json:"status"`
 	// Current estimated wait time in minutes, if available.
@@ -293,6 +303,216 @@ func (o *Lift) GetHeatedOk() (*bool, bool) {
 // SetHeated sets field value
 func (o *Lift) SetHeated(v bool) {
 	o.Heated = v
+}
+
+// GetTravelTime returns the TravelTime field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetTravelTime() float64 {
+	if o == nil || IsNil(o.TravelTime.Get()) {
+		var ret float64
+		return ret
+	}
+	return *o.TravelTime.Get()
+}
+
+// GetTravelTimeOk returns a tuple with the TravelTime field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetTravelTimeOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.TravelTime.Get(), o.TravelTime.IsSet()
+}
+
+// HasTravelTime returns a boolean if a field has been set.
+func (o *Lift) HasTravelTime() bool {
+	if o != nil && o.TravelTime.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetTravelTime gets a reference to the given NullableFloat64 and assigns it to the TravelTime field.
+func (o *Lift) SetTravelTime(v float64) {
+	o.TravelTime.Set(&v)
+}
+// SetTravelTimeNil sets the value for TravelTime to be an explicit nil
+func (o *Lift) SetTravelTimeNil() {
+	o.TravelTime.Set(nil)
+}
+
+// UnsetTravelTime ensures that no value is present for TravelTime, not even an explicit nil
+func (o *Lift) UnsetTravelTime() {
+	o.TravelTime.Unset()
+}
+
+// GetLengthFt returns the LengthFt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetLengthFt() int32 {
+	if o == nil || IsNil(o.LengthFt.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.LengthFt.Get()
+}
+
+// GetLengthFtOk returns a tuple with the LengthFt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetLengthFtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LengthFt.Get(), o.LengthFt.IsSet()
+}
+
+// HasLengthFt returns a boolean if a field has been set.
+func (o *Lift) HasLengthFt() bool {
+	if o != nil && o.LengthFt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLengthFt gets a reference to the given NullableInt32 and assigns it to the LengthFt field.
+func (o *Lift) SetLengthFt(v int32) {
+	o.LengthFt.Set(&v)
+}
+// SetLengthFtNil sets the value for LengthFt to be an explicit nil
+func (o *Lift) SetLengthFtNil() {
+	o.LengthFt.Set(nil)
+}
+
+// UnsetLengthFt ensures that no value is present for LengthFt, not even an explicit nil
+func (o *Lift) UnsetLengthFt() {
+	o.LengthFt.Unset()
+}
+
+// GetLengthM returns the LengthM field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetLengthM() int32 {
+	if o == nil || IsNil(o.LengthM.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.LengthM.Get()
+}
+
+// GetLengthMOk returns a tuple with the LengthM field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetLengthMOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LengthM.Get(), o.LengthM.IsSet()
+}
+
+// HasLengthM returns a boolean if a field has been set.
+func (o *Lift) HasLengthM() bool {
+	if o != nil && o.LengthM.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLengthM gets a reference to the given NullableInt32 and assigns it to the LengthM field.
+func (o *Lift) SetLengthM(v int32) {
+	o.LengthM.Set(&v)
+}
+// SetLengthMNil sets the value for LengthM to be an explicit nil
+func (o *Lift) SetLengthMNil() {
+	o.LengthM.Set(nil)
+}
+
+// UnsetLengthM ensures that no value is present for LengthM, not even an explicit nil
+func (o *Lift) UnsetLengthM() {
+	o.LengthM.Unset()
+}
+
+// GetVerticalRiseFt returns the VerticalRiseFt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetVerticalRiseFt() int32 {
+	if o == nil || IsNil(o.VerticalRiseFt.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.VerticalRiseFt.Get()
+}
+
+// GetVerticalRiseFtOk returns a tuple with the VerticalRiseFt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetVerticalRiseFtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VerticalRiseFt.Get(), o.VerticalRiseFt.IsSet()
+}
+
+// HasVerticalRiseFt returns a boolean if a field has been set.
+func (o *Lift) HasVerticalRiseFt() bool {
+	if o != nil && o.VerticalRiseFt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVerticalRiseFt gets a reference to the given NullableInt32 and assigns it to the VerticalRiseFt field.
+func (o *Lift) SetVerticalRiseFt(v int32) {
+	o.VerticalRiseFt.Set(&v)
+}
+// SetVerticalRiseFtNil sets the value for VerticalRiseFt to be an explicit nil
+func (o *Lift) SetVerticalRiseFtNil() {
+	o.VerticalRiseFt.Set(nil)
+}
+
+// UnsetVerticalRiseFt ensures that no value is present for VerticalRiseFt, not even an explicit nil
+func (o *Lift) UnsetVerticalRiseFt() {
+	o.VerticalRiseFt.Unset()
+}
+
+// GetVerticalRiseM returns the VerticalRiseM field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetVerticalRiseM() int32 {
+	if o == nil || IsNil(o.VerticalRiseM.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.VerticalRiseM.Get()
+}
+
+// GetVerticalRiseMOk returns a tuple with the VerticalRiseM field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetVerticalRiseMOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.VerticalRiseM.Get(), o.VerticalRiseM.IsSet()
+}
+
+// HasVerticalRiseM returns a boolean if a field has been set.
+func (o *Lift) HasVerticalRiseM() bool {
+	if o != nil && o.VerticalRiseM.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetVerticalRiseM gets a reference to the given NullableInt32 and assigns it to the VerticalRiseM field.
+func (o *Lift) SetVerticalRiseM(v int32) {
+	o.VerticalRiseM.Set(&v)
+}
+// SetVerticalRiseMNil sets the value for VerticalRiseM to be an explicit nil
+func (o *Lift) SetVerticalRiseMNil() {
+	o.VerticalRiseM.Set(nil)
+}
+
+// UnsetVerticalRiseM ensures that no value is present for VerticalRiseM, not even an explicit nil
+func (o *Lift) UnsetVerticalRiseM() {
+	o.VerticalRiseM.Unset()
 }
 
 // GetStatus returns the Status field value
@@ -615,6 +835,21 @@ func (o Lift) ToMap() (map[string]interface{}, error) {
 	toSerialize["high_speed"] = o.HighSpeed
 	toSerialize["bubble"] = o.Bubble
 	toSerialize["heated"] = o.Heated
+	if o.TravelTime.IsSet() {
+		toSerialize["travel_time"] = o.TravelTime.Get()
+	}
+	if o.LengthFt.IsSet() {
+		toSerialize["length_ft"] = o.LengthFt.Get()
+	}
+	if o.LengthM.IsSet() {
+		toSerialize["length_m"] = o.LengthM.Get()
+	}
+	if o.VerticalRiseFt.IsSet() {
+		toSerialize["vertical_rise_ft"] = o.VerticalRiseFt.Get()
+	}
+	if o.VerticalRiseM.IsSet() {
+		toSerialize["vertical_rise_m"] = o.VerticalRiseM.Get()
+	}
 	toSerialize["status"] = o.Status
 	if o.WaitTimeMinutes.IsSet() {
 		toSerialize["wait_time_minutes"] = o.WaitTimeMinutes.Get()

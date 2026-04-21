@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the run. | 
 **Number** | Pointer to **NullableInt32** | Optional feature number. | [optional] 
 **FeatureType** | [**FeatureType**](FeatureType.md) | Type of feature (jump, box, rail, other). | 
-**Size** | Pointer to [**NullableFeatureSize**](FeatureSize.md) |  | [optional] 
+**Size** | Pointer to [**NullableFeatureSize**](FeatureSize.md) | Optional size rating of the feature (S, M, L, XL). | [optional] 
 **Status** | [**TerrainParkFeatureStatus**](TerrainParkFeatureStatus.md) | Current operational status (open, closed, or unknown).  &#x60;unknown&#x60; unless the terrain park feature status is enabled. | 
 
 ## Methods

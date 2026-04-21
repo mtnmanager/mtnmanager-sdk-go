@@ -12,6 +12,11 @@ Name | Type | Description | Notes
 **HighSpeed** | **bool** | Whether this is a high-speed/detachable lift. | 
 **Bubble** | **bool** | Whether the lift has a bubble/cover for weather protection. | 
 **Heated** | **bool** | Whether the lift has heated seats. | 
+**TravelTime** | Pointer to **NullableFloat64** | Estimated travel time in minutes. | [optional] 
+**LengthFt** | Pointer to **NullableInt32** | Length of the lift in feet. | [optional] 
+**LengthM** | Pointer to **NullableInt32** | Length of the lift in meters. | [optional] 
+**VerticalRiseFt** | Pointer to **NullableInt32** | Vertical rise of the lift in feet. | [optional] 
+**VerticalRiseM** | Pointer to **NullableInt32** | Vertical rise of the lift in meters. | [optional] 
 **Status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **WaitTimeMinutes** | Pointer to **NullableInt64** | Current estimated wait time in minutes, if available. | [optional] 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
@@ -215,6 +220,181 @@ and a boolean to check if the value has been set.
 SetHeated sets Heated field to given value.
 
 
+### GetTravelTime
+
+`func (o *Lift) GetTravelTime() float64`
+
+GetTravelTime returns the TravelTime field if non-nil, zero value otherwise.
+
+### GetTravelTimeOk
+
+`func (o *Lift) GetTravelTimeOk() (*float64, bool)`
+
+GetTravelTimeOk returns a tuple with the TravelTime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTravelTime
+
+`func (o *Lift) SetTravelTime(v float64)`
+
+SetTravelTime sets TravelTime field to given value.
+
+### HasTravelTime
+
+`func (o *Lift) HasTravelTime() bool`
+
+HasTravelTime returns a boolean if a field has been set.
+
+### SetTravelTimeNil
+
+`func (o *Lift) SetTravelTimeNil(b bool)`
+
+ SetTravelTimeNil sets the value for TravelTime to be an explicit nil
+
+### UnsetTravelTime
+`func (o *Lift) UnsetTravelTime()`
+
+UnsetTravelTime ensures that no value is present for TravelTime, not even an explicit nil
+### GetLengthFt
+
+`func (o *Lift) GetLengthFt() int32`
+
+GetLengthFt returns the LengthFt field if non-nil, zero value otherwise.
+
+### GetLengthFtOk
+
+`func (o *Lift) GetLengthFtOk() (*int32, bool)`
+
+GetLengthFtOk returns a tuple with the LengthFt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthFt
+
+`func (o *Lift) SetLengthFt(v int32)`
+
+SetLengthFt sets LengthFt field to given value.
+
+### HasLengthFt
+
+`func (o *Lift) HasLengthFt() bool`
+
+HasLengthFt returns a boolean if a field has been set.
+
+### SetLengthFtNil
+
+`func (o *Lift) SetLengthFtNil(b bool)`
+
+ SetLengthFtNil sets the value for LengthFt to be an explicit nil
+
+### UnsetLengthFt
+`func (o *Lift) UnsetLengthFt()`
+
+UnsetLengthFt ensures that no value is present for LengthFt, not even an explicit nil
+### GetLengthM
+
+`func (o *Lift) GetLengthM() int32`
+
+GetLengthM returns the LengthM field if non-nil, zero value otherwise.
+
+### GetLengthMOk
+
+`func (o *Lift) GetLengthMOk() (*int32, bool)`
+
+GetLengthMOk returns a tuple with the LengthM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLengthM
+
+`func (o *Lift) SetLengthM(v int32)`
+
+SetLengthM sets LengthM field to given value.
+
+### HasLengthM
+
+`func (o *Lift) HasLengthM() bool`
+
+HasLengthM returns a boolean if a field has been set.
+
+### SetLengthMNil
+
+`func (o *Lift) SetLengthMNil(b bool)`
+
+ SetLengthMNil sets the value for LengthM to be an explicit nil
+
+### UnsetLengthM
+`func (o *Lift) UnsetLengthM()`
+
+UnsetLengthM ensures that no value is present for LengthM, not even an explicit nil
+### GetVerticalRiseFt
+
+`func (o *Lift) GetVerticalRiseFt() int32`
+
+GetVerticalRiseFt returns the VerticalRiseFt field if non-nil, zero value otherwise.
+
+### GetVerticalRiseFtOk
+
+`func (o *Lift) GetVerticalRiseFtOk() (*int32, bool)`
+
+GetVerticalRiseFtOk returns a tuple with the VerticalRiseFt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerticalRiseFt
+
+`func (o *Lift) SetVerticalRiseFt(v int32)`
+
+SetVerticalRiseFt sets VerticalRiseFt field to given value.
+
+### HasVerticalRiseFt
+
+`func (o *Lift) HasVerticalRiseFt() bool`
+
+HasVerticalRiseFt returns a boolean if a field has been set.
+
+### SetVerticalRiseFtNil
+
+`func (o *Lift) SetVerticalRiseFtNil(b bool)`
+
+ SetVerticalRiseFtNil sets the value for VerticalRiseFt to be an explicit nil
+
+### UnsetVerticalRiseFt
+`func (o *Lift) UnsetVerticalRiseFt()`
+
+UnsetVerticalRiseFt ensures that no value is present for VerticalRiseFt, not even an explicit nil
+### GetVerticalRiseM
+
+`func (o *Lift) GetVerticalRiseM() int32`
+
+GetVerticalRiseM returns the VerticalRiseM field if non-nil, zero value otherwise.
+
+### GetVerticalRiseMOk
+
+`func (o *Lift) GetVerticalRiseMOk() (*int32, bool)`
+
+GetVerticalRiseMOk returns a tuple with the VerticalRiseM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVerticalRiseM
+
+`func (o *Lift) SetVerticalRiseM(v int32)`
+
+SetVerticalRiseM sets VerticalRiseM field to given value.
+
+### HasVerticalRiseM
+
+`func (o *Lift) HasVerticalRiseM() bool`
+
+HasVerticalRiseM returns a boolean if a field has been set.
+
+### SetVerticalRiseMNil
+
+`func (o *Lift) SetVerticalRiseMNil(b bool)`
+
+ SetVerticalRiseMNil sets the value for VerticalRiseM to be an explicit nil
+
+### UnsetVerticalRiseM
+`func (o *Lift) UnsetVerticalRiseM()`
+
+UnsetVerticalRiseM ensures that no value is present for VerticalRiseM, not even an explicit nil
 ### GetStatus
 
 `func (o *Lift) GetStatus() LiftStatus`

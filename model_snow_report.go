@@ -35,7 +35,9 @@ type SnowReport struct {
 	BaseDepthCm NullableInt32 `json:"base_depth_cm,omitempty"`
 	// Current base depth in inches.  Not included if the base depth feature is disabled.
 	BaseDepthIn NullableInt32 `json:"base_depth_in,omitempty"`
+	// Primary surface condition using industry standard codes.  Not included if the snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder)
 	SurfaceCondition NullableSurfaceCondition `json:"surface_condition,omitempty"`
+	// Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder)
 	SecondarySurfaceCondition NullableSurfaceCondition `json:"secondary_surface_condition,omitempty"`
 	// Additional notes about current snow conditions, e.g. groomer's notes
 	ConditionNotes string `json:"condition_notes"`
