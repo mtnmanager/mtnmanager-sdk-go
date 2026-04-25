@@ -14,85 +14,66 @@ package mtnmanager
 import (
 	"encoding/json"
 	"fmt"
-	"gopkg.in/validator.v2"
 )
 
-// SeasonType - Current operating season of the resort.
-type SeasonType struct {
-	String *string
+// SeasonType Current operating season of the resort.
+type SeasonType string
+
+// List of SeasonType
+const (
+	WINTER SeasonType = "winter"
+	SUMMER SeasonType = "summer"
+	CLOSED SeasonType = "closed"
+)
+
+// All allowed values of SeasonType enum
+var AllowedSeasonTypeEnumValues = []SeasonType{
+	"winter",
+	"summer",
+	"closed",
 }
 
-// stringAsSeasonType is a convenience function that returns string wrapped in SeasonType
-func StringAsSeasonType(v *string) SeasonType {
-	return SeasonType{
-		String: v,
+func (v *SeasonType) UnmarshalJSON(src []byte) error {
+	var value string
+	err := json.Unmarshal(src, &value)
+	if err != nil {
+		return err
 	}
-}
-
-
-// Unmarshal JSON data into one of the pointers in the struct
-func (dst *SeasonType) UnmarshalJSON(data []byte) error {
-	var err error
-	match := 0
-	// try to unmarshal data into String
-	err = newStrictDecoder(data).Decode(&dst.String)
-	if err == nil {
-		jsonString, _ := json.Marshal(dst.String)
-		if string(jsonString) == "{}" { // empty struct
-			dst.String = nil
-		} else {
-			if err = validator.Validate(dst.String); err != nil {
-				dst.String = nil
-			} else {
-				match++
-			}
+	enumTypeValue := SeasonType(value)
+	for _, existing := range AllowedSeasonTypeEnumValues {
+		if existing == enumTypeValue {
+			*v = enumTypeValue
+			return nil
 		}
+	}
+
+	return fmt.Errorf("%+v is not a valid SeasonType", value)
+}
+
+// NewSeasonTypeFromValue returns a pointer to a valid SeasonType
+// for the value passed as argument, or an error if the value passed is not allowed by the enum
+func NewSeasonTypeFromValue(v string) (*SeasonType, error) {
+	ev := SeasonType(v)
+	if ev.IsValid() {
+		return &ev, nil
 	} else {
-		dst.String = nil
-	}
-
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.String = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(SeasonType)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(SeasonType)")
+		return nil, fmt.Errorf("invalid value '%v' for SeasonType: valid values are %v", v, AllowedSeasonTypeEnumValues)
 	}
 }
 
-// Marshal data from the first non-nil pointers in the struct to JSON
-func (src SeasonType) MarshalJSON() ([]byte, error) {
-	if src.String != nil {
-		return json.Marshal(&src.String)
+// IsValid return true if the value is valid for the enum, false otherwise
+func (v SeasonType) IsValid() bool {
+	for _, existing := range AllowedSeasonTypeEnumValues {
+		if existing == v {
+			return true
+		}
 	}
-
-	return nil, nil // no data in oneOf schemas
+	return false
 }
 
-// Get the actual instance
-func (obj *SeasonType) GetActualInstance() (interface{}) {
-	if obj == nil {
-		return nil
-	}
-	if obj.String != nil {
-		return obj.String
-	}
-
-	// all schemas are nil
-	return nil
-}
-
-// Get the actual instance value
-func (obj SeasonType) GetActualInstanceValue() (interface{}) {
-	if obj.String != nil {
-		return *obj.String
-	}
-
-	// all schemas are nil
-	return nil
+// Ptr returns reference to SeasonType value
+func (v SeasonType) Ptr() *SeasonType {
+	return &v
 }
 
 type NullableSeasonType struct {
@@ -130,5 +111,4 @@ func (v *NullableSeasonType) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
-
 

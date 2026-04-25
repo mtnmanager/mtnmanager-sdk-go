@@ -1953,18 +1953,11 @@ components:
       type: string
     SeasonType:
       description: Current operating season of the resort.
-      oneOf:
-      - enum:
-        - winter
-        - summer
-        type: string
-      - description: |-
-          Resort is not operating. Not a valid season for trail maps — they must
-           be tagged Winter or Summer so the public site can pick one based on the
-           resort's current SeasonType.
-        enum:
-        - closed
-        type: string
+      enum:
+      - winter
+      - summer
+      - closed
+      type: string
     OverviewNews:
       description: "Written news — daily update, announcements, etc."
       properties:
