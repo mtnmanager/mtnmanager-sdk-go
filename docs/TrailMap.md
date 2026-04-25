@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 **Uuid** | **string** |  | 
 **Name** | **string** |  | 
 **Slug** | **string** |  | 
+**Season** | [**SeasonType**](SeasonType.md) |  | 
+**DisplayOrder** | **int64** |  | 
 **BackgroundImageUrl** | **string** |  | 
 **Resort** | [**ResortInfo**](ResortInfo.md) |  | 
 **Elements** | [**[]TrailMapElement**](TrailMapElement.md) |  | 
@@ -16,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewTrailMap
 
-`func NewTrailMap(uuid string, name string, slug string, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement, ) *TrailMap`
+`func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement, ) *TrailMap`
 
 NewTrailMap instantiates a new TrailMap object
 This constructor will assign default values to properties that have it defined,
@@ -89,6 +91,46 @@ and a boolean to check if the value has been set.
 `func (o *TrailMap) SetSlug(v string)`
 
 SetSlug sets Slug field to given value.
+
+
+### GetSeason
+
+`func (o *TrailMap) GetSeason() SeasonType`
+
+GetSeason returns the Season field if non-nil, zero value otherwise.
+
+### GetSeasonOk
+
+`func (o *TrailMap) GetSeasonOk() (*SeasonType, bool)`
+
+GetSeasonOk returns a tuple with the Season field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeason
+
+`func (o *TrailMap) SetSeason(v SeasonType)`
+
+SetSeason sets Season field to given value.
+
+
+### GetDisplayOrder
+
+`func (o *TrailMap) GetDisplayOrder() int64`
+
+GetDisplayOrder returns the DisplayOrder field if non-nil, zero value otherwise.
+
+### GetDisplayOrderOk
+
+`func (o *TrailMap) GetDisplayOrderOk() (*int64, bool)`
+
+GetDisplayOrderOk returns a tuple with the DisplayOrder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayOrder
+
+`func (o *TrailMap) SetDisplayOrder(v int64)`
+
+SetDisplayOrder sets DisplayOrder field to given value.
 
 
 ### GetBackgroundImageUrl

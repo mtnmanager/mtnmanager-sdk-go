@@ -25,6 +25,8 @@ type TrailMap struct {
 	Uuid string `json:"uuid"`
 	Name string `json:"name"`
 	Slug string `json:"slug"`
+	Season SeasonType `json:"season"`
+	DisplayOrder int64 `json:"display_order"`
 	BackgroundImageUrl string `json:"background_image_url"`
 	Resort ResortInfo `json:"resort"`
 	Elements []TrailMapElement `json:"elements"`
@@ -37,11 +39,13 @@ type _TrailMap TrailMap
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMap(uuid string, name string, slug string, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement) *TrailMap {
+func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement) *TrailMap {
 	this := TrailMap{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
+	this.Season = season
+	this.DisplayOrder = displayOrder
 	this.BackgroundImageUrl = backgroundImageUrl
 	this.Resort = resort
 	this.Elements = elements
@@ -126,6 +130,54 @@ func (o *TrailMap) GetSlugOk() (*string, bool) {
 // SetSlug sets field value
 func (o *TrailMap) SetSlug(v string) {
 	o.Slug = v
+}
+
+// GetSeason returns the Season field value
+func (o *TrailMap) GetSeason() SeasonType {
+	if o == nil {
+		var ret SeasonType
+		return ret
+	}
+
+	return o.Season
+}
+
+// GetSeasonOk returns a tuple with the Season field value
+// and a boolean to check if the value has been set.
+func (o *TrailMap) GetSeasonOk() (*SeasonType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Season, true
+}
+
+// SetSeason sets field value
+func (o *TrailMap) SetSeason(v SeasonType) {
+	o.Season = v
+}
+
+// GetDisplayOrder returns the DisplayOrder field value
+func (o *TrailMap) GetDisplayOrder() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.DisplayOrder
+}
+
+// GetDisplayOrderOk returns a tuple with the DisplayOrder field value
+// and a boolean to check if the value has been set.
+func (o *TrailMap) GetDisplayOrderOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisplayOrder, true
+}
+
+// SetDisplayOrder sets field value
+func (o *TrailMap) SetDisplayOrder(v int64) {
+	o.DisplayOrder = v
 }
 
 // GetBackgroundImageUrl returns the BackgroundImageUrl field value
@@ -246,6 +298,8 @@ func (o TrailMap) ToMap() (map[string]interface{}, error) {
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
+	toSerialize["season"] = o.Season
+	toSerialize["display_order"] = o.DisplayOrder
 	toSerialize["background_image_url"] = o.BackgroundImageUrl
 	toSerialize["resort"] = o.Resort
 	toSerialize["elements"] = o.Elements
@@ -263,6 +317,8 @@ func (o *TrailMap) UnmarshalJSON(data []byte) (err error) {
 		"uuid",
 		"name",
 		"slug",
+		"season",
+		"display_order",
 		"background_image_url",
 		"resort",
 		"elements",

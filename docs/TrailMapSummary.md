@@ -6,13 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Uuid** | **string** |  | 
 **Name** | **string** |  | 
+**Season** | [**SeasonType**](SeasonType.md) |  | 
+**DisplayOrder** | **int64** |  | 
 **HostedUrl** | **string** |  | 
 
 ## Methods
 
 ### NewTrailMapSummary
 
-`func NewTrailMapSummary(uuid string, name string, hostedUrl string, ) *TrailMapSummary`
+`func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, ) *TrailMapSummary`
 
 NewTrailMapSummary instantiates a new TrailMapSummary object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +67,46 @@ and a boolean to check if the value has been set.
 `func (o *TrailMapSummary) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetSeason
+
+`func (o *TrailMapSummary) GetSeason() SeasonType`
+
+GetSeason returns the Season field if non-nil, zero value otherwise.
+
+### GetSeasonOk
+
+`func (o *TrailMapSummary) GetSeasonOk() (*SeasonType, bool)`
+
+GetSeasonOk returns a tuple with the Season field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSeason
+
+`func (o *TrailMapSummary) SetSeason(v SeasonType)`
+
+SetSeason sets Season field to given value.
+
+
+### GetDisplayOrder
+
+`func (o *TrailMapSummary) GetDisplayOrder() int64`
+
+GetDisplayOrder returns the DisplayOrder field if non-nil, zero value otherwise.
+
+### GetDisplayOrderOk
+
+`func (o *TrailMapSummary) GetDisplayOrderOk() (*int64, bool)`
+
+GetDisplayOrderOk returns a tuple with the DisplayOrder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayOrder
+
+`func (o *TrailMapSummary) SetDisplayOrder(v int64)`
+
+SetDisplayOrder sets DisplayOrder field to given value.
 
 
 ### GetHostedUrl

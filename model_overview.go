@@ -13,7 +13,6 @@ package mtnmanager
 
 import (
 	"encoding/json"
-	"time"
 	"bytes"
 	"fmt"
 )
@@ -31,42 +30,16 @@ type Overview struct {
 	ClosesAt NullableString `json:"closes_at,omitempty"`
 	// Current operating season (winter, summer, or closed/off-season).
 	Season SeasonType `json:"season"`
-	// Written news — daily update, announcements, etc. (Markdown source).
-	News string `json:"news"`
-	// Written news — daily update, announcements, etc. (rendered as HTML from Markdown).
-	NewsHtml string `json:"news_html"`
-	// When the written news was last updated.
-	NewsUpdatedAt time.Time `json:"news_updated_at"`
-	// Number of runs currently open.  Not included if the runs status feature is disabled.
-	OpenRuns NullableInt64 `json:"open_runs,omitempty"`
-	// Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled.
-	GroomedRuns NullableInt64 `json:"groomed_runs,omitempty"`
-	// Total number of runs at the resort.
-	TotalRuns int64 `json:"total_runs"`
-	// Total acres of open runs.  Not included if acres are not tracked or run status feature is disabled.
-	OpenAcres NullableInt64 `json:"open_acres,omitempty"`
-	// Total acres of all runs.  Not included if acres are not tracked.
-	TotalAcres NullableInt64 `json:"total_acres,omitempty"`
-	// When the most recent update to run status was made.
-	RunsUpdatedAt time.Time `json:"runs_updated_at"`
-	// Number of lifts currently open.  Not included if the lifts status feature is disabled.
-	OpenLifts NullableInt64 `json:"open_lifts,omitempty"`
-	// Total number of lifts at the resort.
-	TotalLifts int64 `json:"total_lifts"`
-	// When the most recent update to lift status was made.
-	LiftsUpdatedAt time.Time `json:"lifts_updated_at"`
-	// Number of summer trails currently open.  Not included if the summer trails status feature is disabled.
-	OpenSummerTrails NullableInt64 `json:"open_summer_trails,omitempty"`
-	// Total number of summer trails at the resort.
-	TotalSummerTrails int64 `json:"total_summer_trails"`
-	// When the most recent update to summer trail status was made.
-	SummerTrailsUpdatedAt time.Time `json:"summer_trails_updated_at"`
-	// Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled.
-	OpenTerrainParks NullableInt64 `json:"open_terrain_parks,omitempty"`
-	// Total number of terrain parks at the resort.
-	TotalTerrainParks int64 `json:"total_terrain_parks"`
-	// When the most recent update to terrain park status was made.
-	TerrainParksUpdatedAt time.Time `json:"terrain_parks_updated_at"`
+	// Written news — daily update, announcements, etc.
+	News OverviewNews `json:"news"`
+	// Run statistics: counts, acres, and last-updated timestamp.
+	Runs OverviewRuns `json:"runs"`
+	// Lift statistics: counts and last-updated timestamp.
+	Lifts OverviewLifts `json:"lifts"`
+	// Summer trail statistics: counts and last-updated timestamp.
+	SummerTrails OverviewSummerTrails `json:"summer_trails"`
+	// Terrain park statistics: counts and last-updated timestamp.
+	TerrainParks OverviewTerrainParks `json:"terrain_parks"`
 }
 
 type _Overview Overview
@@ -75,21 +48,15 @@ type _Overview Overview
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOverview(status ResortStatus, season SeasonType, news string, newsHtml string, newsUpdatedAt time.Time, totalRuns int64, runsUpdatedAt time.Time, totalLifts int64, liftsUpdatedAt time.Time, totalSummerTrails int64, summerTrailsUpdatedAt time.Time, totalTerrainParks int64, terrainParksUpdatedAt time.Time) *Overview {
+func NewOverview(status ResortStatus, season SeasonType, news OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks) *Overview {
 	this := Overview{}
 	this.Status = status
 	this.Season = season
 	this.News = news
-	this.NewsHtml = newsHtml
-	this.NewsUpdatedAt = newsUpdatedAt
-	this.TotalRuns = totalRuns
-	this.RunsUpdatedAt = runsUpdatedAt
-	this.TotalLifts = totalLifts
-	this.LiftsUpdatedAt = liftsUpdatedAt
-	this.TotalSummerTrails = totalSummerTrails
-	this.SummerTrailsUpdatedAt = summerTrailsUpdatedAt
-	this.TotalTerrainParks = totalTerrainParks
-	this.TerrainParksUpdatedAt = terrainParksUpdatedAt
+	this.Runs = runs
+	this.Lifts = lifts
+	this.SummerTrails = summerTrails
+	this.TerrainParks = terrainParks
 	return &this
 }
 
@@ -234,9 +201,9 @@ func (o *Overview) SetSeason(v SeasonType) {
 }
 
 // GetNews returns the News field value
-func (o *Overview) GetNews() string {
+func (o *Overview) GetNews() OverviewNews {
 	if o == nil {
-		var ret string
+		var ret OverviewNews
 		return ret
 	}
 
@@ -245,7 +212,7 @@ func (o *Overview) GetNews() string {
 
 // GetNewsOk returns a tuple with the News field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetNewsOk() (*string, bool) {
+func (o *Overview) GetNewsOk() (*OverviewNews, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -253,542 +220,104 @@ func (o *Overview) GetNewsOk() (*string, bool) {
 }
 
 // SetNews sets field value
-func (o *Overview) SetNews(v string) {
+func (o *Overview) SetNews(v OverviewNews) {
 	o.News = v
 }
 
-// GetNewsHtml returns the NewsHtml field value
-func (o *Overview) GetNewsHtml() string {
+// GetRuns returns the Runs field value
+func (o *Overview) GetRuns() OverviewRuns {
 	if o == nil {
-		var ret string
+		var ret OverviewRuns
 		return ret
 	}
 
-	return o.NewsHtml
+	return o.Runs
 }
 
-// GetNewsHtmlOk returns a tuple with the NewsHtml field value
+// GetRunsOk returns a tuple with the Runs field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetNewsHtmlOk() (*string, bool) {
+func (o *Overview) GetRunsOk() (*OverviewRuns, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.NewsHtml, true
+	return &o.Runs, true
 }
 
-// SetNewsHtml sets field value
-func (o *Overview) SetNewsHtml(v string) {
-	o.NewsHtml = v
+// SetRuns sets field value
+func (o *Overview) SetRuns(v OverviewRuns) {
+	o.Runs = v
 }
 
-// GetNewsUpdatedAt returns the NewsUpdatedAt field value
-func (o *Overview) GetNewsUpdatedAt() time.Time {
+// GetLifts returns the Lifts field value
+func (o *Overview) GetLifts() OverviewLifts {
 	if o == nil {
-		var ret time.Time
+		var ret OverviewLifts
 		return ret
 	}
 
-	return o.NewsUpdatedAt
+	return o.Lifts
 }
 
-// GetNewsUpdatedAtOk returns a tuple with the NewsUpdatedAt field value
+// GetLiftsOk returns a tuple with the Lifts field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetNewsUpdatedAtOk() (*time.Time, bool) {
+func (o *Overview) GetLiftsOk() (*OverviewLifts, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.NewsUpdatedAt, true
+	return &o.Lifts, true
 }
 
-// SetNewsUpdatedAt sets field value
-func (o *Overview) SetNewsUpdatedAt(v time.Time) {
-	o.NewsUpdatedAt = v
+// SetLifts sets field value
+func (o *Overview) SetLifts(v OverviewLifts) {
+	o.Lifts = v
 }
 
-// GetOpenRuns returns the OpenRuns field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetOpenRuns() int64 {
-	if o == nil || IsNil(o.OpenRuns.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.OpenRuns.Get()
-}
-
-// GetOpenRunsOk returns a tuple with the OpenRuns field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetOpenRunsOk() (*int64, bool) {
+// GetSummerTrails returns the SummerTrails field value
+func (o *Overview) GetSummerTrails() OverviewSummerTrails {
 	if o == nil {
-		return nil, false
-	}
-	return o.OpenRuns.Get(), o.OpenRuns.IsSet()
-}
-
-// HasOpenRuns returns a boolean if a field has been set.
-func (o *Overview) HasOpenRuns() bool {
-	if o != nil && o.OpenRuns.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenRuns gets a reference to the given NullableInt64 and assigns it to the OpenRuns field.
-func (o *Overview) SetOpenRuns(v int64) {
-	o.OpenRuns.Set(&v)
-}
-// SetOpenRunsNil sets the value for OpenRuns to be an explicit nil
-func (o *Overview) SetOpenRunsNil() {
-	o.OpenRuns.Set(nil)
-}
-
-// UnsetOpenRuns ensures that no value is present for OpenRuns, not even an explicit nil
-func (o *Overview) UnsetOpenRuns() {
-	o.OpenRuns.Unset()
-}
-
-// GetGroomedRuns returns the GroomedRuns field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetGroomedRuns() int64 {
-	if o == nil || IsNil(o.GroomedRuns.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.GroomedRuns.Get()
-}
-
-// GetGroomedRunsOk returns a tuple with the GroomedRuns field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetGroomedRunsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.GroomedRuns.Get(), o.GroomedRuns.IsSet()
-}
-
-// HasGroomedRuns returns a boolean if a field has been set.
-func (o *Overview) HasGroomedRuns() bool {
-	if o != nil && o.GroomedRuns.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetGroomedRuns gets a reference to the given NullableInt64 and assigns it to the GroomedRuns field.
-func (o *Overview) SetGroomedRuns(v int64) {
-	o.GroomedRuns.Set(&v)
-}
-// SetGroomedRunsNil sets the value for GroomedRuns to be an explicit nil
-func (o *Overview) SetGroomedRunsNil() {
-	o.GroomedRuns.Set(nil)
-}
-
-// UnsetGroomedRuns ensures that no value is present for GroomedRuns, not even an explicit nil
-func (o *Overview) UnsetGroomedRuns() {
-	o.GroomedRuns.Unset()
-}
-
-// GetTotalRuns returns the TotalRuns field value
-func (o *Overview) GetTotalRuns() int64 {
-	if o == nil {
-		var ret int64
+		var ret OverviewSummerTrails
 		return ret
 	}
 
-	return o.TotalRuns
+	return o.SummerTrails
 }
 
-// GetTotalRunsOk returns a tuple with the TotalRuns field value
+// GetSummerTrailsOk returns a tuple with the SummerTrails field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetTotalRunsOk() (*int64, bool) {
+func (o *Overview) GetSummerTrailsOk() (*OverviewSummerTrails, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.TotalRuns, true
+	return &o.SummerTrails, true
 }
 
-// SetTotalRuns sets field value
-func (o *Overview) SetTotalRuns(v int64) {
-	o.TotalRuns = v
+// SetSummerTrails sets field value
+func (o *Overview) SetSummerTrails(v OverviewSummerTrails) {
+	o.SummerTrails = v
 }
 
-// GetOpenAcres returns the OpenAcres field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetOpenAcres() int64 {
-	if o == nil || IsNil(o.OpenAcres.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.OpenAcres.Get()
-}
-
-// GetOpenAcresOk returns a tuple with the OpenAcres field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetOpenAcresOk() (*int64, bool) {
+// GetTerrainParks returns the TerrainParks field value
+func (o *Overview) GetTerrainParks() OverviewTerrainParks {
 	if o == nil {
-		return nil, false
-	}
-	return o.OpenAcres.Get(), o.OpenAcres.IsSet()
-}
-
-// HasOpenAcres returns a boolean if a field has been set.
-func (o *Overview) HasOpenAcres() bool {
-	if o != nil && o.OpenAcres.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenAcres gets a reference to the given NullableInt64 and assigns it to the OpenAcres field.
-func (o *Overview) SetOpenAcres(v int64) {
-	o.OpenAcres.Set(&v)
-}
-// SetOpenAcresNil sets the value for OpenAcres to be an explicit nil
-func (o *Overview) SetOpenAcresNil() {
-	o.OpenAcres.Set(nil)
-}
-
-// UnsetOpenAcres ensures that no value is present for OpenAcres, not even an explicit nil
-func (o *Overview) UnsetOpenAcres() {
-	o.OpenAcres.Unset()
-}
-
-// GetTotalAcres returns the TotalAcres field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetTotalAcres() int64 {
-	if o == nil || IsNil(o.TotalAcres.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.TotalAcres.Get()
-}
-
-// GetTotalAcresOk returns a tuple with the TotalAcres field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetTotalAcresOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TotalAcres.Get(), o.TotalAcres.IsSet()
-}
-
-// HasTotalAcres returns a boolean if a field has been set.
-func (o *Overview) HasTotalAcres() bool {
-	if o != nil && o.TotalAcres.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalAcres gets a reference to the given NullableInt64 and assigns it to the TotalAcres field.
-func (o *Overview) SetTotalAcres(v int64) {
-	o.TotalAcres.Set(&v)
-}
-// SetTotalAcresNil sets the value for TotalAcres to be an explicit nil
-func (o *Overview) SetTotalAcresNil() {
-	o.TotalAcres.Set(nil)
-}
-
-// UnsetTotalAcres ensures that no value is present for TotalAcres, not even an explicit nil
-func (o *Overview) UnsetTotalAcres() {
-	o.TotalAcres.Unset()
-}
-
-// GetRunsUpdatedAt returns the RunsUpdatedAt field value
-func (o *Overview) GetRunsUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
+		var ret OverviewTerrainParks
 		return ret
 	}
 
-	return o.RunsUpdatedAt
+	return o.TerrainParks
 }
 
-// GetRunsUpdatedAtOk returns a tuple with the RunsUpdatedAt field value
+// GetTerrainParksOk returns a tuple with the TerrainParks field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetRunsUpdatedAtOk() (*time.Time, bool) {
+func (o *Overview) GetTerrainParksOk() (*OverviewTerrainParks, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.RunsUpdatedAt, true
+	return &o.TerrainParks, true
 }
 
-// SetRunsUpdatedAt sets field value
-func (o *Overview) SetRunsUpdatedAt(v time.Time) {
-	o.RunsUpdatedAt = v
-}
-
-// GetOpenLifts returns the OpenLifts field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetOpenLifts() int64 {
-	if o == nil || IsNil(o.OpenLifts.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.OpenLifts.Get()
-}
-
-// GetOpenLiftsOk returns a tuple with the OpenLifts field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetOpenLiftsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenLifts.Get(), o.OpenLifts.IsSet()
-}
-
-// HasOpenLifts returns a boolean if a field has been set.
-func (o *Overview) HasOpenLifts() bool {
-	if o != nil && o.OpenLifts.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenLifts gets a reference to the given NullableInt64 and assigns it to the OpenLifts field.
-func (o *Overview) SetOpenLifts(v int64) {
-	o.OpenLifts.Set(&v)
-}
-// SetOpenLiftsNil sets the value for OpenLifts to be an explicit nil
-func (o *Overview) SetOpenLiftsNil() {
-	o.OpenLifts.Set(nil)
-}
-
-// UnsetOpenLifts ensures that no value is present for OpenLifts, not even an explicit nil
-func (o *Overview) UnsetOpenLifts() {
-	o.OpenLifts.Unset()
-}
-
-// GetTotalLifts returns the TotalLifts field value
-func (o *Overview) GetTotalLifts() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.TotalLifts
-}
-
-// GetTotalLiftsOk returns a tuple with the TotalLifts field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetTotalLiftsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalLifts, true
-}
-
-// SetTotalLifts sets field value
-func (o *Overview) SetTotalLifts(v int64) {
-	o.TotalLifts = v
-}
-
-// GetLiftsUpdatedAt returns the LiftsUpdatedAt field value
-func (o *Overview) GetLiftsUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.LiftsUpdatedAt
-}
-
-// GetLiftsUpdatedAtOk returns a tuple with the LiftsUpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetLiftsUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.LiftsUpdatedAt, true
-}
-
-// SetLiftsUpdatedAt sets field value
-func (o *Overview) SetLiftsUpdatedAt(v time.Time) {
-	o.LiftsUpdatedAt = v
-}
-
-// GetOpenSummerTrails returns the OpenSummerTrails field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetOpenSummerTrails() int64 {
-	if o == nil || IsNil(o.OpenSummerTrails.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.OpenSummerTrails.Get()
-}
-
-// GetOpenSummerTrailsOk returns a tuple with the OpenSummerTrails field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetOpenSummerTrailsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenSummerTrails.Get(), o.OpenSummerTrails.IsSet()
-}
-
-// HasOpenSummerTrails returns a boolean if a field has been set.
-func (o *Overview) HasOpenSummerTrails() bool {
-	if o != nil && o.OpenSummerTrails.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenSummerTrails gets a reference to the given NullableInt64 and assigns it to the OpenSummerTrails field.
-func (o *Overview) SetOpenSummerTrails(v int64) {
-	o.OpenSummerTrails.Set(&v)
-}
-// SetOpenSummerTrailsNil sets the value for OpenSummerTrails to be an explicit nil
-func (o *Overview) SetOpenSummerTrailsNil() {
-	o.OpenSummerTrails.Set(nil)
-}
-
-// UnsetOpenSummerTrails ensures that no value is present for OpenSummerTrails, not even an explicit nil
-func (o *Overview) UnsetOpenSummerTrails() {
-	o.OpenSummerTrails.Unset()
-}
-
-// GetTotalSummerTrails returns the TotalSummerTrails field value
-func (o *Overview) GetTotalSummerTrails() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.TotalSummerTrails
-}
-
-// GetTotalSummerTrailsOk returns a tuple with the TotalSummerTrails field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetTotalSummerTrailsOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalSummerTrails, true
-}
-
-// SetTotalSummerTrails sets field value
-func (o *Overview) SetTotalSummerTrails(v int64) {
-	o.TotalSummerTrails = v
-}
-
-// GetSummerTrailsUpdatedAt returns the SummerTrailsUpdatedAt field value
-func (o *Overview) GetSummerTrailsUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.SummerTrailsUpdatedAt
-}
-
-// GetSummerTrailsUpdatedAtOk returns a tuple with the SummerTrailsUpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetSummerTrailsUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SummerTrailsUpdatedAt, true
-}
-
-// SetSummerTrailsUpdatedAt sets field value
-func (o *Overview) SetSummerTrailsUpdatedAt(v time.Time) {
-	o.SummerTrailsUpdatedAt = v
-}
-
-// GetOpenTerrainParks returns the OpenTerrainParks field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Overview) GetOpenTerrainParks() int64 {
-	if o == nil || IsNil(o.OpenTerrainParks.Get()) {
-		var ret int64
-		return ret
-	}
-	return *o.OpenTerrainParks.Get()
-}
-
-// GetOpenTerrainParksOk returns a tuple with the OpenTerrainParks field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Overview) GetOpenTerrainParksOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.OpenTerrainParks.Get(), o.OpenTerrainParks.IsSet()
-}
-
-// HasOpenTerrainParks returns a boolean if a field has been set.
-func (o *Overview) HasOpenTerrainParks() bool {
-	if o != nil && o.OpenTerrainParks.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetOpenTerrainParks gets a reference to the given NullableInt64 and assigns it to the OpenTerrainParks field.
-func (o *Overview) SetOpenTerrainParks(v int64) {
-	o.OpenTerrainParks.Set(&v)
-}
-// SetOpenTerrainParksNil sets the value for OpenTerrainParks to be an explicit nil
-func (o *Overview) SetOpenTerrainParksNil() {
-	o.OpenTerrainParks.Set(nil)
-}
-
-// UnsetOpenTerrainParks ensures that no value is present for OpenTerrainParks, not even an explicit nil
-func (o *Overview) UnsetOpenTerrainParks() {
-	o.OpenTerrainParks.Unset()
-}
-
-// GetTotalTerrainParks returns the TotalTerrainParks field value
-func (o *Overview) GetTotalTerrainParks() int64 {
-	if o == nil {
-		var ret int64
-		return ret
-	}
-
-	return o.TotalTerrainParks
-}
-
-// GetTotalTerrainParksOk returns a tuple with the TotalTerrainParks field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetTotalTerrainParksOk() (*int64, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TotalTerrainParks, true
-}
-
-// SetTotalTerrainParks sets field value
-func (o *Overview) SetTotalTerrainParks(v int64) {
-	o.TotalTerrainParks = v
-}
-
-// GetTerrainParksUpdatedAt returns the TerrainParksUpdatedAt field value
-func (o *Overview) GetTerrainParksUpdatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.TerrainParksUpdatedAt
-}
-
-// GetTerrainParksUpdatedAtOk returns a tuple with the TerrainParksUpdatedAt field value
-// and a boolean to check if the value has been set.
-func (o *Overview) GetTerrainParksUpdatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.TerrainParksUpdatedAt, true
-}
-
-// SetTerrainParksUpdatedAt sets field value
-func (o *Overview) SetTerrainParksUpdatedAt(v time.Time) {
-	o.TerrainParksUpdatedAt = v
+// SetTerrainParks sets field value
+func (o *Overview) SetTerrainParks(v OverviewTerrainParks) {
+	o.TerrainParks = v
 }
 
 func (o Overview) MarshalJSON() ([]byte, error) {
@@ -810,37 +339,10 @@ func (o Overview) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["season"] = o.Season
 	toSerialize["news"] = o.News
-	toSerialize["news_html"] = o.NewsHtml
-	toSerialize["news_updated_at"] = o.NewsUpdatedAt
-	if o.OpenRuns.IsSet() {
-		toSerialize["open_runs"] = o.OpenRuns.Get()
-	}
-	if o.GroomedRuns.IsSet() {
-		toSerialize["groomed_runs"] = o.GroomedRuns.Get()
-	}
-	toSerialize["total_runs"] = o.TotalRuns
-	if o.OpenAcres.IsSet() {
-		toSerialize["open_acres"] = o.OpenAcres.Get()
-	}
-	if o.TotalAcres.IsSet() {
-		toSerialize["total_acres"] = o.TotalAcres.Get()
-	}
-	toSerialize["runs_updated_at"] = o.RunsUpdatedAt
-	if o.OpenLifts.IsSet() {
-		toSerialize["open_lifts"] = o.OpenLifts.Get()
-	}
-	toSerialize["total_lifts"] = o.TotalLifts
-	toSerialize["lifts_updated_at"] = o.LiftsUpdatedAt
-	if o.OpenSummerTrails.IsSet() {
-		toSerialize["open_summer_trails"] = o.OpenSummerTrails.Get()
-	}
-	toSerialize["total_summer_trails"] = o.TotalSummerTrails
-	toSerialize["summer_trails_updated_at"] = o.SummerTrailsUpdatedAt
-	if o.OpenTerrainParks.IsSet() {
-		toSerialize["open_terrain_parks"] = o.OpenTerrainParks.Get()
-	}
-	toSerialize["total_terrain_parks"] = o.TotalTerrainParks
-	toSerialize["terrain_parks_updated_at"] = o.TerrainParksUpdatedAt
+	toSerialize["runs"] = o.Runs
+	toSerialize["lifts"] = o.Lifts
+	toSerialize["summer_trails"] = o.SummerTrails
+	toSerialize["terrain_parks"] = o.TerrainParks
 	return toSerialize, nil
 }
 
@@ -852,16 +354,10 @@ func (o *Overview) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"season",
 		"news",
-		"news_html",
-		"news_updated_at",
-		"total_runs",
-		"runs_updated_at",
-		"total_lifts",
-		"lifts_updated_at",
-		"total_summer_trails",
-		"summer_trails_updated_at",
-		"total_terrain_parks",
-		"terrain_parks_updated_at",
+		"runs",
+		"lifts",
+		"summer_trails",
+		"terrain_parks",
 	}
 
 	allProperties := make(map[string]interface{})

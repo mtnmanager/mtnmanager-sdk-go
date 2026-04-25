@@ -24,6 +24,8 @@ var _ MappedNullable = &TrailMapSummary{}
 type TrailMapSummary struct {
 	Uuid string `json:"uuid"`
 	Name string `json:"name"`
+	Season SeasonType `json:"season"`
+	DisplayOrder int64 `json:"display_order"`
 	HostedUrl string `json:"hosted_url"`
 }
 
@@ -33,10 +35,12 @@ type _TrailMapSummary TrailMapSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMapSummary(uuid string, name string, hostedUrl string) *TrailMapSummary {
+func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string) *TrailMapSummary {
 	this := TrailMapSummary{}
 	this.Uuid = uuid
 	this.Name = name
+	this.Season = season
+	this.DisplayOrder = displayOrder
 	this.HostedUrl = hostedUrl
 	return &this
 }
@@ -97,6 +101,54 @@ func (o *TrailMapSummary) SetName(v string) {
 	o.Name = v
 }
 
+// GetSeason returns the Season field value
+func (o *TrailMapSummary) GetSeason() SeasonType {
+	if o == nil {
+		var ret SeasonType
+		return ret
+	}
+
+	return o.Season
+}
+
+// GetSeasonOk returns a tuple with the Season field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapSummary) GetSeasonOk() (*SeasonType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Season, true
+}
+
+// SetSeason sets field value
+func (o *TrailMapSummary) SetSeason(v SeasonType) {
+	o.Season = v
+}
+
+// GetDisplayOrder returns the DisplayOrder field value
+func (o *TrailMapSummary) GetDisplayOrder() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.DisplayOrder
+}
+
+// GetDisplayOrderOk returns a tuple with the DisplayOrder field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapSummary) GetDisplayOrderOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisplayOrder, true
+}
+
+// SetDisplayOrder sets field value
+func (o *TrailMapSummary) SetDisplayOrder(v int64) {
+	o.DisplayOrder = v
+}
+
 // GetHostedUrl returns the HostedUrl field value
 func (o *TrailMapSummary) GetHostedUrl() string {
 	if o == nil {
@@ -133,6 +185,8 @@ func (o TrailMapSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["name"] = o.Name
+	toSerialize["season"] = o.Season
+	toSerialize["display_order"] = o.DisplayOrder
 	toSerialize["hosted_url"] = o.HostedUrl
 	return toSerialize, nil
 }
@@ -144,6 +198,8 @@ func (o *TrailMapSummary) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"uuid",
 		"name",
+		"season",
+		"display_order",
 		"hosted_url",
 	}
 

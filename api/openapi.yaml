@@ -39,23 +39,28 @@ paths:
                   opens_at: 09:00
                   closes_at: 16:00
                   season: winter
-                  news: Fresh powder overnight! All lifts spinning.
-                  news_html: <p>Fresh powder overnight! All lifts spinning.</p>
-                  news_updated_at: 2026-01-26T16:26:33+00:00
-                  open_runs: 42
-                  groomed_runs: 38
-                  total_runs: 50
-                  open_acres: 850
-                  total_acres: 1200
-                  runs_updated_at: 2026-01-26T16:26:33+00:00
-                  open_lifts: 8
-                  total_lifts: 10
-                  lifts_updated_at: 2026-01-26T16:26:33+00:00
-                  total_summer_trails: 0
-                  summer_trails_updated_at: 2026-01-26T16:26:33+00:00
-                  open_terrain_parks: 3
-                  total_terrain_parks: 4
-                  terrain_parks_updated_at: 2026-01-26T16:26:33+00:00
+                  news:
+                    raw: Fresh powder overnight! All lifts spinning.
+                    html: <p>Fresh powder overnight! All lifts spinning.</p>
+                    updated_at: 2026-01-26T16:26:33+00:00
+                  runs:
+                    open: 42
+                    groomed: 38
+                    total: 50
+                    open_acres: 850
+                    total_acres: 1200
+                    updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                    open: 8
+                    total: 10
+                    updated_at: 2026-01-26T16:26:33+00:00
+                  summer_trails:
+                    total: 0
+                    updated_at: 2026-01-26T16:26:33+00:00
+                  terrain_parks:
+                    open: 3
+                    total: 4
+                    updated_at: 2026-01-26T16:26:33+00:00
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -345,23 +350,28 @@ paths:
                 opens_at: 09:00
                 closes_at: 16:00
                 season: winter
-                news: Fresh powder overnight! All lifts spinning.
-                news_html: <p>Fresh powder overnight! All lifts spinning.</p>
-                news_updated_at: 2026-01-26T16:26:33+00:00
-                open_runs: 42
-                groomed_runs: 38
-                total_runs: 50
-                open_acres: 850
-                total_acres: 1200
-                runs_updated_at: 2026-01-26T16:26:33+00:00
-                open_lifts: 8
-                total_lifts: 10
-                lifts_updated_at: 2026-01-26T16:26:33+00:00
-                total_summer_trails: 0
-                summer_trails_updated_at: 2026-01-26T16:26:33+00:00
-                open_terrain_parks: 3
-                total_terrain_parks: 4
-                terrain_parks_updated_at: 2026-01-26T16:26:33+00:00
+                news:
+                  raw: Fresh powder overnight! All lifts spinning.
+                  html: <p>Fresh powder overnight! All lifts spinning.</p>
+                  updated_at: 2026-01-26T16:26:33+00:00
+                runs:
+                  open: 42
+                  groomed: 38
+                  total: 50
+                  open_acres: 850
+                  total_acres: 1200
+                  updated_at: 2026-01-26T16:26:33+00:00
+                lifts:
+                  open: 8
+                  total: 10
+                  updated_at: 2026-01-26T16:26:33+00:00
+                summer_trails:
+                  total: 0
+                  updated_at: 2026-01-26T16:26:33+00:00
+                terrain_parks:
+                  open: 3
+                  total: 4
+                  updated_at: 2026-01-26T16:26:33+00:00
               schema:
                 $ref: "#/components/schemas/Overview"
           description: ""
@@ -1262,6 +1272,8 @@ paths:
               example:
               - uuid: 550e8400-e29b-41d4-a716-446655440000
                 name: Winter Trail Map
+                season: winter
+                display_order: 0
                 hosted_url: https://powder-mountain.mtnmanager.com/hosted/trail-map/550e8400-e29b-41d4-a716-446655440000
               schema:
                 $ref: "#/components/schemas/TrailMapsResponse"
@@ -1431,7 +1443,7 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 2
+          area_display_order: 4
           uuid: uuid
           slug: slug
           trail_type:
@@ -1445,7 +1457,7 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 2
+          area_display_order: 4
           uuid: uuid
           slug: slug
           trail_type:
@@ -1461,7 +1473,7 @@ components:
           uuid: uuid
           slug: slug
           status: ""
-          capacity: 6
+          capacity: 7
         - reservation_required: true
           shuttle: true
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -1470,7 +1482,7 @@ components:
           uuid: uuid
           slug: slug
           status: ""
-          capacity: 6
+          capacity: 7
         hours:
           amenity_schedules:
           - schedules:
@@ -1587,17 +1599,17 @@ components:
             effective_from: 2000-01-23
         terrain_parks:
         - area_name: area_name
-          number: 9
+          number: 1
           features:
           - feature_type: ""
-            number: 3
+            number: 6
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 3
+            number: 6
             size: ""
             name: name
             uuid: uuid
@@ -1607,22 +1619,22 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 6
+          area_display_order: 1
           uuid: uuid
           slug: slug
           status: ""
         - area_name: area_name
-          number: 9
+          number: 1
           features:
           - feature_type: ""
-            number: 3
+            number: 6
             size: ""
             name: name
             uuid: uuid
             slug: slug
             status: ""
           - feature_type: ""
-            number: 3
+            number: 6
             size: ""
             name: name
             uuid: uuid
@@ -1632,7 +1644,7 @@ components:
           condition_notes: condition_notes
           name: name
           area_uuid: area_uuid
-          area_display_order: 6
+          area_display_order: 1
           uuid: uuid
           slug: slug
           status: ""
@@ -1640,70 +1652,70 @@ components:
         - area_name: area_name
           snowfall_cm: ""
           surface_condition: ""
-          base_depth_cm: 1
+          base_depth_cm: 6
           secondary_surface_condition: ""
           reported_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           area_uuid: area_uuid
-          area_display_order: 7
+          area_display_order: 0
           uuid: uuid
           base_depth_in: 1
           snowfall_in: ""
         - area_name: area_name
           snowfall_cm: ""
           surface_condition: ""
-          base_depth_cm: 1
+          base_depth_cm: 6
           secondary_surface_condition: ""
           reported_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           area_uuid: area_uuid
-          area_display_order: 7
+          area_display_order: 0
           uuid: uuid
           base_depth_in: 1
           snowfall_in: ""
         weather: ""
         lifts:
         - area_name: area_name
-          wait_time_minutes: 9
+          wait_time_minutes: 2
           high_speed: true
-          vertical_rise_ft: 4
+          vertical_rise_ft: 9
           area_uuid: area_uuid
           uuid: uuid
-          travel_time: 6.84685269835264
+          travel_time: 5.637376656633329
           opens_at: opens_at
-          number: 1
-          vertical_rise_m: 5
+          number: 5
+          vertical_rise_m: 3
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
           closes_at: closes_at
-          area_display_order: 9
+          area_display_order: 4
           slug: slug
-          length_ft: 7
-          length_m: 1
+          length_ft: 2
+          length_m: 7
           status: ""
         - area_name: area_name
-          wait_time_minutes: 9
+          wait_time_minutes: 2
           high_speed: true
-          vertical_rise_ft: 4
+          vertical_rise_ft: 9
           area_uuid: area_uuid
           uuid: uuid
-          travel_time: 6.84685269835264
+          travel_time: 5.637376656633329
           opens_at: opens_at
-          number: 1
-          vertical_rise_m: 5
+          number: 5
+          vertical_rise_m: 3
           updated_at: 2000-01-23T04:56:07.000+00:00
           bubble: true
           lift_type: ""
           name: name
           heated: true
           closes_at: closes_at
-          area_display_order: 9
+          area_display_order: 4
           slug: slug
-          length_ft: 7
-          length_m: 1
+          length_ft: 2
+          length_m: 7
           status: ""
         resort:
           timezone: timezone
@@ -1717,14 +1729,14 @@ components:
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 6
+          number: 7
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 8
+          area_display_order: 1
           slug: slug
           night_skiing: true
           status: ""
@@ -1732,40 +1744,27 @@ components:
           area_uuid: area_uuid
           uuid: uuid
           difficulty: ""
-          number: 6
+          number: 7
           groomed_today: true
           updated_at: 2000-01-23T04:56:07.000+00:00
           condition_notes: condition_notes
           name: name
           snowmaking: true
           last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 8
+          area_display_order: 1
           slug: slug
           night_skiing: true
           status: ""
         status:
-          news: news
-          runs_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_lifts: 7
-          open_acres: 5
-          open_summer_trails: 9
-          open_terrain_parks: 2
           opens_at: opens_at
-          total_runs: 1
-          summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_acres: 5
-          open_runs: 0
+          news: ""
+          summer_trails: ""
+          terrain_parks: ""
           season: ""
-          groomed_runs: 6
-          news_html: news_html
-          lifts_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_terrain_parks: 4
+          lifts: ""
           closes_at: closes_at
-          news_updated_at: 2000-01-23T04:56:07.000+00:00
-          total_summer_trails: 3
+          runs: ""
           status: ""
-          open_lifts: 2
-          terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         resort:
           $ref: "#/components/schemas/ResortInfo"
@@ -1886,28 +1885,15 @@ components:
          today's scheduled hours (calculated from operating hour rules), run/lift
          overview counts, the current season, and written news.
       example:
-        news: news
-        runs_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_lifts: 7
-        open_acres: 5
-        open_summer_trails: 9
-        open_terrain_parks: 2
         opens_at: opens_at
-        total_runs: 1
-        summer_trails_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_acres: 5
-        open_runs: 0
+        news: ""
+        summer_trails: ""
+        terrain_parks: ""
         season: ""
-        groomed_runs: 6
-        news_html: news_html
-        lifts_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_terrain_parks: 4
+        lifts: ""
         closes_at: closes_at
-        news_updated_at: 2000-01-23T04:56:07.000+00:00
-        total_summer_trails: 3
+        runs: ""
         status: ""
-        open_lifts: 2
-        terrain_parks_updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         status:
           allOf:
@@ -1932,39 +1918,96 @@ components:
           - $ref: "#/components/schemas/SeasonType"
           description: "Current operating season (winter, summer, or closed/off-season)."
         news:
-          description: "Written news — daily update, announcements, etc. (Markdown\
-            \ source)."
+          allOf:
+          - $ref: "#/components/schemas/OverviewNews"
+          description: "Written news — daily update, announcements, etc."
+        runs:
+          allOf:
+          - $ref: "#/components/schemas/OverviewRuns"
+          description: "Run statistics: counts, acres, and last-updated timestamp."
+        lifts:
+          allOf:
+          - $ref: "#/components/schemas/OverviewLifts"
+          description: "Lift statistics: counts and last-updated timestamp."
+        summer_trails:
+          allOf:
+          - $ref: "#/components/schemas/OverviewSummerTrails"
+          description: "Summer trail statistics: counts and last-updated timestamp."
+        terrain_parks:
+          allOf:
+          - $ref: "#/components/schemas/OverviewTerrainParks"
+          description: "Terrain park statistics: counts and last-updated timestamp."
+      required:
+      - lifts
+      - news
+      - runs
+      - season
+      - status
+      - summer_trails
+      - terrain_parks
+    ResortStatus:
+      description: Current operational status of the resort.
+      enum:
+      - open
+      - closed
+      type: string
+    SeasonType:
+      description: Current operating season of the resort.
+      oneOf:
+      - enum:
+        - winter
+        - summer
+        type: string
+      - description: |-
+          Resort is not operating. Not a valid season for trail maps — they must
+           be tagged Winter or Summer so the public site can pick one based on the
+           resort's current SeasonType.
+        enum:
+        - closed
+        type: string
+    OverviewNews:
+      description: "Written news — daily update, announcements, etc."
+      properties:
+        raw:
+          description: Raw Markdown source.
           type: string
-        news_html:
-          description: "Written news — daily update, announcements, etc. (rendered\
-            \ as HTML from Markdown)."
+        html:
+          description: Rendered HTML (from Markdown).
           type: string
-        news_updated_at:
-          description: When the written news was last updated.
+        updated_at:
+          description: When the news was last updated.
           format: date-time
           type: string
-        open_runs:
+      required:
+      - html
+      - raw
+      - updated_at
+    OverviewRuns:
+      description: "Run statistics: open/groomed/total counts, open/total acres, and\
+        \ last-updated timestamp."
+      properties:
+        open:
           description: |-
             Number of runs currently open.
              Not included if the runs status feature is disabled.
           format: int64
           nullable: true
           type: integer
-        groomed_runs:
+        groomed:
           description: |-
             Number of runs groomed within the last 24 hours.
              Not included if the runs grooming feature is disabled.
           format: int64
           nullable: true
           type: integer
-        total_runs:
+        total:
           description: Total number of runs at the resort.
           format: int64
           type: integer
         open_acres:
           description: |-
             Total acres of open runs.
-             Not included if acres are not tracked or run status feature is disabled.
+             Not included if acres are not tracked or the runs status feature is disabled.
           format: int64
           nullable: true
           type: integer
@@ -1975,82 +2018,76 @@ components:
           format: int64
           nullable: true
           type: integer
-        runs_updated_at:
+        updated_at:
           description: When the most recent update to run status was made.
           format: date-time
           type: string
-        open_lifts:
+      required:
+      - total
+      - updated_at
+    OverviewLifts:
+      description: "Lift statistics: open/total counts and last-updated timestamp."
+      properties:
+        open:
           description: |-
             Number of lifts currently open.
              Not included if the lifts status feature is disabled.
           format: int64
           nullable: true
           type: integer
-        total_lifts:
+        total:
           description: Total number of lifts at the resort.
           format: int64
           type: integer
-        lifts_updated_at:
+        updated_at:
           description: When the most recent update to lift status was made.
           format: date-time
           type: string
-        open_summer_trails:
+      required:
+      - total
+      - updated_at
+    OverviewSummerTrails:
+      description: "Summer trail statistics: open/total counts and last-updated timestamp."
+      properties:
+        open:
           description: |-
             Number of summer trails currently open.
              Not included if the summer trails status feature is disabled.
           format: int64
           nullable: true
           type: integer
-        total_summer_trails:
+        total:
           description: Total number of summer trails at the resort.
           format: int64
           type: integer
-        summer_trails_updated_at:
+        updated_at:
           description: When the most recent update to summer trail status was made.
           format: date-time
           type: string
-        open_terrain_parks:
+      required:
+      - total
+      - updated_at
+    OverviewTerrainParks:
+      description: "Terrain park statistics: open/total counts and last-updated timestamp."
+      properties:
+        open:
           description: |-
             Number of terrain parks currently open.
              Not included if the terrain parks status feature is disabled.
           format: int64
           nullable: true
           type: integer
-        total_terrain_parks:
+        total:
           description: Total number of terrain parks at the resort.
           format: int64
           type: integer
-        terrain_parks_updated_at:
+        updated_at:
           description: When the most recent update to terrain park status was made.
           format: date-time
           type: string
       required:
-      - lifts_updated_at
-      - news
-      - news_html
-      - news_updated_at
-      - runs_updated_at
-      - season
-      - status
-      - summer_trails_updated_at
-      - terrain_parks_updated_at
-      - total_lifts
-      - total_runs
-      - total_summer_trails
-      - total_terrain_parks
-    ResortStatus:
-      description: Current operational status of the resort.
-      enum:
-      - open
-      - closed
-      type: string
-    SeasonType:
-      description: Current operating season of the resort.
-      enum:
-      - winter
-      - summer
-      - closed
-      type: string
+      - total
+      - updated_at
     SnowReport:
       description: |-
         Provides current snow conditions for a specific area or the entire resort,
@@ -2060,12 +2097,12 @@ components:
         area_name: area_name
         snowfall_cm: ""
         surface_condition: ""
-        base_depth_cm: 1
+        base_depth_cm: 6
         secondary_surface_condition: ""
         reported_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         area_uuid: area_uuid
-        area_display_order: 7
+        area_display_order: 0
         uuid: uuid
         base_depth_in: 1
         snowfall_in: ""
@@ -2228,25 +2265,25 @@ components:
          type, and optional wait time information.
       example:
         area_name: area_name
-        wait_time_minutes: 9
+        wait_time_minutes: 2
         high_speed: true
-        vertical_rise_ft: 4
+        vertical_rise_ft: 9
         area_uuid: area_uuid
         uuid: uuid
-        travel_time: 6.84685269835264
+        travel_time: 5.637376656633329
         opens_at: opens_at
-        number: 1
-        vertical_rise_m: 5
+        number: 5
+        vertical_rise_m: 3
         updated_at: 2000-01-23T04:56:07.000+00:00
         bubble: true
         lift_type: ""
         name: name
         heated: true
         closes_at: closes_at
-        area_display_order: 9
+        area_display_order: 4
         slug: slug
-        length_ft: 7
-        length_m: 1
+        length_ft: 2
+        length_m: 7
         status: ""
       properties:
         uuid:
@@ -2384,14 +2421,14 @@ components:
         area_uuid: area_uuid
         uuid: uuid
         difficulty: ""
-        number: 6
+        number: 7
         groomed_today: true
         updated_at: 2000-01-23T04:56:07.000+00:00
         condition_notes: condition_notes
         name: name
         snowmaking: true
         last_groomed: 2000-01-23T04:56:07.000+00:00
-        area_display_order: 8
+        area_display_order: 1
         slug: slug
         night_skiing: true
         status: ""
@@ -2488,17 +2525,17 @@ components:
          condition notes, and list of features (jumps, boxes, rails, etc.) within it.
       example:
         area_name: area_name
-        number: 9
+        number: 1
         features:
         - feature_type: ""
-          number: 3
+          number: 6
           size: ""
           name: name
           uuid: uuid
           slug: slug
           status: ""
         - feature_type: ""
-          number: 3
+          number: 6
           size: ""
           name: name
           uuid: uuid
@@ -2508,7 +2545,7 @@ components:
         condition_notes: condition_notes
         name: name
         area_uuid: area_uuid
-        area_display_order: 6
+        area_display_order: 1
         uuid: uuid
         slug: slug
         status: ""
@@ -2578,7 +2615,7 @@ components:
          with its current status and size rating.
       example:
         feature_type: ""
-        number: 3
+        number: 6
         size: ""
         name: name
         uuid: uuid
@@ -2655,7 +2692,7 @@ components:
         uuid: uuid
         slug: slug
         status: ""
-        capacity: 6
+        capacity: 7
       properties:
         uuid:
           description: Unique identifier for the parking lot.
@@ -2716,7 +2753,7 @@ components:
         condition_notes: condition_notes
         name: name
         area_uuid: area_uuid
-        area_display_order: 2
+        area_display_order: 4
         uuid: uuid
         slug: slug
         trail_type:
@@ -3708,17 +3745,26 @@ components:
       example:
         hosted_url: hosted_url
         name: name
+        display_order: 0
+        season: winter
         uuid: uuid
       properties:
         uuid:
           type: string
         name:
           type: string
+        season:
+          $ref: "#/components/schemas/SeasonType"
+        display_order:
+          format: int64
+          type: integer
         hosted_url:
           type: string
       required:
+      - display_order
       - hosted_url
       - name
+      - season
       - uuid
     PathUuid:
       properties:
@@ -3732,30 +3778,32 @@ components:
       example:
         background_image_url: background_image_url
         elements:
-        - tension: 6.027456183070403
+        - tension: 1.4658129805029452
           lift: ""
           type: lift
           uuid: uuid
           points:
-          - 0.8008281904610115
-          - 0.8008281904610115
-        - tension: 6.027456183070403
+          - 6.027456183070403
+          - 6.027456183070403
+        - tension: 1.4658129805029452
           lift: ""
           type: lift
           uuid: uuid
           points:
-          - 0.8008281904610115
-          - 0.8008281904610115
+          - 6.027456183070403
+          - 6.027456183070403
         name: name
+        display_order: 0
+        season: winter
         geo_control_points:
-        - pixel_y: 5.962133916683182
-          lng: 2.3021358869347655
-          pixel_x: 1.4658129805029452
-          lat: 5.637376656633329
-        - pixel_y: 5.962133916683182
-          lng: 2.3021358869347655
-          pixel_x: 1.4658129805029452
-          lat: 5.637376656633329
+        - pixel_y: 5.637376656633329
+          lng: 7.061401241503109
+          pixel_x: 5.962133916683182
+          lat: 2.3021358869347655
+        - pixel_y: 5.637376656633329
+          lng: 7.061401241503109
+          pixel_x: 5.962133916683182
+          lat: 2.3021358869347655
         resort:
           timezone: timezone
           name: name
@@ -3772,6 +3820,11 @@ components:
           type: string
         slug:
           type: string
+        season:
+          $ref: "#/components/schemas/SeasonType"
+        display_order:
+          format: int64
+          type: integer
         background_image_url:
           type: string
         resort:
@@ -3787,9 +3840,11 @@ components:
           type: array
       required:
       - background_image_url
+      - display_order
       - elements
       - name
       - resort
+      - season
       - slug
       - uuid
     TrailMapElement:
@@ -3875,10 +3930,10 @@ components:
       - $ref: "#/components/schemas/PointMarker_oneOf_2"
     GeoControlPoint:
       example:
-        pixel_y: 5.962133916683182
-        lng: 2.3021358869347655
-        pixel_x: 1.4658129805029452
-        lat: 5.637376656633329
+        pixel_y: 5.637376656633329
+        lng: 7.061401241503109
+        pixel_x: 5.962133916683182
+        lat: 2.3021358869347655
       properties:
         pixel_x:
           format: double
@@ -3899,13 +3954,13 @@ components:
       - pixel_y
     TrailMapElement_oneOf:
       example:
-        tension: 6.027456183070403
+        tension: 1.4658129805029452
         lift: ""
         type: lift
         uuid: uuid
         points:
-        - 0.8008281904610115
-        - 0.8008281904610115
+        - 6.027456183070403
+        - 6.027456183070403
       properties:
         type:
           enum:
