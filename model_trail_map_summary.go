@@ -27,6 +27,10 @@ type TrailMapSummary struct {
 	Season SeasonType `json:"season"`
 	DisplayOrder int64 `json:"display_order"`
 	HostedUrl string `json:"hosted_url"`
+	// Lat/lng bounding box of this map's georeferenced area, plus the  centroid of its control points (used for tie-breaking when multiple  maps cover the same point). Omitted when the map has no georeferencing.
+	GeoBounds NullableGeoBounds `json:"geo_bounds,omitempty"`
+	// Deduplicated UUIDs of every entity (lift, run, terrain park,  summer trail, amenity, parking lot) referenced by this map's elements.
+	EntityUuids []string `json:"entity_uuids"`
 }
 
 type _TrailMapSummary TrailMapSummary
@@ -35,13 +39,14 @@ type _TrailMapSummary TrailMapSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string) *TrailMapSummary {
+func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, entityUuids []string) *TrailMapSummary {
 	this := TrailMapSummary{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Season = season
 	this.DisplayOrder = displayOrder
 	this.HostedUrl = hostedUrl
+	this.EntityUuids = entityUuids
 	return &this
 }
 
@@ -173,6 +178,72 @@ func (o *TrailMapSummary) SetHostedUrl(v string) {
 	o.HostedUrl = v
 }
 
+// GetGeoBounds returns the GeoBounds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapSummary) GetGeoBounds() GeoBounds {
+	if o == nil || IsNil(o.GeoBounds.Get()) {
+		var ret GeoBounds
+		return ret
+	}
+	return *o.GeoBounds.Get()
+}
+
+// GetGeoBoundsOk returns a tuple with the GeoBounds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapSummary) GetGeoBoundsOk() (*GeoBounds, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GeoBounds.Get(), o.GeoBounds.IsSet()
+}
+
+// HasGeoBounds returns a boolean if a field has been set.
+func (o *TrailMapSummary) HasGeoBounds() bool {
+	if o != nil && o.GeoBounds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGeoBounds gets a reference to the given NullableGeoBounds and assigns it to the GeoBounds field.
+func (o *TrailMapSummary) SetGeoBounds(v GeoBounds) {
+	o.GeoBounds.Set(&v)
+}
+// SetGeoBoundsNil sets the value for GeoBounds to be an explicit nil
+func (o *TrailMapSummary) SetGeoBoundsNil() {
+	o.GeoBounds.Set(nil)
+}
+
+// UnsetGeoBounds ensures that no value is present for GeoBounds, not even an explicit nil
+func (o *TrailMapSummary) UnsetGeoBounds() {
+	o.GeoBounds.Unset()
+}
+
+// GetEntityUuids returns the EntityUuids field value
+func (o *TrailMapSummary) GetEntityUuids() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.EntityUuids
+}
+
+// GetEntityUuidsOk returns a tuple with the EntityUuids field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapSummary) GetEntityUuidsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EntityUuids, true
+}
+
+// SetEntityUuids sets field value
+func (o *TrailMapSummary) SetEntityUuids(v []string) {
+	o.EntityUuids = v
+}
+
 func (o TrailMapSummary) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -188,6 +259,10 @@ func (o TrailMapSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize["season"] = o.Season
 	toSerialize["display_order"] = o.DisplayOrder
 	toSerialize["hosted_url"] = o.HostedUrl
+	if o.GeoBounds.IsSet() {
+		toSerialize["geo_bounds"] = o.GeoBounds.Get()
+	}
+	toSerialize["entity_uuids"] = o.EntityUuids
 	return toSerialize, nil
 }
 
@@ -201,6 +276,7 @@ func (o *TrailMapSummary) UnmarshalJSON(data []byte) (err error) {
 		"season",
 		"display_order",
 		"hosted_url",
+		"entity_uuids",
 	}
 
 	allProperties := make(map[string]interface{})

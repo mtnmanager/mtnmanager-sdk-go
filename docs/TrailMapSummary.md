@@ -9,12 +9,14 @@ Name | Type | Description | Notes
 **Season** | [**SeasonType**](SeasonType.md) |  | 
 **DisplayOrder** | **int64** |  | 
 **HostedUrl** | **string** |  | 
+**GeoBounds** | Pointer to [**NullableGeoBounds**](GeoBounds.md) | Lat/lng bounding box of this map&#39;s georeferenced area, plus the  centroid of its control points (used for tie-breaking when multiple  maps cover the same point). Omitted when the map has no georeferencing. | [optional] 
+**EntityUuids** | **[]string** | Deduplicated UUIDs of every entity (lift, run, terrain park,  summer trail, amenity, parking lot) referenced by this map&#39;s elements. | 
 
 ## Methods
 
 ### NewTrailMapSummary
 
-`func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, ) *TrailMapSummary`
+`func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, entityUuids []string, ) *TrailMapSummary`
 
 NewTrailMapSummary instantiates a new TrailMapSummary object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +129,61 @@ and a boolean to check if the value has been set.
 `func (o *TrailMapSummary) SetHostedUrl(v string)`
 
 SetHostedUrl sets HostedUrl field to given value.
+
+
+### GetGeoBounds
+
+`func (o *TrailMapSummary) GetGeoBounds() GeoBounds`
+
+GetGeoBounds returns the GeoBounds field if non-nil, zero value otherwise.
+
+### GetGeoBoundsOk
+
+`func (o *TrailMapSummary) GetGeoBoundsOk() (*GeoBounds, bool)`
+
+GetGeoBoundsOk returns a tuple with the GeoBounds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGeoBounds
+
+`func (o *TrailMapSummary) SetGeoBounds(v GeoBounds)`
+
+SetGeoBounds sets GeoBounds field to given value.
+
+### HasGeoBounds
+
+`func (o *TrailMapSummary) HasGeoBounds() bool`
+
+HasGeoBounds returns a boolean if a field has been set.
+
+### SetGeoBoundsNil
+
+`func (o *TrailMapSummary) SetGeoBoundsNil(b bool)`
+
+ SetGeoBoundsNil sets the value for GeoBounds to be an explicit nil
+
+### UnsetGeoBounds
+`func (o *TrailMapSummary) UnsetGeoBounds()`
+
+UnsetGeoBounds ensures that no value is present for GeoBounds, not even an explicit nil
+### GetEntityUuids
+
+`func (o *TrailMapSummary) GetEntityUuids() []string`
+
+GetEntityUuids returns the EntityUuids field if non-nil, zero value otherwise.
+
+### GetEntityUuidsOk
+
+`func (o *TrailMapSummary) GetEntityUuidsOk() (*[]string, bool)`
+
+GetEntityUuidsOk returns a tuple with the EntityUuids field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEntityUuids
+
+`func (o *TrailMapSummary) SetEntityUuids(v []string)`
+
+SetEntityUuids sets EntityUuids field to given value.
 
 
 

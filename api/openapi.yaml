@@ -1275,6 +1275,17 @@ paths:
                 season: winter
                 display_order: 0
                 hosted_url: https://powder-mountain.mtnmanager.com/hosted/trail-map/550e8400-e29b-41d4-a716-446655440000
+                geo_bounds:
+                  min_lat: 39.6403
+                  max_lat: 39.65
+                  min_lng: -106.3742
+                  max_lng: -106.36
+                  center:
+                    lat: 39.64515
+                    lng: -106.3671
+                entity_uuids:
+                - b2c3d4e5-f6a7-8901-bcde-f12345678901
+                - c3d4e5f6-a7b8-9012-cdef-123456789012
               schema:
                 $ref: "#/components/schemas/TrailMapsResponse"
           description: List of trail maps.
@@ -3741,6 +3752,10 @@ components:
         display_order: 0
         season: winter
         uuid: uuid
+        entity_uuids:
+        - entity_uuids
+        - entity_uuids
+        geo_bounds: ""
       properties:
         uuid:
           type: string
@@ -3753,12 +3768,64 @@ components:
           type: integer
         hosted_url:
           type: string
+        geo_bounds:
+          allOf:
+          - $ref: "#/components/schemas/GeoBounds"
+          description: |-
+            Lat/lng bounding box of this map's georeferenced area, plus the
+             centroid of its control points (used for tie-breaking when multiple
+             maps cover the same point). Omitted when the map has no georeferencing.
+          nullable: true
+        entity_uuids:
+          description: |-
+            Deduplicated UUIDs of every entity (lift, run, terrain park,
+             summer trail, amenity, parking lot) referenced by this map's elements.
+          items:
+            type: string
+          type: array
       required:
       - display_order
+      - entity_uuids
       - hosted_url
       - name
       - season
       - uuid
+    GeoBounds:
+      description: Lat/lng bounding box and centroid for a trail map's georeferenced
+        area.
+      properties:
+        min_lat:
+          format: double
+          type: number
+        max_lat:
+          format: double
+          type: number
+        min_lng:
+          format: double
+          type: number
+        max_lng:
+          format: double
+          type: number
+        center:
+          $ref: "#/components/schemas/GeoPoint"
+      required:
+      - center
+      - max_lat
+      - max_lng
+      - min_lat
+      - min_lng
+    GeoPoint:
+      description: A latitude/longitude point.
+      properties:
+        lat:
+          format: double
+          type: number
+        lng:
+          format: double
+          type: number
+      required:
+      - lat
+      - lng
     PathUuid:
       properties:
         uuid:
