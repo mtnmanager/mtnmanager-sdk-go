@@ -4,19 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Description** | **string** |  | 
-**Uuid** | **string** |  | 
-**Name** | **string** |  | 
-**Category** | [**AmenityCategory**](AmenityCategory.md) |  | 
-**Website** | **string** |  | 
+**Description** | **string** | Description of the amenity. | 
+**Uuid** | **string** | Unique identifier for the amenity. | 
+**Name** | **string** | Display name of the amenity. | 
+**Category** | [**AmenityCategory**](AmenityCategory.md) | Category classification (e.g. restaurant, lodge, ski_school). | 
+**Website** | **string** | Website URL for the amenity, if available. | 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
+**Schedules** | [**[]Schedule**](Schedule.md) | Recurring operating schedules for this amenity (e.g. \&quot;Saturday &amp; Sunday,  9:00 a.m. to 4:00 p.m.\&quot;), with both human-readable and structured fields. | 
 
 ## Methods
 
 ### NewAmenity
 
-`func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, ) *Amenity`
+`func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, schedules []Schedule, ) *Amenity`
 
 NewAmenity instantiates a new Amenity object
 This constructor will assign default values to properties that have it defined,
@@ -201,6 +202,26 @@ HasClosesAt returns a boolean if a field has been set.
 `func (o *Amenity) UnsetClosesAt()`
 
 UnsetClosesAt ensures that no value is present for ClosesAt, not even an explicit nil
+### GetSchedules
+
+`func (o *Amenity) GetSchedules() []Schedule`
+
+GetSchedules returns the Schedules field if non-nil, zero value otherwise.
+
+### GetSchedulesOk
+
+`func (o *Amenity) GetSchedulesOk() (*[]Schedule, bool)`
+
+GetSchedulesOk returns a tuple with the Schedules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedules
+
+`func (o *Amenity) SetSchedules(v []Schedule)`
+
+SetSchedules sets Schedules field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

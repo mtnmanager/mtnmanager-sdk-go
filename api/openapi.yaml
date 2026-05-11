@@ -1262,6 +1262,90 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+  /api/v1/report/amenities:
+    get:
+      operationId: getAmenities
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 550e8400-e29b-41d4-a716-446655440000
+                name: Summit Lodge
+                description: Mid-mountain lodge with full-service restaurant and bar.
+                category: lodge
+                website: https://example.com/summit-lodge
+                opens_at: 09:00
+                closes_at: 16:00
+                schedules: []
+              schema:
+                $ref: "#/components/schemas/AmenitiesResponse"
+          description: List of all configured amenities at the resort
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get amenities
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getAmenities();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetAmenities(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getAmenities();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getAmenities(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
   /api/v1/report/trail-maps:
     get:
       operationId: getTrailMaps
@@ -1274,6 +1358,7 @@ paths:
                 name: Winter Trail Map
                 season: winter
                 display_order: 0
+                version: 1
                 hosted_url: https://powder-mountain.mtnmanager.com/hosted/trail-map/550e8400-e29b-41d4-a716-446655440000
                 geo_bounds:
                   min_lat: 39.6403
@@ -3739,6 +3824,87 @@ components:
       items:
         $ref: "#/components/schemas/ParkingLot"
       type: array
+    AmenitiesResponse:
+      description: List of all configured amenities at the resort
+      items:
+        $ref: "#/components/schemas/Amenity"
+      type: array
+    Amenity:
+      description: |-
+        Represents an amenity at the resort (e.g. lodge, restaurant, ski school)
+         with its category, description, website, and hours.
+      example:
+        opens_at: opens_at
+        website: website
+        schedules:
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+        - days_of_week:
+          - Sunday
+          - Sunday
+          opens_at: opens_at
+          in_effect: true
+          days_string: days_string
+          effective_to: 2000-01-23
+          effective_string: effective_string
+          time_string: time_string
+          closes_at: closes_at
+          effective_from: 2000-01-23
+        name: name
+        description: description
+        category: ""
+        closes_at: closes_at
+        uuid: uuid
+      properties:
+        description:
+          description: Description of the amenity.
+          type: string
+        uuid:
+          description: Unique identifier for the amenity.
+          type: string
+        name:
+          description: Display name of the amenity.
+          type: string
+        category:
+          allOf:
+          - $ref: "#/components/schemas/AmenityCategory"
+          description: "Category classification (e.g. restaurant, lodge, ski_school)."
+        website:
+          description: "Website URL for the amenity, if available."
+          type: string
+        opens_at:
+          description: "Today's scheduled opening time in 24-hour format (HH:MM),\
+            \ in resort's local timezone."
+          nullable: true
+          type: string
+        closes_at:
+          description: "Today's scheduled closing time in 24-hour format (HH:MM),\
+            \ in resort's local timezone."
+          nullable: true
+          type: string
+        schedules:
+          description: |-
+            Recurring operating schedules for this amenity (e.g. "Saturday & Sunday,
+             9:00 a.m. to 4:00 p.m."), with both human-readable and structured fields.
+          items:
+            $ref: "#/components/schemas/Schedule"
+          type: array
+      required:
+      - category
+      - description
+      - name
+      - schedules
+      - uuid
+      - website
     TrailMapsResponse:
       description: List of trail maps.
       items:
@@ -3752,6 +3918,7 @@ components:
         display_order: 0
         season: winter
         uuid: uuid
+        version: 6
         entity_uuids:
         - entity_uuids
         - entity_uuids
@@ -3764,6 +3931,12 @@ components:
         season:
           $ref: "#/components/schemas/SeasonType"
         display_order:
+          format: int64
+          type: integer
+        version:
+          description: |-
+            Monotonically incremented on every update. Clients can compare this
+             against a cached value to decide whether to reload the trail map.
           format: int64
           type: integer
         hosted_url:
@@ -3790,6 +3963,7 @@ components:
       - name
       - season
       - uuid
+      - version
     GeoBounds:
       description: Lat/lng bounding box and centroid for a trail map's georeferenced
         area.
@@ -3838,32 +4012,32 @@ components:
       example:
         background_image_url: background_image_url
         elements:
-        - tension: 1.4658129805029452
+        - tension: 5.962133916683182
           lift: ""
           type: lift
           uuid: uuid
           points:
-          - 6.027456183070403
-          - 6.027456183070403
-        - tension: 1.4658129805029452
+          - 1.4658129805029452
+          - 1.4658129805029452
+        - tension: 5.962133916683182
           lift: ""
           type: lift
           uuid: uuid
           points:
-          - 6.027456183070403
-          - 6.027456183070403
+          - 1.4658129805029452
+          - 1.4658129805029452
         name: name
         display_order: 0
         season: winter
         geo_control_points:
-        - pixel_y: 5.637376656633329
-          lng: 7.061401241503109
-          pixel_x: 5.962133916683182
-          lat: 2.3021358869347655
-        - pixel_y: 5.637376656633329
-          lng: 7.061401241503109
-          pixel_x: 5.962133916683182
-          lat: 2.3021358869347655
+        - pixel_y: 2.3021358869347655
+          lng: 9.301444243932576
+          pixel_x: 5.637376656633329
+          lat: 7.061401241503109
+        - pixel_y: 2.3021358869347655
+          lng: 9.301444243932576
+          pixel_x: 5.637376656633329
+          lat: 7.061401241503109
         resort:
           timezone: timezone
           name: name
@@ -3872,6 +4046,7 @@ components:
           unit_preference: ""
           slug: slug
         uuid: uuid
+        version: 6
         slug: slug
       properties:
         uuid:
@@ -3883,6 +4058,12 @@ components:
         season:
           $ref: "#/components/schemas/SeasonType"
         display_order:
+          format: int64
+          type: integer
+        version:
+          description: |-
+            Monotonically incremented on every update. Clients can compare this
+             against a cached value to decide whether to reload the trail map.
           format: int64
           type: integer
         background_image_url:
@@ -3907,6 +4088,7 @@ components:
       - season
       - slug
       - uuid
+      - version
     TrailMapElement:
       description: A trail map element with full entity data from existing public
         models.
@@ -3952,35 +4134,6 @@ components:
       - atm
       - star
       type: string
-    Amenity:
-      description: Minimal amenity info for trail map markers.
-      properties:
-        description:
-          type: string
-        uuid:
-          type: string
-        name:
-          type: string
-        category:
-          $ref: "#/components/schemas/AmenityCategory"
-        website:
-          type: string
-        opens_at:
-          description: "Today's scheduled opening time in 24-hour format (HH:MM),\
-            \ in resort's local timezone."
-          nullable: true
-          type: string
-        closes_at:
-          description: "Today's scheduled closing time in 24-hour format (HH:MM),\
-            \ in resort's local timezone."
-          nullable: true
-          type: string
-      required:
-      - category
-      - description
-      - name
-      - uuid
-      - website
     PointMarker:
       description: "A point marker on a trail map, enriched with entity data where\
         \ applicable."
@@ -3990,10 +4143,10 @@ components:
       - $ref: "#/components/schemas/PointMarker_oneOf_2"
     GeoControlPoint:
       example:
-        pixel_y: 5.637376656633329
-        lng: 7.061401241503109
-        pixel_x: 5.962133916683182
-        lat: 2.3021358869347655
+        pixel_y: 2.3021358869347655
+        lng: 9.301444243932576
+        pixel_x: 5.637376656633329
+        lat: 7.061401241503109
       properties:
         pixel_x:
           format: double
@@ -4014,13 +4167,13 @@ components:
       - pixel_y
     TrailMapElement_oneOf:
       example:
-        tension: 1.4658129805029452
+        tension: 5.962133916683182
         lift: ""
         type: lift
         uuid: uuid
         points:
-        - 6.027456183070403
-        - 6.027456183070403
+        - 1.4658129805029452
+        - 1.4658129805029452
       properties:
         type:
           enum:

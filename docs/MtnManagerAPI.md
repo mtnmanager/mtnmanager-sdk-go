@@ -4,6 +4,7 @@ All URIs are relative to *https://your-resort.mtnmanager.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetAmenities**](MtnManagerAPI.md#GetAmenities) | **Get** /api/v1/report/amenities | Get amenities
 [**GetFullReport**](MtnManagerAPI.md#GetFullReport) | **Get** /api/v1/report | Get full report
 [**GetHours**](MtnManagerAPI.md#GetHours) | **Get** /api/v1/report/hours | Get operating hours
 [**GetLifts**](MtnManagerAPI.md#GetLifts) | **Get** /api/v1/report/lifts | Get lifts
@@ -17,6 +18,65 @@ Method | HTTP request | Description
 [**GetTrailMaps**](MtnManagerAPI.md#GetTrailMaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 [**GetWeather**](MtnManagerAPI.md#GetWeather) | **Get** /api/v1/report/weather | Get weather
 
+
+
+## GetAmenities
+
+> []Amenity GetAmenities(ctx).Execute()
+
+Get amenities
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetAmenities(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetAmenities``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAmenities`: []Amenity
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetAmenities`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAmenitiesRequest struct via the builder pattern
+
+
+### Return type
+
+[**[]Amenity**](Amenity.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetFullReport

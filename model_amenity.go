@@ -20,17 +20,24 @@ import (
 // checks if the Amenity type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &Amenity{}
 
-// Amenity Minimal amenity info for trail map markers.
+// Amenity Represents an amenity at the resort (e.g. lodge, restaurant, ski school)  with its category, description, website, and hours.
 type Amenity struct {
+	// Description of the amenity.
 	Description string `json:"description"`
+	// Unique identifier for the amenity.
 	Uuid string `json:"uuid"`
+	// Display name of the amenity.
 	Name string `json:"name"`
+	// Category classification (e.g. restaurant, lodge, ski_school).
 	Category AmenityCategory `json:"category"`
+	// Website URL for the amenity, if available.
 	Website string `json:"website"`
 	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.
 	OpensAt NullableString `json:"opens_at,omitempty"`
 	// Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.
 	ClosesAt NullableString `json:"closes_at,omitempty"`
+	// Recurring operating schedules for this amenity (e.g. \"Saturday & Sunday,  9:00 a.m. to 4:00 p.m.\"), with both human-readable and structured fields.
+	Schedules []Schedule `json:"schedules"`
 }
 
 type _Amenity Amenity
@@ -39,13 +46,14 @@ type _Amenity Amenity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string) *Amenity {
+func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, schedules []Schedule) *Amenity {
 	this := Amenity{}
 	this.Description = description
 	this.Uuid = uuid
 	this.Name = name
 	this.Category = category
 	this.Website = website
+	this.Schedules = schedules
 	return &this
 }
 
@@ -261,6 +269,30 @@ func (o *Amenity) UnsetClosesAt() {
 	o.ClosesAt.Unset()
 }
 
+// GetSchedules returns the Schedules field value
+func (o *Amenity) GetSchedules() []Schedule {
+	if o == nil {
+		var ret []Schedule
+		return ret
+	}
+
+	return o.Schedules
+}
+
+// GetSchedulesOk returns a tuple with the Schedules field value
+// and a boolean to check if the value has been set.
+func (o *Amenity) GetSchedulesOk() ([]Schedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Schedules, true
+}
+
+// SetSchedules sets field value
+func (o *Amenity) SetSchedules(v []Schedule) {
+	o.Schedules = v
+}
+
 func (o Amenity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -282,6 +314,7 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 	if o.ClosesAt.IsSet() {
 		toSerialize["closes_at"] = o.ClosesAt.Get()
 	}
+	toSerialize["schedules"] = o.Schedules
 	return toSerialize, nil
 }
 
@@ -295,6 +328,7 @@ func (o *Amenity) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"category",
 		"website",
+		"schedules",
 	}
 
 	allProperties := make(map[string]interface{})

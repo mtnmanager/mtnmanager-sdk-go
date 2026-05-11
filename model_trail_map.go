@@ -27,6 +27,8 @@ type TrailMap struct {
 	Slug string `json:"slug"`
 	Season SeasonType `json:"season"`
 	DisplayOrder int64 `json:"display_order"`
+	// Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map.
+	Version int64 `json:"version"`
 	BackgroundImageUrl string `json:"background_image_url"`
 	Resort ResortInfo `json:"resort"`
 	Elements []TrailMapElement `json:"elements"`
@@ -39,13 +41,14 @@ type _TrailMap TrailMap
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement) *TrailMap {
+func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, version int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement) *TrailMap {
 	this := TrailMap{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
 	this.Season = season
 	this.DisplayOrder = displayOrder
+	this.Version = version
 	this.BackgroundImageUrl = backgroundImageUrl
 	this.Resort = resort
 	this.Elements = elements
@@ -180,6 +183,30 @@ func (o *TrailMap) SetDisplayOrder(v int64) {
 	o.DisplayOrder = v
 }
 
+// GetVersion returns the Version field value
+func (o *TrailMap) GetVersion() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value
+// and a boolean to check if the value has been set.
+func (o *TrailMap) GetVersionOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Version, true
+}
+
+// SetVersion sets field value
+func (o *TrailMap) SetVersion(v int64) {
+	o.Version = v
+}
+
 // GetBackgroundImageUrl returns the BackgroundImageUrl field value
 func (o *TrailMap) GetBackgroundImageUrl() string {
 	if o == nil {
@@ -300,6 +327,7 @@ func (o TrailMap) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	toSerialize["season"] = o.Season
 	toSerialize["display_order"] = o.DisplayOrder
+	toSerialize["version"] = o.Version
 	toSerialize["background_image_url"] = o.BackgroundImageUrl
 	toSerialize["resort"] = o.Resort
 	toSerialize["elements"] = o.Elements
@@ -319,6 +347,7 @@ func (o *TrailMap) UnmarshalJSON(data []byte) (err error) {
 		"slug",
 		"season",
 		"display_order",
+		"version",
 		"background_image_url",
 		"resort",
 		"elements",

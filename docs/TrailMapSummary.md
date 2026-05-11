@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Season** | [**SeasonType**](SeasonType.md) |  | 
 **DisplayOrder** | **int64** |  | 
+**Version** | **int64** | Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map. | 
 **HostedUrl** | **string** |  | 
 **GeoBounds** | Pointer to [**NullableGeoBounds**](GeoBounds.md) | Lat/lng bounding box of this map&#39;s georeferenced area, plus the  centroid of its control points (used for tie-breaking when multiple  maps cover the same point). Omitted when the map has no georeferencing. | [optional] 
 **EntityUuids** | **[]string** | Deduplicated UUIDs of every entity (lift, run, terrain park,  summer trail, amenity, parking lot) referenced by this map&#39;s elements. | 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewTrailMapSummary
 
-`func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, entityUuids []string, ) *TrailMapSummary`
+`func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, version int64, hostedUrl string, entityUuids []string, ) *TrailMapSummary`
 
 NewTrailMapSummary instantiates a new TrailMapSummary object
 This constructor will assign default values to properties that have it defined,
@@ -109,6 +110,26 @@ and a boolean to check if the value has been set.
 `func (o *TrailMapSummary) SetDisplayOrder(v int64)`
 
 SetDisplayOrder sets DisplayOrder field to given value.
+
+
+### GetVersion
+
+`func (o *TrailMapSummary) GetVersion() int64`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *TrailMapSummary) GetVersionOk() (*int64, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *TrailMapSummary) SetVersion(v int64)`
+
+SetVersion sets Version field to given value.
 
 
 ### GetHostedUrl

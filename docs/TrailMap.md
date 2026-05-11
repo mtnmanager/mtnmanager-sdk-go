@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Slug** | **string** |  | 
 **Season** | [**SeasonType**](SeasonType.md) |  | 
 **DisplayOrder** | **int64** |  | 
+**Version** | **int64** | Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map. | 
 **BackgroundImageUrl** | **string** |  | 
 **Resort** | [**ResortInfo**](ResortInfo.md) |  | 
 **Elements** | [**[]TrailMapElement**](TrailMapElement.md) |  | 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewTrailMap
 
-`func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement, ) *TrailMap`
+`func NewTrailMap(uuid string, name string, slug string, season SeasonType, displayOrder int64, version int64, backgroundImageUrl string, resort ResortInfo, elements []TrailMapElement, ) *TrailMap`
 
 NewTrailMap instantiates a new TrailMap object
 This constructor will assign default values to properties that have it defined,
@@ -131,6 +132,26 @@ and a boolean to check if the value has been set.
 `func (o *TrailMap) SetDisplayOrder(v int64)`
 
 SetDisplayOrder sets DisplayOrder field to given value.
+
+
+### GetVersion
+
+`func (o *TrailMap) GetVersion() int64`
+
+GetVersion returns the Version field if non-nil, zero value otherwise.
+
+### GetVersionOk
+
+`func (o *TrailMap) GetVersionOk() (*int64, bool)`
+
+GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVersion
+
+`func (o *TrailMap) SetVersion(v int64)`
+
+SetVersion sets Version field to given value.
 
 
 ### GetBackgroundImageUrl

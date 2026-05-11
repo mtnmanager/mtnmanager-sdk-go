@@ -26,6 +26,8 @@ type TrailMapSummary struct {
 	Name string `json:"name"`
 	Season SeasonType `json:"season"`
 	DisplayOrder int64 `json:"display_order"`
+	// Monotonically incremented on every update. Clients can compare this  against a cached value to decide whether to reload the trail map.
+	Version int64 `json:"version"`
 	HostedUrl string `json:"hosted_url"`
 	// Lat/lng bounding box of this map's georeferenced area, plus the  centroid of its control points (used for tie-breaking when multiple  maps cover the same point). Omitted when the map has no georeferencing.
 	GeoBounds NullableGeoBounds `json:"geo_bounds,omitempty"`
@@ -39,12 +41,13 @@ type _TrailMapSummary TrailMapSummary
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, hostedUrl string, entityUuids []string) *TrailMapSummary {
+func NewTrailMapSummary(uuid string, name string, season SeasonType, displayOrder int64, version int64, hostedUrl string, entityUuids []string) *TrailMapSummary {
 	this := TrailMapSummary{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Season = season
 	this.DisplayOrder = displayOrder
+	this.Version = version
 	this.HostedUrl = hostedUrl
 	this.EntityUuids = entityUuids
 	return &this
@@ -154,6 +157,30 @@ func (o *TrailMapSummary) SetDisplayOrder(v int64) {
 	o.DisplayOrder = v
 }
 
+// GetVersion returns the Version field value
+func (o *TrailMapSummary) GetVersion() int64 {
+	if o == nil {
+		var ret int64
+		return ret
+	}
+
+	return o.Version
+}
+
+// GetVersionOk returns a tuple with the Version field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapSummary) GetVersionOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Version, true
+}
+
+// SetVersion sets field value
+func (o *TrailMapSummary) SetVersion(v int64) {
+	o.Version = v
+}
+
 // GetHostedUrl returns the HostedUrl field value
 func (o *TrailMapSummary) GetHostedUrl() string {
 	if o == nil {
@@ -258,6 +285,7 @@ func (o TrailMapSummary) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["season"] = o.Season
 	toSerialize["display_order"] = o.DisplayOrder
+	toSerialize["version"] = o.Version
 	toSerialize["hosted_url"] = o.HostedUrl
 	if o.GeoBounds.IsSet() {
 		toSerialize["geo_bounds"] = o.GeoBounds.Get()
@@ -275,6 +303,7 @@ func (o *TrailMapSummary) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"season",
 		"display_order",
+		"version",
 		"hosted_url",
 		"entity_uuids",
 	}
