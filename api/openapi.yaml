@@ -1531,336 +1531,336 @@ components:
         The all-in-one endpoint containing the full report — resort information, current status,
          runs, lifts, snow, terrain parks, summer trails, hours, and weather.
       example:
-        summer_trails:
-        - difficulty: ""
-          area_name: area_name
-          number: 1
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          area_uuid: area_uuid
-          area_display_order: 4
-          uuid: uuid
-          slug: slug
-          trail_type:
-          - hiking
-          - hiking
-          status: ""
-        - difficulty: ""
-          area_name: area_name
-          number: 1
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          area_uuid: area_uuid
-          area_display_order: 4
-          uuid: uuid
-          slug: slug
-          trail_type:
-          - hiking
-          - hiking
-          status: ""
-        parking_lots:
-        - reservation_required: true
-          shuttle: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
-          paid: true
-          uuid: uuid
-          slug: slug
-          status: ""
-          capacity: 7
-        - reservation_required: true
-          shuttle: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
-          paid: true
-          uuid: uuid
-          slug: slug
-          status: ""
-          capacity: 7
-        hours:
-          amenity_schedules:
-          - schedules:
-            - days_of_week:
-              - Sunday
-              - Sunday
-              opens_at: opens_at
-              in_effect: true
-              days_string: days_string
-              effective_to: 2000-01-23
-              effective_string: effective_string
-              time_string: time_string
-              closes_at: closes_at
-              effective_from: 2000-01-23
-            - days_of_week:
-              - Sunday
-              - Sunday
-              opens_at: opens_at
-              in_effect: true
-              days_string: days_string
-              effective_to: 2000-01-23
-              effective_string: effective_string
-              time_string: time_string
-              closes_at: closes_at
-              effective_from: 2000-01-23
-            name: name
-            category: ""
-            uuid: uuid
-          - schedules:
-            - days_of_week:
-              - Sunday
-              - Sunday
-              opens_at: opens_at
-              in_effect: true
-              days_string: days_string
-              effective_to: 2000-01-23
-              effective_string: effective_string
-              time_string: time_string
-              closes_at: closes_at
-              effective_from: 2000-01-23
-            - days_of_week:
-              - Sunday
-              - Sunday
-              opens_at: opens_at
-              in_effect: true
-              days_string: days_string
-              effective_to: 2000-01-23
-              effective_string: effective_string
-              time_string: time_string
-              closes_at: closes_at
-              effective_from: 2000-01-23
-            name: name
-            category: ""
-            uuid: uuid
-          calendar_days:
-          - date: 2000-01-23
-            opens_at: opens_at
-            amenities:
-            - opens_at: opens_at
-              name: name
-              category: ""
-              closes_at: closes_at
-              uuid: uuid
-            - opens_at: opens_at
-              name: name
-              category: ""
-              closes_at: closes_at
-              uuid: uuid
-            is_open: true
-            special_event: special_event
-            closes_at: closes_at
-            closure_reason: ""
-            day_of_week: ""
-          - date: 2000-01-23
-            opens_at: opens_at
-            amenities:
-            - opens_at: opens_at
-              name: name
-              category: ""
-              closes_at: closes_at
-              uuid: uuid
-            - opens_at: opens_at
-              name: name
-              category: ""
-              closes_at: closes_at
-              uuid: uuid
-            is_open: true
-            special_event: special_event
-            closes_at: closes_at
-            closure_reason: ""
-            day_of_week: ""
-          schedules:
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-        terrain_parks:
-        - area_name: area_name
-          number: 1
-          features:
-          - feature_type: ""
-            number: 6
-            size: ""
-            name: name
-            uuid: uuid
-            slug: slug
-            status: ""
-          - feature_type: ""
-            number: 6
-            size: ""
-            name: name
-            uuid: uuid
-            slug: slug
-            status: ""
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          area_uuid: area_uuid
-          area_display_order: 1
-          uuid: uuid
-          slug: slug
-          status: ""
-        - area_name: area_name
-          number: 1
-          features:
-          - feature_type: ""
-            number: 6
-            size: ""
-            name: name
-            uuid: uuid
-            slug: slug
-            status: ""
-          - feature_type: ""
-            number: 6
-            size: ""
-            name: name
-            uuid: uuid
-            slug: slug
-            status: ""
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          area_uuid: area_uuid
-          area_display_order: 1
-          uuid: uuid
-          slug: slug
-          status: ""
-        snow:
-        - area_name: area_name
-          snowfall_cm: ""
-          surface_condition: ""
-          base_depth_cm: 6
-          secondary_surface_condition: ""
-          reported_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          area_uuid: area_uuid
-          area_display_order: 0
-          uuid: uuid
-          base_depth_in: 1
-          snowfall_in: ""
-        - area_name: area_name
-          snowfall_cm: ""
-          surface_condition: ""
-          base_depth_cm: 6
-          secondary_surface_condition: ""
-          reported_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          area_uuid: area_uuid
-          area_display_order: 0
-          uuid: uuid
-          base_depth_in: 1
-          snowfall_in: ""
-        weather: ""
-        lifts:
-        - area_name: area_name
-          wait_time_minutes: 2
-          high_speed: true
-          vertical_rise_ft: 9
-          area_uuid: area_uuid
-          uuid: uuid
-          travel_time: 5.637376656633329
-          opens_at: opens_at
-          number: 5
-          vertical_rise_m: 3
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          bubble: true
-          lift_type: ""
-          name: name
-          heated: true
-          closes_at: closes_at
-          area_display_order: 4
-          slug: slug
-          length_ft: 2
-          length_m: 7
-          status: ""
-        - area_name: area_name
-          wait_time_minutes: 2
-          high_speed: true
-          vertical_rise_ft: 9
-          area_uuid: area_uuid
-          uuid: uuid
-          travel_time: 5.637376656633329
-          opens_at: opens_at
-          number: 5
-          vertical_rise_m: 3
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          bubble: true
-          lift_type: ""
-          name: name
-          heated: true
-          closes_at: closes_at
-          area_display_order: 4
-          slug: slug
-          length_ft: 2
-          length_m: 7
-          status: ""
         resort:
+          uuid: uuid
+          name: name
+          slug: slug
           timezone: timezone
-          name: name
           region: ""
-          uuid: uuid
           unit_preference: ""
-          slug: slug
-        runs:
-        - area_name: area_name
-          area_uuid: area_uuid
-          uuid: uuid
-          difficulty: ""
-          number: 7
-          groomed_today: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          snowmaking: true
-          last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 1
-          slug: slug
-          night_skiing: true
-          status: ""
-        - area_name: area_name
-          area_uuid: area_uuid
-          uuid: uuid
-          difficulty: ""
-          number: 7
-          groomed_today: true
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          condition_notes: condition_notes
-          name: name
-          snowmaking: true
-          last_groomed: 2000-01-23T04:56:07.000+00:00
-          area_display_order: 1
-          slug: slug
-          night_skiing: true
-          status: ""
         status:
+          status: ""
           opens_at: opens_at
+          closes_at: closes_at
+          season: ""
           news: ""
+          runs: ""
+          lifts: ""
           summer_trails: ""
           terrain_parks: ""
-          season: ""
-          lifts: ""
-          closes_at: closes_at
-          runs: ""
+        snow:
+        - uuid: uuid
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 0
+          base_depth_cm: 6
+          base_depth_in: 1
+          surface_condition: ""
+          secondary_surface_condition: ""
+          condition_notes: condition_notes
+          snowfall_cm: ""
+          snowfall_in: ""
+          reported_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 0
+          base_depth_cm: 6
+          base_depth_in: 1
+          surface_condition: ""
+          secondary_surface_condition: ""
+          condition_notes: condition_notes
+          snowfall_cm: ""
+          snowfall_in: ""
+          reported_at: 2000-01-23T04:56:07.000+00:00
+        lifts:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 5
+          lift_type: ""
+          high_speed: true
+          bubble: true
+          heated: true
+          travel_time: 5.637376656633329
+          length_ft: 2
+          length_m: 7
+          vertical_rise_ft: 9
+          vertical_rise_m: 3
           status: ""
+          wait_time_minutes: 2
+          opens_at: opens_at
+          closes_at: closes_at
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 4
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 5
+          lift_type: ""
+          high_speed: true
+          bubble: true
+          heated: true
+          travel_time: 5.637376656633329
+          length_ft: 2
+          length_m: 7
+          vertical_rise_ft: 9
+          vertical_rise_m: 3
+          status: ""
+          wait_time_minutes: 2
+          opens_at: opens_at
+          closes_at: closes_at
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 4
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        runs:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          difficulty: ""
+          status: ""
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          groomed_today: true
+          snowmaking: true
+          night_skiing: true
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          difficulty: ""
+          status: ""
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          groomed_today: true
+          snowmaking: true
+          night_skiing: true
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        terrain_parks:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 1
+          status: ""
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 1
+          features:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 6
+            feature_type: ""
+            size: ""
+            status: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 6
+            feature_type: ""
+            size: ""
+            status: ""
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 1
+          status: ""
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 1
+          features:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 6
+            feature_type: ""
+            size: ""
+            status: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 6
+            feature_type: ""
+            size: ""
+            status: ""
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        parking_lots:
+        - uuid: uuid
+          name: name
+          slug: slug
+          status: ""
+          capacity: 7
+          shuttle: true
+          paid: true
+          reservation_required: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          name: name
+          slug: slug
+          status: ""
+          capacity: 7
+          shuttle: true
+          paid: true
+          reservation_required: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        summer_trails:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 1
+          trail_type:
+          - hiking
+          - hiking
+          difficulty: ""
+          status: ""
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 4
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 1
+          trail_type:
+          - hiking
+          - hiking
+          difficulty: ""
+          status: ""
+          condition_notes: condition_notes
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 4
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        hours:
+          schedules:
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
+          calendar_days:
+          - date: 2000-01-23
+            day_of_week: ""
+            is_open: true
+            opens_at: opens_at
+            closes_at: closes_at
+            closure_reason: ""
+            special_event: special_event
+            amenities:
+            - uuid: uuid
+              name: name
+              category: ""
+              opens_at: opens_at
+              closes_at: closes_at
+            - uuid: uuid
+              name: name
+              category: ""
+              opens_at: opens_at
+              closes_at: closes_at
+          - date: 2000-01-23
+            day_of_week: ""
+            is_open: true
+            opens_at: opens_at
+            closes_at: closes_at
+            closure_reason: ""
+            special_event: special_event
+            amenities:
+            - uuid: uuid
+              name: name
+              category: ""
+              opens_at: opens_at
+              closes_at: closes_at
+            - uuid: uuid
+              name: name
+              category: ""
+              opens_at: opens_at
+              closes_at: closes_at
+          amenity_schedules:
+          - uuid: uuid
+            name: name
+            category: ""
+            schedules:
+            - days_string: days_string
+              days_of_week:
+              - Sunday
+              - Sunday
+              time_string: time_string
+              opens_at: opens_at
+              closes_at: closes_at
+              in_effect: true
+              effective_string: effective_string
+              effective_from: 2000-01-23
+              effective_to: 2000-01-23
+            - days_string: days_string
+              days_of_week:
+              - Sunday
+              - Sunday
+              time_string: time_string
+              opens_at: opens_at
+              closes_at: closes_at
+              in_effect: true
+              effective_string: effective_string
+              effective_from: 2000-01-23
+              effective_to: 2000-01-23
+          - uuid: uuid
+            name: name
+            category: ""
+            schedules:
+            - days_string: days_string
+              days_of_week:
+              - Sunday
+              - Sunday
+              time_string: time_string
+              opens_at: opens_at
+              closes_at: closes_at
+              in_effect: true
+              effective_string: effective_string
+              effective_from: 2000-01-23
+              effective_to: 2000-01-23
+            - days_string: days_string
+              days_of_week:
+              - Sunday
+              - Sunday
+              time_string: time_string
+              opens_at: opens_at
+              closes_at: closes_at
+              in_effect: true
+              effective_string: effective_string
+              effective_from: 2000-01-23
+              effective_to: 2000-01-23
+        weather: ""
       properties:
         resort:
           $ref: "#/components/schemas/ResortInfo"
@@ -1875,6 +1875,7 @@ components:
           items:
             $ref: "#/components/schemas/SnowReport"
           type: array
+          default: null
         lifts:
           description: |-
             List of all lifts at the resort with their current operational status,
@@ -1882,6 +1883,7 @@ components:
           items:
             $ref: "#/components/schemas/Lift"
           type: array
+          default: null
         runs:
           description: |-
             List of all runs at the resort with their current status,
@@ -1889,6 +1891,7 @@ components:
           items:
             $ref: "#/components/schemas/Run"
           type: array
+          default: null
         terrain_parks:
           description: |-
             List of all terrain parks at the resort with their current status,
@@ -1896,12 +1899,14 @@ components:
           items:
             $ref: "#/components/schemas/TerrainPark"
           type: array
+          default: null
         parking_lots:
           description: List of all parking lots at the resort with their current status
             and amenities.
           items:
             $ref: "#/components/schemas/ParkingLot"
           type: array
+          default: null
         summer_trails:
           description: |-
             List of all summer trails at the resort with their current status,
@@ -1909,6 +1914,7 @@ components:
           items:
             $ref: "#/components/schemas/SummerTrail"
           type: array
+          default: null
         hours:
           $ref: "#/components/schemas/OperatingHours"
         weather:
@@ -1929,12 +1935,12 @@ components:
       description: Contains general information about the ski resort and its MtnManager
         account.
       example:
-        timezone: timezone
-        name: name
-        region: ""
         uuid: uuid
-        unit_preference: ""
+        name: name
         slug: slug
+        timezone: timezone
+        region: ""
+        unit_preference: ""
       properties:
         uuid:
           description: Unique identifier for the resort.
@@ -1981,15 +1987,15 @@ components:
          today's scheduled hours (calculated from operating hour rules), run/lift
          overview counts, the current season, and written news.
       example:
+        status: ""
         opens_at: opens_at
+        closes_at: closes_at
+        season: ""
         news: ""
+        runs: ""
+        lifts: ""
         summer_trails: ""
         terrain_parks: ""
-        season: ""
-        lifts: ""
-        closes_at: closes_at
-        runs: ""
-        status: ""
       properties:
         status:
           allOf:
@@ -2183,18 +2189,18 @@ components:
          including base depth, surface conditions, and snowfall totals in both
          metric and imperial units.
       example:
-        area_name: area_name
-        snowfall_cm: ""
-        surface_condition: ""
-        base_depth_cm: 6
-        secondary_surface_condition: ""
-        reported_at: 2000-01-23T04:56:07.000+00:00
-        condition_notes: condition_notes
-        area_uuid: area_uuid
-        area_display_order: 0
         uuid: uuid
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 0
+        base_depth_cm: 6
         base_depth_in: 1
+        surface_condition: ""
+        secondary_surface_condition: ""
+        condition_notes: condition_notes
+        snowfall_cm: ""
         snowfall_in: ""
+        reported_at: 2000-01-23T04:56:07.000+00:00
       properties:
         uuid:
           description: Unique identifier for this snow report.
@@ -2353,27 +2359,27 @@ components:
         Represents a single lift at the resort with its current operational status,
          type, and optional wait time information.
       example:
-        area_name: area_name
-        wait_time_minutes: 2
-        high_speed: true
-        vertical_rise_ft: 9
-        area_uuid: area_uuid
         uuid: uuid
-        travel_time: 5.637376656633329
-        opens_at: opens_at
-        number: 5
-        vertical_rise_m: 3
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        bubble: true
-        lift_type: ""
         name: name
-        heated: true
-        closes_at: closes_at
-        area_display_order: 4
         slug: slug
+        number: 5
+        lift_type: ""
+        high_speed: true
+        bubble: true
+        heated: true
+        travel_time: 5.637376656633329
         length_ft: 2
         length_m: 7
+        vertical_rise_ft: 9
+        vertical_rise_m: 3
         status: ""
+        wait_time_minutes: 2
+        opens_at: opens_at
+        closes_at: closes_at
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 4
+        updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         uuid:
           description: Unique identifier for the lift.
@@ -2506,21 +2512,21 @@ components:
         Represents a single run at the resort with its current status,
          grooming information, and difficulty rating.
       example:
-        area_name: area_name
-        area_uuid: area_uuid
         uuid: uuid
-        difficulty: ""
-        number: 7
-        groomed_today: true
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        condition_notes: condition_notes
         name: name
-        snowmaking: true
-        last_groomed: 2000-01-23T04:56:07.000+00:00
-        area_display_order: 1
         slug: slug
-        night_skiing: true
+        number: 7
+        difficulty: ""
         status: ""
+        last_groomed: 2000-01-23T04:56:07.000+00:00
+        groomed_today: true
+        snowmaking: true
+        night_skiing: true
+        condition_notes: condition_notes
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 1
+        updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         uuid:
           description: Unique identifier for the run.
@@ -2613,31 +2619,31 @@ components:
         Represents a terrain park at the resort with its current status,
          condition notes, and list of features (jumps, boxes, rails, etc.) within it.
       example:
-        area_name: area_name
+        uuid: uuid
+        name: name
+        slug: slug
         number: 1
+        status: ""
+        condition_notes: condition_notes
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 1
         features:
-        - feature_type: ""
-          number: 6
-          size: ""
+        - uuid: uuid
           name: name
-          uuid: uuid
           slug: slug
+          number: 6
+          feature_type: ""
+          size: ""
           status: ""
-        - feature_type: ""
-          number: 6
-          size: ""
+        - uuid: uuid
           name: name
-          uuid: uuid
           slug: slug
+          number: 6
+          feature_type: ""
+          size: ""
           status: ""
         updated_at: 2000-01-23T04:56:07.000+00:00
-        condition_notes: condition_notes
-        name: name
-        area_uuid: area_uuid
-        area_display_order: 1
-        uuid: uuid
-        slug: slug
-        status: ""
       properties:
         uuid:
           description: Unique identifier for the terrain park.
@@ -2679,6 +2685,7 @@ components:
           items:
             $ref: "#/components/schemas/TerrainParkFeature"
           type: array
+          default: null
         updated_at:
           description: When this terrain park or any of its features was last updated.
           format: date-time
@@ -2703,12 +2710,12 @@ components:
         Represents a single feature within a terrain park (jump, box, rail, etc.)
          with its current status and size rating.
       example:
-        feature_type: ""
-        number: 6
-        size: ""
-        name: name
         uuid: uuid
+        name: name
         slug: slug
+        number: 6
+        feature_type: ""
+        size: ""
         status: ""
       properties:
         uuid:
@@ -2773,15 +2780,15 @@ components:
       description: Represents a parking lot at the resort with its current status
         and amenities.
       example:
-        reservation_required: true
-        shuttle: true
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        name: name
-        paid: true
         uuid: uuid
+        name: name
         slug: slug
         status: ""
         capacity: 7
+        shuttle: true
+        paid: true
+        reservation_required: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         uuid:
           description: Unique identifier for the parking lot.
@@ -2835,20 +2842,20 @@ components:
         Represents a single summer trail at the resort with its current status,
          type (e.g. hiking, mountain biking), and optional difficulty rating.
       example:
-        difficulty: ""
-        area_name: area_name
-        number: 1
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        condition_notes: condition_notes
-        name: name
-        area_uuid: area_uuid
-        area_display_order: 4
         uuid: uuid
+        name: name
         slug: slug
+        number: 1
         trail_type:
         - hiking
         - hiking
+        difficulty: ""
         status: ""
+        condition_notes: condition_notes
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 4
+        updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         uuid:
           description: Unique identifier for the trail.
@@ -2870,6 +2877,7 @@ components:
           items:
             $ref: "#/components/schemas/SummerTrailType"
           type: array
+          default: null
         difficulty:
           allOf:
           - $ref: "#/components/schemas/SummerTrailDifficulty"
@@ -2932,119 +2940,119 @@ components:
       description: "Resort's operating hours, including the recurring schedule, and\
         \ list of individual calendar days."
       example:
-        amenity_schedules:
-        - schedules:
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-          name: name
-          category: ""
-          uuid: uuid
-        - schedules:
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-          - days_of_week:
-            - Sunday
-            - Sunday
-            opens_at: opens_at
-            in_effect: true
-            days_string: days_string
-            effective_to: 2000-01-23
-            effective_string: effective_string
-            time_string: time_string
-            closes_at: closes_at
-            effective_from: 2000-01-23
-          name: name
-          category: ""
-          uuid: uuid
+        schedules:
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
         calendar_days:
         - date: 2000-01-23
-          opens_at: opens_at
-          amenities:
-          - opens_at: opens_at
-            name: name
-            category: ""
-            closes_at: closes_at
-            uuid: uuid
-          - opens_at: opens_at
-            name: name
-            category: ""
-            closes_at: closes_at
-            uuid: uuid
+          day_of_week: ""
           is_open: true
-          special_event: special_event
+          opens_at: opens_at
           closes_at: closes_at
           closure_reason: ""
-          day_of_week: ""
+          special_event: special_event
+          amenities:
+          - uuid: uuid
+            name: name
+            category: ""
+            opens_at: opens_at
+            closes_at: closes_at
+          - uuid: uuid
+            name: name
+            category: ""
+            opens_at: opens_at
+            closes_at: closes_at
         - date: 2000-01-23
-          opens_at: opens_at
-          amenities:
-          - opens_at: opens_at
-            name: name
-            category: ""
-            closes_at: closes_at
-            uuid: uuid
-          - opens_at: opens_at
-            name: name
-            category: ""
-            closes_at: closes_at
-            uuid: uuid
+          day_of_week: ""
           is_open: true
-          special_event: special_event
+          opens_at: opens_at
           closes_at: closes_at
           closure_reason: ""
-          day_of_week: ""
-        schedules:
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
+          special_event: special_event
+          amenities:
+          - uuid: uuid
+            name: name
+            category: ""
+            opens_at: opens_at
+            closes_at: closes_at
+          - uuid: uuid
+            name: name
+            category: ""
+            opens_at: opens_at
+            closes_at: closes_at
+        amenity_schedules:
+        - uuid: uuid
+          name: name
+          category: ""
+          schedules:
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
+        - uuid: uuid
+          name: name
+          category: ""
+          schedules:
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
+          - days_string: days_string
+            days_of_week:
+            - Sunday
+            - Sunday
+            time_string: time_string
+            opens_at: opens_at
+            closes_at: closes_at
+            in_effect: true
+            effective_string: effective_string
+            effective_from: 2000-01-23
+            effective_to: 2000-01-23
       properties:
         schedules:
           description: |-
@@ -3053,6 +3061,7 @@ components:
           items:
             $ref: "#/components/schemas/Schedule"
           type: array
+          default: null
         calendar_days:
           description: |-
             List of all days the resort is open (or a closure override).
@@ -3061,12 +3070,14 @@ components:
           items:
             $ref: "#/components/schemas/CalendarDay"
           type: array
+          default: null
         amenity_schedules:
           description: Per-amenity operating schedules. Only included when amenity
             hours are configured.
           items:
             $ref: "#/components/schemas/AmenitySchedule"
           type: array
+          default: null
       required:
       - calendar_days
       - schedules
@@ -3077,17 +3088,17 @@ components:
          Describes a regular operating schedule (e.g., "Weekends 10am-4pm") with
          both formatted strings for display and structured data for programmatic use.
       example:
+        days_string: days_string
         days_of_week:
         - Sunday
         - Sunday
-        opens_at: opens_at
-        in_effect: true
-        days_string: days_string
-        effective_to: 2000-01-23
-        effective_string: effective_string
         time_string: time_string
+        opens_at: opens_at
         closes_at: closes_at
+        in_effect: true
+        effective_string: effective_string
         effective_from: 2000-01-23
+        effective_to: 2000-01-23
       properties:
         days_string:
           description: |-
@@ -3101,6 +3112,7 @@ components:
           items:
             $ref: "#/components/schemas/DayOfWeek"
           type: array
+          default: null
         time_string:
           description: |-
             Human-readable time range.
@@ -3162,23 +3174,23 @@ components:
          information from recurring schedules and any single-day overrides.
       example:
         date: 2000-01-23
-        opens_at: opens_at
-        amenities:
-        - opens_at: opens_at
-          name: name
-          category: ""
-          closes_at: closes_at
-          uuid: uuid
-        - opens_at: opens_at
-          name: name
-          category: ""
-          closes_at: closes_at
-          uuid: uuid
+        day_of_week: ""
         is_open: true
-        special_event: special_event
+        opens_at: opens_at
         closes_at: closes_at
         closure_reason: ""
-        day_of_week: ""
+        special_event: special_event
+        amenities:
+        - uuid: uuid
+          name: name
+          category: ""
+          opens_at: opens_at
+          closes_at: closes_at
+        - uuid: uuid
+          name: name
+          category: ""
+          opens_at: opens_at
+          closes_at: closes_at
       properties:
         date:
           description: Calendar date (YYYY-MM-DD).
@@ -3220,6 +3232,7 @@ components:
           items:
             $ref: "#/components/schemas/AmenityCalendarEntry"
           type: array
+          default: null
       required:
       - date
       - day_of_week
@@ -3236,11 +3249,11 @@ components:
       description: "Amenity entry within a CalendarDay, showing per-amenity hours\
         \ for a specific date."
       example:
-        opens_at: opens_at
+        uuid: uuid
         name: name
         category: ""
+        opens_at: opens_at
         closes_at: closes_at
-        uuid: uuid
       properties:
         uuid:
           description: Amenity UUID.
@@ -3288,32 +3301,32 @@ components:
     AmenitySchedule:
       description: Amenity schedule for the OperatingHours response
       example:
-        schedules:
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
+        uuid: uuid
         name: name
         category: ""
-        uuid: uuid
+        schedules:
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
       properties:
         uuid:
           description: Amenity UUID
@@ -3330,6 +3343,7 @@ components:
           items:
             $ref: "#/components/schemas/Schedule"
           type: array
+          default: null
       required:
       - category
       - name
@@ -3341,38 +3355,38 @@ components:
          Only included/available if the weather feature is enabled and GPS coordinates are configured.
       example:
         current: ""
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        attribution: attribution
+        hourly_forecast:
+        - timestamp: 2000-01-23T04:56:07.000+00:00
+          imperial: ""
+          metric: ""
+          condition: condition
+          condition_code: ""
+          precipitation_probability: 0
+        - timestamp: 2000-01-23T04:56:07.000+00:00
+          imperial: ""
+          metric: ""
+          condition: condition
+          condition_code: ""
+          precipitation_probability: 0
         daily_forecast:
         - date: 2000-01-23
-          condition: condition
-          sunrise: 2000-01-23T04:56:07.000+00:00
-          metric: ""
-          precipitation_probability: 6
-          sunset: 2000-01-23T04:56:07.000+00:00
           imperial: ""
+          metric: ""
+          condition: condition
           condition_code: ""
+          precipitation_probability: 6
+          sunrise: 2000-01-23T04:56:07.000+00:00
+          sunset: 2000-01-23T04:56:07.000+00:00
         - date: 2000-01-23
+          imperial: ""
+          metric: ""
           condition: condition
-          sunrise: 2000-01-23T04:56:07.000+00:00
-          metric: ""
+          condition_code: ""
           precipitation_probability: 6
+          sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
-          imperial: ""
-          condition_code: ""
-        hourly_forecast:
-        - condition: condition
-          metric: ""
-          precipitation_probability: 0
-          imperial: ""
-          timestamp: 2000-01-23T04:56:07.000+00:00
-          condition_code: ""
-        - condition: condition
-          metric: ""
-          precipitation_probability: 0
-          imperial: ""
-          timestamp: 2000-01-23T04:56:07.000+00:00
-          condition_code: ""
+        attribution: attribution
+        updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         current:
           allOf:
@@ -3383,11 +3397,13 @@ components:
           items:
             $ref: "#/components/schemas/HourlyForecast"
           type: array
+          default: null
         daily_forecast:
           description: Daily forecast for next 7 days (including today)
           items:
             $ref: "#/components/schemas/DailyForecast"
           type: array
+          default: null
         attribution:
           description: Data source attribution
           type: string
@@ -3556,12 +3572,12 @@ components:
     HourlyForecast:
       description: Hourly weather forecast entry with both metric and imperial units
       example:
-        condition: condition
-        metric: ""
-        precipitation_probability: 0
-        imperial: ""
         timestamp: 2000-01-23T04:56:07.000+00:00
+        imperial: ""
+        metric: ""
+        condition: condition
         condition_code: ""
+        precipitation_probability: 0
       properties:
         timestamp:
           description: Forecast timestamp
@@ -3665,13 +3681,13 @@ components:
       description: Daily weather summary with both unit systems
       example:
         date: 2000-01-23
-        condition: condition
-        sunrise: 2000-01-23T04:56:07.000+00:00
-        metric: ""
-        precipitation_probability: 6
-        sunset: 2000-01-23T04:56:07.000+00:00
         imperial: ""
+        metric: ""
+        condition: condition
         condition_code: ""
+        precipitation_probability: 6
+        sunrise: 2000-01-23T04:56:07.000+00:00
+        sunset: 2000-01-23T04:56:07.000+00:00
       properties:
         date:
           description: Date of forecast (YYYY-MM-DD format)
@@ -3788,6 +3804,7 @@ components:
       items:
         $ref: "#/components/schemas/Run"
       type: array
+      default: null
     SummerTrailsResponse:
       description: |-
         List of all summer trails at the resort with their current status,
@@ -3795,6 +3812,7 @@ components:
       items:
         $ref: "#/components/schemas/SummerTrail"
       type: array
+      default: null
     LiftsResponse:
       description: |-
         List of all lifts at the resort with their current operational status,
@@ -3802,6 +3820,7 @@ components:
       items:
         $ref: "#/components/schemas/Lift"
       type: array
+      default: null
     SnowResponse:
       description: |-
         Provides current snow conditions including base depth, surface conditions,
@@ -3811,6 +3830,7 @@ components:
       items:
         $ref: "#/components/schemas/SnowReport"
       type: array
+      default: null
     TerrainParksResponse:
       description: |-
         List of all terrain parks at the resort with their current status,
@@ -3818,52 +3838,55 @@ components:
       items:
         $ref: "#/components/schemas/TerrainPark"
       type: array
+      default: null
     ParkingLotsResponse:
       description: List of all parking lots at the resort with their current status
         and amenities.
       items:
         $ref: "#/components/schemas/ParkingLot"
       type: array
+      default: null
     AmenitiesResponse:
       description: List of all configured amenities at the resort
       items:
         $ref: "#/components/schemas/Amenity"
       type: array
+      default: null
     Amenity:
       description: |-
         Represents an amenity at the resort (e.g. lodge, restaurant, ski school)
          with its category, description, website, and hours.
       example:
-        opens_at: opens_at
-        website: website
-        schedules:
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
-        - days_of_week:
-          - Sunday
-          - Sunday
-          opens_at: opens_at
-          in_effect: true
-          days_string: days_string
-          effective_to: 2000-01-23
-          effective_string: effective_string
-          time_string: time_string
-          closes_at: closes_at
-          effective_from: 2000-01-23
-        name: name
         description: description
-        category: ""
-        closes_at: closes_at
         uuid: uuid
+        name: name
+        category: ""
+        website: website
+        opens_at: opens_at
+        closes_at: closes_at
+        schedules:
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
+        - days_string: days_string
+          days_of_week:
+          - Sunday
+          - Sunday
+          time_string: time_string
+          opens_at: opens_at
+          closes_at: closes_at
+          in_effect: true
+          effective_string: effective_string
+          effective_from: 2000-01-23
+          effective_to: 2000-01-23
       properties:
         description:
           description: Description of the amenity.
@@ -3898,6 +3921,7 @@ components:
           items:
             $ref: "#/components/schemas/Schedule"
           type: array
+          default: null
       required:
       - category
       - description
@@ -3910,19 +3934,20 @@ components:
       items:
         $ref: "#/components/schemas/TrailMapSummary"
       type: array
+      default: null
     TrailMapSummary:
       description: Summary metadata for a trail map.
       example:
-        hosted_url: hosted_url
-        name: name
-        display_order: 0
-        season: winter
         uuid: uuid
+        name: name
+        season: winter
+        display_order: 0
         version: 6
+        hosted_url: hosted_url
+        geo_bounds: ""
         entity_uuids:
         - entity_uuids
         - entity_uuids
-        geo_bounds: ""
       properties:
         uuid:
           type: string
@@ -3956,6 +3981,7 @@ components:
           items:
             type: string
           type: array
+          default: null
       required:
       - display_order
       - entity_uuids
@@ -4010,44 +4036,44 @@ components:
     TrailMap:
       description: A public trail map with enriched entity data.
       example:
-        background_image_url: background_image_url
-        elements:
-        - tension: 5.962133916683182
-          lift: ""
-          type: lift
-          uuid: uuid
-          points:
-          - 1.4658129805029452
-          - 1.4658129805029452
-        - tension: 5.962133916683182
-          lift: ""
-          type: lift
-          uuid: uuid
-          points:
-          - 1.4658129805029452
-          - 1.4658129805029452
-        name: name
-        display_order: 0
-        season: winter
-        geo_control_points:
-        - pixel_y: 2.3021358869347655
-          lng: 9.301444243932576
-          pixel_x: 5.637376656633329
-          lat: 7.061401241503109
-        - pixel_y: 2.3021358869347655
-          lng: 9.301444243932576
-          pixel_x: 5.637376656633329
-          lat: 7.061401241503109
-        resort:
-          timezone: timezone
-          name: name
-          region: ""
-          uuid: uuid
-          unit_preference: ""
-          slug: slug
         uuid: uuid
-        version: 6
+        name: name
         slug: slug
+        season: winter
+        display_order: 0
+        version: 6
+        background_image_url: background_image_url
+        resort:
+          uuid: uuid
+          name: name
+          slug: slug
+          timezone: timezone
+          region: ""
+          unit_preference: ""
+        elements:
+        - type: lift
+          uuid: uuid
+          points:
+          - 1.4658129805029452
+          - 1.4658129805029452
+          tension: 5.962133916683182
+          lift: ""
+        - type: lift
+          uuid: uuid
+          points:
+          - 1.4658129805029452
+          - 1.4658129805029452
+          tension: 5.962133916683182
+          lift: ""
+        geo_control_points:
+        - pixel_x: 5.637376656633329
+          pixel_y: 2.3021358869347655
+          lat: 7.061401241503109
+          lng: 9.301444243932576
+        - pixel_x: 5.637376656633329
+          pixel_y: 2.3021358869347655
+          lat: 7.061401241503109
+          lng: 9.301444243932576
       properties:
         uuid:
           type: string
@@ -4074,11 +4100,13 @@ components:
           items:
             $ref: "#/components/schemas/TrailMapElement"
           type: array
+          default: null
         geo_control_points:
           items:
             $ref: "#/components/schemas/GeoControlPoint"
           nullable: true
           type: array
+          default: null
       required:
       - background_image_url
       - display_order
@@ -4143,10 +4171,10 @@ components:
       - $ref: "#/components/schemas/PointMarker_oneOf_2"
     GeoControlPoint:
       example:
-        pixel_y: 2.3021358869347655
-        lng: 9.301444243932576
         pixel_x: 5.637376656633329
+        pixel_y: 2.3021358869347655
         lat: 7.061401241503109
+        lng: 9.301444243932576
       properties:
         pixel_x:
           format: double
@@ -4167,13 +4195,13 @@ components:
       - pixel_y
     TrailMapElement_oneOf:
       example:
-        tension: 5.962133916683182
-        lift: ""
         type: lift
         uuid: uuid
         points:
         - 1.4658129805029452
         - 1.4658129805029452
+        tension: 5.962133916683182
+        lift: ""
       properties:
         type:
           enum:
@@ -4186,6 +4214,7 @@ components:
             format: double
             type: number
           type: array
+          default: null
         tension:
           format: double
           nullable: true
@@ -4211,6 +4240,7 @@ components:
             format: double
             type: number
           type: array
+          default: null
         tension:
           format: double
           nullable: true
@@ -4236,6 +4266,7 @@ components:
             format: double
             type: number
           type: array
+          default: null
         tension:
           format: double
           nullable: true
@@ -4265,6 +4296,7 @@ components:
             format: double
             type: number
           type: array
+          default: null
         tension:
           format: double
           nullable: true
