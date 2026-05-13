@@ -4126,6 +4126,8 @@ components:
       - $ref: "#/components/schemas/TrailMapElement_oneOf_2"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_3"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_4"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_5"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_6"
     LabelOffset:
       properties:
         x:
@@ -4162,13 +4164,6 @@ components:
       - atm
       - star
       type: string
-    PointMarker:
-      description: "A point marker on a trail map, enriched with entity data where\
-        \ applicable."
-      oneOf:
-      - $ref: "#/components/schemas/PointMarker_oneOf"
-      - $ref: "#/components/schemas/PointMarker_oneOf_1"
-      - $ref: "#/components/schemas/PointMarker_oneOf_2"
     GeoControlPoint:
       example:
         pixel_x: 5.637376656633329
@@ -4310,20 +4305,11 @@ components:
       - type
       - uuid
     TrailMapElement_oneOf_4:
-      allOf:
-      - $ref: "#/components/schemas/PointMarker"
-      - properties:
-          type:
-            enum:
-            - point_marker
-            type: string
-        required:
-        - type
-        type: object
-        example: null
-      example: null
-    PointMarker_oneOf:
       properties:
+        type:
+          enum:
+          - amenity_marker
+          type: string
         uuid:
           type: string
         x:
@@ -4343,17 +4329,17 @@ components:
           allOf:
           - $ref: "#/components/schemas/Amenity"
           nullable: true
-        kind:
-          enum:
-          - amenity
-          type: string
       required:
-      - kind
+      - type
       - uuid
       - x
       - "y"
-    PointMarker_oneOf_1:
+    TrailMapElement_oneOf_5:
       properties:
+        type:
+          enum:
+          - parking_lot_marker
+          type: string
         uuid:
           type: string
         x:
@@ -4373,17 +4359,17 @@ components:
           allOf:
           - $ref: "#/components/schemas/ParkingLot"
           nullable: true
-        kind:
-          enum:
-          - parking_lot
-          type: string
       required:
-      - kind
+      - type
       - uuid
       - x
       - "y"
-    PointMarker_oneOf_2:
+    TrailMapElement_oneOf_6:
       properties:
+        type:
+          enum:
+          - generic_marker
+          type: string
         uuid:
           type: string
         x:
@@ -4404,13 +4390,9 @@ components:
         searchable:
           nullable: true
           type: boolean
-        kind:
-          enum:
-          - generic
-          type: string
       required:
-      - kind
       - label
+      - type
       - uuid
       - x
       - "y"

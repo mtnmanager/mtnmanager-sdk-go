@@ -17,45 +17,71 @@ import (
 	"fmt"
 )
 
-// checks if the PointMarkerOneOf1 type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PointMarkerOneOf1{}
+// checks if the TrailMapElementOneOf6 type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &TrailMapElementOneOf6{}
 
-// PointMarkerOneOf1 struct for PointMarkerOneOf1
-type PointMarkerOneOf1 struct {
+// TrailMapElementOneOf6 struct for TrailMapElementOneOf6
+type TrailMapElementOneOf6 struct {
+	Type string `json:"type"`
 	Uuid string `json:"uuid"`
 	X float64 `json:"x"`
 	Y float64 `json:"y"`
 	Icon NullableMarkerIcon `json:"icon,omitempty"`
 	Color NullableString `json:"color,omitempty"`
-	ParkingLot NullableParkingLot `json:"parking_lot,omitempty"`
-	Kind string `json:"kind"`
+	Label string `json:"label"`
+	Searchable NullableBool `json:"searchable,omitempty"`
 }
 
-type _PointMarkerOneOf1 PointMarkerOneOf1
+type _TrailMapElementOneOf6 TrailMapElementOneOf6
 
-// NewPointMarkerOneOf1 instantiates a new PointMarkerOneOf1 object
+// NewTrailMapElementOneOf6 instantiates a new TrailMapElementOneOf6 object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPointMarkerOneOf1(uuid string, x float64, y float64, kind string) *PointMarkerOneOf1 {
-	this := PointMarkerOneOf1{}
+func NewTrailMapElementOneOf6(type_ string, uuid string, x float64, y float64, label string) *TrailMapElementOneOf6 {
+	this := TrailMapElementOneOf6{}
+	this.Type = type_
 	this.Uuid = uuid
 	this.X = x
 	this.Y = y
-	this.Kind = kind
+	this.Label = label
 	return &this
 }
 
-// NewPointMarkerOneOf1WithDefaults instantiates a new PointMarkerOneOf1 object
+// NewTrailMapElementOneOf6WithDefaults instantiates a new TrailMapElementOneOf6 object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPointMarkerOneOf1WithDefaults() *PointMarkerOneOf1 {
-	this := PointMarkerOneOf1{}
+func NewTrailMapElementOneOf6WithDefaults() *TrailMapElementOneOf6 {
+	this := TrailMapElementOneOf6{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *TrailMapElementOneOf6) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapElementOneOf6) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *TrailMapElementOneOf6) SetType(v string) {
+	o.Type = v
 }
 
 // GetUuid returns the Uuid field value
-func (o *PointMarkerOneOf1) GetUuid() string {
+func (o *TrailMapElementOneOf6) GetUuid() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -66,7 +92,7 @@ func (o *PointMarkerOneOf1) GetUuid() string {
 
 // GetUuidOk returns a tuple with the Uuid field value
 // and a boolean to check if the value has been set.
-func (o *PointMarkerOneOf1) GetUuidOk() (*string, bool) {
+func (o *TrailMapElementOneOf6) GetUuidOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -74,12 +100,12 @@ func (o *PointMarkerOneOf1) GetUuidOk() (*string, bool) {
 }
 
 // SetUuid sets field value
-func (o *PointMarkerOneOf1) SetUuid(v string) {
+func (o *TrailMapElementOneOf6) SetUuid(v string) {
 	o.Uuid = v
 }
 
 // GetX returns the X field value
-func (o *PointMarkerOneOf1) GetX() float64 {
+func (o *TrailMapElementOneOf6) GetX() float64 {
 	if o == nil {
 		var ret float64
 		return ret
@@ -90,7 +116,7 @@ func (o *PointMarkerOneOf1) GetX() float64 {
 
 // GetXOk returns a tuple with the X field value
 // and a boolean to check if the value has been set.
-func (o *PointMarkerOneOf1) GetXOk() (*float64, bool) {
+func (o *TrailMapElementOneOf6) GetXOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -98,12 +124,12 @@ func (o *PointMarkerOneOf1) GetXOk() (*float64, bool) {
 }
 
 // SetX sets field value
-func (o *PointMarkerOneOf1) SetX(v float64) {
+func (o *TrailMapElementOneOf6) SetX(v float64) {
 	o.X = v
 }
 
 // GetY returns the Y field value
-func (o *PointMarkerOneOf1) GetY() float64 {
+func (o *TrailMapElementOneOf6) GetY() float64 {
 	if o == nil {
 		var ret float64
 		return ret
@@ -114,7 +140,7 @@ func (o *PointMarkerOneOf1) GetY() float64 {
 
 // GetYOk returns a tuple with the Y field value
 // and a boolean to check if the value has been set.
-func (o *PointMarkerOneOf1) GetYOk() (*float64, bool) {
+func (o *TrailMapElementOneOf6) GetYOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -122,12 +148,12 @@ func (o *PointMarkerOneOf1) GetYOk() (*float64, bool) {
 }
 
 // SetY sets field value
-func (o *PointMarkerOneOf1) SetY(v float64) {
+func (o *TrailMapElementOneOf6) SetY(v float64) {
 	o.Y = v
 }
 
 // GetIcon returns the Icon field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PointMarkerOneOf1) GetIcon() MarkerIcon {
+func (o *TrailMapElementOneOf6) GetIcon() MarkerIcon {
 	if o == nil || IsNil(o.Icon.Get()) {
 		var ret MarkerIcon
 		return ret
@@ -138,7 +164,7 @@ func (o *PointMarkerOneOf1) GetIcon() MarkerIcon {
 // GetIconOk returns a tuple with the Icon field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PointMarkerOneOf1) GetIconOk() (*MarkerIcon, bool) {
+func (o *TrailMapElementOneOf6) GetIconOk() (*MarkerIcon, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -146,7 +172,7 @@ func (o *PointMarkerOneOf1) GetIconOk() (*MarkerIcon, bool) {
 }
 
 // HasIcon returns a boolean if a field has been set.
-func (o *PointMarkerOneOf1) HasIcon() bool {
+func (o *TrailMapElementOneOf6) HasIcon() bool {
 	if o != nil && o.Icon.IsSet() {
 		return true
 	}
@@ -155,21 +181,21 @@ func (o *PointMarkerOneOf1) HasIcon() bool {
 }
 
 // SetIcon gets a reference to the given NullableMarkerIcon and assigns it to the Icon field.
-func (o *PointMarkerOneOf1) SetIcon(v MarkerIcon) {
+func (o *TrailMapElementOneOf6) SetIcon(v MarkerIcon) {
 	o.Icon.Set(&v)
 }
 // SetIconNil sets the value for Icon to be an explicit nil
-func (o *PointMarkerOneOf1) SetIconNil() {
+func (o *TrailMapElementOneOf6) SetIconNil() {
 	o.Icon.Set(nil)
 }
 
 // UnsetIcon ensures that no value is present for Icon, not even an explicit nil
-func (o *PointMarkerOneOf1) UnsetIcon() {
+func (o *TrailMapElementOneOf6) UnsetIcon() {
 	o.Icon.Unset()
 }
 
 // GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PointMarkerOneOf1) GetColor() string {
+func (o *TrailMapElementOneOf6) GetColor() string {
 	if o == nil || IsNil(o.Color.Get()) {
 		var ret string
 		return ret
@@ -180,7 +206,7 @@ func (o *PointMarkerOneOf1) GetColor() string {
 // GetColorOk returns a tuple with the Color field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PointMarkerOneOf1) GetColorOk() (*string, bool) {
+func (o *TrailMapElementOneOf6) GetColorOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -188,7 +214,7 @@ func (o *PointMarkerOneOf1) GetColorOk() (*string, bool) {
 }
 
 // HasColor returns a boolean if a field has been set.
-func (o *PointMarkerOneOf1) HasColor() bool {
+func (o *TrailMapElementOneOf6) HasColor() bool {
 	if o != nil && o.Color.IsSet() {
 		return true
 	}
@@ -197,86 +223,86 @@ func (o *PointMarkerOneOf1) HasColor() bool {
 }
 
 // SetColor gets a reference to the given NullableString and assigns it to the Color field.
-func (o *PointMarkerOneOf1) SetColor(v string) {
+func (o *TrailMapElementOneOf6) SetColor(v string) {
 	o.Color.Set(&v)
 }
 // SetColorNil sets the value for Color to be an explicit nil
-func (o *PointMarkerOneOf1) SetColorNil() {
+func (o *TrailMapElementOneOf6) SetColorNil() {
 	o.Color.Set(nil)
 }
 
 // UnsetColor ensures that no value is present for Color, not even an explicit nil
-func (o *PointMarkerOneOf1) UnsetColor() {
+func (o *TrailMapElementOneOf6) UnsetColor() {
 	o.Color.Unset()
 }
 
-// GetParkingLot returns the ParkingLot field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PointMarkerOneOf1) GetParkingLot() ParkingLot {
-	if o == nil || IsNil(o.ParkingLot.Get()) {
-		var ret ParkingLot
+// GetLabel returns the Label field value
+func (o *TrailMapElementOneOf6) GetLabel() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.ParkingLot.Get()
+
+	return o.Label
 }
 
-// GetParkingLotOk returns a tuple with the ParkingLot field value if set, nil otherwise
+// GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PointMarkerOneOf1) GetParkingLotOk() (*ParkingLot, bool) {
+func (o *TrailMapElementOneOf6) GetLabelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ParkingLot.Get(), o.ParkingLot.IsSet()
+	return &o.Label, true
 }
 
-// HasParkingLot returns a boolean if a field has been set.
-func (o *PointMarkerOneOf1) HasParkingLot() bool {
-	if o != nil && o.ParkingLot.IsSet() {
+// SetLabel sets field value
+func (o *TrailMapElementOneOf6) SetLabel(v string) {
+	o.Label = v
+}
+
+// GetSearchable returns the Searchable field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapElementOneOf6) GetSearchable() bool {
+	if o == nil || IsNil(o.Searchable.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.Searchable.Get()
+}
+
+// GetSearchableOk returns a tuple with the Searchable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapElementOneOf6) GetSearchableOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Searchable.Get(), o.Searchable.IsSet()
+}
+
+// HasSearchable returns a boolean if a field has been set.
+func (o *TrailMapElementOneOf6) HasSearchable() bool {
+	if o != nil && o.Searchable.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetParkingLot gets a reference to the given NullableParkingLot and assigns it to the ParkingLot field.
-func (o *PointMarkerOneOf1) SetParkingLot(v ParkingLot) {
-	o.ParkingLot.Set(&v)
+// SetSearchable gets a reference to the given NullableBool and assigns it to the Searchable field.
+func (o *TrailMapElementOneOf6) SetSearchable(v bool) {
+	o.Searchable.Set(&v)
 }
-// SetParkingLotNil sets the value for ParkingLot to be an explicit nil
-func (o *PointMarkerOneOf1) SetParkingLotNil() {
-	o.ParkingLot.Set(nil)
-}
-
-// UnsetParkingLot ensures that no value is present for ParkingLot, not even an explicit nil
-func (o *PointMarkerOneOf1) UnsetParkingLot() {
-	o.ParkingLot.Unset()
+// SetSearchableNil sets the value for Searchable to be an explicit nil
+func (o *TrailMapElementOneOf6) SetSearchableNil() {
+	o.Searchable.Set(nil)
 }
 
-// GetKind returns the Kind field value
-func (o *PointMarkerOneOf1) GetKind() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Kind
+// UnsetSearchable ensures that no value is present for Searchable, not even an explicit nil
+func (o *TrailMapElementOneOf6) UnsetSearchable() {
+	o.Searchable.Unset()
 }
 
-// GetKindOk returns a tuple with the Kind field value
-// and a boolean to check if the value has been set.
-func (o *PointMarkerOneOf1) GetKindOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Kind, true
-}
-
-// SetKind sets field value
-func (o *PointMarkerOneOf1) SetKind(v string) {
-	o.Kind = v
-}
-
-func (o PointMarkerOneOf1) MarshalJSON() ([]byte, error) {
+func (o TrailMapElementOneOf6) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -284,8 +310,9 @@ func (o PointMarkerOneOf1) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o PointMarkerOneOf1) ToMap() (map[string]interface{}, error) {
+func (o TrailMapElementOneOf6) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["x"] = o.X
 	toSerialize["y"] = o.Y
@@ -295,22 +322,23 @@ func (o PointMarkerOneOf1) ToMap() (map[string]interface{}, error) {
 	if o.Color.IsSet() {
 		toSerialize["color"] = o.Color.Get()
 	}
-	if o.ParkingLot.IsSet() {
-		toSerialize["parking_lot"] = o.ParkingLot.Get()
+	toSerialize["label"] = o.Label
+	if o.Searchable.IsSet() {
+		toSerialize["searchable"] = o.Searchable.Get()
 	}
-	toSerialize["kind"] = o.Kind
 	return toSerialize, nil
 }
 
-func (o *PointMarkerOneOf1) UnmarshalJSON(data []byte) (err error) {
+func (o *TrailMapElementOneOf6) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"type",
 		"uuid",
 		"x",
 		"y",
-		"kind",
+		"label",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -327,53 +355,53 @@ func (o *PointMarkerOneOf1) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varPointMarkerOneOf1 := _PointMarkerOneOf1{}
+	varTrailMapElementOneOf6 := _TrailMapElementOneOf6{}
 
 	decoder := json.NewDecoder(bytes.NewReader(data))
 	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPointMarkerOneOf1)
+	err = decoder.Decode(&varTrailMapElementOneOf6)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PointMarkerOneOf1(varPointMarkerOneOf1)
+	*o = TrailMapElementOneOf6(varTrailMapElementOneOf6)
 
 	return err
 }
 
-type NullablePointMarkerOneOf1 struct {
-	value *PointMarkerOneOf1
+type NullableTrailMapElementOneOf6 struct {
+	value *TrailMapElementOneOf6
 	isSet bool
 }
 
-func (v NullablePointMarkerOneOf1) Get() *PointMarkerOneOf1 {
+func (v NullableTrailMapElementOneOf6) Get() *TrailMapElementOneOf6 {
 	return v.value
 }
 
-func (v *NullablePointMarkerOneOf1) Set(val *PointMarkerOneOf1) {
+func (v *NullableTrailMapElementOneOf6) Set(val *TrailMapElementOneOf6) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePointMarkerOneOf1) IsSet() bool {
+func (v NullableTrailMapElementOneOf6) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePointMarkerOneOf1) Unset() {
+func (v *NullableTrailMapElementOneOf6) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePointMarkerOneOf1(val *PointMarkerOneOf1) *NullablePointMarkerOneOf1 {
-	return &NullablePointMarkerOneOf1{value: val, isSet: true}
+func NewNullableTrailMapElementOneOf6(val *TrailMapElementOneOf6) *NullableTrailMapElementOneOf6 {
+	return &NullableTrailMapElementOneOf6{value: val, isSet: true}
 }
 
-func (v NullablePointMarkerOneOf1) MarshalJSON() ([]byte, error) {
+func (v NullableTrailMapElementOneOf6) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePointMarkerOneOf1) UnmarshalJSON(src []byte) error {
+func (v *NullableTrailMapElementOneOf6) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

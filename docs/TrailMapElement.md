@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **Icon** | Pointer to [**MarkerIcon**](MarkerIcon.md) |  | [optional] 
 **Color** | Pointer to **string** |  | [optional] 
 **Amenity** | Pointer to [**Amenity**](Amenity.md) |  | [optional] 
-**Kind** | **string** |  | 
 **ParkingLot** | Pointer to [**ParkingLot**](ParkingLot.md) |  | [optional] 
 **Label** | **string** |  | 
 **Searchable** | Pointer to **bool** |  | [optional] 
@@ -27,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewTrailMapElement
 
-`func NewTrailMapElement(type_ string, uuid string, points []float64, x float64, y float64, kind string, label string, ) *TrailMapElement`
+`func NewTrailMapElement(type_ string, uuid string, points []float64, x float64, y float64, label string, ) *TrailMapElement`
 
 NewTrailMapElement instantiates a new TrailMapElement object
 This constructor will assign default values to properties that have it defined,
@@ -366,26 +365,6 @@ SetAmenity sets Amenity field to given value.
 `func (o *TrailMapElement) HasAmenity() bool`
 
 HasAmenity returns a boolean if a field has been set.
-
-### GetKind
-
-`func (o *TrailMapElement) GetKind() string`
-
-GetKind returns the Kind field if non-nil, zero value otherwise.
-
-### GetKindOk
-
-`func (o *TrailMapElement) GetKindOk() (*string, bool)`
-
-GetKindOk returns a tuple with the Kind field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKind
-
-`func (o *TrailMapElement) SetKind(v string)`
-
-SetKind sets Kind field to given value.
-
 
 ### GetParkingLot
 

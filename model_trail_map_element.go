@@ -24,6 +24,8 @@ type TrailMapElement struct {
 	TrailMapElementOneOf2 *TrailMapElementOneOf2
 	TrailMapElementOneOf3 *TrailMapElementOneOf3
 	TrailMapElementOneOf4 *TrailMapElementOneOf4
+	TrailMapElementOneOf5 *TrailMapElementOneOf5
+	TrailMapElementOneOf6 *TrailMapElementOneOf6
 }
 
 // TrailMapElementOneOfAsTrailMapElement is a convenience function that returns TrailMapElementOneOf wrapped in TrailMapElement
@@ -58,6 +60,20 @@ func TrailMapElementOneOf3AsTrailMapElement(v *TrailMapElementOneOf3) TrailMapEl
 func TrailMapElementOneOf4AsTrailMapElement(v *TrailMapElementOneOf4) TrailMapElement {
 	return TrailMapElement{
 		TrailMapElementOneOf4: v,
+	}
+}
+
+// TrailMapElementOneOf5AsTrailMapElement is a convenience function that returns TrailMapElementOneOf5 wrapped in TrailMapElement
+func TrailMapElementOneOf5AsTrailMapElement(v *TrailMapElementOneOf5) TrailMapElement {
+	return TrailMapElement{
+		TrailMapElementOneOf5: v,
+	}
+}
+
+// TrailMapElementOneOf6AsTrailMapElement is a convenience function that returns TrailMapElementOneOf6 wrapped in TrailMapElement
+func TrailMapElementOneOf6AsTrailMapElement(v *TrailMapElementOneOf6) TrailMapElement {
+	return TrailMapElement{
+		TrailMapElementOneOf6: v,
 	}
 }
 
@@ -151,6 +167,40 @@ func (dst *TrailMapElement) UnmarshalJSON(data []byte) error {
 		dst.TrailMapElementOneOf4 = nil
 	}
 
+	// try to unmarshal data into TrailMapElementOneOf5
+	err = newStrictDecoder(data).Decode(&dst.TrailMapElementOneOf5)
+	if err == nil {
+		jsonTrailMapElementOneOf5, _ := json.Marshal(dst.TrailMapElementOneOf5)
+		if string(jsonTrailMapElementOneOf5) == "{}" { // empty struct
+			dst.TrailMapElementOneOf5 = nil
+		} else {
+			if err = validator.Validate(dst.TrailMapElementOneOf5); err != nil {
+				dst.TrailMapElementOneOf5 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.TrailMapElementOneOf5 = nil
+	}
+
+	// try to unmarshal data into TrailMapElementOneOf6
+	err = newStrictDecoder(data).Decode(&dst.TrailMapElementOneOf6)
+	if err == nil {
+		jsonTrailMapElementOneOf6, _ := json.Marshal(dst.TrailMapElementOneOf6)
+		if string(jsonTrailMapElementOneOf6) == "{}" { // empty struct
+			dst.TrailMapElementOneOf6 = nil
+		} else {
+			if err = validator.Validate(dst.TrailMapElementOneOf6); err != nil {
+				dst.TrailMapElementOneOf6 = nil
+			} else {
+				match++
+			}
+		}
+	} else {
+		dst.TrailMapElementOneOf6 = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.TrailMapElementOneOf = nil
@@ -158,6 +208,8 @@ func (dst *TrailMapElement) UnmarshalJSON(data []byte) error {
 		dst.TrailMapElementOneOf2 = nil
 		dst.TrailMapElementOneOf3 = nil
 		dst.TrailMapElementOneOf4 = nil
+		dst.TrailMapElementOneOf5 = nil
+		dst.TrailMapElementOneOf6 = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(TrailMapElement)")
 	} else if match == 1 {
@@ -189,6 +241,14 @@ func (src TrailMapElement) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.TrailMapElementOneOf4)
 	}
 
+	if src.TrailMapElementOneOf5 != nil {
+		return json.Marshal(&src.TrailMapElementOneOf5)
+	}
+
+	if src.TrailMapElementOneOf6 != nil {
+		return json.Marshal(&src.TrailMapElementOneOf6)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -217,6 +277,14 @@ func (obj *TrailMapElement) GetActualInstance() (interface{}) {
 		return obj.TrailMapElementOneOf4
 	}
 
+	if obj.TrailMapElementOneOf5 != nil {
+		return obj.TrailMapElementOneOf5
+	}
+
+	if obj.TrailMapElementOneOf6 != nil {
+		return obj.TrailMapElementOneOf6
+	}
+
 	// all schemas are nil
 	return nil
 }
@@ -241,6 +309,14 @@ func (obj TrailMapElement) GetActualInstanceValue() (interface{}) {
 
 	if obj.TrailMapElementOneOf4 != nil {
 		return *obj.TrailMapElementOneOf4
+	}
+
+	if obj.TrailMapElementOneOf5 != nil {
+		return *obj.TrailMapElementOneOf5
+	}
+
+	if obj.TrailMapElementOneOf6 != nil {
+		return *obj.TrailMapElementOneOf6
 	}
 
 	// all schemas are nil

@@ -22,8 +22,13 @@ var _ MappedNullable = &TrailMapElementOneOf4{}
 
 // TrailMapElementOneOf4 struct for TrailMapElementOneOf4
 type TrailMapElementOneOf4 struct {
-	PointMarker
 	Type string `json:"type"`
+	Uuid string `json:"uuid"`
+	X float64 `json:"x"`
+	Y float64 `json:"y"`
+	Icon NullableMarkerIcon `json:"icon,omitempty"`
+	Color NullableString `json:"color,omitempty"`
+	Amenity NullableAmenity `json:"amenity,omitempty"`
 }
 
 type _TrailMapElementOneOf4 TrailMapElementOneOf4
@@ -32,9 +37,12 @@ type _TrailMapElementOneOf4 TrailMapElementOneOf4
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTrailMapElementOneOf4(type_ string) *TrailMapElementOneOf4 {
+func NewTrailMapElementOneOf4(type_ string, uuid string, x float64, y float64) *TrailMapElementOneOf4 {
 	this := TrailMapElementOneOf4{}
 	this.Type = type_
+	this.Uuid = uuid
+	this.X = x
+	this.Y = y
 	return &this
 }
 
@@ -70,6 +78,204 @@ func (o *TrailMapElementOneOf4) SetType(v string) {
 	o.Type = v
 }
 
+// GetUuid returns the Uuid field value
+func (o *TrailMapElementOneOf4) GetUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapElementOneOf4) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *TrailMapElementOneOf4) SetUuid(v string) {
+	o.Uuid = v
+}
+
+// GetX returns the X field value
+func (o *TrailMapElementOneOf4) GetX() float64 {
+	if o == nil {
+		var ret float64
+		return ret
+	}
+
+	return o.X
+}
+
+// GetXOk returns a tuple with the X field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapElementOneOf4) GetXOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.X, true
+}
+
+// SetX sets field value
+func (o *TrailMapElementOneOf4) SetX(v float64) {
+	o.X = v
+}
+
+// GetY returns the Y field value
+func (o *TrailMapElementOneOf4) GetY() float64 {
+	if o == nil {
+		var ret float64
+		return ret
+	}
+
+	return o.Y
+}
+
+// GetYOk returns a tuple with the Y field value
+// and a boolean to check if the value has been set.
+func (o *TrailMapElementOneOf4) GetYOk() (*float64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Y, true
+}
+
+// SetY sets field value
+func (o *TrailMapElementOneOf4) SetY(v float64) {
+	o.Y = v
+}
+
+// GetIcon returns the Icon field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapElementOneOf4) GetIcon() MarkerIcon {
+	if o == nil || IsNil(o.Icon.Get()) {
+		var ret MarkerIcon
+		return ret
+	}
+	return *o.Icon.Get()
+}
+
+// GetIconOk returns a tuple with the Icon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapElementOneOf4) GetIconOk() (*MarkerIcon, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Icon.Get(), o.Icon.IsSet()
+}
+
+// HasIcon returns a boolean if a field has been set.
+func (o *TrailMapElementOneOf4) HasIcon() bool {
+	if o != nil && o.Icon.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIcon gets a reference to the given NullableMarkerIcon and assigns it to the Icon field.
+func (o *TrailMapElementOneOf4) SetIcon(v MarkerIcon) {
+	o.Icon.Set(&v)
+}
+// SetIconNil sets the value for Icon to be an explicit nil
+func (o *TrailMapElementOneOf4) SetIconNil() {
+	o.Icon.Set(nil)
+}
+
+// UnsetIcon ensures that no value is present for Icon, not even an explicit nil
+func (o *TrailMapElementOneOf4) UnsetIcon() {
+	o.Icon.Unset()
+}
+
+// GetColor returns the Color field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapElementOneOf4) GetColor() string {
+	if o == nil || IsNil(o.Color.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Color.Get()
+}
+
+// GetColorOk returns a tuple with the Color field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapElementOneOf4) GetColorOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Color.Get(), o.Color.IsSet()
+}
+
+// HasColor returns a boolean if a field has been set.
+func (o *TrailMapElementOneOf4) HasColor() bool {
+	if o != nil && o.Color.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetColor gets a reference to the given NullableString and assigns it to the Color field.
+func (o *TrailMapElementOneOf4) SetColor(v string) {
+	o.Color.Set(&v)
+}
+// SetColorNil sets the value for Color to be an explicit nil
+func (o *TrailMapElementOneOf4) SetColorNil() {
+	o.Color.Set(nil)
+}
+
+// UnsetColor ensures that no value is present for Color, not even an explicit nil
+func (o *TrailMapElementOneOf4) UnsetColor() {
+	o.Color.Unset()
+}
+
+// GetAmenity returns the Amenity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapElementOneOf4) GetAmenity() Amenity {
+	if o == nil || IsNil(o.Amenity.Get()) {
+		var ret Amenity
+		return ret
+	}
+	return *o.Amenity.Get()
+}
+
+// GetAmenityOk returns a tuple with the Amenity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapElementOneOf4) GetAmenityOk() (*Amenity, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Amenity.Get(), o.Amenity.IsSet()
+}
+
+// HasAmenity returns a boolean if a field has been set.
+func (o *TrailMapElementOneOf4) HasAmenity() bool {
+	if o != nil && o.Amenity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAmenity gets a reference to the given NullableAmenity and assigns it to the Amenity field.
+func (o *TrailMapElementOneOf4) SetAmenity(v Amenity) {
+	o.Amenity.Set(&v)
+}
+// SetAmenityNil sets the value for Amenity to be an explicit nil
+func (o *TrailMapElementOneOf4) SetAmenityNil() {
+	o.Amenity.Set(nil)
+}
+
+// UnsetAmenity ensures that no value is present for Amenity, not even an explicit nil
+func (o *TrailMapElementOneOf4) UnsetAmenity() {
+	o.Amenity.Unset()
+}
+
 func (o TrailMapElementOneOf4) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -81,6 +287,18 @@ func (o TrailMapElementOneOf4) MarshalJSON() ([]byte, error) {
 func (o TrailMapElementOneOf4) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	toSerialize["uuid"] = o.Uuid
+	toSerialize["x"] = o.X
+	toSerialize["y"] = o.Y
+	if o.Icon.IsSet() {
+		toSerialize["icon"] = o.Icon.Get()
+	}
+	if o.Color.IsSet() {
+		toSerialize["color"] = o.Color.Get()
+	}
+	if o.Amenity.IsSet() {
+		toSerialize["amenity"] = o.Amenity.Get()
+	}
 	return toSerialize, nil
 }
 
@@ -90,6 +308,9 @@ func (o *TrailMapElementOneOf4) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"type",
+		"uuid",
+		"x",
+		"y",
 	}
 
 	allProperties := make(map[string]interface{})
