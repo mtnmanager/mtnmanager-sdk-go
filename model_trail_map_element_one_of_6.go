@@ -30,6 +30,7 @@ type TrailMapElementOneOf6 struct {
 	Color NullableString `json:"color,omitempty"`
 	Label string `json:"label"`
 	Searchable NullableBool `json:"searchable,omitempty"`
+	GroupLabel NullableString `json:"group_label,omitempty"`
 }
 
 type _TrailMapElementOneOf6 TrailMapElementOneOf6
@@ -302,6 +303,48 @@ func (o *TrailMapElementOneOf6) UnsetSearchable() {
 	o.Searchable.Unset()
 }
 
+// GetGroupLabel returns the GroupLabel field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TrailMapElementOneOf6) GetGroupLabel() string {
+	if o == nil || IsNil(o.GroupLabel.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GroupLabel.Get()
+}
+
+// GetGroupLabelOk returns a tuple with the GroupLabel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TrailMapElementOneOf6) GetGroupLabelOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GroupLabel.Get(), o.GroupLabel.IsSet()
+}
+
+// HasGroupLabel returns a boolean if a field has been set.
+func (o *TrailMapElementOneOf6) HasGroupLabel() bool {
+	if o != nil && o.GroupLabel.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGroupLabel gets a reference to the given NullableString and assigns it to the GroupLabel field.
+func (o *TrailMapElementOneOf6) SetGroupLabel(v string) {
+	o.GroupLabel.Set(&v)
+}
+// SetGroupLabelNil sets the value for GroupLabel to be an explicit nil
+func (o *TrailMapElementOneOf6) SetGroupLabelNil() {
+	o.GroupLabel.Set(nil)
+}
+
+// UnsetGroupLabel ensures that no value is present for GroupLabel, not even an explicit nil
+func (o *TrailMapElementOneOf6) UnsetGroupLabel() {
+	o.GroupLabel.Unset()
+}
+
 func (o TrailMapElementOneOf6) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -325,6 +368,9 @@ func (o TrailMapElementOneOf6) ToMap() (map[string]interface{}, error) {
 	toSerialize["label"] = o.Label
 	if o.Searchable.IsSet() {
 		toSerialize["searchable"] = o.Searchable.Get()
+	}
+	if o.GroupLabel.IsSet() {
+		toSerialize["group_label"] = o.GroupLabel.Get()
 	}
 	return toSerialize, nil
 }

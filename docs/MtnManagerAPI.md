@@ -22,7 +22,7 @@ Method | HTTP request | Description
 
 ## GetAmenities
 
-> []Amenity GetAmenities(ctx).Execute()
+> []Amenity GetAmenities(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get amenities
 
@@ -39,10 +39,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetAmenities(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetAmenities(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetAmenities``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -54,12 +55,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetAmenitiesRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -81,7 +86,7 @@ No authorization required
 
 ## GetFullReport
 
-> FullReport GetFullReport(ctx).Execute()
+> FullReport GetFullReport(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get full report
 
@@ -98,10 +103,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetFullReport(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetFullReport(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetFullReport``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -113,12 +119,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetFullReportRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -140,7 +150,7 @@ No authorization required
 
 ## GetHours
 
-> OperatingHours GetHours(ctx).Execute()
+> OperatingHours GetHours(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get operating hours
 
@@ -157,10 +167,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetHours(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetHours(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetHours``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -172,12 +183,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetHoursRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -199,7 +214,7 @@ No authorization required
 
 ## GetLifts
 
-> []Lift GetLifts(ctx).Execute()
+> []Lift GetLifts(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get lifts
 
@@ -216,10 +231,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetLifts(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetLifts(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetLifts``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -231,12 +247,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetLiftsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -258,7 +278,7 @@ No authorization required
 
 ## GetOverview
 
-> Overview GetOverview(ctx).Execute()
+> Overview GetOverview(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get overview
 
@@ -275,10 +295,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetOverview(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetOverview(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetOverview``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -290,12 +311,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetOverviewRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -317,7 +342,7 @@ No authorization required
 
 ## GetParkingLots
 
-> []ParkingLot GetParkingLots(ctx).Execute()
+> []ParkingLot GetParkingLots(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get parking lots
 
@@ -334,10 +359,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetParkingLots(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetParkingLots(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetParkingLots``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,12 +375,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetParkingLotsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -376,7 +406,7 @@ No authorization required
 
 ## GetRuns
 
-> []Run GetRuns(ctx).Execute()
+> []Run GetRuns(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get runs
 
@@ -393,10 +423,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetRuns(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetRuns(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetRuns``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -408,12 +439,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetRunsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -435,7 +470,7 @@ No authorization required
 
 ## GetSnow
 
-> []SnowReport GetSnow(ctx).Execute()
+> []SnowReport GetSnow(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get snow conditions
 
@@ -452,10 +487,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetSnow(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetSnow(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetSnow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -467,12 +503,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSnowRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -494,7 +534,7 @@ No authorization required
 
 ## GetSummerTrails
 
-> []SummerTrail GetSummerTrails(ctx).Execute()
+> []SummerTrail GetSummerTrails(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get summer trails
 
@@ -511,10 +551,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetSummerTrails(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetSummerTrails(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetSummerTrails``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -526,12 +567,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetSummerTrailsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -553,7 +598,7 @@ No authorization required
 
 ## GetTerrainParks
 
-> []TerrainPark GetTerrainParks(ctx).Execute()
+> []TerrainPark GetTerrainParks(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get terrain parks
 
@@ -570,10 +615,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetTerrainParks(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetTerrainParks(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTerrainParks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -585,12 +631,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTerrainParksRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -612,7 +662,7 @@ No authorization required
 
 ## GetTrailMap
 
-> TrailMap GetTrailMap(ctx, uuid).Execute()
+> TrailMap GetTrailMap(ctx, uuid).AcceptLanguage(acceptLanguage).Execute()
 
 Get trail map
 
@@ -630,10 +680,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Resource UUID
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetTrailMap(context.Background(), uuid).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetTrailMap(context.Background(), uuid).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTrailMap``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -659,6 +710,7 @@ Other parameters are passed through a pointer to a apiGetTrailMapRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -680,7 +732,7 @@ No authorization required
 
 ## GetTrailMaps
 
-> []TrailMapSummary GetTrailMaps(ctx).Execute()
+> []TrailMapSummary GetTrailMaps(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get trail maps
 
@@ -697,10 +749,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetTrailMaps(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetTrailMaps(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTrailMaps``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -712,12 +765,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetTrailMapsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -739,7 +796,7 @@ No authorization required
 
 ## GetWeather
 
-> Weather GetWeather(ctx).Execute()
+> Weather GetWeather(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get weather
 
@@ -756,10 +813,11 @@ import (
 )
 
 func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetWeather(context.Background()).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetWeather(context.Background()).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetWeather``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -771,12 +829,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetWeatherRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 

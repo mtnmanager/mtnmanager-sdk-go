@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Icon** | Pointer to [**NullableMarkerIcon**](MarkerIcon.md) |  | [optional] 
 **Color** | Pointer to **NullableString** |  | [optional] 
 **Amenity** | Pointer to [**NullableAmenity**](Amenity.md) |  | [optional] 
+**GroupLabel** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -216,6 +217,41 @@ HasAmenity returns a boolean if a field has been set.
 `func (o *TrailMapElementOneOf4) UnsetAmenity()`
 
 UnsetAmenity ensures that no value is present for Amenity, not even an explicit nil
+### GetGroupLabel
+
+`func (o *TrailMapElementOneOf4) GetGroupLabel() string`
+
+GetGroupLabel returns the GroupLabel field if non-nil, zero value otherwise.
+
+### GetGroupLabelOk
+
+`func (o *TrailMapElementOneOf4) GetGroupLabelOk() (*string, bool)`
+
+GetGroupLabelOk returns a tuple with the GroupLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupLabel
+
+`func (o *TrailMapElementOneOf4) SetGroupLabel(v string)`
+
+SetGroupLabel sets GroupLabel field to given value.
+
+### HasGroupLabel
+
+`func (o *TrailMapElementOneOf4) HasGroupLabel() bool`
+
+HasGroupLabel returns a boolean if a field has been set.
+
+### SetGroupLabelNil
+
+`func (o *TrailMapElementOneOf4) SetGroupLabelNil(b bool)`
+
+ SetGroupLabelNil sets the value for GroupLabel to be an explicit nil
+
+### UnsetGroupLabel
+`func (o *TrailMapElementOneOf4) UnsetGroupLabel()`
+
+UnsetGroupLabel ensures that no value is present for GroupLabel, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DaysString** | **string** | Human-readable description of which days this schedule applies to.  Examples: \&quot;Daily\&quot;, \&quot;Saturday &amp; Sunday\&quot;, \&quot;Monday, Wednesday, and Friday\&quot; | 
 **DaysOfWeek** | [**[]DayOfWeek**](DayOfWeek.md) | Array of days of the week this schedule applies to.  For programmatic use. | 
-**TimeString** | **string** | Human-readable time range.  Example: \&quot;9:00 a.m. to 4:00 p.m.\&quot; | 
+**TimeString** | **string** | Human-readable time range.  Example: \&quot;9:00 AM to 4:00 PM\&quot; | 
 **OpensAt** | **string** | Opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | 
 **ClosesAt** | **string** | Closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | 
 **InEffect** | **bool** | Whether this schedule is currently in effect.  &#x60;false&#x60; for upcoming schedules that haven&#39;t started yet. | 

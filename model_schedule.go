@@ -26,7 +26,7 @@ type Schedule struct {
 	DaysString string `json:"days_string"`
 	// Array of days of the week this schedule applies to.  For programmatic use.
 	DaysOfWeek []DayOfWeek `json:"days_of_week"`
-	// Human-readable time range.  Example: \"9:00 a.m. to 4:00 p.m.\"
+	// Human-readable time range.  Example: \"9:00 AM to 4:00 PM\"
 	TimeString string `json:"time_string"`
 	// Opening time in 24-hour format (HH:MM), in resort's local timezone.
 	OpensAt string `json:"opens_at" validate:"regexp=^([01]\\\\d|2[0-3]):[0-5]\\\\d$"`

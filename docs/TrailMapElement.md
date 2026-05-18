@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Icon** | Pointer to [**MarkerIcon**](MarkerIcon.md) |  | [optional] 
 **Color** | Pointer to **string** |  | [optional] 
 **Amenity** | Pointer to [**Amenity**](Amenity.md) |  | [optional] 
+**GroupLabel** | Pointer to **string** |  | [optional] 
 **ParkingLot** | Pointer to [**ParkingLot**](ParkingLot.md) |  | [optional] 
 **Label** | **string** |  | 
 **Searchable** | Pointer to **bool** |  | [optional] 
@@ -365,6 +366,31 @@ SetAmenity sets Amenity field to given value.
 `func (o *TrailMapElement) HasAmenity() bool`
 
 HasAmenity returns a boolean if a field has been set.
+
+### GetGroupLabel
+
+`func (o *TrailMapElement) GetGroupLabel() string`
+
+GetGroupLabel returns the GroupLabel field if non-nil, zero value otherwise.
+
+### GetGroupLabelOk
+
+`func (o *TrailMapElement) GetGroupLabelOk() (*string, bool)`
+
+GetGroupLabelOk returns a tuple with the GroupLabel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroupLabel
+
+`func (o *TrailMapElement) SetGroupLabel(v string)`
+
+SetGroupLabel sets GroupLabel field to given value.
+
+### HasGroupLabel
+
+`func (o *TrailMapElement) HasGroupLabel() bool`
+
+HasGroupLabel returns a boolean if a field has been set.
 
 ### GetParkingLot
 

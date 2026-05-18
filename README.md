@@ -2,7 +2,7 @@
 
 SDK for interacting with the MtnManager API, providing real-time access to your ski resort’s public operational data.
 
-For more information, please visit [https://mtnmanager.com](https://mtnmanager.com)
+For more information, please visit [https://docs.mtnmanager.com/developer/](https://docs.mtnmanager.com/developer/)
 
 ## Installation
 

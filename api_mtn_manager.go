@@ -187,6 +187,13 @@ type MtnManagerAPIService service
 type ApiGetAmenitiesRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetAmenitiesRequest) AcceptLanguage(acceptLanguage string) ApiGetAmenitiesRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetAmenitiesRequest) Execute() ([]Amenity, *http.Response, error) {
@@ -244,6 +251,9 @@ func (a *MtnManagerAPIService) GetAmenitiesExecute(r ApiGetAmenitiesRequest) ([]
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -284,6 +294,13 @@ func (a *MtnManagerAPIService) GetAmenitiesExecute(r ApiGetAmenitiesRequest) ([]
 type ApiGetFullReportRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetFullReportRequest) AcceptLanguage(acceptLanguage string) ApiGetFullReportRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetFullReportRequest) Execute() (*FullReport, *http.Response, error) {
@@ -341,6 +358,9 @@ func (a *MtnManagerAPIService) GetFullReportExecute(r ApiGetFullReportRequest) (
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -381,6 +401,13 @@ func (a *MtnManagerAPIService) GetFullReportExecute(r ApiGetFullReportRequest) (
 type ApiGetHoursRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetHoursRequest) AcceptLanguage(acceptLanguage string) ApiGetHoursRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetHoursRequest) Execute() (*OperatingHours, *http.Response, error) {
@@ -438,6 +465,9 @@ func (a *MtnManagerAPIService) GetHoursExecute(r ApiGetHoursRequest) (*Operating
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -478,6 +508,13 @@ func (a *MtnManagerAPIService) GetHoursExecute(r ApiGetHoursRequest) (*Operating
 type ApiGetLiftsRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetLiftsRequest) AcceptLanguage(acceptLanguage string) ApiGetLiftsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetLiftsRequest) Execute() ([]Lift, *http.Response, error) {
@@ -535,6 +572,9 @@ func (a *MtnManagerAPIService) GetLiftsExecute(r ApiGetLiftsRequest) ([]Lift, *h
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -575,6 +615,13 @@ func (a *MtnManagerAPIService) GetLiftsExecute(r ApiGetLiftsRequest) ([]Lift, *h
 type ApiGetOverviewRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetOverviewRequest) AcceptLanguage(acceptLanguage string) ApiGetOverviewRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetOverviewRequest) Execute() (*Overview, *http.Response, error) {
@@ -632,6 +679,9 @@ func (a *MtnManagerAPIService) GetOverviewExecute(r ApiGetOverviewRequest) (*Ove
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -672,6 +722,13 @@ func (a *MtnManagerAPIService) GetOverviewExecute(r ApiGetOverviewRequest) (*Ove
 type ApiGetParkingLotsRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetParkingLotsRequest) AcceptLanguage(acceptLanguage string) ApiGetParkingLotsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetParkingLotsRequest) Execute() ([]ParkingLot, *http.Response, error) {
@@ -729,6 +786,9 @@ func (a *MtnManagerAPIService) GetParkingLotsExecute(r ApiGetParkingLotsRequest)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -769,6 +829,13 @@ func (a *MtnManagerAPIService) GetParkingLotsExecute(r ApiGetParkingLotsRequest)
 type ApiGetRunsRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetRunsRequest) AcceptLanguage(acceptLanguage string) ApiGetRunsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetRunsRequest) Execute() ([]Run, *http.Response, error) {
@@ -826,6 +893,9 @@ func (a *MtnManagerAPIService) GetRunsExecute(r ApiGetRunsRequest) ([]Run, *http
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -866,6 +936,13 @@ func (a *MtnManagerAPIService) GetRunsExecute(r ApiGetRunsRequest) ([]Run, *http
 type ApiGetSnowRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetSnowRequest) AcceptLanguage(acceptLanguage string) ApiGetSnowRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetSnowRequest) Execute() ([]SnowReport, *http.Response, error) {
@@ -923,6 +1000,9 @@ func (a *MtnManagerAPIService) GetSnowExecute(r ApiGetSnowRequest) ([]SnowReport
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -963,6 +1043,13 @@ func (a *MtnManagerAPIService) GetSnowExecute(r ApiGetSnowRequest) ([]SnowReport
 type ApiGetSummerTrailsRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetSummerTrailsRequest) AcceptLanguage(acceptLanguage string) ApiGetSummerTrailsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetSummerTrailsRequest) Execute() ([]SummerTrail, *http.Response, error) {
@@ -1020,6 +1107,9 @@ func (a *MtnManagerAPIService) GetSummerTrailsExecute(r ApiGetSummerTrailsReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1060,6 +1150,13 @@ func (a *MtnManagerAPIService) GetSummerTrailsExecute(r ApiGetSummerTrailsReques
 type ApiGetTerrainParksRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetTerrainParksRequest) AcceptLanguage(acceptLanguage string) ApiGetTerrainParksRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetTerrainParksRequest) Execute() ([]TerrainPark, *http.Response, error) {
@@ -1117,6 +1214,9 @@ func (a *MtnManagerAPIService) GetTerrainParksExecute(r ApiGetTerrainParksReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1158,6 +1258,13 @@ type ApiGetTrailMapRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
 	uuid string
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetTrailMapRequest) AcceptLanguage(acceptLanguage string) ApiGetTrailMapRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetTrailMapRequest) Execute() (*TrailMap, *http.Response, error) {
@@ -1218,6 +1325,9 @@ func (a *MtnManagerAPIService) GetTrailMapExecute(r ApiGetTrailMapRequest) (*Tra
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1258,6 +1368,13 @@ func (a *MtnManagerAPIService) GetTrailMapExecute(r ApiGetTrailMapRequest) (*Tra
 type ApiGetTrailMapsRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetTrailMapsRequest) AcceptLanguage(acceptLanguage string) ApiGetTrailMapsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetTrailMapsRequest) Execute() ([]TrailMapSummary, *http.Response, error) {
@@ -1315,6 +1432,9 @@ func (a *MtnManagerAPIService) GetTrailMapsExecute(r ApiGetTrailMapsRequest) ([]
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
@@ -1355,6 +1475,13 @@ func (a *MtnManagerAPIService) GetTrailMapsExecute(r ApiGetTrailMapsRequest) ([]
 type ApiGetWeatherRequest struct {
 	ctx context.Context
 	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetWeatherRequest) AcceptLanguage(acceptLanguage string) ApiGetWeatherRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
 }
 
 func (r ApiGetWeatherRequest) Execute() (*Weather, *http.Response, error) {
@@ -1411,6 +1538,9 @@ func (a *MtnManagerAPIService) GetWeatherExecute(r ApiGetWeatherRequest) (*Weath
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {

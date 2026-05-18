@@ -3,7 +3,7 @@ info:
   contact:
     email: support@mtnmanager.com
     name: MtnManager Support
-    url: https://mtnmanager.com
+    url: https://docs.mtnmanager.com/developer/
   description: "The MtnManager API provides real-time access to your ski resort’s\
     \ public operational data. Use it to display current conditions on your website,\
     \ mobile app, or digital signage."
@@ -22,6 +22,19 @@ paths:
   /api/v1/report:
     get:
       operationId: getFullReport
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -172,7 +185,7 @@ paths:
                     days_of_week:
                     - Sunday
                     - Saturday
-                    time_string: 9:00 a.m. to 4:00 p.m.
+                    time_string: 9:00 AM to 4:00 PM
                     opens_at: 09:00
                     closes_at: 16:00
                     in_effect: true
@@ -200,7 +213,7 @@ paths:
                       days_of_week:
                       - Sunday
                       - Saturday
-                      time_string: 9:00 a.m. to 4:00 p.m.
+                      time_string: 9:00 AM to 4:00 PM
                       opens_at: 09:00
                       closes_at: 16:00
                       in_effect: true
@@ -341,6 +354,19 @@ paths:
   /api/v1/report/overview:
     get:
       operationId: getOverview
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -443,6 +469,19 @@ paths:
   /api/v1/report/runs:
     get:
       operationId: getRuns
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -536,6 +575,19 @@ paths:
   /api/v1/report/summer-trails:
     get:
       operationId: getSummerTrails
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -627,6 +679,19 @@ paths:
   /api/v1/report/lifts:
     get:
       operationId: getLifts
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -726,6 +791,19 @@ paths:
   /api/v1/report/snow:
     get:
       operationId: getSnow
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -829,6 +907,19 @@ paths:
   /api/v1/report/hours:
     get:
       operationId: getHours
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -839,7 +930,7 @@ paths:
                   days_of_week:
                   - Sunday
                   - Saturday
-                  time_string: 9:00 a.m. to 4:00 p.m.
+                  time_string: 9:00 AM to 4:00 PM
                   opens_at: 09:00
                   closes_at: 16:00
                   in_effect: true
@@ -867,7 +958,7 @@ paths:
                     days_of_week:
                     - Sunday
                     - Saturday
-                    time_string: 9:00 a.m. to 4:00 p.m.
+                    time_string: 9:00 AM to 4:00 PM
                     opens_at: 09:00
                     closes_at: 16:00
                     in_effect: true
@@ -945,6 +1036,19 @@ paths:
   /api/v1/report/weather:
     get:
       operationId: getWeather
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1083,6 +1187,19 @@ paths:
   /api/v1/report/terrain-parks:
     get:
       operationId: getTerrainParks
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1179,6 +1296,19 @@ paths:
   /api/v1/report/parking-lots:
     get:
       operationId: getParkingLots
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1265,6 +1395,19 @@ paths:
   /api/v1/report/amenities:
     get:
       operationId: getAmenities
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1349,6 +1492,19 @@ paths:
   /api/v1/report/trail-maps:
     get:
       operationId: getTrailMaps
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -1450,6 +1606,18 @@ paths:
         required: true
         schema:
           description: Resource UUID
+          type: string
+        style: simple
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
           type: string
         style: simple
       responses:
@@ -3116,7 +3284,7 @@ components:
         time_string:
           description: |-
             Human-readable time range.
-             Example: "9:00 a.m. to 4:00 p.m."
+             Example: "9:00 AM to 4:00 PM"
           type: string
         opens_at:
           description: "Opening time in 24-hour format (HH:MM), in resort's local\
@@ -4329,6 +4497,9 @@ components:
           allOf:
           - $ref: "#/components/schemas/Amenity"
           nullable: true
+        group_label:
+          nullable: true
+          type: string
       required:
       - type
       - uuid
@@ -4359,6 +4530,9 @@ components:
           allOf:
           - $ref: "#/components/schemas/ParkingLot"
           nullable: true
+        group_label:
+          nullable: true
+          type: string
       required:
       - type
       - uuid
@@ -4390,6 +4564,9 @@ components:
         searchable:
           nullable: true
           type: boolean
+        group_label:
+          nullable: true
+          type: string
       required:
       - label
       - type
