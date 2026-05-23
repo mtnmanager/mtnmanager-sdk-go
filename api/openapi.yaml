@@ -1692,6 +1692,101 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+  /api/v1/report/mobile-app:
+    get:
+      operationId: getMobileApp
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                banners:
+                - uuid: 550e8400-e29b-41d4-a716-446655440000
+                  title: Season Passes On Sale
+                  subtitle: Lock in early-bird pricing through October.
+                  image: https://images.mtnmanager.com/550e8400-e29b-41d4-a716-446655440000/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
+                  url: https://example.com/season-passes
+              schema:
+                $ref: "#/components/schemas/MobileAppResponse"
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get mobile app data
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getMobileApp();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetMobileApp(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getMobileApp();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getMobileApp(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
 components:
   schemas:
     FullReport:
@@ -4356,6 +4451,58 @@ components:
       - lng
       - pixel_x
       - pixel_y
+    MobileAppResponse:
+      description: |-
+        Aggregated mobile-app data for the resort. New mobile-app surface area is
+         added as additional fields on this response.
+      example:
+        banners:
+        - title: title
+          uuid: uuid
+          subtitle: subtitle
+          image: image
+          url: url
+        - title: title
+          uuid: uuid
+          subtitle: subtitle
+          image: image
+          url: url
+      properties:
+        banners:
+          description: "Banners shown in the mobile app, in display order."
+          items:
+            $ref: "#/components/schemas/MobileAppBanner"
+          type: array
+          default: null
+      required:
+      - banners
+    MobileAppBanner:
+      description: A banner shown in the mobile app.
+      example:
+        title: title
+        uuid: uuid
+        subtitle: subtitle
+        image: image
+        url: url
+      properties:
+        title:
+          type: string
+        uuid:
+          type: string
+        subtitle:
+          type: string
+        image:
+          description: Full public URL of the banner image.
+          type: string
+        url:
+          description: Destination URL opened when the banner is tapped.
+          type: string
+      required:
+      - image
+      - subtitle
+      - title
+      - url
+      - uuid
     TrailMapElement_oneOf:
       example:
         type: lift

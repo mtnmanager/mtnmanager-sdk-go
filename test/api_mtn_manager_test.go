@@ -70,6 +70,18 @@ func Test_mtnmanager_MtnManagerAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MtnManagerAPIService GetMobileApp", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MtnManagerAPI.GetMobileApp(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test MtnManagerAPIService GetOverview", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test

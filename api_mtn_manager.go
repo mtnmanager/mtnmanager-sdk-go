@@ -72,6 +72,18 @@ type MtnManagerAPI interface {
 	GetLiftsExecute(r ApiGetLiftsRequest) ([]Lift, *http.Response, error)
 
 	/*
+	GetMobileApp Get mobile app data
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetMobileAppRequest
+	*/
+	GetMobileApp(ctx context.Context) ApiGetMobileAppRequest
+
+	// GetMobileAppExecute executes the request
+	//  @return MobileAppResponse
+	GetMobileAppExecute(r ApiGetMobileAppRequest) (*MobileAppResponse, *http.Response, error)
+
+	/*
 	GetOverview Get overview
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -550,6 +562,113 @@ func (a *MtnManagerAPIService) GetLiftsExecute(r ApiGetLiftsRequest) ([]Lift, *h
 	}
 
 	localVarPath := localBasePath + "/api/v1/report/lifts"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetMobileAppRequest struct {
+	ctx context.Context
+	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetMobileAppRequest) AcceptLanguage(acceptLanguage string) ApiGetMobileAppRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
+}
+
+func (r ApiGetMobileAppRequest) Execute() (*MobileAppResponse, *http.Response, error) {
+	return r.ApiService.GetMobileAppExecute(r)
+}
+
+/*
+GetMobileApp Get mobile app data
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetMobileAppRequest
+*/
+func (a *MtnManagerAPIService) GetMobileApp(ctx context.Context) ApiGetMobileAppRequest {
+	return ApiGetMobileAppRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return MobileAppResponse
+func (a *MtnManagerAPIService) GetMobileAppExecute(r ApiGetMobileAppRequest) (*MobileAppResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *MobileAppResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetMobileApp")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/report/mobile-app"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
