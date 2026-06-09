@@ -29,14 +29,12 @@ Class | Method | HTTP request | Description
 *MtnManagerAPI* | [**GetFullReport**](docs/MtnManagerAPI.md#getfullreport) | **Get** /api/v1/report | Get full report
 *MtnManagerAPI* | [**GetHours**](docs/MtnManagerAPI.md#gethours) | **Get** /api/v1/report/hours | Get operating hours
 *MtnManagerAPI* | [**GetLifts**](docs/MtnManagerAPI.md#getlifts) | **Get** /api/v1/report/lifts | Get lifts
-*MtnManagerAPI* | [**GetMobileApp**](docs/MtnManagerAPI.md#getmobileapp) | **Get** /api/v1/report/mobile-app | Get mobile app data
 *MtnManagerAPI* | [**GetOverview**](docs/MtnManagerAPI.md#getoverview) | **Get** /api/v1/report/overview | Get overview
 *MtnManagerAPI* | [**GetParkingLots**](docs/MtnManagerAPI.md#getparkinglots) | **Get** /api/v1/report/parking-lots | Get parking lots
 *MtnManagerAPI* | [**GetRuns**](docs/MtnManagerAPI.md#getruns) | **Get** /api/v1/report/runs | Get runs
 *MtnManagerAPI* | [**GetSnow**](docs/MtnManagerAPI.md#getsnow) | **Get** /api/v1/report/snow | Get snow conditions
 *MtnManagerAPI* | [**GetSummerTrails**](docs/MtnManagerAPI.md#getsummertrails) | **Get** /api/v1/report/summer-trails | Get summer trails
 *MtnManagerAPI* | [**GetTerrainParks**](docs/MtnManagerAPI.md#getterrainparks) | **Get** /api/v1/report/terrain-parks | Get terrain parks
-*MtnManagerAPI* | [**GetTrailMap**](docs/MtnManagerAPI.md#gettrailmap) | **Get** /api/v1/report/trail-map/{uuid} | Get trail map
 *MtnManagerAPI* | [**GetTrailMaps**](docs/MtnManagerAPI.md#gettrailmaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 *MtnManagerAPI* | [**GetWeather**](docs/MtnManagerAPI.md#getweather) | **Get** /api/v1/report/weather | Get weather
 
@@ -60,18 +58,13 @@ Class | Method | HTTP request | Description
  - [FeatureType](docs/FeatureType.md)
  - [FullReport](docs/FullReport.md)
  - [GeoBounds](docs/GeoBounds.md)
- - [GeoControlPoint](docs/GeoControlPoint.md)
  - [GeoPoint](docs/GeoPoint.md)
  - [HourlyForecast](docs/HourlyForecast.md)
  - [HourlyForecastImperial](docs/HourlyForecastImperial.md)
  - [HourlyForecastMetric](docs/HourlyForecastMetric.md)
- - [LabelOffset](docs/LabelOffset.md)
  - [Lift](docs/Lift.md)
  - [LiftStatus](docs/LiftStatus.md)
  - [LiftType](docs/LiftType.md)
- - [MarkerIcon](docs/MarkerIcon.md)
- - [MobileAppBanner](docs/MobileAppBanner.md)
- - [MobileAppResponse](docs/MobileAppResponse.md)
  - [OperatingHours](docs/OperatingHours.md)
  - [Overview](docs/Overview.md)
  - [OverviewLifts](docs/OverviewLifts.md)
@@ -101,8 +94,6 @@ Class | Method | HTTP request | Description
  - [TerrainParkFeature](docs/TerrainParkFeature.md)
  - [TerrainParkFeatureStatus](docs/TerrainParkFeatureStatus.md)
  - [TerrainParkStatus](docs/TerrainParkStatus.md)
- - [TrailMap](docs/TrailMap.md)
- - [TrailMapElement](docs/TrailMapElement.md)
  - [TrailMapElementOneOf](docs/TrailMapElementOneOf.md)
  - [TrailMapElementOneOf1](docs/TrailMapElementOneOf1.md)
  - [TrailMapElementOneOf2](docs/TrailMapElementOneOf2.md)

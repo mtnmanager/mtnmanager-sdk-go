@@ -16,96 +16,84 @@ import (
 	"fmt"
 )
 
-// WeatherConditionCode Weather condition code
+// WeatherConditionCode Weather condition code   Variants mirror Apple's `WeatherCondition` enum exactly so they match the  `conditionCode` strings returned by the WeatherKit REST API verbatim.  See https://developer.apple.com/documentation/weatherkit/weathercondition
 type WeatherConditionCode string
 
 // List of WeatherConditionCode
 const (
 	CLEAR WeatherConditionCode = "Clear"
-	MOSTLY_CLEAR WeatherConditionCode = "MostlyClear"
-	PARTLY_CLOUDY WeatherConditionCode = "PartlyCloudy"
-	MOSTLY_CLOUDY WeatherConditionCode = "MostlyCloudy"
 	CLOUDY WeatherConditionCode = "Cloudy"
-	DUST WeatherConditionCode = "Dust"
-	FOG WeatherConditionCode = "Fog"
+	FOGGY WeatherConditionCode = "Foggy"
 	HAZE WeatherConditionCode = "Haze"
-	SMOKE WeatherConditionCode = "Smoke"
+	MOSTLY_CLEAR WeatherConditionCode = "MostlyClear"
+	MOSTLY_CLOUDY WeatherConditionCode = "MostlyCloudy"
+	PARTLY_CLOUDY WeatherConditionCode = "PartlyCloudy"
+	SMOKY WeatherConditionCode = "Smoky"
+	BLOWING_DUST WeatherConditionCode = "BlowingDust"
 	BREEZY WeatherConditionCode = "Breezy"
 	WINDY WeatherConditionCode = "Windy"
 	DRIZZLE WeatherConditionCode = "Drizzle"
-	RAIN WeatherConditionCode = "Rain"
-	SHOWERS WeatherConditionCode = "Showers"
-	SCATTERED_SHOWERS WeatherConditionCode = "ScatteredShowers"
 	HEAVY_RAIN WeatherConditionCode = "HeavyRain"
-	FLURRIES WeatherConditionCode = "Flurries"
-	SNOW WeatherConditionCode = "Snow"
-	SNOW_SHOWERS WeatherConditionCode = "SnowShowers"
-	SCATTERED_SNOW_SHOWERS WeatherConditionCode = "ScatteredSnowShowers"
-	HEAVY_SNOW WeatherConditionCode = "HeavySnow"
-	BLIZZARD WeatherConditionCode = "Blizzard"
-	BLOWING_SNOW WeatherConditionCode = "BlowingSnow"
-	MIXED_RAIN_AND_SLEET WeatherConditionCode = "MixedRainAndSleet"
-	MIXED_RAIN_AND_SNOW WeatherConditionCode = "MixedRainAndSnow"
-	MIXED_RAINFALL WeatherConditionCode = "MixedRainfall"
-	MIXED_SNOW_AND_SLEET WeatherConditionCode = "MixedSnowAndSleet"
-	SLEET WeatherConditionCode = "Sleet"
-	FREEZING_DRIZZLE WeatherConditionCode = "FreezingDrizzle"
-	FREEZING_RAIN WeatherConditionCode = "FreezingRain"
+	ISOLATED_THUNDERSTORMS WeatherConditionCode = "IsolatedThunderstorms"
+	RAIN WeatherConditionCode = "Rain"
+	SUN_SHOWERS WeatherConditionCode = "SunShowers"
+	SCATTERED_THUNDERSTORMS WeatherConditionCode = "ScatteredThunderstorms"
+	STRONG_STORMS WeatherConditionCode = "StrongStorms"
+	THUNDERSTORMS WeatherConditionCode = "Thunderstorms"
 	FRIGID WeatherConditionCode = "Frigid"
 	HAIL WeatherConditionCode = "Hail"
-	SCATTERED_THUNDERSTORMS WeatherConditionCode = "ScatteredThunderstorms"
-	ISOLATED_THUNDERSTORMS WeatherConditionCode = "IsolatedThunderstorms"
-	THUNDERSTORM WeatherConditionCode = "Thunderstorm"
-	SEVERE_THUNDERSTORM WeatherConditionCode = "SevereThunderstorm"
-	HURRICANE WeatherConditionCode = "Hurricane"
-	TORNADO WeatherConditionCode = "Tornado"
-	TROPICAL_STORM WeatherConditionCode = "TropicalStorm"
 	HOT WeatherConditionCode = "Hot"
+	FLURRIES WeatherConditionCode = "Flurries"
+	SLEET WeatherConditionCode = "Sleet"
+	SNOW WeatherConditionCode = "Snow"
+	SUN_FLURRIES WeatherConditionCode = "SunFlurries"
+	WINTRY_MIX WeatherConditionCode = "WintryMix"
+	BLIZZARD WeatherConditionCode = "Blizzard"
+	BLOWING_SNOW WeatherConditionCode = "BlowingSnow"
+	FREEZING_DRIZZLE WeatherConditionCode = "FreezingDrizzle"
+	FREEZING_RAIN WeatherConditionCode = "FreezingRain"
+	HEAVY_SNOW WeatherConditionCode = "HeavySnow"
+	HURRICANE WeatherConditionCode = "Hurricane"
+	TROPICAL_STORM WeatherConditionCode = "TropicalStorm"
 	UNKNOWN WeatherConditionCode = "Unknown"
 )
 
 // All allowed values of WeatherConditionCode enum
 var AllowedWeatherConditionCodeEnumValues = []WeatherConditionCode{
 	"Clear",
-	"MostlyClear",
-	"PartlyCloudy",
-	"MostlyCloudy",
 	"Cloudy",
-	"Dust",
-	"Fog",
+	"Foggy",
 	"Haze",
-	"Smoke",
+	"MostlyClear",
+	"MostlyCloudy",
+	"PartlyCloudy",
+	"Smoky",
+	"BlowingDust",
 	"Breezy",
 	"Windy",
 	"Drizzle",
-	"Rain",
-	"Showers",
-	"ScatteredShowers",
 	"HeavyRain",
-	"Flurries",
-	"Snow",
-	"SnowShowers",
-	"ScatteredSnowShowers",
-	"HeavySnow",
-	"Blizzard",
-	"BlowingSnow",
-	"MixedRainAndSleet",
-	"MixedRainAndSnow",
-	"MixedRainfall",
-	"MixedSnowAndSleet",
-	"Sleet",
-	"FreezingDrizzle",
-	"FreezingRain",
+	"IsolatedThunderstorms",
+	"Rain",
+	"SunShowers",
+	"ScatteredThunderstorms",
+	"StrongStorms",
+	"Thunderstorms",
 	"Frigid",
 	"Hail",
-	"ScatteredThunderstorms",
-	"IsolatedThunderstorms",
-	"Thunderstorm",
-	"SevereThunderstorm",
-	"Hurricane",
-	"Tornado",
-	"TropicalStorm",
 	"Hot",
+	"Flurries",
+	"Sleet",
+	"Snow",
+	"SunFlurries",
+	"WintryMix",
+	"Blizzard",
+	"BlowingSnow",
+	"FreezingDrizzle",
+	"FreezingRain",
+	"HeavySnow",
+	"Hurricane",
+	"TropicalStorm",
 	"Unknown",
 }
 

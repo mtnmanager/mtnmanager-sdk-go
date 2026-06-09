@@ -8,14 +8,12 @@ Method | HTTP request | Description
 [**GetFullReport**](MtnManagerAPI.md#GetFullReport) | **Get** /api/v1/report | Get full report
 [**GetHours**](MtnManagerAPI.md#GetHours) | **Get** /api/v1/report/hours | Get operating hours
 [**GetLifts**](MtnManagerAPI.md#GetLifts) | **Get** /api/v1/report/lifts | Get lifts
-[**GetMobileApp**](MtnManagerAPI.md#GetMobileApp) | **Get** /api/v1/report/mobile-app | Get mobile app data
 [**GetOverview**](MtnManagerAPI.md#GetOverview) | **Get** /api/v1/report/overview | Get overview
 [**GetParkingLots**](MtnManagerAPI.md#GetParkingLots) | **Get** /api/v1/report/parking-lots | Get parking lots
 [**GetRuns**](MtnManagerAPI.md#GetRuns) | **Get** /api/v1/report/runs | Get runs
 [**GetSnow**](MtnManagerAPI.md#GetSnow) | **Get** /api/v1/report/snow | Get snow conditions
 [**GetSummerTrails**](MtnManagerAPI.md#GetSummerTrails) | **Get** /api/v1/report/summer-trails | Get summer trails
 [**GetTerrainParks**](MtnManagerAPI.md#GetTerrainParks) | **Get** /api/v1/report/terrain-parks | Get terrain parks
-[**GetTrailMap**](MtnManagerAPI.md#GetTrailMap) | **Get** /api/v1/report/trail-map/{uuid} | Get trail map
 [**GetTrailMaps**](MtnManagerAPI.md#GetTrailMaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 [**GetWeather**](MtnManagerAPI.md#GetWeather) | **Get** /api/v1/report/weather | Get weather
 
@@ -262,70 +260,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Lift**](Lift.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetMobileApp
-
-> MobileAppResponse GetMobileApp(ctx).AcceptLanguage(acceptLanguage).Execute()
-
-Get mobile app data
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
-)
-
-func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetMobileApp(context.Background()).AcceptLanguage(acceptLanguage).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetMobileApp``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetMobileApp`: MobileAppResponse
-	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetMobileApp`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetMobileAppRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
-
-### Return type
-
-[**MobileAppResponse**](MobileAppResponse.md)
 
 ### Authorization
 
@@ -710,76 +644,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]TerrainPark**](TerrainPark.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetTrailMap
-
-> TrailMap GetTrailMap(ctx, uuid).AcceptLanguage(acceptLanguage).Execute()
-
-Get trail map
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
-)
-
-func main() {
-	uuid := "uuid_example" // string | Resource UUID
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetTrailMap(context.Background(), uuid).AcceptLanguage(acceptLanguage).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetTrailMap``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetTrailMap`: TrailMap
-	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetTrailMap`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**uuid** | **string** | Resource UUID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetTrailMapRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
-
-### Return type
-
-[**TrailMap**](TrailMap.md)
 
 ### Authorization
 

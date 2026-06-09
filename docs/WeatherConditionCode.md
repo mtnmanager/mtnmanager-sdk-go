@@ -5,21 +5,21 @@
 
 * `CLEAR` (value: `"Clear"`)
 
-* `MOSTLY_CLEAR` (value: `"MostlyClear"`)
-
-* `PARTLY_CLOUDY` (value: `"PartlyCloudy"`)
-
-* `MOSTLY_CLOUDY` (value: `"MostlyCloudy"`)
-
 * `CLOUDY` (value: `"Cloudy"`)
 
-* `DUST` (value: `"Dust"`)
-
-* `FOG` (value: `"Fog"`)
+* `FOGGY` (value: `"Foggy"`)
 
 * `HAZE` (value: `"Haze"`)
 
-* `SMOKE` (value: `"Smoke"`)
+* `MOSTLY_CLEAR` (value: `"MostlyClear"`)
+
+* `MOSTLY_CLOUDY` (value: `"MostlyCloudy"`)
+
+* `PARTLY_CLOUDY` (value: `"PartlyCloudy"`)
+
+* `SMOKY` (value: `"Smoky"`)
+
+* `BLOWING_DUST` (value: `"BlowingDust"`)
 
 * `BREEZY` (value: `"Breezy"`)
 
@@ -27,61 +27,49 @@
 
 * `DRIZZLE` (value: `"Drizzle"`)
 
-* `RAIN` (value: `"Rain"`)
-
-* `SHOWERS` (value: `"Showers"`)
-
-* `SCATTERED_SHOWERS` (value: `"ScatteredShowers"`)
-
 * `HEAVY_RAIN` (value: `"HeavyRain"`)
 
-* `FLURRIES` (value: `"Flurries"`)
+* `ISOLATED_THUNDERSTORMS` (value: `"IsolatedThunderstorms"`)
 
-* `SNOW` (value: `"Snow"`)
+* `RAIN` (value: `"Rain"`)
 
-* `SNOW_SHOWERS` (value: `"SnowShowers"`)
+* `SUN_SHOWERS` (value: `"SunShowers"`)
 
-* `SCATTERED_SNOW_SHOWERS` (value: `"ScatteredSnowShowers"`)
+* `SCATTERED_THUNDERSTORMS` (value: `"ScatteredThunderstorms"`)
 
-* `HEAVY_SNOW` (value: `"HeavySnow"`)
+* `STRONG_STORMS` (value: `"StrongStorms"`)
 
-* `BLIZZARD` (value: `"Blizzard"`)
-
-* `BLOWING_SNOW` (value: `"BlowingSnow"`)
-
-* `MIXED_RAIN_AND_SLEET` (value: `"MixedRainAndSleet"`)
-
-* `MIXED_RAIN_AND_SNOW` (value: `"MixedRainAndSnow"`)
-
-* `MIXED_RAINFALL` (value: `"MixedRainfall"`)
-
-* `MIXED_SNOW_AND_SLEET` (value: `"MixedSnowAndSleet"`)
-
-* `SLEET` (value: `"Sleet"`)
-
-* `FREEZING_DRIZZLE` (value: `"FreezingDrizzle"`)
-
-* `FREEZING_RAIN` (value: `"FreezingRain"`)
+* `THUNDERSTORMS` (value: `"Thunderstorms"`)
 
 * `FRIGID` (value: `"Frigid"`)
 
 * `HAIL` (value: `"Hail"`)
 
-* `SCATTERED_THUNDERSTORMS` (value: `"ScatteredThunderstorms"`)
+* `HOT` (value: `"Hot"`)
 
-* `ISOLATED_THUNDERSTORMS` (value: `"IsolatedThunderstorms"`)
+* `FLURRIES` (value: `"Flurries"`)
 
-* `THUNDERSTORM` (value: `"Thunderstorm"`)
+* `SLEET` (value: `"Sleet"`)
 
-* `SEVERE_THUNDERSTORM` (value: `"SevereThunderstorm"`)
+* `SNOW` (value: `"Snow"`)
+
+* `SUN_FLURRIES` (value: `"SunFlurries"`)
+
+* `WINTRY_MIX` (value: `"WintryMix"`)
+
+* `BLIZZARD` (value: `"Blizzard"`)
+
+* `BLOWING_SNOW` (value: `"BlowingSnow"`)
+
+* `FREEZING_DRIZZLE` (value: `"FreezingDrizzle"`)
+
+* `FREEZING_RAIN` (value: `"FreezingRain"`)
+
+* `HEAVY_SNOW` (value: `"HeavySnow"`)
 
 * `HURRICANE` (value: `"Hurricane"`)
 
-* `TORNADO` (value: `"Tornado"`)
-
 * `TROPICAL_STORM` (value: `"TropicalStorm"`)
-
-* `HOT` (value: `"Hot"`)
 
 * `UNKNOWN` (value: `"Unknown"`)
 

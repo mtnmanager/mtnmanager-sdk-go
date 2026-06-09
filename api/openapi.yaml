@@ -1692,6 +1692,7 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+      x-internal: true
   /api/v1/report/mobile-app:
     get:
       operationId: getMobileApp
@@ -1717,7 +1718,7 @@ paths:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   title: Season Passes On Sale
                   subtitle: Lock in early-bird pricing through October.
-                  image: https://images.mtnmanager.com/550e8400-e29b-41d4-a716-446655440000/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
+                  image_url: https://images.mtnmanager.com/550e8400-e29b-41d4-a716-446655440000/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
                   url: https://example.com/season-passes
               schema:
                 $ref: "#/components/schemas/MobileAppResponse"
@@ -1787,6 +1788,7 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+      x-internal: true
 components:
   schemas:
     FullReport:
@@ -3788,48 +3790,47 @@ components:
       - temperature
       - wind_speed
     WeatherConditionCode:
-      description: Weather condition code
+      description: |-
+        Weather condition code
+
+         Variants mirror Apple's `WeatherCondition` enum exactly so they match the
+         `conditionCode` strings returned by the WeatherKit REST API verbatim.
+         See https://developer.apple.com/documentation/weatherkit/weathercondition
       enum:
       - Clear
-      - MostlyClear
-      - PartlyCloudy
-      - MostlyCloudy
       - Cloudy
-      - Dust
-      - Fog
+      - Foggy
       - Haze
-      - Smoke
+      - MostlyClear
+      - MostlyCloudy
+      - PartlyCloudy
+      - Smoky
+      - BlowingDust
       - Breezy
       - Windy
       - Drizzle
-      - Rain
-      - Showers
-      - ScatteredShowers
       - HeavyRain
-      - Flurries
-      - Snow
-      - SnowShowers
-      - ScatteredSnowShowers
-      - HeavySnow
-      - Blizzard
-      - BlowingSnow
-      - MixedRainAndSleet
-      - MixedRainAndSnow
-      - MixedRainfall
-      - MixedSnowAndSleet
-      - Sleet
-      - FreezingDrizzle
-      - FreezingRain
+      - IsolatedThunderstorms
+      - Rain
+      - SunShowers
+      - ScatteredThunderstorms
+      - StrongStorms
+      - Thunderstorms
       - Frigid
       - Hail
-      - ScatteredThunderstorms
-      - IsolatedThunderstorms
-      - Thunderstorm
-      - SevereThunderstorm
-      - Hurricane
-      - Tornado
-      - TropicalStorm
       - Hot
+      - Flurries
+      - Sleet
+      - Snow
+      - SunFlurries
+      - WintryMix
+      - Blizzard
+      - BlowingSnow
+      - FreezingDrizzle
+      - FreezingRain
+      - HeavySnow
+      - Hurricane
+      - TropicalStorm
       - Unknown
       type: string
     HourlyForecast:
@@ -4298,45 +4299,6 @@ components:
       - uuid
     TrailMap:
       description: A public trail map with enriched entity data.
-      example:
-        uuid: uuid
-        name: name
-        slug: slug
-        season: winter
-        display_order: 0
-        version: 6
-        background_image_url: background_image_url
-        resort:
-          uuid: uuid
-          name: name
-          slug: slug
-          timezone: timezone
-          region: ""
-          unit_preference: ""
-        elements:
-        - type: lift
-          uuid: uuid
-          points:
-          - 1.4658129805029452
-          - 1.4658129805029452
-          tension: 5.962133916683182
-          lift: ""
-        - type: lift
-          uuid: uuid
-          points:
-          - 1.4658129805029452
-          - 1.4658129805029452
-          tension: 5.962133916683182
-          lift: ""
-        geo_control_points:
-        - pixel_x: 5.637376656633329
-          pixel_y: 2.3021358869347655
-          lat: 7.061401241503109
-          lng: 9.301444243932576
-        - pixel_x: 5.637376656633329
-          pixel_y: 2.3021358869347655
-          lat: 7.061401241503109
-          lng: 9.301444243932576
       properties:
         uuid:
           type: string
@@ -4380,6 +4342,7 @@ components:
       - slug
       - uuid
       - version
+      x-internal: true
     TrailMapElement:
       description: A trail map element with full entity data from existing public
         models.
@@ -4391,6 +4354,7 @@ components:
       - $ref: "#/components/schemas/TrailMapElement_oneOf_4"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_5"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_6"
+      x-internal: true
     LabelOffset:
       properties:
         x:
@@ -4402,6 +4366,7 @@ components:
       required:
       - x
       - "y"
+      x-internal: true
     MarkerIcon:
       enum:
       - restaurant
@@ -4427,12 +4392,8 @@ components:
       - atm
       - star
       type: string
+      x-internal: true
     GeoControlPoint:
-      example:
-        pixel_x: 5.637376656633329
-        pixel_y: 2.3021358869347655
-        lat: 7.061401241503109
-        lng: 9.301444243932576
       properties:
         pixel_x:
           format: double
@@ -4451,22 +4412,11 @@ components:
       - lng
       - pixel_x
       - pixel_y
+      x-internal: true
     MobileAppResponse:
       description: |-
         Aggregated mobile-app data for the resort. New mobile-app surface area is
          added as additional fields on this response.
-      example:
-        banners:
-        - title: title
-          uuid: uuid
-          subtitle: subtitle
-          image: image
-          url: url
-        - title: title
-          uuid: uuid
-          subtitle: subtitle
-          image: image
-          url: url
       properties:
         banners:
           description: "Banners shown in the mobile app, in display order."
@@ -4476,14 +4426,9 @@ components:
           default: null
       required:
       - banners
+      x-internal: true
     MobileAppBanner:
       description: A banner shown in the mobile app.
-      example:
-        title: title
-        uuid: uuid
-        subtitle: subtitle
-        image: image
-        url: url
       properties:
         title:
           type: string
@@ -4491,27 +4436,20 @@ components:
           type: string
         subtitle:
           type: string
-        image:
+        image_url:
           description: Full public URL of the banner image.
           type: string
         url:
           description: Destination URL opened when the banner is tapped.
           type: string
       required:
-      - image
+      - image_url
       - subtitle
       - title
       - url
       - uuid
+      x-internal: true
     TrailMapElement_oneOf:
-      example:
-        type: lift
-        uuid: uuid
-        points:
-        - 1.4658129805029452
-        - 1.4658129805029452
-        tension: 5.962133916683182
-        lift: ""
       properties:
         type:
           enum:
