@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// WeatherConditionCode Weather condition code   Variants mirror Apple's `WeatherCondition` enum exactly so they match the  `conditionCode` strings returned by the WeatherKit REST API verbatim.  See https://developer.apple.com/documentation/weatherkit/weathercondition
+// WeatherConditionCode Weather condition code
 type WeatherConditionCode string
 
 // List of WeatherConditionCode

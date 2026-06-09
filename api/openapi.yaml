@@ -3790,12 +3790,7 @@ components:
       - temperature
       - wind_speed
     WeatherConditionCode:
-      description: |-
-        Weather condition code
-
-         Variants mirror Apple's `WeatherCondition` enum exactly so they match the
-         `conditionCode` strings returned by the WeatherKit REST API verbatim.
-         See https://developer.apple.com/documentation/weatherkit/weathercondition
+      description: Weather condition code
       enum:
       - Clear
       - Cloudy
@@ -4366,7 +4361,6 @@ components:
       required:
       - x
       - "y"
-      x-internal: true
     MarkerIcon:
       enum:
       - restaurant
@@ -4392,7 +4386,6 @@ components:
       - atm
       - star
       type: string
-      x-internal: true
     GeoControlPoint:
       properties:
         pixel_x:
