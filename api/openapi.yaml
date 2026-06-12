@@ -1720,6 +1720,7 @@ paths:
                   subtitle: Lock in early-bird pricing through October.
                   image_url: https://images.mtnmanager.com/550e8400-e29b-41d4-a716-446655440000/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
                   url: https://example.com/season-passes
+                  thumb_hash: 1QcSHQRnh493V4dIh4eXh1h4kJUI
               schema:
                 $ref: "#/components/schemas/MobileAppResponse"
           description: ""
@@ -4435,9 +4436,15 @@ components:
         url:
           description: Destination URL opened when the banner is tapped.
           type: string
+        thumb_hash:
+          description: |-
+            Base64-encoded ThumbHash of the banner image, for rendering a blurred
+             placeholder while the full image loads.
+          type: string
       required:
       - image_url
       - subtitle
+      - thumb_hash
       - title
       - url
       - uuid
