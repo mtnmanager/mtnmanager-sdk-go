@@ -120,6 +120,7 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  images: []
                 runs:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Main Street
@@ -136,6 +137,7 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  images: []
                 terrain_parks:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Main Park
@@ -154,7 +156,9 @@ paths:
                     feature_type: rail
                     size: m
                     status: unknown
+                    images: []
                   updated_at: 2026-01-26T16:26:33+00:00
+                  images: []
                 parking_lots:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Main Parking Lot
@@ -165,6 +169,7 @@ paths:
                   paid: false
                   reservation_required: false
                   updated_at: 2026-01-26T16:26:33+00:00
+                  images: []
                 summer_trails:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Ridgeline Trail
@@ -179,6 +184,7 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  images: []
                 hours:
                   schedules:
                   - days_string: Saturday & Sunday
@@ -221,7 +227,7 @@ paths:
                       effective_from: 2024-11-01
                       effective_to: 2025-04-15
                 weather:
-                  current:
+                - current:
                     imperial:
                       temperature: 28
                       feels_like: 22
@@ -502,6 +508,7 @@ paths:
                 area_name: Lower Mountain
                 area_display_order: 1
                 updated_at: 2026-01-26T16:26:33+00:00
+                images: []
               schema:
                 $ref: "#/components/schemas/RunsResponse"
           description: |-
@@ -606,6 +613,7 @@ paths:
                 area_name: Lower Mountain
                 area_display_order: 1
                 updated_at: 2026-01-26T16:26:33+00:00
+                images: []
               schema:
                 $ref: "#/components/schemas/SummerTrailsResponse"
           description: |-
@@ -718,6 +726,7 @@ paths:
                 area_name: Lower Mountain
                 area_display_order: 1
                 updated_at: 2026-01-26T16:26:33+00:00
+                images: []
               schema:
                 $ref: "#/components/schemas/LiftsResponse"
           description: |-
@@ -1054,7 +1063,7 @@ paths:
           content:
             application/json:
               example:
-                current:
+              - current:
                   imperial:
                     temperature: 28
                     feels_like: 22
@@ -1117,7 +1126,10 @@ paths:
                 attribution: https://developer.apple.com/weatherkit/data-source-attribution/
                 updated_at: 2026-01-26T16:26:33+00:00
               schema:
-                $ref: "#/components/schemas/Weather"
+                items:
+                  $ref: "#/components/schemas/Weather"
+                type: array
+                default: null
           description: ""
         "403":
           description: Endpoint not available for this resort. Feature may be disabled.
@@ -1222,7 +1234,9 @@ paths:
                   feature_type: rail
                   size: m
                   status: unknown
+                  images: []
                 updated_at: 2026-01-26T16:26:33+00:00
+                images: []
               schema:
                 $ref: "#/components/schemas/TerrainParksResponse"
           description: |-
@@ -1323,6 +1337,7 @@ paths:
                 paid: false
                 reservation_required: false
                 updated_at: 2026-01-26T16:26:33+00:00
+                images: []
               schema:
                 $ref: "#/components/schemas/ParkingLotsResponse"
           description: List of all parking lots at the resort with their current status
@@ -1418,9 +1433,11 @@ paths:
                 description: Mid-mountain lodge with full-service restaurant and bar.
                 category: lodge
                 website: https://example.com/summit-lodge
+                has_operating_hours: true
                 opens_at: 09:00
                 closes_at: 16:00
                 schedules: []
+                images: []
               schema:
                 $ref: "#/components/schemas/AmenitiesResponse"
           description: List of all configured amenities at the resort
@@ -1861,6 +1878,11 @@ components:
           area_name: area_name
           area_display_order: 4
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -1882,6 +1904,11 @@ components:
           area_name: area_name
           area_display_order: 4
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         runs:
         - uuid: uuid
           name: name
@@ -1898,6 +1925,11 @@ components:
           area_name: area_name
           area_display_order: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -1913,6 +1945,11 @@ components:
           area_name: area_name
           area_display_order: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         terrain_parks:
         - uuid: uuid
           name: name
@@ -1931,6 +1968,11 @@ components:
             feature_type: ""
             size: ""
             status: ""
+            images:
+            - url: url
+              thumb_hash: thumb_hash
+            - url: url
+              thumb_hash: thumb_hash
           - uuid: uuid
             name: name
             slug: slug
@@ -1938,7 +1980,17 @@ components:
             feature_type: ""
             size: ""
             status: ""
+            images:
+            - url: url
+              thumb_hash: thumb_hash
+            - url: url
+              thumb_hash: thumb_hash
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -1956,6 +2008,11 @@ components:
             feature_type: ""
             size: ""
             status: ""
+            images:
+            - url: url
+              thumb_hash: thumb_hash
+            - url: url
+              thumb_hash: thumb_hash
           - uuid: uuid
             name: name
             slug: slug
@@ -1963,7 +2020,17 @@ components:
             feature_type: ""
             size: ""
             status: ""
+            images:
+            - url: url
+              thumb_hash: thumb_hash
+            - url: url
+              thumb_hash: thumb_hash
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         parking_lots:
         - uuid: uuid
           name: name
@@ -1974,6 +2041,11 @@ components:
           paid: true
           reservation_required: true
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -1983,6 +2055,11 @@ components:
           paid: true
           reservation_required: true
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         summer_trails:
         - uuid: uuid
           name: name
@@ -1998,6 +2075,11 @@ components:
           area_name: area_name
           area_display_order: 4
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -2012,6 +2094,11 @@ components:
           area_name: area_name
           area_display_order: 4
           updated_at: 2000-01-23T04:56:07.000+00:00
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         hours:
           schedules:
           - days_string: days_string
@@ -2126,7 +2213,79 @@ components:
               effective_string: effective_string
               effective_from: 2000-01-23
               effective_to: 2000-01-23
-        weather: ""
+        weather:
+        - area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 5
+          current: ""
+          hourly_forecast:
+          - timestamp: 2000-01-23T04:56:07.000+00:00
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+          - timestamp: 2000-01-23T04:56:07.000+00:00
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+          daily_forecast:
+          - date: 2000-01-23
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+            sunrise: 2000-01-23T04:56:07.000+00:00
+            sunset: 2000-01-23T04:56:07.000+00:00
+          - date: 2000-01-23
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+            sunrise: 2000-01-23T04:56:07.000+00:00
+            sunset: 2000-01-23T04:56:07.000+00:00
+          attribution: attribution
+          updated_at: 2000-01-23T04:56:07.000+00:00
+        - area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 5
+          current: ""
+          hourly_forecast:
+          - timestamp: 2000-01-23T04:56:07.000+00:00
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+          - timestamp: 2000-01-23T04:56:07.000+00:00
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+          daily_forecast:
+          - date: 2000-01-23
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+            sunrise: 2000-01-23T04:56:07.000+00:00
+            sunset: 2000-01-23T04:56:07.000+00:00
+          - date: 2000-01-23
+            imperial: ""
+            metric: ""
+            condition: condition
+            condition_code: ""
+            precipitation_probability: 9
+            sunrise: 2000-01-23T04:56:07.000+00:00
+            sunset: 2000-01-23T04:56:07.000+00:00
+          attribution: attribution
+          updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
         resort:
           $ref: "#/components/schemas/ResortInfo"
@@ -2184,9 +2343,14 @@ components:
         hours:
           $ref: "#/components/schemas/OperatingHours"
         weather:
-          allOf:
-          - $ref: "#/components/schemas/Weather"
-          nullable: true
+          description: |-
+            Weather entries: the resort-wide entry first (current + forecast), then
+             any per-area current-conditions entries. Empty when weather is disabled
+             or unavailable.
+          items:
+            $ref: "#/components/schemas/Weather"
+          type: array
+          default: null
       required:
       - hours
       - lifts
@@ -2646,6 +2810,11 @@ components:
         area_name: area_name
         area_display_order: 4
         updated_at: 2000-01-23T04:56:07.000+00:00
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the lift.
@@ -2738,6 +2907,14 @@ components:
           description: When this lift's information was last updated.
           format: date-time
           type: string
+        images:
+          default: []
+          description: |-
+            Images attached to this lift, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - bubble
       - heated
@@ -2773,6 +2950,23 @@ components:
       - on_hold
       - unknown
       type: string
+    EntityImage:
+      description: |-
+        A single image attached to a resort entity, with a client-supplied ThumbHash
+         for rendering a blurred placeholder while the full image loads.
+      example:
+        url: url
+        thumb_hash: thumb_hash
+      properties:
+        url:
+          description: Full public URL to the image.
+          type: string
+        thumb_hash:
+          description: Base64-encoded ThumbHash for placeholder rendering.
+          type: string
+      required:
+      - thumb_hash
+      - url
     Run:
       description: |-
         Represents a single run at the resort with its current status,
@@ -2793,6 +2987,11 @@ components:
         area_name: area_name
         area_display_order: 1
         updated_at: 2000-01-23T04:56:07.000+00:00
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the run.
@@ -2853,6 +3052,14 @@ components:
           description: When this run's information was last updated.
           format: date-time
           type: string
+        images:
+          default: []
+          description: |-
+            Images attached to this run, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - condition_notes
       - difficulty
@@ -2902,6 +3109,11 @@ components:
           feature_type: ""
           size: ""
           status: ""
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         - uuid: uuid
           name: name
           slug: slug
@@ -2909,7 +3121,17 @@ components:
           feature_type: ""
           size: ""
           status: ""
+          images:
+          - url: url
+            thumb_hash: thumb_hash
+          - url: url
+            thumb_hash: thumb_hash
         updated_at: 2000-01-23T04:56:07.000+00:00
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the terrain park.
@@ -2956,6 +3178,14 @@ components:
           description: When this terrain park or any of its features was last updated.
           format: date-time
           type: string
+        images:
+          default: []
+          description: |-
+            Images attached to this terrain park, ordered for display. Each includes
+             a ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - condition_notes
       - features
@@ -2983,6 +3213,11 @@ components:
         feature_type: ""
         size: ""
         status: ""
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the feature.
@@ -3013,6 +3248,14 @@ components:
           description: |-
             Current operational status (open, closed, or unknown).
              `unknown` unless the terrain park feature status is enabled.
+        images:
+          default: []
+          description: |-
+            Images attached to this feature, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - feature_type
       - name
@@ -3055,6 +3298,11 @@ components:
         paid: true
         reservation_required: true
         updated_at: 2000-01-23T04:56:07.000+00:00
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the parking lot.
@@ -3087,6 +3335,14 @@ components:
           description: When this parking lot's information was last updated.
           format: date-time
           type: string
+        images:
+          default: []
+          description: |-
+            Images attached to this parking lot, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - name
       - paid
@@ -3122,6 +3378,11 @@ components:
         area_name: area_name
         area_display_order: 4
         updated_at: 2000-01-23T04:56:07.000+00:00
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         uuid:
           description: Unique identifier for the trail.
@@ -3174,6 +3435,14 @@ components:
           description: When this trail's information was last updated.
           format: date-time
           type: string
+        images:
+          default: []
+          description: |-
+            Images attached to this trail, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - condition_notes
       - name
@@ -3620,6 +3889,9 @@ components:
         Current and forecasted weather conditions for the resort's location.
          Only included/available if the weather feature is enabled and GPS coordinates are configured.
       example:
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 5
         current: ""
         hourly_forecast:
         - timestamp: 2000-01-23T04:56:07.000+00:00
@@ -3627,20 +3899,20 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 0
+          precipitation_probability: 9
         - timestamp: 2000-01-23T04:56:07.000+00:00
           imperial: ""
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 0
+          precipitation_probability: 9
         daily_forecast:
         - date: 2000-01-23
           imperial: ""
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 6
+          precipitation_probability: 9
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         - date: 2000-01-23
@@ -3648,12 +3920,26 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 6
+          precipitation_probability: 9
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         attribution: attribution
         updated_at: 2000-01-23T04:56:07.000+00:00
       properties:
+        area_uuid:
+          description: "The area this weather belongs to, or omitted for resort-wide\
+            \ weather."
+          nullable: true
+          type: string
+        area_name:
+          description: "The area's name, or omitted for resort-wide weather."
+          nullable: true
+          type: string
+        area_display_order:
+          description: "The area's display order, or omitted for resort-wide weather."
+          format: int32
+          nullable: true
+          type: integer
         current:
           allOf:
           - $ref: "#/components/schemas/CurrentWeather"
@@ -3837,7 +4123,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 0
+        precipitation_probability: 9
       properties:
         timestamp:
           description: Forecast timestamp
@@ -3945,7 +4231,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 6
+        precipitation_probability: 9
         sunrise: 2000-01-23T04:56:07.000+00:00
         sunset: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -4122,6 +4408,7 @@ components:
         name: name
         category: ""
         website: website
+        has_operating_hours: true
         opens_at: opens_at
         closes_at: closes_at
         schedules:
@@ -4147,6 +4434,11 @@ components:
           effective_string: effective_string
           effective_from: 2000-01-23
           effective_to: 2000-01-23
+        images:
+        - url: url
+          thumb_hash: thumb_hash
+        - url: url
+          thumb_hash: thumb_hash
       properties:
         description:
           description: Description of the amenity.
@@ -4164,6 +4456,11 @@ components:
         website:
           description: "Website URL for the amenity, if available."
           type: string
+        has_operating_hours:
+          description: |-
+            Whether this amenity reports operating hours. When false, clients should
+             not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
+          type: boolean
         opens_at:
           description: "Today's scheduled opening time in 24-hour format (HH:MM),\
             \ in resort's local timezone."
@@ -4182,9 +4479,18 @@ components:
             $ref: "#/components/schemas/Schedule"
           type: array
           default: null
+        images:
+          default: []
+          description: |-
+            Images attached to this amenity, ordered for display. Each includes a
+             ThumbHash for rendering a blurred placeholder while the image loads.
+          items:
+            $ref: "#/components/schemas/EntityImage"
+          type: array
       required:
       - category
       - description
+      - has_operating_hours
       - name
       - schedules
       - uuid

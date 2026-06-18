@@ -36,6 +36,8 @@ type TerrainParkFeature struct {
 	Size NullableFeatureSize `json:"size,omitempty"`
 	// Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled.
 	Status TerrainParkFeatureStatus `json:"status"`
+	// Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
+	Images []EntityImage `json:"images,omitempty"`
 }
 
 type _TerrainParkFeature TerrainParkFeature
@@ -266,6 +268,38 @@ func (o *TerrainParkFeature) SetStatus(v TerrainParkFeatureStatus) {
 	o.Status = v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *TerrainParkFeature) GetImages() []EntityImage {
+	if o == nil || IsNil(o.Images) {
+		var ret []EntityImage
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerrainParkFeature) GetImagesOk() ([]EntityImage, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *TerrainParkFeature) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []EntityImage and assigns it to the Images field.
+func (o *TerrainParkFeature) SetImages(v []EntityImage) {
+	o.Images = v
+}
+
 func (o TerrainParkFeature) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -287,6 +321,9 @@ func (o TerrainParkFeature) ToMap() (map[string]interface{}, error) {
 		toSerialize["size"] = o.Size.Get()
 	}
 	toSerialize["status"] = o.Status
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
 	return toSerialize, nil
 }
 

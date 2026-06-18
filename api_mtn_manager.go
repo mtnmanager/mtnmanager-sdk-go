@@ -163,8 +163,8 @@ type MtnManagerAPI interface {
 	GetWeather(ctx context.Context) ApiGetWeatherRequest
 
 	// GetWeatherExecute executes the request
-	//  @return Weather
-	GetWeatherExecute(r ApiGetWeatherRequest) (*Weather, *http.Response, error)
+	//  @return []Weather
+	GetWeatherExecute(r ApiGetWeatherRequest) ([]Weather, *http.Response, error)
 }
 
 // MtnManagerAPIService MtnManagerAPI service
@@ -1359,7 +1359,7 @@ func (r ApiGetWeatherRequest) AcceptLanguage(acceptLanguage string) ApiGetWeathe
 	return r
 }
 
-func (r ApiGetWeatherRequest) Execute() (*Weather, *http.Response, error) {
+func (r ApiGetWeatherRequest) Execute() ([]Weather, *http.Response, error) {
 	return r.ApiService.GetWeatherExecute(r)
 }
 
@@ -1377,13 +1377,13 @@ func (a *MtnManagerAPIService) GetWeather(ctx context.Context) ApiGetWeatherRequ
 }
 
 // Execute executes the request
-//  @return Weather
-func (a *MtnManagerAPIService) GetWeatherExecute(r ApiGetWeatherRequest) (*Weather, *http.Response, error) {
+//  @return []Weather
+func (a *MtnManagerAPIService) GetWeatherExecute(r ApiGetWeatherRequest) ([]Weather, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Weather
+		localVarReturnValue  []Weather
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetWeather")

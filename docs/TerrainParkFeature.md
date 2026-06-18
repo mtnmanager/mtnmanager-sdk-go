@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **FeatureType** | [**FeatureType**](FeatureType.md) | Type of feature (jump, box, rail, other). | 
 **Size** | Pointer to [**NullableFeatureSize**](FeatureSize.md) | Optional size rating of the feature (S, M, L, XL). | [optional] 
 **Status** | [**TerrainParkFeatureStatus**](TerrainParkFeatureStatus.md) | Current operational status (open, closed, or unknown).  &#x60;unknown&#x60; unless the terrain park feature status is enabled. | 
+**Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
 
@@ -200,6 +201,31 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
+
+### GetImages
+
+`func (o *TerrainParkFeature) GetImages() []EntityImage`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *TerrainParkFeature) GetImagesOk() (*[]EntityImage, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *TerrainParkFeature) SetImages(v []EntityImage)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *TerrainParkFeature) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

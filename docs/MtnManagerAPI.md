@@ -725,7 +725,7 @@ No authorization required
 
 ## GetWeather
 
-> Weather GetWeather(ctx).AcceptLanguage(acceptLanguage).Execute()
+> []Weather GetWeather(ctx).AcceptLanguage(acceptLanguage).Execute()
 
 Get weather
 
@@ -751,7 +751,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetWeather``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetWeather`: Weather
+	// response from `GetWeather`: []Weather
 	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetWeather`: %v\n", resp)
 }
 ```
@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Weather**](Weather.md)
+[**[]Weather**](Weather.md)
 
 ### Authorization
 

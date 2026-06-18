@@ -65,6 +65,8 @@ type Lift struct {
 	AreaDisplayOrder NullableInt32 `json:"area_display_order,omitempty"`
 	// When this lift's information was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Images attached to this lift, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
+	Images []EntityImage `json:"images,omitempty"`
 }
 
 type _Lift Lift
@@ -815,6 +817,38 @@ func (o *Lift) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *Lift) GetImages() []EntityImage {
+	if o == nil || IsNil(o.Images) {
+		var ret []EntityImage
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Lift) GetImagesOk() ([]EntityImage, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *Lift) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []EntityImage and assigns it to the Images field.
+func (o *Lift) SetImages(v []EntityImage) {
+	o.Images = v
+}
+
 func (o Lift) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -870,6 +904,9 @@ func (o Lift) ToMap() (map[string]interface{}, error) {
 		toSerialize["area_display_order"] = o.AreaDisplayOrder.Get()
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
 	return toSerialize, nil
 }
 

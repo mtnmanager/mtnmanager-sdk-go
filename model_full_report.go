@@ -37,7 +37,8 @@ type FullReport struct {
 	// List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating.
 	SummerTrails []SummerTrail `json:"summer_trails"`
 	Hours OperatingHours `json:"hours"`
-	Weather NullableWeather `json:"weather,omitempty"`
+	// Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable.
+	Weather []Weather `json:"weather,omitempty"`
 }
 
 type _FullReport FullReport
@@ -284,46 +285,36 @@ func (o *FullReport) SetHours(v OperatingHours) {
 	o.Hours = v
 }
 
-// GetWeather returns the Weather field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FullReport) GetWeather() Weather {
-	if o == nil || IsNil(o.Weather.Get()) {
-		var ret Weather
+// GetWeather returns the Weather field value if set, zero value otherwise.
+func (o *FullReport) GetWeather() []Weather {
+	if o == nil || IsNil(o.Weather) {
+		var ret []Weather
 		return ret
 	}
-	return *o.Weather.Get()
+	return o.Weather
 }
 
 // GetWeatherOk returns a tuple with the Weather field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FullReport) GetWeatherOk() (*Weather, bool) {
-	if o == nil {
+func (o *FullReport) GetWeatherOk() ([]Weather, bool) {
+	if o == nil || IsNil(o.Weather) {
 		return nil, false
 	}
-	return o.Weather.Get(), o.Weather.IsSet()
+	return o.Weather, true
 }
 
 // HasWeather returns a boolean if a field has been set.
 func (o *FullReport) HasWeather() bool {
-	if o != nil && o.Weather.IsSet() {
+	if o != nil && !IsNil(o.Weather) {
 		return true
 	}
 
 	return false
 }
 
-// SetWeather gets a reference to the given NullableWeather and assigns it to the Weather field.
-func (o *FullReport) SetWeather(v Weather) {
-	o.Weather.Set(&v)
-}
-// SetWeatherNil sets the value for Weather to be an explicit nil
-func (o *FullReport) SetWeatherNil() {
-	o.Weather.Set(nil)
-}
-
-// UnsetWeather ensures that no value is present for Weather, not even an explicit nil
-func (o *FullReport) UnsetWeather() {
-	o.Weather.Unset()
+// SetWeather gets a reference to the given []Weather and assigns it to the Weather field.
+func (o *FullReport) SetWeather(v []Weather) {
+	o.Weather = v
 }
 
 func (o FullReport) MarshalJSON() ([]byte, error) {
@@ -345,8 +336,8 @@ func (o FullReport) ToMap() (map[string]interface{}, error) {
 	toSerialize["parking_lots"] = o.ParkingLots
 	toSerialize["summer_trails"] = o.SummerTrails
 	toSerialize["hours"] = o.Hours
-	if o.Weather.IsSet() {
-		toSerialize["weather"] = o.Weather.Get()
+	if !IsNil(o.Weather) {
+		toSerialize["weather"] = o.Weather
 	}
 	return toSerialize, nil
 }

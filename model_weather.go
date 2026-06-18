@@ -23,6 +23,12 @@ var _ MappedNullable = &Weather{}
 
 // Weather Current and forecasted weather conditions for the resort's location.  Only included/available if the weather feature is enabled and GPS coordinates are configured.
 type Weather struct {
+	// The area this weather belongs to, or omitted for resort-wide weather.
+	AreaUuid NullableString `json:"area_uuid,omitempty"`
+	// The area's name, or omitted for resort-wide weather.
+	AreaName NullableString `json:"area_name,omitempty"`
+	// The area's display order, or omitted for resort-wide weather.
+	AreaDisplayOrder NullableInt32 `json:"area_display_order,omitempty"`
 	// Current weather conditions
 	Current CurrentWeather `json:"current"`
 	// Hourly forecast for next 24 hours (including current hour)
@@ -57,6 +63,132 @@ func NewWeather(current CurrentWeather, hourlyForecast []HourlyForecast, dailyFo
 func NewWeatherWithDefaults() *Weather {
 	this := Weather{}
 	return &this
+}
+
+// GetAreaUuid returns the AreaUuid field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Weather) GetAreaUuid() string {
+	if o == nil || IsNil(o.AreaUuid.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AreaUuid.Get()
+}
+
+// GetAreaUuidOk returns a tuple with the AreaUuid field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Weather) GetAreaUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AreaUuid.Get(), o.AreaUuid.IsSet()
+}
+
+// HasAreaUuid returns a boolean if a field has been set.
+func (o *Weather) HasAreaUuid() bool {
+	if o != nil && o.AreaUuid.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAreaUuid gets a reference to the given NullableString and assigns it to the AreaUuid field.
+func (o *Weather) SetAreaUuid(v string) {
+	o.AreaUuid.Set(&v)
+}
+// SetAreaUuidNil sets the value for AreaUuid to be an explicit nil
+func (o *Weather) SetAreaUuidNil() {
+	o.AreaUuid.Set(nil)
+}
+
+// UnsetAreaUuid ensures that no value is present for AreaUuid, not even an explicit nil
+func (o *Weather) UnsetAreaUuid() {
+	o.AreaUuid.Unset()
+}
+
+// GetAreaName returns the AreaName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Weather) GetAreaName() string {
+	if o == nil || IsNil(o.AreaName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AreaName.Get()
+}
+
+// GetAreaNameOk returns a tuple with the AreaName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Weather) GetAreaNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AreaName.Get(), o.AreaName.IsSet()
+}
+
+// HasAreaName returns a boolean if a field has been set.
+func (o *Weather) HasAreaName() bool {
+	if o != nil && o.AreaName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAreaName gets a reference to the given NullableString and assigns it to the AreaName field.
+func (o *Weather) SetAreaName(v string) {
+	o.AreaName.Set(&v)
+}
+// SetAreaNameNil sets the value for AreaName to be an explicit nil
+func (o *Weather) SetAreaNameNil() {
+	o.AreaName.Set(nil)
+}
+
+// UnsetAreaName ensures that no value is present for AreaName, not even an explicit nil
+func (o *Weather) UnsetAreaName() {
+	o.AreaName.Unset()
+}
+
+// GetAreaDisplayOrder returns the AreaDisplayOrder field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Weather) GetAreaDisplayOrder() int32 {
+	if o == nil || IsNil(o.AreaDisplayOrder.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.AreaDisplayOrder.Get()
+}
+
+// GetAreaDisplayOrderOk returns a tuple with the AreaDisplayOrder field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Weather) GetAreaDisplayOrderOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AreaDisplayOrder.Get(), o.AreaDisplayOrder.IsSet()
+}
+
+// HasAreaDisplayOrder returns a boolean if a field has been set.
+func (o *Weather) HasAreaDisplayOrder() bool {
+	if o != nil && o.AreaDisplayOrder.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAreaDisplayOrder gets a reference to the given NullableInt32 and assigns it to the AreaDisplayOrder field.
+func (o *Weather) SetAreaDisplayOrder(v int32) {
+	o.AreaDisplayOrder.Set(&v)
+}
+// SetAreaDisplayOrderNil sets the value for AreaDisplayOrder to be an explicit nil
+func (o *Weather) SetAreaDisplayOrderNil() {
+	o.AreaDisplayOrder.Set(nil)
+}
+
+// UnsetAreaDisplayOrder ensures that no value is present for AreaDisplayOrder, not even an explicit nil
+func (o *Weather) UnsetAreaDisplayOrder() {
+	o.AreaDisplayOrder.Unset()
 }
 
 // GetCurrent returns the Current field value
@@ -189,6 +321,15 @@ func (o Weather) MarshalJSON() ([]byte, error) {
 
 func (o Weather) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.AreaUuid.IsSet() {
+		toSerialize["area_uuid"] = o.AreaUuid.Get()
+	}
+	if o.AreaName.IsSet() {
+		toSerialize["area_name"] = o.AreaName.Get()
+	}
+	if o.AreaDisplayOrder.IsSet() {
+		toSerialize["area_display_order"] = o.AreaDisplayOrder.Get()
+	}
 	toSerialize["current"] = o.Current
 	toSerialize["hourly_forecast"] = o.HourlyForecast
 	toSerialize["daily_forecast"] = o.DailyForecast

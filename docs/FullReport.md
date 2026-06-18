@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **ParkingLots** | [**[]ParkingLot**](ParkingLot.md) | List of all parking lots at the resort with their current status and amenities. | 
 **SummerTrails** | [**[]SummerTrail**](SummerTrail.md) | List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. | 
 **Hours** | [**OperatingHours**](OperatingHours.md) |  | 
-**Weather** | Pointer to [**NullableWeather**](Weather.md) |  | [optional] 
+**Weather** | Pointer to [**[]Weather**](Weather.md) | Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. | [optional] 
 
 ## Methods
 
@@ -216,20 +216,20 @@ SetHours sets Hours field to given value.
 
 ### GetWeather
 
-`func (o *FullReport) GetWeather() Weather`
+`func (o *FullReport) GetWeather() []Weather`
 
 GetWeather returns the Weather field if non-nil, zero value otherwise.
 
 ### GetWeatherOk
 
-`func (o *FullReport) GetWeatherOk() (*Weather, bool)`
+`func (o *FullReport) GetWeatherOk() (*[]Weather, bool)`
 
 GetWeatherOk returns a tuple with the Weather field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWeather
 
-`func (o *FullReport) SetWeather(v Weather)`
+`func (o *FullReport) SetWeather(v []Weather)`
 
 SetWeather sets Weather field to given value.
 
@@ -239,16 +239,6 @@ SetWeather sets Weather field to given value.
 
 HasWeather returns a boolean if a field has been set.
 
-### SetWeatherNil
-
-`func (o *FullReport) SetWeatherNil(b bool)`
-
- SetWeatherNil sets the value for Weather to be an explicit nil
-
-### UnsetWeather
-`func (o *FullReport) UnsetWeather()`
-
-UnsetWeather ensures that no value is present for Weather, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

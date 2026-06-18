@@ -9,15 +9,17 @@ Name | Type | Description | Notes
 **Name** | **string** | Display name of the amenity. | 
 **Category** | [**AmenityCategory**](AmenityCategory.md) | Category classification (e.g. restaurant, lodge, ski_school). | 
 **Website** | **string** | Website URL for the amenity, if available. | 
+**HasOperatingHours** | **bool** | Whether this amenity reports operating hours. When false, clients should  not expect &#x60;opens_at&#x60;, &#x60;closes_at&#x60;, or &#x60;schedules&#x60; to ever be populated. | 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **Schedules** | [**[]Schedule**](Schedule.md) | Recurring operating schedules for this amenity (e.g. \&quot;Saturday &amp; Sunday,  9:00 a.m. to 4:00 p.m.\&quot;), with both human-readable and structured fields. | 
+**Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
 
 ### NewAmenity
 
-`func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, schedules []Schedule, ) *Amenity`
+`func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
 
 NewAmenity instantiates a new Amenity object
 This constructor will assign default values to properties that have it defined,
@@ -132,6 +134,26 @@ and a boolean to check if the value has been set.
 SetWebsite sets Website field to given value.
 
 
+### GetHasOperatingHours
+
+`func (o *Amenity) GetHasOperatingHours() bool`
+
+GetHasOperatingHours returns the HasOperatingHours field if non-nil, zero value otherwise.
+
+### GetHasOperatingHoursOk
+
+`func (o *Amenity) GetHasOperatingHoursOk() (*bool, bool)`
+
+GetHasOperatingHoursOk returns a tuple with the HasOperatingHours field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasOperatingHours
+
+`func (o *Amenity) SetHasOperatingHours(v bool)`
+
+SetHasOperatingHours sets HasOperatingHours field to given value.
+
+
 ### GetOpensAt
 
 `func (o *Amenity) GetOpensAt() string`
@@ -221,6 +243,31 @@ and a boolean to check if the value has been set.
 
 SetSchedules sets Schedules field to given value.
 
+
+### GetImages
+
+`func (o *Amenity) GetImages() []EntityImage`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *Amenity) GetImagesOk() (*[]EntityImage, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *Amenity) SetImages(v []EntityImage)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *Amenity) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

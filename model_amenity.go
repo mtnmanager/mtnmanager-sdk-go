@@ -32,12 +32,16 @@ type Amenity struct {
 	Category AmenityCategory `json:"category"`
 	// Website URL for the amenity, if available.
 	Website string `json:"website"`
+	// Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
+	HasOperatingHours bool `json:"has_operating_hours"`
 	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.
 	OpensAt NullableString `json:"opens_at,omitempty"`
 	// Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.
 	ClosesAt NullableString `json:"closes_at,omitempty"`
 	// Recurring operating schedules for this amenity (e.g. \"Saturday & Sunday,  9:00 a.m. to 4:00 p.m.\"), with both human-readable and structured fields.
 	Schedules []Schedule `json:"schedules"`
+	// Images attached to this amenity, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
+	Images []EntityImage `json:"images,omitempty"`
 }
 
 type _Amenity Amenity
@@ -46,13 +50,14 @@ type _Amenity Amenity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, schedules []Schedule) *Amenity {
+func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule) *Amenity {
 	this := Amenity{}
 	this.Description = description
 	this.Uuid = uuid
 	this.Name = name
 	this.Category = category
 	this.Website = website
+	this.HasOperatingHours = hasOperatingHours
 	this.Schedules = schedules
 	return &this
 }
@@ -185,6 +190,30 @@ func (o *Amenity) SetWebsite(v string) {
 	o.Website = v
 }
 
+// GetHasOperatingHours returns the HasOperatingHours field value
+func (o *Amenity) GetHasOperatingHours() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasOperatingHours
+}
+
+// GetHasOperatingHoursOk returns a tuple with the HasOperatingHours field value
+// and a boolean to check if the value has been set.
+func (o *Amenity) GetHasOperatingHoursOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasOperatingHours, true
+}
+
+// SetHasOperatingHours sets field value
+func (o *Amenity) SetHasOperatingHours(v bool) {
+	o.HasOperatingHours = v
+}
+
 // GetOpensAt returns the OpensAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Amenity) GetOpensAt() string {
 	if o == nil || IsNil(o.OpensAt.Get()) {
@@ -293,6 +322,38 @@ func (o *Amenity) SetSchedules(v []Schedule) {
 	o.Schedules = v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *Amenity) GetImages() []EntityImage {
+	if o == nil || IsNil(o.Images) {
+		var ret []EntityImage
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Amenity) GetImagesOk() ([]EntityImage, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *Amenity) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []EntityImage and assigns it to the Images field.
+func (o *Amenity) SetImages(v []EntityImage) {
+	o.Images = v
+}
+
 func (o Amenity) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -308,6 +369,7 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["category"] = o.Category
 	toSerialize["website"] = o.Website
+	toSerialize["has_operating_hours"] = o.HasOperatingHours
 	if o.OpensAt.IsSet() {
 		toSerialize["opens_at"] = o.OpensAt.Get()
 	}
@@ -315,6 +377,9 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 		toSerialize["closes_at"] = o.ClosesAt.Get()
 	}
 	toSerialize["schedules"] = o.Schedules
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
 	return toSerialize, nil
 }
 
@@ -328,6 +393,7 @@ func (o *Amenity) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"category",
 		"website",
+		"has_operating_hours",
 		"schedules",
 	}
 

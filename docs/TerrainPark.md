@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this terrain park belongs to, if assigned, for sorting purposes. | [optional] 
 **Features** | [**[]TerrainParkFeature**](TerrainParkFeature.md) | Features within this terrain park (jumps, boxes, rails, etc.). | 
 **UpdatedAt** | **time.Time** | When this terrain park or any of its features was last updated. | 
+**Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
 
@@ -314,6 +315,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
+
+### GetImages
+
+`func (o *TerrainPark) GetImages() []EntityImage`
+
+GetImages returns the Images field if non-nil, zero value otherwise.
+
+### GetImagesOk
+
+`func (o *TerrainPark) GetImagesOk() (*[]EntityImage, bool)`
+
+GetImagesOk returns a tuple with the Images field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImages
+
+`func (o *TerrainPark) SetImages(v []EntityImage)`
+
+SetImages sets Images field to given value.
+
+### HasImages
+
+`func (o *TerrainPark) HasImages() bool`
+
+HasImages returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

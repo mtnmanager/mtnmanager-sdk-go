@@ -45,6 +45,8 @@ type TerrainPark struct {
 	Features []TerrainParkFeature `json:"features"`
 	// When this terrain park or any of its features was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
+	// Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads.
+	Images []EntityImage `json:"images,omitempty"`
 }
 
 type _TerrainPark TerrainPark
@@ -409,6 +411,38 @@ func (o *TerrainPark) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetImages returns the Images field value if set, zero value otherwise.
+func (o *TerrainPark) GetImages() []EntityImage {
+	if o == nil || IsNil(o.Images) {
+		var ret []EntityImage
+		return ret
+	}
+	return o.Images
+}
+
+// GetImagesOk returns a tuple with the Images field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerrainPark) GetImagesOk() ([]EntityImage, bool) {
+	if o == nil || IsNil(o.Images) {
+		return nil, false
+	}
+	return o.Images, true
+}
+
+// HasImages returns a boolean if a field has been set.
+func (o *TerrainPark) HasImages() bool {
+	if o != nil && !IsNil(o.Images) {
+		return true
+	}
+
+	return false
+}
+
+// SetImages gets a reference to the given []EntityImage and assigns it to the Images field.
+func (o *TerrainPark) SetImages(v []EntityImage) {
+	o.Images = v
+}
+
 func (o TerrainPark) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -438,6 +472,9 @@ func (o TerrainPark) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["features"] = o.Features
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Images) {
+		toSerialize["images"] = o.Images
+	}
 	return toSerialize, nil
 }
 

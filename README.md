@@ -54,6 +54,7 @@ Class | Method | HTTP request | Description
  - [DailyForecastImperial](docs/DailyForecastImperial.md)
  - [DailyForecastMetric](docs/DailyForecastMetric.md)
  - [DayOfWeek](docs/DayOfWeek.md)
+ - [EntityImage](docs/EntityImage.md)
  - [FeatureSize](docs/FeatureSize.md)
  - [FeatureType](docs/FeatureType.md)
  - [FullReport](docs/FullReport.md)

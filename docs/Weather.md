@@ -4,6 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**AreaUuid** | Pointer to **NullableString** | The area this weather belongs to, or omitted for resort-wide weather. | [optional] 
+**AreaName** | Pointer to **NullableString** | The area&#39;s name, or omitted for resort-wide weather. | [optional] 
+**AreaDisplayOrder** | Pointer to **NullableInt32** | The area&#39;s display order, or omitted for resort-wide weather. | [optional] 
 **Current** | [**CurrentWeather**](CurrentWeather.md) | Current weather conditions | 
 **HourlyForecast** | [**[]HourlyForecast**](HourlyForecast.md) | Hourly forecast for next 24 hours (including current hour) | 
 **DailyForecast** | [**[]DailyForecast**](DailyForecast.md) | Daily forecast for next 7 days (including today) | 
@@ -29,6 +32,111 @@ NewWeatherWithDefaults instantiates a new Weather object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetAreaUuid
+
+`func (o *Weather) GetAreaUuid() string`
+
+GetAreaUuid returns the AreaUuid field if non-nil, zero value otherwise.
+
+### GetAreaUuidOk
+
+`func (o *Weather) GetAreaUuidOk() (*string, bool)`
+
+GetAreaUuidOk returns a tuple with the AreaUuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAreaUuid
+
+`func (o *Weather) SetAreaUuid(v string)`
+
+SetAreaUuid sets AreaUuid field to given value.
+
+### HasAreaUuid
+
+`func (o *Weather) HasAreaUuid() bool`
+
+HasAreaUuid returns a boolean if a field has been set.
+
+### SetAreaUuidNil
+
+`func (o *Weather) SetAreaUuidNil(b bool)`
+
+ SetAreaUuidNil sets the value for AreaUuid to be an explicit nil
+
+### UnsetAreaUuid
+`func (o *Weather) UnsetAreaUuid()`
+
+UnsetAreaUuid ensures that no value is present for AreaUuid, not even an explicit nil
+### GetAreaName
+
+`func (o *Weather) GetAreaName() string`
+
+GetAreaName returns the AreaName field if non-nil, zero value otherwise.
+
+### GetAreaNameOk
+
+`func (o *Weather) GetAreaNameOk() (*string, bool)`
+
+GetAreaNameOk returns a tuple with the AreaName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAreaName
+
+`func (o *Weather) SetAreaName(v string)`
+
+SetAreaName sets AreaName field to given value.
+
+### HasAreaName
+
+`func (o *Weather) HasAreaName() bool`
+
+HasAreaName returns a boolean if a field has been set.
+
+### SetAreaNameNil
+
+`func (o *Weather) SetAreaNameNil(b bool)`
+
+ SetAreaNameNil sets the value for AreaName to be an explicit nil
+
+### UnsetAreaName
+`func (o *Weather) UnsetAreaName()`
+
+UnsetAreaName ensures that no value is present for AreaName, not even an explicit nil
+### GetAreaDisplayOrder
+
+`func (o *Weather) GetAreaDisplayOrder() int32`
+
+GetAreaDisplayOrder returns the AreaDisplayOrder field if non-nil, zero value otherwise.
+
+### GetAreaDisplayOrderOk
+
+`func (o *Weather) GetAreaDisplayOrderOk() (*int32, bool)`
+
+GetAreaDisplayOrderOk returns a tuple with the AreaDisplayOrder field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAreaDisplayOrder
+
+`func (o *Weather) SetAreaDisplayOrder(v int32)`
+
+SetAreaDisplayOrder sets AreaDisplayOrder field to given value.
+
+### HasAreaDisplayOrder
+
+`func (o *Weather) HasAreaDisplayOrder() bool`
+
+HasAreaDisplayOrder returns a boolean if a field has been set.
+
+### SetAreaDisplayOrderNil
+
+`func (o *Weather) SetAreaDisplayOrderNil(b bool)`
+
+ SetAreaDisplayOrderNil sets the value for AreaDisplayOrder to be an explicit nil
+
+### UnsetAreaDisplayOrder
+`func (o *Weather) UnsetAreaDisplayOrder()`
+
+UnsetAreaDisplayOrder ensures that no value is present for AreaDisplayOrder, not even an explicit nil
 ### GetCurrent
 
 `func (o *Weather) GetCurrent() CurrentWeather`
