@@ -1196,6 +1196,235 @@ paths:
           } catch {
               print("Error: \(error)")
           }
+  /api/v1/report/webcams:
+    get:
+      operationId: getWebcams
+      parameters:
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+              - uuid: 11111111-1111-1111-1111-111111111111
+                name: Summit
+                latest_image_url: https://webcams.mtnmanager.com/acct/cam/latest.webp
+                latest_daylight_image_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight.webp
+                latest_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-thumb.webp
+                latest_daylight_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight-thumb.webp
+              schema:
+                items:
+                  $ref: "#/components/schemas/Webcam"
+                type: array
+                default: null
+          description: ""
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get webcams
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getWebcams();\n    console.log(data);\n} catch (error)\
+          \ {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetWebcams(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getWebcams();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getWebcams(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
+  /api/v1/report/webcam/{uuid}/history:
+    get:
+      operationId: getWebcamHistory
+      parameters:
+      - description: Resource UUID
+        explode: false
+        in: path
+        name: uuid
+        required: true
+        schema:
+          description: Resource UUID
+          type: string
+        style: simple
+      - description: Inclusive lower bound on `captured_at` (RFC 3339).
+        explode: true
+        in: query
+        name: from
+        required: false
+        schema:
+          default: null
+          description: Inclusive lower bound on `captured_at` (RFC 3339).
+          nullable: true
+          type: string
+        style: form
+      - description: Inclusive upper bound on `captured_at` (RFC 3339).
+        explode: true
+        in: query
+        name: to
+        required: false
+        schema:
+          default: null
+          description: Inclusive upper bound on `captured_at` (RFC 3339).
+          nullable: true
+          type: string
+        style: form
+      - description: "Preferred language and optional region for human-readable strings\
+          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
+          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
+          \ Defaults to English when omitted or unsupported."
+        example: fr-CA
+        explode: false
+        in: header
+        name: Accept-Language
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                webcam_uuid: 11111111-1111-1111-1111-111111111111
+                frames:
+                - captured_at: 2026-01-15T16:00:00+00:00
+                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z-thumb.webp
+                - captured_at: 2026-01-15T15:00:00+00:00
+                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z-thumb.webp
+                - captured_at: 2026-01-15T14:00:00+00:00
+                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z-thumb.webp
+              schema:
+                $ref: "#/components/schemas/WebcamHistoryResponse"
+          description: The historical frame listing for one camera over a time range.
+        "403":
+          description: Endpoint not available for this resort. Feature may be disabled.
+        "404":
+          description: Resort not found.
+        "429":
+          description: "Too many requests, temporarily rate limited."
+        "500":
+          description: An unexpected server error occurred.
+        "503":
+          description: Service temporarily unavailable.
+      summary: Get webcam history
+      tags:
+      - MtnManager
+      x-codeSamples:
+      - lang: typescript
+        label: TypeScript
+        source: "import { MtnManagerApi, Configuration } from \"@mtnmanager/sdk\"\
+          ;\n\nconst api = new MtnManagerApi(\n\tnew Configuration({\n\t\tbasePath:\
+          \ \"https://your-resort.mtnmanager.com\",\n\t})\n);\n\ntry {\n    const\
+          \ data = await api.getWebcamHistory();\n    console.log(data);\n} catch\
+          \ (error) {\n    console.error(error);\n}"
+      - lang: go
+        label: Go
+        source: "package main\n\nimport (\n\t\"context\"\n\t\"fmt\"\n\tmtnmanager\
+          \ \"github.com/mtnmanager/mtnmanager-sdk-go\"\n)\n\nfunc main() {\n\tconfiguration\
+          \ := mtnmanager.NewConfiguration()\n\tconfiguration.Servers = mtnmanager.ServerConfigurations{\n\
+          \t\t{URL: \"https://your-resort.mtnmanager.com\"},\n\t}\n\tclient := mtnmanager.NewAPIClient(configuration)\n\
+          \n\tdata, _, err := client.MtnManagerAPI.GetWebcamHistory(context.Background()).Execute()\n\
+          \tif err != nil {\n\t\tpanic(err)\n\t}\n\tfmt.Printf(\"%+v\\n\", data)\n\
+          }"
+      - lang: php
+        label: PHP
+        source: |-
+          <?php
+          require_once(__DIR__ . '/vendor/autoload.php');
+
+          $config = MtnManager\Configuration::getDefaultConfiguration()
+              ->setHost('https://your-resort.mtnmanager.com');
+
+          $apiInstance = new MtnManager\Api\MtnManagerApi(
+              new GuzzleHttp\Client(),
+              $config
+          );
+
+          try {
+              $result = $apiInstance->getWebcamHistory();
+              print_r($result);
+          } catch (Exception $e) {
+              echo 'Exception: ', $e->getMessage(), PHP_EOL;
+          }
+      - lang: swift
+        label: Swift
+        source: |-
+          import MtnManagerSDK
+
+          let config = MtnManagerSDKAPIConfiguration(
+              basePath: "https://your-resort.mtnmanager.com"
+          )
+
+          do {
+              let data = try await MtnManagerAPI.getWebcamHistory(apiConfiguration: config)
+              print(data)
+          } catch {
+              print("Error: \(error)")
+          }
   /api/v1/report/terrain-parks:
     get:
       operationId: getTerrainParks
@@ -4377,6 +4606,120 @@ components:
         $ref: "#/components/schemas/SnowReport"
       type: array
       default: null
+    Webcam:
+      description: |-
+        A public webcam entry. Consumers pick `latest` (always the newest frame) or
+         `latest-daylight` (the last daylight frame, never a black night shot)
+         depending on whether they want the freshest or a guaranteed-lit image.
+      example:
+        uuid: uuid
+        name: name
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 0
+        latest_image_url: latest_image_url
+        latest_daylight_image_url: latest_daylight_image_url
+        latest_thumb_url: latest_thumb_url
+        latest_daylight_thumb_url: latest_daylight_thumb_url
+        last_frame_at: last_frame_at
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        area_uuid:
+          nullable: true
+          type: string
+        area_name:
+          nullable: true
+          type: string
+        area_display_order:
+          format: int32
+          nullable: true
+          type: integer
+        latest_image_url:
+          description: URL of the newest frame (refreshes within ~60s via the edge
+            cache).
+          type: string
+        latest_daylight_image_url:
+          description: URL of the last daylight frame.
+          type: string
+        latest_thumb_url:
+          type: string
+        latest_daylight_thumb_url:
+          type: string
+        last_frame_at:
+          description: Time of the most recently published frame; omitted until the
+            first frame.
+          nullable: true
+          type: string
+      required:
+      - latest_daylight_image_url
+      - latest_daylight_thumb_url
+      - latest_image_url
+      - latest_thumb_url
+      - name
+      - uuid
+    PathUuid:
+      properties:
+        uuid:
+          description: Resource UUID
+          type: string
+      required:
+      - uuid
+    WebcamHistoryQuery:
+      description: Query parameters for the history endpoint.
+      properties:
+        from:
+          description: Inclusive lower bound on `captured_at` (RFC 3339).
+          nullable: true
+          type: string
+          default: null
+        to:
+          description: Inclusive upper bound on `captured_at` (RFC 3339).
+          nullable: true
+          type: string
+          default: null
+    WebcamHistoryResponse:
+      description: The historical frame listing for one camera over a time range.
+      example:
+        webcam_uuid: webcam_uuid
+        frames:
+        - captured_at: captured_at
+          image_url: image_url
+          thumb_url: thumb_url
+        - captured_at: captured_at
+          image_url: image_url
+          thumb_url: thumb_url
+      properties:
+        webcam_uuid:
+          type: string
+        frames:
+          description: Newest first.
+          items:
+            $ref: "#/components/schemas/WebcamHistoryFrame"
+          type: array
+          default: null
+      required:
+      - frames
+      - webcam_uuid
+    WebcamHistoryFrame:
+      description: A single archived historical frame.
+      example:
+        captured_at: captured_at
+        image_url: image_url
+        thumb_url: thumb_url
+      properties:
+        captured_at:
+          type: string
+        image_url:
+          type: string
+        thumb_url:
+          type: string
+      required:
+      - captured_at
+      - image_url
+      - thumb_url
     TerrainParksResponse:
       description: |-
         List of all terrain parks at the resort with their current status,
@@ -4592,13 +4935,6 @@ components:
       required:
       - lat
       - lng
-    PathUuid:
-      properties:
-        uuid:
-          description: Resource UUID
-          type: string
-      required:
-      - uuid
     TrailMap:
       description: A public trail map with enriched entity data.
       properties:
@@ -4656,6 +4992,7 @@ components:
       - $ref: "#/components/schemas/TrailMapElement_oneOf_4"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_5"
       - $ref: "#/components/schemas/TrailMapElement_oneOf_6"
+      - $ref: "#/components/schemas/TrailMapElement_oneOf_7"
       x-internal: true
     LabelOffset:
       properties:
@@ -4692,6 +5029,7 @@ components:
       - retail
       - atm
       - star
+      - webcam
       type: string
     GeoControlPoint:
       properties:
@@ -4930,6 +5268,39 @@ components:
       - x
       - "y"
     TrailMapElement_oneOf_6:
+      properties:
+        type:
+          enum:
+          - webcam_marker
+          type: string
+        uuid:
+          type: string
+        x:
+          format: double
+          type: number
+        "y":
+          format: double
+          type: number
+        icon:
+          allOf:
+          - $ref: "#/components/schemas/MarkerIcon"
+          nullable: true
+        color:
+          nullable: true
+          type: string
+        webcam:
+          allOf:
+          - $ref: "#/components/schemas/Webcam"
+          nullable: true
+        group_label:
+          nullable: true
+          type: string
+      required:
+      - type
+      - uuid
+      - x
+      - "y"
+    TrailMapElement_oneOf_7:
       properties:
         type:
           enum:

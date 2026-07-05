@@ -43,6 +43,7 @@ const (
 	RETAIL MarkerIcon = "retail"
 	ATM MarkerIcon = "atm"
 	STAR MarkerIcon = "star"
+	WEBCAM MarkerIcon = "webcam"
 )
 
 // All allowed values of MarkerIcon enum
@@ -69,6 +70,7 @@ var AllowedMarkerIconEnumValues = []MarkerIcon{
 	"retail",
 	"atm",
 	"star",
+	"webcam",
 }
 
 func (v *MarkerIcon) UnmarshalJSON(src []byte) error {

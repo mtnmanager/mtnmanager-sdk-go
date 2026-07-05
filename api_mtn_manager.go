@@ -17,6 +17,7 @@ import (
 	"io"
 	"net/http"
 	"net/url"
+	"strings"
 )
 
 
@@ -165,6 +166,31 @@ type MtnManagerAPI interface {
 	// GetWeatherExecute executes the request
 	//  @return []Weather
 	GetWeatherExecute(r ApiGetWeatherRequest) ([]Weather, *http.Response, error)
+
+	/*
+	GetWebcamHistory Get webcam history
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param uuid Resource UUID
+	@return ApiGetWebcamHistoryRequest
+	*/
+	GetWebcamHistory(ctx context.Context, uuid string) ApiGetWebcamHistoryRequest
+
+	// GetWebcamHistoryExecute executes the request
+	//  @return WebcamHistoryResponse
+	GetWebcamHistoryExecute(r ApiGetWebcamHistoryRequest) (*WebcamHistoryResponse, *http.Response, error)
+
+	/*
+	GetWebcams Get webcams
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetWebcamsRequest
+	*/
+	GetWebcams(ctx context.Context) ApiGetWebcamsRequest
+
+	// GetWebcamsExecute executes the request
+	//  @return []Webcam
+	GetWebcamsExecute(r ApiGetWebcamsRequest) ([]Webcam, *http.Response, error)
 }
 
 // MtnManagerAPIService MtnManagerAPI service
@@ -1392,6 +1418,252 @@ func (a *MtnManagerAPIService) GetWeatherExecute(r ApiGetWeatherRequest) ([]Weat
 	}
 
 	localVarPath := localBasePath + "/api/v1/report/weather"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetWebcamHistoryRequest struct {
+	ctx context.Context
+	ApiService MtnManagerAPI
+	uuid string
+	from *string
+	to *string
+	acceptLanguage *string
+}
+
+// Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339).
+func (r ApiGetWebcamHistoryRequest) From(from string) ApiGetWebcamHistoryRequest {
+	r.from = &from
+	return r
+}
+
+// Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339).
+func (r ApiGetWebcamHistoryRequest) To(to string) ApiGetWebcamHistoryRequest {
+	r.to = &to
+	return r
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetWebcamHistoryRequest) AcceptLanguage(acceptLanguage string) ApiGetWebcamHistoryRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
+}
+
+func (r ApiGetWebcamHistoryRequest) Execute() (*WebcamHistoryResponse, *http.Response, error) {
+	return r.ApiService.GetWebcamHistoryExecute(r)
+}
+
+/*
+GetWebcamHistory Get webcam history
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param uuid Resource UUID
+ @return ApiGetWebcamHistoryRequest
+*/
+func (a *MtnManagerAPIService) GetWebcamHistory(ctx context.Context, uuid string) ApiGetWebcamHistoryRequest {
+	return ApiGetWebcamHistoryRequest{
+		ApiService: a,
+		ctx: ctx,
+		uuid: uuid,
+	}
+}
+
+// Execute executes the request
+//  @return WebcamHistoryResponse
+func (a *MtnManagerAPIService) GetWebcamHistoryExecute(r ApiGetWebcamHistoryRequest) (*WebcamHistoryResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *WebcamHistoryResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetWebcamHistory")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/report/webcam/{uuid}/history"
+	localVarPath = strings.Replace(localVarPath, "{"+"uuid"+"}", url.PathEscape(parameterValueToString(r.uuid, "uuid")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.from != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", r.from, "form", "")
+	} else {
+		var defaultValue string = "null"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "from", defaultValue, "form", "")
+		r.from = &defaultValue
+	}
+	if r.to != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", r.to, "form", "")
+	} else {
+		var defaultValue string = "null"
+		parameterAddToHeaderOrQuery(localVarQueryParams, "to", defaultValue, "form", "")
+		r.to = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.acceptLanguage != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "Accept-Language", r.acceptLanguage, "simple", "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetWebcamsRequest struct {
+	ctx context.Context
+	ApiService MtnManagerAPI
+	acceptLanguage *string
+}
+
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+func (r ApiGetWebcamsRequest) AcceptLanguage(acceptLanguage string) ApiGetWebcamsRequest {
+	r.acceptLanguage = &acceptLanguage
+	return r
+}
+
+func (r ApiGetWebcamsRequest) Execute() ([]Webcam, *http.Response, error) {
+	return r.ApiService.GetWebcamsExecute(r)
+}
+
+/*
+GetWebcams Get webcams
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetWebcamsRequest
+*/
+func (a *MtnManagerAPIService) GetWebcams(ctx context.Context) ApiGetWebcamsRequest {
+	return ApiGetWebcamsRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return []Webcam
+func (a *MtnManagerAPIService) GetWebcamsExecute(r ApiGetWebcamsRequest) ([]Webcam, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  []Webcam
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MtnManagerAPIService.GetWebcams")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/api/v1/report/webcams"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

@@ -166,4 +166,30 @@ func Test_mtnmanager_MtnManagerAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test MtnManagerAPIService GetWebcamHistory", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var uuid string
+
+		resp, httpRes, err := apiClient.MtnManagerAPI.GetWebcamHistory(context.Background(), uuid).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test MtnManagerAPIService GetWebcams", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		resp, httpRes, err := apiClient.MtnManagerAPI.GetWebcams(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

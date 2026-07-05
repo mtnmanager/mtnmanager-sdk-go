@@ -16,6 +16,8 @@ Method | HTTP request | Description
 [**GetTerrainParks**](MtnManagerAPI.md#GetTerrainParks) | **Get** /api/v1/report/terrain-parks | Get terrain parks
 [**GetTrailMaps**](MtnManagerAPI.md#GetTrailMaps) | **Get** /api/v1/report/trail-maps | Get trail maps
 [**GetWeather**](MtnManagerAPI.md#GetWeather) | **Get** /api/v1/report/weather | Get weather
+[**GetWebcamHistory**](MtnManagerAPI.md#GetWebcamHistory) | **Get** /api/v1/report/webcam/{uuid}/history | Get webcam history
+[**GetWebcams**](MtnManagerAPI.md#GetWebcams) | **Get** /api/v1/report/webcams | Get webcams
 
 
 
@@ -772,6 +774,144 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[]Weather**](Weather.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetWebcamHistory
+
+> WebcamHistoryResponse GetWebcamHistory(ctx, uuid).From(from).To(to).AcceptLanguage(acceptLanguage).Execute()
+
+Get webcam history
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+	uuid := "uuid_example" // string | Resource UUID
+	from := "from_example" // string | Inclusive lower bound on `captured_at` (RFC 3339). (optional) (default to "null")
+	to := "to_example" // string | Inclusive upper bound on `captured_at` (RFC 3339). (optional) (default to "null")
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetWebcamHistory(context.Background(), uuid).From(from).To(to).AcceptLanguage(acceptLanguage).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetWebcamHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetWebcamHistory`: WebcamHistoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetWebcamHistory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**uuid** | **string** | Resource UUID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWebcamHistoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **from** | **string** | Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
+ **to** | **string** | Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+
+### Return type
+
+[**WebcamHistoryResponse**](WebcamHistoryResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetWebcams
+
+> []Webcam GetWebcams(ctx).AcceptLanguage(acceptLanguage).Execute()
+
+Get webcams
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/mtnmanager/mtnmanager-sdk-go/mtnmanager"
+)
+
+func main() {
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MtnManagerAPI.GetWebcams(context.Background()).AcceptLanguage(acceptLanguage).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetWebcams``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetWebcams`: []Webcam
+	fmt.Fprintf(os.Stdout, "Response from `MtnManagerAPI.GetWebcams`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetWebcamsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+
+### Return type
+
+[**[]Webcam**](Webcam.md)
 
 ### Authorization
 
