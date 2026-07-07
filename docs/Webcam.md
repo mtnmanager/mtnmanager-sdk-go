@@ -13,13 +13,18 @@ Name | Type | Description | Notes
 **LatestDaylightImageUrl** | **string** | URL of the last daylight frame. | 
 **LatestThumbUrl** | **string** |  | 
 **LatestDaylightThumbUrl** | **string** |  | 
+**LatestThumbhash** | **string** | ThumbHash of the &#x60;latest&#x60; frame (standard base64) — a compact blur  placeholder to render while the image loads. Empty string until the first  frame (or on cameras predating the feature). | 
+**LatestDaylightThumbhash** | **string** | ThumbHash of the &#x60;latest-daylight&#x60; frame (standard base64). Empty string  until the first daylight frame. | 
+**HasHistory** | **bool** | Whether this camera archives frames — i.e. whether its history endpoint  returns anything. When &#x60;false&#x60;, don&#39;t call the history API for it. | 
+**ElevationFt** | Pointer to **NullableInt32** | Camera elevation in both units; omitted when unset. | [optional] 
+**ElevationM** | Pointer to **NullableInt32** |  | [optional] 
 **LastFrameAt** | Pointer to **NullableString** | Time of the most recently published frame; omitted until the first frame. | [optional] 
 
 ## Methods
 
 ### NewWebcam
 
-`func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, ) *Webcam`
+`func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool, ) *Webcam`
 
 NewWebcam instantiates a new Webcam object
 This constructor will assign default values to properties that have it defined,
@@ -259,6 +264,136 @@ and a boolean to check if the value has been set.
 SetLatestDaylightThumbUrl sets LatestDaylightThumbUrl field to given value.
 
 
+### GetLatestThumbhash
+
+`func (o *Webcam) GetLatestThumbhash() string`
+
+GetLatestThumbhash returns the LatestThumbhash field if non-nil, zero value otherwise.
+
+### GetLatestThumbhashOk
+
+`func (o *Webcam) GetLatestThumbhashOk() (*string, bool)`
+
+GetLatestThumbhashOk returns a tuple with the LatestThumbhash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLatestThumbhash
+
+`func (o *Webcam) SetLatestThumbhash(v string)`
+
+SetLatestThumbhash sets LatestThumbhash field to given value.
+
+
+### GetLatestDaylightThumbhash
+
+`func (o *Webcam) GetLatestDaylightThumbhash() string`
+
+GetLatestDaylightThumbhash returns the LatestDaylightThumbhash field if non-nil, zero value otherwise.
+
+### GetLatestDaylightThumbhashOk
+
+`func (o *Webcam) GetLatestDaylightThumbhashOk() (*string, bool)`
+
+GetLatestDaylightThumbhashOk returns a tuple with the LatestDaylightThumbhash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLatestDaylightThumbhash
+
+`func (o *Webcam) SetLatestDaylightThumbhash(v string)`
+
+SetLatestDaylightThumbhash sets LatestDaylightThumbhash field to given value.
+
+
+### GetHasHistory
+
+`func (o *Webcam) GetHasHistory() bool`
+
+GetHasHistory returns the HasHistory field if non-nil, zero value otherwise.
+
+### GetHasHistoryOk
+
+`func (o *Webcam) GetHasHistoryOk() (*bool, bool)`
+
+GetHasHistoryOk returns a tuple with the HasHistory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasHistory
+
+`func (o *Webcam) SetHasHistory(v bool)`
+
+SetHasHistory sets HasHistory field to given value.
+
+
+### GetElevationFt
+
+`func (o *Webcam) GetElevationFt() int32`
+
+GetElevationFt returns the ElevationFt field if non-nil, zero value otherwise.
+
+### GetElevationFtOk
+
+`func (o *Webcam) GetElevationFtOk() (*int32, bool)`
+
+GetElevationFtOk returns a tuple with the ElevationFt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetElevationFt
+
+`func (o *Webcam) SetElevationFt(v int32)`
+
+SetElevationFt sets ElevationFt field to given value.
+
+### HasElevationFt
+
+`func (o *Webcam) HasElevationFt() bool`
+
+HasElevationFt returns a boolean if a field has been set.
+
+### SetElevationFtNil
+
+`func (o *Webcam) SetElevationFtNil(b bool)`
+
+ SetElevationFtNil sets the value for ElevationFt to be an explicit nil
+
+### UnsetElevationFt
+`func (o *Webcam) UnsetElevationFt()`
+
+UnsetElevationFt ensures that no value is present for ElevationFt, not even an explicit nil
+### GetElevationM
+
+`func (o *Webcam) GetElevationM() int32`
+
+GetElevationM returns the ElevationM field if non-nil, zero value otherwise.
+
+### GetElevationMOk
+
+`func (o *Webcam) GetElevationMOk() (*int32, bool)`
+
+GetElevationMOk returns a tuple with the ElevationM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetElevationM
+
+`func (o *Webcam) SetElevationM(v int32)`
+
+SetElevationM sets ElevationM field to given value.
+
+### HasElevationM
+
+`func (o *Webcam) HasElevationM() bool`
+
+HasElevationM returns a boolean if a field has been set.
+
+### SetElevationMNil
+
+`func (o *Webcam) SetElevationMNil(b bool)`
+
+ SetElevationMNil sets the value for ElevationM to be an explicit nil
+
+### UnsetElevationM
+`func (o *Webcam) UnsetElevationM()`
+
+UnsetElevationM ensures that no value is present for ElevationM, not even an explicit nil
 ### GetLastFrameAt
 
 `func (o *Webcam) GetLastFrameAt() string`

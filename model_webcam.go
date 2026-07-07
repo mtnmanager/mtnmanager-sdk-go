@@ -33,6 +33,15 @@ type Webcam struct {
 	LatestDaylightImageUrl string `json:"latest_daylight_image_url"`
 	LatestThumbUrl string `json:"latest_thumb_url"`
 	LatestDaylightThumbUrl string `json:"latest_daylight_thumb_url"`
+	// ThumbHash of the `latest` frame (standard base64) — a compact blur  placeholder to render while the image loads. Empty string until the first  frame (or on cameras predating the feature).
+	LatestThumbhash string `json:"latest_thumbhash"`
+	// ThumbHash of the `latest-daylight` frame (standard base64). Empty string  until the first daylight frame.
+	LatestDaylightThumbhash string `json:"latest_daylight_thumbhash"`
+	// Whether this camera archives frames — i.e. whether its history endpoint  returns anything. When `false`, don't call the history API for it.
+	HasHistory bool `json:"has_history"`
+	// Camera elevation in both units; omitted when unset.
+	ElevationFt NullableInt32 `json:"elevation_ft,omitempty"`
+	ElevationM NullableInt32 `json:"elevation_m,omitempty"`
 	// Time of the most recently published frame; omitted until the first frame.
 	LastFrameAt NullableString `json:"last_frame_at,omitempty"`
 }
@@ -43,7 +52,7 @@ type _Webcam Webcam
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string) *Webcam {
+func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool) *Webcam {
 	this := Webcam{}
 	this.Uuid = uuid
 	this.Name = name
@@ -51,6 +60,9 @@ func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightIm
 	this.LatestDaylightImageUrl = latestDaylightImageUrl
 	this.LatestThumbUrl = latestThumbUrl
 	this.LatestDaylightThumbUrl = latestDaylightThumbUrl
+	this.LatestThumbhash = latestThumbhash
+	this.LatestDaylightThumbhash = latestDaylightThumbhash
+	this.HasHistory = hasHistory
 	return &this
 }
 
@@ -332,6 +344,162 @@ func (o *Webcam) SetLatestDaylightThumbUrl(v string) {
 	o.LatestDaylightThumbUrl = v
 }
 
+// GetLatestThumbhash returns the LatestThumbhash field value
+func (o *Webcam) GetLatestThumbhash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LatestThumbhash
+}
+
+// GetLatestThumbhashOk returns a tuple with the LatestThumbhash field value
+// and a boolean to check if the value has been set.
+func (o *Webcam) GetLatestThumbhashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LatestThumbhash, true
+}
+
+// SetLatestThumbhash sets field value
+func (o *Webcam) SetLatestThumbhash(v string) {
+	o.LatestThumbhash = v
+}
+
+// GetLatestDaylightThumbhash returns the LatestDaylightThumbhash field value
+func (o *Webcam) GetLatestDaylightThumbhash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.LatestDaylightThumbhash
+}
+
+// GetLatestDaylightThumbhashOk returns a tuple with the LatestDaylightThumbhash field value
+// and a boolean to check if the value has been set.
+func (o *Webcam) GetLatestDaylightThumbhashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.LatestDaylightThumbhash, true
+}
+
+// SetLatestDaylightThumbhash sets field value
+func (o *Webcam) SetLatestDaylightThumbhash(v string) {
+	o.LatestDaylightThumbhash = v
+}
+
+// GetHasHistory returns the HasHistory field value
+func (o *Webcam) GetHasHistory() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.HasHistory
+}
+
+// GetHasHistoryOk returns a tuple with the HasHistory field value
+// and a boolean to check if the value has been set.
+func (o *Webcam) GetHasHistoryOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.HasHistory, true
+}
+
+// SetHasHistory sets field value
+func (o *Webcam) SetHasHistory(v bool) {
+	o.HasHistory = v
+}
+
+// GetElevationFt returns the ElevationFt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Webcam) GetElevationFt() int32 {
+	if o == nil || IsNil(o.ElevationFt.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ElevationFt.Get()
+}
+
+// GetElevationFtOk returns a tuple with the ElevationFt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Webcam) GetElevationFtOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ElevationFt.Get(), o.ElevationFt.IsSet()
+}
+
+// HasElevationFt returns a boolean if a field has been set.
+func (o *Webcam) HasElevationFt() bool {
+	if o != nil && o.ElevationFt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetElevationFt gets a reference to the given NullableInt32 and assigns it to the ElevationFt field.
+func (o *Webcam) SetElevationFt(v int32) {
+	o.ElevationFt.Set(&v)
+}
+// SetElevationFtNil sets the value for ElevationFt to be an explicit nil
+func (o *Webcam) SetElevationFtNil() {
+	o.ElevationFt.Set(nil)
+}
+
+// UnsetElevationFt ensures that no value is present for ElevationFt, not even an explicit nil
+func (o *Webcam) UnsetElevationFt() {
+	o.ElevationFt.Unset()
+}
+
+// GetElevationM returns the ElevationM field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Webcam) GetElevationM() int32 {
+	if o == nil || IsNil(o.ElevationM.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.ElevationM.Get()
+}
+
+// GetElevationMOk returns a tuple with the ElevationM field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Webcam) GetElevationMOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ElevationM.Get(), o.ElevationM.IsSet()
+}
+
+// HasElevationM returns a boolean if a field has been set.
+func (o *Webcam) HasElevationM() bool {
+	if o != nil && o.ElevationM.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetElevationM gets a reference to the given NullableInt32 and assigns it to the ElevationM field.
+func (o *Webcam) SetElevationM(v int32) {
+	o.ElevationM.Set(&v)
+}
+// SetElevationMNil sets the value for ElevationM to be an explicit nil
+func (o *Webcam) SetElevationMNil() {
+	o.ElevationM.Set(nil)
+}
+
+// UnsetElevationM ensures that no value is present for ElevationM, not even an explicit nil
+func (o *Webcam) UnsetElevationM() {
+	o.ElevationM.Unset()
+}
+
 // GetLastFrameAt returns the LastFrameAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Webcam) GetLastFrameAt() string {
 	if o == nil || IsNil(o.LastFrameAt.Get()) {
@@ -399,6 +567,15 @@ func (o Webcam) ToMap() (map[string]interface{}, error) {
 	toSerialize["latest_daylight_image_url"] = o.LatestDaylightImageUrl
 	toSerialize["latest_thumb_url"] = o.LatestThumbUrl
 	toSerialize["latest_daylight_thumb_url"] = o.LatestDaylightThumbUrl
+	toSerialize["latest_thumbhash"] = o.LatestThumbhash
+	toSerialize["latest_daylight_thumbhash"] = o.LatestDaylightThumbhash
+	toSerialize["has_history"] = o.HasHistory
+	if o.ElevationFt.IsSet() {
+		toSerialize["elevation_ft"] = o.ElevationFt.Get()
+	}
+	if o.ElevationM.IsSet() {
+		toSerialize["elevation_m"] = o.ElevationM.Get()
+	}
 	if o.LastFrameAt.IsSet() {
 		toSerialize["last_frame_at"] = o.LastFrameAt.Get()
 	}
@@ -416,6 +593,9 @@ func (o *Webcam) UnmarshalJSON(data []byte) (err error) {
 		"latest_daylight_image_url",
 		"latest_thumb_url",
 		"latest_daylight_thumb_url",
+		"latest_thumbhash",
+		"latest_daylight_thumbhash",
+		"has_history",
 	}
 
 	allProperties := make(map[string]interface{})

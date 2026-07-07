@@ -289,6 +289,18 @@ paths:
                     sunset: 2026-01-26T16:26:33+00:00
                   attribution: https://developer.apple.com/weatherkit/data-source-attribution/
                   updated_at: 2026-01-26T16:26:33+00:00
+                webcams:
+                - uuid: 11111111-1111-1111-1111-111111111111
+                  name: Summit
+                  latest_image_url: https://webcams.mtnmanager.com/acct/cam/latest.webp
+                  latest_daylight_image_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight.webp
+                  latest_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-thumb.webp
+                  latest_daylight_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight-thumb.webp
+                  latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
+                  latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
+                  has_history: true
+                  elevation_ft: 10800
+                  elevation_m: 3292
               schema:
                 $ref: "#/components/schemas/FullReport"
           description: ""
@@ -1223,6 +1235,11 @@ paths:
                 latest_daylight_image_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight.webp
                 latest_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-thumb.webp
                 latest_daylight_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight-thumb.webp
+                latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
+                latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
+                has_history: true
+                elevation_ft: 10800
+                elevation_m: 3292
               schema:
                 items:
                   $ref: "#/components/schemas/Webcam"
@@ -1350,13 +1367,16 @@ paths:
                 frames:
                 - captured_at: 2026-01-15T16:00:00+00:00
                   image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z-thumb.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T15:00:00+00:00
                   image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z-thumb.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T14:00:00+00:00
                   image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z-thumb.webp
+                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
               schema:
                 $ref: "#/components/schemas/WebcamHistoryResponse"
           description: The historical frame listing for one camera over a time range.
@@ -2515,6 +2535,37 @@ components:
             sunset: 2000-01-23T04:56:07.000+00:00
           attribution: attribution
           updated_at: 2000-01-23T04:56:07.000+00:00
+        webcams:
+        - uuid: uuid
+          name: name
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 6
+          latest_image_url: latest_image_url
+          latest_daylight_image_url: latest_daylight_image_url
+          latest_thumb_url: latest_thumb_url
+          latest_daylight_thumb_url: latest_daylight_thumb_url
+          latest_thumbhash: latest_thumbhash
+          latest_daylight_thumbhash: latest_daylight_thumbhash
+          has_history: true
+          elevation_ft: 8
+          elevation_m: 9
+          last_frame_at: last_frame_at
+        - uuid: uuid
+          name: name
+          area_uuid: area_uuid
+          area_name: area_name
+          area_display_order: 6
+          latest_image_url: latest_image_url
+          latest_daylight_image_url: latest_daylight_image_url
+          latest_thumb_url: latest_thumb_url
+          latest_daylight_thumb_url: latest_daylight_thumb_url
+          latest_thumbhash: latest_thumbhash
+          latest_daylight_thumbhash: latest_daylight_thumbhash
+          has_history: true
+          elevation_ft: 8
+          elevation_m: 9
+          last_frame_at: last_frame_at
       properties:
         resort:
           $ref: "#/components/schemas/ResortInfo"
@@ -2578,6 +2629,14 @@ components:
              or unavailable.
           items:
             $ref: "#/components/schemas/Weather"
+          type: array
+          default: null
+        webcams:
+          description: |-
+            Enabled webcams with the URLs of their current and last-daylight frames
+             plus thumbnails. Empty when the resort does not have webcams.
+          items:
+            $ref: "#/components/schemas/Webcam"
           type: array
           default: null
       required:
@@ -4572,6 +4631,93 @@ components:
       required:
       - temperature_high
       - temperature_low
+    Webcam:
+      description: |-
+        A public webcam entry. Consumers pick `latest` (always the newest frame) or
+         `latest-daylight` (the last daylight frame, never a black night shot)
+         depending on whether they want the freshest or a guaranteed-lit image.
+      example:
+        uuid: uuid
+        name: name
+        area_uuid: area_uuid
+        area_name: area_name
+        area_display_order: 6
+        latest_image_url: latest_image_url
+        latest_daylight_image_url: latest_daylight_image_url
+        latest_thumb_url: latest_thumb_url
+        latest_daylight_thumb_url: latest_daylight_thumb_url
+        latest_thumbhash: latest_thumbhash
+        latest_daylight_thumbhash: latest_daylight_thumbhash
+        has_history: true
+        elevation_ft: 8
+        elevation_m: 9
+        last_frame_at: last_frame_at
+      properties:
+        uuid:
+          type: string
+        name:
+          type: string
+        area_uuid:
+          nullable: true
+          type: string
+        area_name:
+          nullable: true
+          type: string
+        area_display_order:
+          format: int32
+          nullable: true
+          type: integer
+        latest_image_url:
+          description: URL of the newest frame (refreshes within ~60s via the edge
+            cache).
+          type: string
+        latest_daylight_image_url:
+          description: URL of the last daylight frame.
+          type: string
+        latest_thumb_url:
+          type: string
+        latest_daylight_thumb_url:
+          type: string
+        latest_thumbhash:
+          description: |-
+            ThumbHash of the `latest` frame (standard base64) — a compact blur
+             placeholder to render while the image loads. Empty string until the first
+             frame (or on cameras predating the feature).
+          type: string
+        latest_daylight_thumbhash:
+          description: |-
+            ThumbHash of the `latest-daylight` frame (standard base64). Empty string
+             until the first daylight frame.
+          type: string
+        has_history:
+          description: |-
+            Whether this camera archives frames — i.e. whether its history endpoint
+             returns anything. When `false`, don't call the history API for it.
+          type: boolean
+        elevation_ft:
+          description: Camera elevation in both units; omitted when unset.
+          format: int32
+          nullable: true
+          type: integer
+        elevation_m:
+          format: int32
+          nullable: true
+          type: integer
+        last_frame_at:
+          description: Time of the most recently published frame; omitted until the
+            first frame.
+          nullable: true
+          type: string
+      required:
+      - has_history
+      - latest_daylight_image_url
+      - latest_daylight_thumb_url
+      - latest_daylight_thumbhash
+      - latest_image_url
+      - latest_thumb_url
+      - latest_thumbhash
+      - name
+      - uuid
     RunsResponse:
       description: |-
         List of all runs at the resort with their current status,
@@ -4606,60 +4752,6 @@ components:
         $ref: "#/components/schemas/SnowReport"
       type: array
       default: null
-    Webcam:
-      description: |-
-        A public webcam entry. Consumers pick `latest` (always the newest frame) or
-         `latest-daylight` (the last daylight frame, never a black night shot)
-         depending on whether they want the freshest or a guaranteed-lit image.
-      example:
-        uuid: uuid
-        name: name
-        area_uuid: area_uuid
-        area_name: area_name
-        area_display_order: 0
-        latest_image_url: latest_image_url
-        latest_daylight_image_url: latest_daylight_image_url
-        latest_thumb_url: latest_thumb_url
-        latest_daylight_thumb_url: latest_daylight_thumb_url
-        last_frame_at: last_frame_at
-      properties:
-        uuid:
-          type: string
-        name:
-          type: string
-        area_uuid:
-          nullable: true
-          type: string
-        area_name:
-          nullable: true
-          type: string
-        area_display_order:
-          format: int32
-          nullable: true
-          type: integer
-        latest_image_url:
-          description: URL of the newest frame (refreshes within ~60s via the edge
-            cache).
-          type: string
-        latest_daylight_image_url:
-          description: URL of the last daylight frame.
-          type: string
-        latest_thumb_url:
-          type: string
-        latest_daylight_thumb_url:
-          type: string
-        last_frame_at:
-          description: Time of the most recently published frame; omitted until the
-            first frame.
-          nullable: true
-          type: string
-      required:
-      - latest_daylight_image_url
-      - latest_daylight_thumb_url
-      - latest_image_url
-      - latest_thumb_url
-      - name
-      - uuid
     PathUuid:
       properties:
         uuid:
@@ -4688,9 +4780,11 @@ components:
         - captured_at: captured_at
           image_url: image_url
           thumb_url: thumb_url
+          thumbhash: thumbhash
         - captured_at: captured_at
           image_url: image_url
           thumb_url: thumb_url
+          thumbhash: thumbhash
       properties:
         webcam_uuid:
           type: string
@@ -4709,6 +4803,7 @@ components:
         captured_at: captured_at
         image_url: image_url
         thumb_url: thumb_url
+        thumbhash: thumbhash
       properties:
         captured_at:
           type: string
@@ -4716,10 +4811,16 @@ components:
           type: string
         thumb_url:
           type: string
+        thumbhash:
+          description: |-
+            ThumbHash of the frame (standard base64), recovered from the thumb object's
+             key. Empty string for legacy frames archived without one.
+          type: string
       required:
       - captured_at
       - image_url
       - thumb_url
+      - thumbhash
     TerrainParksResponse:
       description: |-
         List of all terrain parks at the resort with their current status,

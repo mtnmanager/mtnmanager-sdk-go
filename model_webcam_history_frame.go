@@ -25,6 +25,8 @@ type WebcamHistoryFrame struct {
 	CapturedAt string `json:"captured_at"`
 	ImageUrl string `json:"image_url"`
 	ThumbUrl string `json:"thumb_url"`
+	// ThumbHash of the frame (standard base64), recovered from the thumb object's  key. Empty string for legacy frames archived without one.
+	Thumbhash string `json:"thumbhash"`
 }
 
 type _WebcamHistoryFrame WebcamHistoryFrame
@@ -33,11 +35,12 @@ type _WebcamHistoryFrame WebcamHistoryFrame
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebcamHistoryFrame(capturedAt string, imageUrl string, thumbUrl string) *WebcamHistoryFrame {
+func NewWebcamHistoryFrame(capturedAt string, imageUrl string, thumbUrl string, thumbhash string) *WebcamHistoryFrame {
 	this := WebcamHistoryFrame{}
 	this.CapturedAt = capturedAt
 	this.ImageUrl = imageUrl
 	this.ThumbUrl = thumbUrl
+	this.Thumbhash = thumbhash
 	return &this
 }
 
@@ -121,6 +124,30 @@ func (o *WebcamHistoryFrame) SetThumbUrl(v string) {
 	o.ThumbUrl = v
 }
 
+// GetThumbhash returns the Thumbhash field value
+func (o *WebcamHistoryFrame) GetThumbhash() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Thumbhash
+}
+
+// GetThumbhashOk returns a tuple with the Thumbhash field value
+// and a boolean to check if the value has been set.
+func (o *WebcamHistoryFrame) GetThumbhashOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Thumbhash, true
+}
+
+// SetThumbhash sets field value
+func (o *WebcamHistoryFrame) SetThumbhash(v string) {
+	o.Thumbhash = v
+}
+
 func (o WebcamHistoryFrame) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -134,6 +161,7 @@ func (o WebcamHistoryFrame) ToMap() (map[string]interface{}, error) {
 	toSerialize["captured_at"] = o.CapturedAt
 	toSerialize["image_url"] = o.ImageUrl
 	toSerialize["thumb_url"] = o.ThumbUrl
+	toSerialize["thumbhash"] = o.Thumbhash
 	return toSerialize, nil
 }
 
@@ -145,6 +173,7 @@ func (o *WebcamHistoryFrame) UnmarshalJSON(data []byte) (err error) {
 		"captured_at",
 		"image_url",
 		"thumb_url",
+		"thumbhash",
 	}
 
 	allProperties := make(map[string]interface{})

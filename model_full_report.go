@@ -39,6 +39,8 @@ type FullReport struct {
 	Hours OperatingHours `json:"hours"`
 	// Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable.
 	Weather []Weather `json:"weather,omitempty"`
+	// Enabled webcams with the URLs of their current and last-daylight frames  plus thumbnails. Empty when the resort does not have webcams.
+	Webcams []Webcam `json:"webcams,omitempty"`
 }
 
 type _FullReport FullReport
@@ -317,6 +319,38 @@ func (o *FullReport) SetWeather(v []Weather) {
 	o.Weather = v
 }
 
+// GetWebcams returns the Webcams field value if set, zero value otherwise.
+func (o *FullReport) GetWebcams() []Webcam {
+	if o == nil || IsNil(o.Webcams) {
+		var ret []Webcam
+		return ret
+	}
+	return o.Webcams
+}
+
+// GetWebcamsOk returns a tuple with the Webcams field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FullReport) GetWebcamsOk() ([]Webcam, bool) {
+	if o == nil || IsNil(o.Webcams) {
+		return nil, false
+	}
+	return o.Webcams, true
+}
+
+// HasWebcams returns a boolean if a field has been set.
+func (o *FullReport) HasWebcams() bool {
+	if o != nil && !IsNil(o.Webcams) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebcams gets a reference to the given []Webcam and assigns it to the Webcams field.
+func (o *FullReport) SetWebcams(v []Webcam) {
+	o.Webcams = v
+}
+
 func (o FullReport) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -338,6 +372,9 @@ func (o FullReport) ToMap() (map[string]interface{}, error) {
 	toSerialize["hours"] = o.Hours
 	if !IsNil(o.Weather) {
 		toSerialize["weather"] = o.Weather
+	}
+	if !IsNil(o.Webcams) {
+		toSerialize["webcams"] = o.Webcams
 	}
 	return toSerialize, nil
 }

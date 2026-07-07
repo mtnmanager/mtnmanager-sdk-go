@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **CapturedAt** | **string** |  | 
 **ImageUrl** | **string** |  | 
 **ThumbUrl** | **string** |  | 
+**Thumbhash** | **string** | ThumbHash of the frame (standard base64), recovered from the thumb object&#39;s  key. Empty string for legacy frames archived without one. | 
 
 ## Methods
 
 ### NewWebcamHistoryFrame
 
-`func NewWebcamHistoryFrame(capturedAt string, imageUrl string, thumbUrl string, ) *WebcamHistoryFrame`
+`func NewWebcamHistoryFrame(capturedAt string, imageUrl string, thumbUrl string, thumbhash string, ) *WebcamHistoryFrame`
 
 NewWebcamHistoryFrame instantiates a new WebcamHistoryFrame object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *WebcamHistoryFrame) SetThumbUrl(v string)`
 
 SetThumbUrl sets ThumbUrl field to given value.
+
+
+### GetThumbhash
+
+`func (o *WebcamHistoryFrame) GetThumbhash() string`
+
+GetThumbhash returns the Thumbhash field if non-nil, zero value otherwise.
+
+### GetThumbhashOk
+
+`func (o *WebcamHistoryFrame) GetThumbhashOk() (*string, bool)`
+
+GetThumbhashOk returns a tuple with the Thumbhash field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetThumbhash
+
+`func (o *WebcamHistoryFrame) SetThumbhash(v string)`
+
+SetThumbhash sets Thumbhash field to given value.
 
 
 
