@@ -34,6 +34,8 @@ type ResortInfo struct {
 	Region Region `json:"region"`
 	// Preferred unit system for measurements (metric or imperial).
 	UnitPreference UnitPreference `json:"unit_preference"`
+	// Full public URL to the resort's logo image. `null` if no logo is set.
+	LogoUrl NullableString `json:"logo_url,omitempty"`
 }
 
 type _ResortInfo ResortInfo
@@ -205,6 +207,48 @@ func (o *ResortInfo) SetUnitPreference(v UnitPreference) {
 	o.UnitPreference = v
 }
 
+// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ResortInfo) GetLogoUrl() string {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LogoUrl.Get()
+}
+
+// GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ResortInfo) GetLogoUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
+}
+
+// HasLogoUrl returns a boolean if a field has been set.
+func (o *ResortInfo) HasLogoUrl() bool {
+	if o != nil && o.LogoUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLogoUrl gets a reference to the given NullableString and assigns it to the LogoUrl field.
+func (o *ResortInfo) SetLogoUrl(v string) {
+	o.LogoUrl.Set(&v)
+}
+// SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+func (o *ResortInfo) SetLogoUrlNil() {
+	o.LogoUrl.Set(nil)
+}
+
+// UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
+func (o *ResortInfo) UnsetLogoUrl() {
+	o.LogoUrl.Unset()
+}
+
 func (o ResortInfo) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -221,6 +265,9 @@ func (o ResortInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["timezone"] = o.Timezone
 	toSerialize["region"] = o.Region
 	toSerialize["unit_preference"] = o.UnitPreference
+	if o.LogoUrl.IsSet() {
+		toSerialize["logo_url"] = o.LogoUrl.Get()
+	}
 	return toSerialize, nil
 }
 

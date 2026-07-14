@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Timezone** | **string** | IANA timezone identifier for the resort&#39;s local time. | 
 **Region** | [**Region**](Region.md) | Region, affects difficulty icon style. | 
 **UnitPreference** | [**UnitPreference**](UnitPreference.md) | Preferred unit system for measurements (metric or imperial). | 
+**LogoUrl** | Pointer to **NullableString** | Full public URL to the resort&#39;s logo image. &#x60;null&#x60; if no logo is set. | [optional] 
 
 ## Methods
 
@@ -150,6 +151,41 @@ and a boolean to check if the value has been set.
 SetUnitPreference sets UnitPreference field to given value.
 
 
+### GetLogoUrl
+
+`func (o *ResortInfo) GetLogoUrl() string`
+
+GetLogoUrl returns the LogoUrl field if non-nil, zero value otherwise.
+
+### GetLogoUrlOk
+
+`func (o *ResortInfo) GetLogoUrlOk() (*string, bool)`
+
+GetLogoUrlOk returns a tuple with the LogoUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLogoUrl
+
+`func (o *ResortInfo) SetLogoUrl(v string)`
+
+SetLogoUrl sets LogoUrl field to given value.
+
+### HasLogoUrl
+
+`func (o *ResortInfo) HasLogoUrl() bool`
+
+HasLogoUrl returns a boolean if a field has been set.
+
+### SetLogoUrlNil
+
+`func (o *ResortInfo) SetLogoUrlNil(b bool)`
+
+ SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+
+### UnsetLogoUrl
+`func (o *ResortInfo) UnsetLogoUrl()`
+
+UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

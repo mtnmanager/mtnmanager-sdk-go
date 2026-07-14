@@ -47,6 +47,7 @@ paths:
                   timezone: America/Denver
                   region: na
                   unit_preference: imperial
+                  logo_url: https://powder-mountain.mtnmanager.net/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
                 status:
                   status: open
                   opens_at: 09:00
@@ -292,10 +293,10 @@ paths:
                 webcams:
                 - uuid: 11111111-1111-1111-1111-111111111111
                   name: Summit
-                  latest_image_url: https://webcams.mtnmanager.com/acct/cam/latest.webp
-                  latest_daylight_image_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight.webp
-                  latest_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-thumb.webp
-                  latest_daylight_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight-thumb.webp
+                  latest_image_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest.webp
+                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-daylight.webp
+                  latest_thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-thumb.webp
+                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-daylight-thumb.webp
                   latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   has_history: true
@@ -1231,10 +1232,10 @@ paths:
               example:
               - uuid: 11111111-1111-1111-1111-111111111111
                 name: Summit
-                latest_image_url: https://webcams.mtnmanager.com/acct/cam/latest.webp
-                latest_daylight_image_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight.webp
-                latest_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-thumb.webp
-                latest_daylight_thumb_url: https://webcams.mtnmanager.com/acct/cam/latest-daylight-thumb.webp
+                latest_image_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest.webp
+                latest_daylight_image_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-daylight.webp
+                latest_thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-thumb.webp
+                latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/latest-daylight-thumb.webp
                 latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 has_history: true
@@ -1366,16 +1367,16 @@ paths:
                 webcam_uuid: 11111111-1111-1111-1111-111111111111
                 frames:
                 - captured_at: 2026-01-15T16:00:00+00:00
-                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T16:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T16:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T16:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T15:00:00+00:00
-                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T15:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T15:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T15:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T14:00:00+00:00
-                  image_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z.webp
-                  thumb_url: https://webcams.mtnmanager.com/acct/cam/archive/2026-01-15T14:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T14:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/cam/archive/2026-01-15T14:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
               schema:
                 $ref: "#/components/schemas/WebcamHistoryResponse"
@@ -1984,7 +1985,7 @@ paths:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   title: Season Passes On Sale
                   subtitle: Lock in early-bird pricing through October.
-                  image_url: https://images.mtnmanager.com/550e8400-e29b-41d4-a716-446655440000/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
+                  image_url: https://powder-mountain.mtnmanager.net/asset/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
                   url: https://example.com/season-passes
                   thumb_hash: 1QcSHQRnh493V4dIh4eXh1h4kJUI
               schema:
@@ -2070,6 +2071,7 @@ components:
           timezone: timezone
           region: ""
           unit_preference: ""
+          logo_url: logo_url
         status:
           status: ""
           opens_at: opens_at
@@ -2659,6 +2661,7 @@ components:
         timezone: timezone
         region: ""
         unit_preference: ""
+        logo_url: logo_url
       properties:
         uuid:
           description: Unique identifier for the resort.
@@ -2680,6 +2683,11 @@ components:
           allOf:
           - $ref: "#/components/schemas/UnitPreference"
           description: Preferred unit system for measurements (metric or imperial).
+        logo_url:
+          description: Full public URL to the resort's logo image. `null` if no logo
+            is set.
+          nullable: true
+          type: string
       required:
       - name
       - region
