@@ -29,9 +29,9 @@ type CalendarDay struct {
 	// Whether the resort is open on this day.
 	IsOpen bool `json:"is_open"`
 	// Opening time in 24-hour format (HH:MM), in resort's local timezone.  `null` if closed on this day.
-	OpensAt NullableString `json:"opens_at,omitempty" validate:"regexp=^([01]\\\\d|2[0-3]):[0-5]\\\\d$"`
+	OpensAt NullableString `json:"opens_at,omitempty" validate:"regexp=^([01]\\d|2[0-3]):[0-5]\\d$"`
 	// Closing time in 24-hour format (HH:MM), in resort's local timezone.  `null` if closed on this day.
-	ClosesAt NullableString `json:"closes_at,omitempty" validate:"regexp=^([01]\\\\d|2[0-3]):[0-5]\\\\d$"`
+	ClosesAt NullableString `json:"closes_at,omitempty" validate:"regexp=^([01]\\d|2[0-3]):[0-5]\\d$"`
 	// Optional reason code for closure.
 	ClosureReason NullableClosureReason `json:"closure_reason,omitempty"`
 	// Special event for this day.

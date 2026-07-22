@@ -29,9 +29,9 @@ type Schedule struct {
 	// Human-readable time range.  Example: \"9:00 AM to 4:00 PM\"
 	TimeString string `json:"time_string"`
 	// Opening time in 24-hour format (HH:MM), in resort's local timezone.
-	OpensAt string `json:"opens_at" validate:"regexp=^([01]\\\\d|2[0-3]):[0-5]\\\\d$"`
+	OpensAt string `json:"opens_at" validate:"regexp=^([01]\\d|2[0-3]):[0-5]\\d$"`
 	// Closing time in 24-hour format (HH:MM), in resort's local timezone.
-	ClosesAt string `json:"closes_at" validate:"regexp=^([01]\\\\d|2[0-3]):[0-5]\\\\d$"`
+	ClosesAt string `json:"closes_at" validate:"regexp=^([01]\\d|2[0-3]):[0-5]\\d$"`
 	// Whether this schedule is currently in effect.  `false` for upcoming schedules that haven't started yet.
 	InEffect bool `json:"in_effect"`
 	// Human-readable date range when this schedule is effective.  Example: \"November 1, 2024 to April 15, 2025\"
