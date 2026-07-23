@@ -44,6 +44,7 @@ const (
 	ATM MarkerIcon = "atm"
 	STAR MarkerIcon = "star"
 	WEBCAM MarkerIcon = "webcam"
+	MARKERICON_UNKNOWN_DEFAULT_OPEN_API MarkerIcon = "unknown_default_open_api"
 )
 
 // All allowed values of MarkerIcon enum
@@ -71,6 +72,7 @@ var AllowedMarkerIconEnumValues = []MarkerIcon{
 	"atm",
 	"star",
 	"webcam",
+	"unknown_default_open_api",
 }
 
 func (v *MarkerIcon) UnmarshalJSON(src []byte) error {
@@ -87,7 +89,8 @@ func (v *MarkerIcon) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid MarkerIcon", value)
+	*v = MARKERICON_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewMarkerIconFromValue returns a pointer to a valid MarkerIcon

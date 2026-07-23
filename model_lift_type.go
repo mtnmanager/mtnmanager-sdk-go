@@ -34,6 +34,7 @@ const (
 	ROPE_TOW LiftType = "rope_tow"
 	FUNICULAR LiftType = "funicular"
 	OTHER LiftType = "other"
+	LIFTTYPE_UNKNOWN_DEFAULT_OPEN_API LiftType = "unknown_default_open_api"
 )
 
 // All allowed values of LiftType enum
@@ -51,6 +52,7 @@ var AllowedLiftTypeEnumValues = []LiftType{
 	"rope_tow",
 	"funicular",
 	"other",
+	"unknown_default_open_api",
 }
 
 func (v *LiftType) UnmarshalJSON(src []byte) error {
@@ -67,7 +69,8 @@ func (v *LiftType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LiftType", value)
+	*v = LIFTTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLiftTypeFromValue returns a pointer to a valid LiftType

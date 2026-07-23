@@ -26,6 +26,7 @@ const (
 	ADVANCED RunDifficulty = "advanced"
 	EXPERT RunDifficulty = "expert"
 	TERRAIN_PARK RunDifficulty = "terrain_park"
+	RUNDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API RunDifficulty = "unknown_default_open_api"
 )
 
 // All allowed values of RunDifficulty enum
@@ -35,6 +36,7 @@ var AllowedRunDifficultyEnumValues = []RunDifficulty{
 	"advanced",
 	"expert",
 	"terrain_park",
+	"unknown_default_open_api",
 }
 
 func (v *RunDifficulty) UnmarshalJSON(src []byte) error {
@@ -51,7 +53,8 @@ func (v *RunDifficulty) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RunDifficulty", value)
+	*v = RUNDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRunDifficultyFromValue returns a pointer to a valid RunDifficulty

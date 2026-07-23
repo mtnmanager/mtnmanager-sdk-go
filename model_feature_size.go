@@ -25,6 +25,7 @@ const (
 	M FeatureSize = "m"
 	L FeatureSize = "l"
 	XL FeatureSize = "xl"
+	FEATURESIZE_UNKNOWN_DEFAULT_OPEN_API FeatureSize = "unknown_default_open_api"
 )
 
 // All allowed values of FeatureSize enum
@@ -33,6 +34,7 @@ var AllowedFeatureSizeEnumValues = []FeatureSize{
 	"m",
 	"l",
 	"xl",
+	"unknown_default_open_api",
 }
 
 func (v *FeatureSize) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *FeatureSize) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FeatureSize", value)
+	*v = FEATURESIZE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewFeatureSizeFromValue returns a pointer to a valid FeatureSize

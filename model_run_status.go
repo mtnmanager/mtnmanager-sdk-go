@@ -24,6 +24,7 @@ const (
 	OPEN RunStatus = "open"
 	CLOSED RunStatus = "closed"
 	UNKNOWN RunStatus = "unknown"
+	RUNSTATUS_UNKNOWN_DEFAULT_OPEN_API RunStatus = "unknown_default_open_api"
 )
 
 // All allowed values of RunStatus enum
@@ -31,6 +32,7 @@ var AllowedRunStatusEnumValues = []RunStatus{
 	"open",
 	"closed",
 	"unknown",
+	"unknown_default_open_api",
 }
 
 func (v *RunStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *RunStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid RunStatus", value)
+	*v = RUNSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRunStatusFromValue returns a pointer to a valid RunStatus

@@ -25,6 +25,7 @@ const (
 	CLOSED LiftStatus = "closed"
 	ON_HOLD LiftStatus = "on_hold"
 	UNKNOWN LiftStatus = "unknown"
+	LIFTSTATUS_UNKNOWN_DEFAULT_OPEN_API LiftStatus = "unknown_default_open_api"
 )
 
 // All allowed values of LiftStatus enum
@@ -33,6 +34,7 @@ var AllowedLiftStatusEnumValues = []LiftStatus{
 	"closed",
 	"on_hold",
 	"unknown",
+	"unknown_default_open_api",
 }
 
 func (v *LiftStatus) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *LiftStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid LiftStatus", value)
+	*v = LIFTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewLiftStatusFromValue returns a pointer to a valid LiftStatus

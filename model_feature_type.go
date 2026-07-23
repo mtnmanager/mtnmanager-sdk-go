@@ -25,6 +25,7 @@ const (
 	BOX FeatureType = "box"
 	RAIL FeatureType = "rail"
 	OTHER FeatureType = "other"
+	FEATURETYPE_UNKNOWN_DEFAULT_OPEN_API FeatureType = "unknown_default_open_api"
 )
 
 // All allowed values of FeatureType enum
@@ -33,6 +34,7 @@ var AllowedFeatureTypeEnumValues = []FeatureType{
 	"box",
 	"rail",
 	"other",
+	"unknown_default_open_api",
 }
 
 func (v *FeatureType) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *FeatureType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid FeatureType", value)
+	*v = FEATURETYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewFeatureTypeFromValue returns a pointer to a valid FeatureType

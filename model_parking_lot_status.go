@@ -24,6 +24,7 @@ const (
 	OPEN ParkingLotStatus = "open"
 	CLOSED ParkingLotStatus = "closed"
 	FULL ParkingLotStatus = "full"
+	PARKINGLOTSTATUS_UNKNOWN_DEFAULT_OPEN_API ParkingLotStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ParkingLotStatus enum
@@ -31,6 +32,7 @@ var AllowedParkingLotStatusEnumValues = []ParkingLotStatus{
 	"open",
 	"closed",
 	"full",
+	"unknown_default_open_api",
 }
 
 func (v *ParkingLotStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *ParkingLotStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ParkingLotStatus", value)
+	*v = PARKINGLOTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewParkingLotStatusFromValue returns a pointer to a valid ParkingLotStatus

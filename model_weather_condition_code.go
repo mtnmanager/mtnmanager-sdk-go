@@ -56,6 +56,7 @@ const (
 	HURRICANE WeatherConditionCode = "Hurricane"
 	TROPICAL_STORM WeatherConditionCode = "TropicalStorm"
 	UNKNOWN WeatherConditionCode = "Unknown"
+	WEATHERCONDITIONCODE_UNKNOWN_DEFAULT_OPEN_API WeatherConditionCode = "unknown_default_open_api"
 )
 
 // All allowed values of WeatherConditionCode enum
@@ -95,6 +96,7 @@ var AllowedWeatherConditionCodeEnumValues = []WeatherConditionCode{
 	"Hurricane",
 	"TropicalStorm",
 	"Unknown",
+	"unknown_default_open_api",
 }
 
 func (v *WeatherConditionCode) UnmarshalJSON(src []byte) error {
@@ -111,7 +113,8 @@ func (v *WeatherConditionCode) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid WeatherConditionCode", value)
+	*v = WEATHERCONDITIONCODE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewWeatherConditionCodeFromValue returns a pointer to a valid WeatherConditionCode

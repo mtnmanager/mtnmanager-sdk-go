@@ -23,12 +23,14 @@ type ResortStatus string
 const (
 	OPEN ResortStatus = "open"
 	CLOSED ResortStatus = "closed"
+	RESORTSTATUS_UNKNOWN_DEFAULT_OPEN_API ResortStatus = "unknown_default_open_api"
 )
 
 // All allowed values of ResortStatus enum
 var AllowedResortStatusEnumValues = []ResortStatus{
 	"open",
 	"closed",
+	"unknown_default_open_api",
 }
 
 func (v *ResortStatus) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *ResortStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ResortStatus", value)
+	*v = RESORTSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewResortStatusFromValue returns a pointer to a valid ResortStatus

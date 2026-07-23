@@ -28,6 +28,7 @@ const (
 	THURSDAY DayOfWeek = "Thursday"
 	FRIDAY DayOfWeek = "Friday"
 	SATURDAY DayOfWeek = "Saturday"
+	DAYOFWEEK_UNKNOWN_DEFAULT_OPEN_API DayOfWeek = "unknown_default_open_api"
 )
 
 // All allowed values of DayOfWeek enum
@@ -39,6 +40,7 @@ var AllowedDayOfWeekEnumValues = []DayOfWeek{
 	"Thursday",
 	"Friday",
 	"Saturday",
+	"unknown_default_open_api",
 }
 
 func (v *DayOfWeek) UnmarshalJSON(src []byte) error {
@@ -55,7 +57,8 @@ func (v *DayOfWeek) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid DayOfWeek", value)
+	*v = DAYOFWEEK_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewDayOfWeekFromValue returns a pointer to a valid DayOfWeek

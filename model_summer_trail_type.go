@@ -23,12 +23,14 @@ type SummerTrailType string
 const (
 	HIKING SummerTrailType = "hiking"
 	MOUNTAIN_BIKING SummerTrailType = "mountain_biking"
+	SUMMERTRAILTYPE_UNKNOWN_DEFAULT_OPEN_API SummerTrailType = "unknown_default_open_api"
 )
 
 // All allowed values of SummerTrailType enum
 var AllowedSummerTrailTypeEnumValues = []SummerTrailType{
 	"hiking",
 	"mountain_biking",
+	"unknown_default_open_api",
 }
 
 func (v *SummerTrailType) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *SummerTrailType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SummerTrailType", value)
+	*v = SUMMERTRAILTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSummerTrailTypeFromValue returns a pointer to a valid SummerTrailType

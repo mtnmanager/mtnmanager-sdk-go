@@ -34,6 +34,7 @@ const (
 	LOCKERS AmenityCategory = "lockers"
 	RETAIL AmenityCategory = "retail"
 	OTHER AmenityCategory = "other"
+	AMENITYCATEGORY_UNKNOWN_DEFAULT_OPEN_API AmenityCategory = "unknown_default_open_api"
 )
 
 // All allowed values of AmenityCategory enum
@@ -51,6 +52,7 @@ var AllowedAmenityCategoryEnumValues = []AmenityCategory{
 	"lockers",
 	"retail",
 	"other",
+	"unknown_default_open_api",
 }
 
 func (v *AmenityCategory) UnmarshalJSON(src []byte) error {
@@ -67,7 +69,8 @@ func (v *AmenityCategory) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid AmenityCategory", value)
+	*v = AMENITYCATEGORY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewAmenityCategoryFromValue returns a pointer to a valid AmenityCategory

@@ -24,6 +24,7 @@ const (
 	OPEN TerrainParkStatus = "open"
 	CLOSED TerrainParkStatus = "closed"
 	UNKNOWN TerrainParkStatus = "unknown"
+	TERRAINPARKSTATUS_UNKNOWN_DEFAULT_OPEN_API TerrainParkStatus = "unknown_default_open_api"
 )
 
 // All allowed values of TerrainParkStatus enum
@@ -31,6 +32,7 @@ var AllowedTerrainParkStatusEnumValues = []TerrainParkStatus{
 	"open",
 	"closed",
 	"unknown",
+	"unknown_default_open_api",
 }
 
 func (v *TerrainParkStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *TerrainParkStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid TerrainParkStatus", value)
+	*v = TERRAINPARKSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewTerrainParkStatusFromValue returns a pointer to a valid TerrainParkStatus

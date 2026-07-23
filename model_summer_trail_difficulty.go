@@ -25,6 +25,7 @@ const (
 	INTERMEDIATE SummerTrailDifficulty = "intermediate"
 	ADVANCED SummerTrailDifficulty = "advanced"
 	EXPERT SummerTrailDifficulty = "expert"
+	SUMMERTRAILDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API SummerTrailDifficulty = "unknown_default_open_api"
 )
 
 // All allowed values of SummerTrailDifficulty enum
@@ -33,6 +34,7 @@ var AllowedSummerTrailDifficultyEnumValues = []SummerTrailDifficulty{
 	"intermediate",
 	"advanced",
 	"expert",
+	"unknown_default_open_api",
 }
 
 func (v *SummerTrailDifficulty) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *SummerTrailDifficulty) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SummerTrailDifficulty", value)
+	*v = SUMMERTRAILDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSummerTrailDifficultyFromValue returns a pointer to a valid SummerTrailDifficulty

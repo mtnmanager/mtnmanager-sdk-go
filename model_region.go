@@ -23,12 +23,14 @@ type Region string
 const (
 	NA Region = "na"
 	EU Region = "eu"
+	REGION_UNKNOWN_DEFAULT_OPEN_API Region = "unknown_default_open_api"
 )
 
 // All allowed values of Region enum
 var AllowedRegionEnumValues = []Region{
 	"na",
 	"eu",
+	"unknown_default_open_api",
 }
 
 func (v *Region) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *Region) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid Region", value)
+	*v = REGION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewRegionFromValue returns a pointer to a valid Region

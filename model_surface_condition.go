@@ -36,6 +36,7 @@ const (
 	V SurfaceCondition = "V"
 	WG SurfaceCondition = "WG"
 	WP SurfaceCondition = "WP"
+	SURFACECONDITION_UNKNOWN_DEFAULT_OPEN_API SurfaceCondition = "unknown_default_open_api"
 )
 
 // All allowed values of SurfaceCondition enum
@@ -55,6 +56,7 @@ var AllowedSurfaceConditionEnumValues = []SurfaceCondition{
 	"V",
 	"WG",
 	"WP",
+	"unknown_default_open_api",
 }
 
 func (v *SurfaceCondition) UnmarshalJSON(src []byte) error {
@@ -71,7 +73,8 @@ func (v *SurfaceCondition) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SurfaceCondition", value)
+	*v = SURFACECONDITION_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSurfaceConditionFromValue returns a pointer to a valid SurfaceCondition

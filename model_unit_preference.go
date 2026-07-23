@@ -23,12 +23,14 @@ type UnitPreference string
 const (
 	METRIC UnitPreference = "metric"
 	IMPERIAL UnitPreference = "imperial"
+	UNITPREFERENCE_UNKNOWN_DEFAULT_OPEN_API UnitPreference = "unknown_default_open_api"
 )
 
 // All allowed values of UnitPreference enum
 var AllowedUnitPreferenceEnumValues = []UnitPreference{
 	"metric",
 	"imperial",
+	"unknown_default_open_api",
 }
 
 func (v *UnitPreference) UnmarshalJSON(src []byte) error {
@@ -45,7 +47,8 @@ func (v *UnitPreference) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid UnitPreference", value)
+	*v = UNITPREFERENCE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewUnitPreferenceFromValue returns a pointer to a valid UnitPreference

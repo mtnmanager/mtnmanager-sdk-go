@@ -25,6 +25,7 @@ const (
 	HIGH_WINDS ClosureReason = "high_winds"
 	SNOW_CONDITIONS ClosureReason = "snow_conditions"
 	MECHANICAL_ISSUES ClosureReason = "mechanical_issues"
+	CLOSUREREASON_UNKNOWN_DEFAULT_OPEN_API ClosureReason = "unknown_default_open_api"
 )
 
 // All allowed values of ClosureReason enum
@@ -33,6 +34,7 @@ var AllowedClosureReasonEnumValues = []ClosureReason{
 	"high_winds",
 	"snow_conditions",
 	"mechanical_issues",
+	"unknown_default_open_api",
 }
 
 func (v *ClosureReason) UnmarshalJSON(src []byte) error {
@@ -49,7 +51,8 @@ func (v *ClosureReason) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid ClosureReason", value)
+	*v = CLOSUREREASON_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewClosureReasonFromValue returns a pointer to a valid ClosureReason

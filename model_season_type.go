@@ -24,6 +24,7 @@ const (
 	WINTER SeasonType = "winter"
 	SUMMER SeasonType = "summer"
 	CLOSED SeasonType = "closed"
+	SEASONTYPE_UNKNOWN_DEFAULT_OPEN_API SeasonType = "unknown_default_open_api"
 )
 
 // All allowed values of SeasonType enum
@@ -31,6 +32,7 @@ var AllowedSeasonTypeEnumValues = []SeasonType{
 	"winter",
 	"summer",
 	"closed",
+	"unknown_default_open_api",
 }
 
 func (v *SeasonType) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *SeasonType) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SeasonType", value)
+	*v = SEASONTYPE_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSeasonTypeFromValue returns a pointer to a valid SeasonType

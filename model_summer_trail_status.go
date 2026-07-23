@@ -24,6 +24,7 @@ const (
 	OPEN SummerTrailStatus = "open"
 	CLOSED SummerTrailStatus = "closed"
 	UNKNOWN SummerTrailStatus = "unknown"
+	SUMMERTRAILSTATUS_UNKNOWN_DEFAULT_OPEN_API SummerTrailStatus = "unknown_default_open_api"
 )
 
 // All allowed values of SummerTrailStatus enum
@@ -31,6 +32,7 @@ var AllowedSummerTrailStatusEnumValues = []SummerTrailStatus{
 	"open",
 	"closed",
 	"unknown",
+	"unknown_default_open_api",
 }
 
 func (v *SummerTrailStatus) UnmarshalJSON(src []byte) error {
@@ -47,7 +49,8 @@ func (v *SummerTrailStatus) UnmarshalJSON(src []byte) error {
 		}
 	}
 
-	return fmt.Errorf("%+v is not a valid SummerTrailStatus", value)
+	*v = SUMMERTRAILSTATUS_UNKNOWN_DEFAULT_OPEN_API
+	return nil
 }
 
 // NewSummerTrailStatusFromValue returns a pointer to a valid SummerTrailStatus
