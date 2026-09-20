@@ -30,8 +30,8 @@ type Overview struct {
 	ClosesAt NullableString `json:"closes_at,omitempty"`
 	// Current operating season (winter, summer, or closed/off-season).
 	Season SeasonType `json:"season"`
-	// Written news — daily update, announcements, etc.
-	News OverviewNews `json:"news"`
+	// Written news — daily update, announcements, etc. The resort's primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  `raw` and `html`.
+	News []OverviewNews `json:"news"`
 	// Run statistics: counts, acres, and last-updated timestamp.
 	Runs OverviewRuns `json:"runs"`
 	// Lift statistics: counts and last-updated timestamp.
@@ -48,7 +48,7 @@ type _Overview Overview
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOverview(status ResortStatus, season SeasonType, news OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks) *Overview {
+func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks) *Overview {
 	this := Overview{}
 	this.Status = status
 	this.Season = season
@@ -201,9 +201,9 @@ func (o *Overview) SetSeason(v SeasonType) {
 }
 
 // GetNews returns the News field value
-func (o *Overview) GetNews() OverviewNews {
+func (o *Overview) GetNews() []OverviewNews {
 	if o == nil {
-		var ret OverviewNews
+		var ret []OverviewNews
 		return ret
 	}
 
@@ -212,15 +212,15 @@ func (o *Overview) GetNews() OverviewNews {
 
 // GetNewsOk returns a tuple with the News field value
 // and a boolean to check if the value has been set.
-func (o *Overview) GetNewsOk() (*OverviewNews, bool) {
+func (o *Overview) GetNewsOk() ([]OverviewNews, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.News, true
+	return o.News, true
 }
 
 // SetNews sets field value
-func (o *Overview) SetNews(v OverviewNews) {
+func (o *Overview) SetNews(v []OverviewNews) {
 	o.News = v
 }
 

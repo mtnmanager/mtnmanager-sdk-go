@@ -39,8 +39,6 @@ type SnowReport struct {
 	SurfaceCondition NullableSurfaceCondition `json:"surface_condition,omitempty"`
 	// Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder)
 	SecondarySurfaceCondition NullableSurfaceCondition `json:"secondary_surface_condition,omitempty"`
-	// Additional notes about current snow conditions, e.g. groomer's notes
-	ConditionNotes string `json:"condition_notes"`
 	// Snowfall accumulation metrics in centimeters.
 	SnowfallCm SnowMetrics `json:"snowfall_cm"`
 	// Snowfall accumulation metrics in inches.
@@ -55,10 +53,9 @@ type _SnowReport SnowReport
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSnowReport(uuid string, conditionNotes string, snowfallCm SnowMetrics, snowfallIn SnowMetrics, reportedAt time.Time) *SnowReport {
+func NewSnowReport(uuid string, snowfallCm SnowMetrics, snowfallIn SnowMetrics, reportedAt time.Time) *SnowReport {
 	this := SnowReport{}
 	this.Uuid = uuid
-	this.ConditionNotes = conditionNotes
 	this.SnowfallCm = snowfallCm
 	this.SnowfallIn = snowfallIn
 	this.ReportedAt = reportedAt
@@ -391,30 +388,6 @@ func (o *SnowReport) UnsetSecondarySurfaceCondition() {
 	o.SecondarySurfaceCondition.Unset()
 }
 
-// GetConditionNotes returns the ConditionNotes field value
-func (o *SnowReport) GetConditionNotes() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ConditionNotes
-}
-
-// GetConditionNotesOk returns a tuple with the ConditionNotes field value
-// and a boolean to check if the value has been set.
-func (o *SnowReport) GetConditionNotesOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ConditionNotes, true
-}
-
-// SetConditionNotes sets field value
-func (o *SnowReport) SetConditionNotes(v string) {
-	o.ConditionNotes = v
-}
-
 // GetSnowfallCm returns the SnowfallCm field value
 func (o *SnowReport) GetSnowfallCm() SnowMetrics {
 	if o == nil {
@@ -519,7 +492,6 @@ func (o SnowReport) ToMap() (map[string]interface{}, error) {
 	if o.SecondarySurfaceCondition.IsSet() {
 		toSerialize["secondary_surface_condition"] = o.SecondarySurfaceCondition.Get()
 	}
-	toSerialize["condition_notes"] = o.ConditionNotes
 	toSerialize["snowfall_cm"] = o.SnowfallCm
 	toSerialize["snowfall_in"] = o.SnowfallIn
 	toSerialize["reported_at"] = o.ReportedAt
@@ -532,7 +504,6 @@ func (o *SnowReport) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"uuid",
-		"condition_notes",
 		"snowfall_cm",
 		"snowfall_in",
 		"reported_at",

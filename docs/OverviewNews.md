@@ -4,15 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Raw** | **string** | Raw Markdown source. | 
-**Html** | **string** | Rendered HTML (from Markdown). | 
+**Uuid** | **string** | Stable identifier of this news feed. | 
+**Name** | Pointer to **NullableString** | The name the resort gave this news feed, for telling several apart.  May be &#x60;null&#x60; on the primary news feed. | [optional] 
+**IsPrimary** | **bool** | Whether this is the resort&#39;s primary news feed. Exactly one news is. | 
+**Raw** | **string** | Markdown source. Images the resort uploaded point at their public URLs,  so any Markdown renderer can display them. | 
+**Html** | **string** | Rendered HTML (from Markdown) | 
 **UpdatedAt** | **time.Time** | When the news was last updated. | 
 
 ## Methods
 
 ### NewOverviewNews
 
-`func NewOverviewNews(raw string, html string, updatedAt time.Time, ) *OverviewNews`
+`func NewOverviewNews(uuid string, isPrimary bool, raw string, html string, updatedAt time.Time, ) *OverviewNews`
 
 NewOverviewNews instantiates a new OverviewNews object
 This constructor will assign default values to properties that have it defined,
@@ -26,6 +29,81 @@ will change when the set of required properties is changed
 NewOverviewNewsWithDefaults instantiates a new OverviewNews object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetUuid
+
+`func (o *OverviewNews) GetUuid() string`
+
+GetUuid returns the Uuid field if non-nil, zero value otherwise.
+
+### GetUuidOk
+
+`func (o *OverviewNews) GetUuidOk() (*string, bool)`
+
+GetUuidOk returns a tuple with the Uuid field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUuid
+
+`func (o *OverviewNews) SetUuid(v string)`
+
+SetUuid sets Uuid field to given value.
+
+
+### GetName
+
+`func (o *OverviewNews) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *OverviewNews) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *OverviewNews) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *OverviewNews) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *OverviewNews) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *OverviewNews) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
+### GetIsPrimary
+
+`func (o *OverviewNews) GetIsPrimary() bool`
+
+GetIsPrimary returns the IsPrimary field if non-nil, zero value otherwise.
+
+### GetIsPrimaryOk
+
+`func (o *OverviewNews) GetIsPrimaryOk() (*bool, bool)`
+
+GetIsPrimaryOk returns a tuple with the IsPrimary field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsPrimary
+
+`func (o *OverviewNews) SetIsPrimary(v bool)`
+
+SetIsPrimary sets IsPrimary field to given value.
+
 
 ### GetRaw
 

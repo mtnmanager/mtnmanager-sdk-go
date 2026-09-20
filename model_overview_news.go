@@ -21,11 +21,17 @@ import (
 // checks if the OverviewNews type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OverviewNews{}
 
-// OverviewNews Written news — daily update, announcements, etc.
+// OverviewNews Written news — daily update, announcements, etc.   A resort can publish its news in several languages. The one served is the  best match for the request's `Accept-Language` header among them, falling  back to the resort's primary language when nothing matches or the match has  no news.
 type OverviewNews struct {
-	// Raw Markdown source.
+	// Stable identifier of this news feed.
+	Uuid string `json:"uuid"`
+	// The name the resort gave this news feed, for telling several apart.  May be `null` on the primary news feed.
+	Name NullableString `json:"name,omitempty"`
+	// Whether this is the resort's primary news feed. Exactly one news is.
+	IsPrimary bool `json:"is_primary"`
+	// Markdown source. Images the resort uploaded point at their public URLs,  so any Markdown renderer can display them.
 	Raw string `json:"raw"`
-	// Rendered HTML (from Markdown).
+	// Rendered HTML (from Markdown)
 	Html string `json:"html"`
 	// When the news was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
@@ -37,8 +43,10 @@ type _OverviewNews OverviewNews
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOverviewNews(raw string, html string, updatedAt time.Time) *OverviewNews {
+func NewOverviewNews(uuid string, isPrimary bool, raw string, html string, updatedAt time.Time) *OverviewNews {
 	this := OverviewNews{}
+	this.Uuid = uuid
+	this.IsPrimary = isPrimary
 	this.Raw = raw
 	this.Html = html
 	this.UpdatedAt = updatedAt
@@ -51,6 +59,96 @@ func NewOverviewNews(raw string, html string, updatedAt time.Time) *OverviewNews
 func NewOverviewNewsWithDefaults() *OverviewNews {
 	this := OverviewNews{}
 	return &this
+}
+
+// GetUuid returns the Uuid field value
+func (o *OverviewNews) GetUuid() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Uuid
+}
+
+// GetUuidOk returns a tuple with the Uuid field value
+// and a boolean to check if the value has been set.
+func (o *OverviewNews) GetUuidOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Uuid, true
+}
+
+// SetUuid sets field value
+func (o *OverviewNews) SetUuid(v string) {
+	o.Uuid = v
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OverviewNews) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OverviewNews) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *OverviewNews) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *OverviewNews) SetName(v string) {
+	o.Name.Set(&v)
+}
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *OverviewNews) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *OverviewNews) UnsetName() {
+	o.Name.Unset()
+}
+
+// GetIsPrimary returns the IsPrimary field value
+func (o *OverviewNews) GetIsPrimary() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsPrimary
+}
+
+// GetIsPrimaryOk returns a tuple with the IsPrimary field value
+// and a boolean to check if the value has been set.
+func (o *OverviewNews) GetIsPrimaryOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsPrimary, true
+}
+
+// SetIsPrimary sets field value
+func (o *OverviewNews) SetIsPrimary(v bool) {
+	o.IsPrimary = v
 }
 
 // GetRaw returns the Raw field value
@@ -135,6 +233,11 @@ func (o OverviewNews) MarshalJSON() ([]byte, error) {
 
 func (o OverviewNews) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["uuid"] = o.Uuid
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
+	toSerialize["is_primary"] = o.IsPrimary
 	toSerialize["raw"] = o.Raw
 	toSerialize["html"] = o.Html
 	toSerialize["updated_at"] = o.UpdatedAt
@@ -146,6 +249,8 @@ func (o *OverviewNews) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"uuid",
+		"is_primary",
 		"raw",
 		"html",
 		"updated_at",

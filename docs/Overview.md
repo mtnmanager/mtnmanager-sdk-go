@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM).  &#x60;null&#x60; if the resort is not scheduled to open today. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM).  &#x60;null&#x60; if the resort is not scheduled to open today. | [optional] 
 **Season** | [**SeasonType**](SeasonType.md) | Current operating season (winter, summer, or closed/off-season). | 
-**News** | [**OverviewNews**](OverviewNews.md) | Written news — daily update, announcements, etc. | 
+**News** | [**[]OverviewNews**](OverviewNews.md) | Written news — daily update, announcements, etc. The resort&#39;s primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  &#x60;raw&#x60; and &#x60;html&#x60;. | 
 **Runs** | [**OverviewRuns**](OverviewRuns.md) | Run statistics: counts, acres, and last-updated timestamp. | 
 **Lifts** | [**OverviewLifts**](OverviewLifts.md) | Lift statistics: counts and last-updated timestamp. | 
 **SummerTrails** | [**OverviewSummerTrails**](OverviewSummerTrails.md) | Summer trail statistics: counts and last-updated timestamp. | 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewOverview
 
-`func NewOverview(status ResortStatus, season SeasonType, news OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks, ) *Overview`
+`func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks, ) *Overview`
 
 NewOverview instantiates a new Overview object
 This constructor will assign default values to properties that have it defined,
@@ -145,20 +145,20 @@ SetSeason sets Season field to given value.
 
 ### GetNews
 
-`func (o *Overview) GetNews() OverviewNews`
+`func (o *Overview) GetNews() []OverviewNews`
 
 GetNews returns the News field if non-nil, zero value otherwise.
 
 ### GetNewsOk
 
-`func (o *Overview) GetNewsOk() (*OverviewNews, bool)`
+`func (o *Overview) GetNewsOk() (*[]OverviewNews, bool)`
 
 GetNewsOk returns a tuple with the News field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNews
 
-`func (o *Overview) SetNews(v OverviewNews)`
+`func (o *Overview) SetNews(v []OverviewNews)`
 
 SetNews sets News field to given value.
 

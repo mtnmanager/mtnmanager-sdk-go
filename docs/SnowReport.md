@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **BaseDepthIn** | Pointer to **NullableInt32** | Current base depth in inches.  Not included if the base depth feature is disabled. | [optional] 
 **SurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) | Primary surface condition using industry standard codes.  Not included if the snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) | [optional] 
 **SecondarySurfaceCondition** | Pointer to [**NullableSurfaceCondition**](SurfaceCondition.md) | Secondary surface condition using industry standard codes.  Not included if the secondary snow surface condition feature is disabled.   - BS (Bare Spots)  - CO (Corn Snow)  - FG (Frozen Granular)  - HP (Hard Pack)  - IP (Ice Patches)  - IS (Icy Surface)  - LG (Loose Granular)  - MG (Machine Groomed)  - P (Powder)  - PP (Packed Powder)  - SC (Spring Conditions)  - TC (Thin Cover)  - V (Variable)  - WG (Wet Granular)  - WP (Wet Powder) | [optional] 
-**ConditionNotes** | **string** | Additional notes about current snow conditions, e.g. groomer&#39;s notes | 
 **SnowfallCm** | [**SnowMetrics**](SnowMetrics.md) | Snowfall accumulation metrics in centimeters. | 
 **SnowfallIn** | [**SnowMetrics**](SnowMetrics.md) | Snowfall accumulation metrics in inches. | 
 **ReportedAt** | **time.Time** | When this snow report was last updated. | 
@@ -21,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewSnowReport
 
-`func NewSnowReport(uuid string, conditionNotes string, snowfallCm SnowMetrics, snowfallIn SnowMetrics, reportedAt time.Time, ) *SnowReport`
+`func NewSnowReport(uuid string, snowfallCm SnowMetrics, snowfallIn SnowMetrics, reportedAt time.Time, ) *SnowReport`
 
 NewSnowReport instantiates a new SnowReport object
 This constructor will assign default values to properties that have it defined,
@@ -301,26 +300,6 @@ HasSecondarySurfaceCondition returns a boolean if a field has been set.
 `func (o *SnowReport) UnsetSecondarySurfaceCondition()`
 
 UnsetSecondarySurfaceCondition ensures that no value is present for SecondarySurfaceCondition, not even an explicit nil
-### GetConditionNotes
-
-`func (o *SnowReport) GetConditionNotes() string`
-
-GetConditionNotes returns the ConditionNotes field if non-nil, zero value otherwise.
-
-### GetConditionNotesOk
-
-`func (o *SnowReport) GetConditionNotesOk() (*string, bool)`
-
-GetConditionNotesOk returns a tuple with the ConditionNotes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetConditionNotes
-
-`func (o *SnowReport) SetConditionNotes(v string)`
-
-SetConditionNotes sets ConditionNotes field to given value.
-
-
 ### GetSnowfallCm
 
 `func (o *SnowReport) GetSnowfallCm() SnowMetrics`
