@@ -109,6 +109,7 @@ paths:
                   high_speed: true
                   bubble: true
                   heated: true
+                  capacity: 8
                   travel_time: 12.0
                   length_ft: 8500
                   length_m: 2591
@@ -730,6 +731,7 @@ paths:
                 high_speed: true
                 bubble: true
                 heated: true
+                capacity: 8
                 travel_time: 12.0
                 length_ft: 8500
                 length_m: 2591
@@ -2196,6 +2198,7 @@ paths:
                   high_speed: true
                   bubble: true
                   heated: true
+                  capacity: 8
                   travel_time: 12.0
                   length_ft: 8500
                   length_m: 2591
@@ -2565,18 +2568,19 @@ components:
           high_speed: true
           bubble: true
           heated: true
-          travel_time: 5.637376656633329
-          length_ft: 2
-          length_m: 7
-          vertical_rise_ft: 9
-          vertical_rise_m: 3
+          capacity: 5
+          travel_time: 2.3021358869347655
+          length_ft: 7
+          length_m: 9
+          vertical_rise_ft: 3
+          vertical_rise_m: 2
           status: ""
-          wait_time_minutes: 2
+          wait_time_minutes: 4
           opens_at: opens_at
           closes_at: closes_at
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 4
+          area_display_order: 7
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2591,18 +2595,19 @@ components:
           high_speed: true
           bubble: true
           heated: true
-          travel_time: 5.637376656633329
-          length_ft: 2
-          length_m: 7
-          vertical_rise_ft: 9
-          vertical_rise_m: 3
+          capacity: 5
+          travel_time: 2.3021358869347655
+          length_ft: 7
+          length_m: 9
+          vertical_rise_ft: 3
+          vertical_rise_m: 2
           status: ""
-          wait_time_minutes: 2
+          wait_time_minutes: 4
           opens_at: opens_at
           closes_at: closes_at
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 4
+          area_display_order: 7
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2613,7 +2618,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 1
           difficulty: ""
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
@@ -2633,7 +2638,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 1
           difficulty: ""
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
@@ -2659,12 +2664,12 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 1
+          area_display_order: 6
           features:
           - uuid: uuid
             name: name
             slug: slug
-            number: 6
+            number: 7
             feature_type: ""
             size: ""
             status: ""
@@ -2676,7 +2681,7 @@ components:
           - uuid: uuid
             name: name
             slug: slug
-            number: 6
+            number: 7
             feature_type: ""
             size: ""
             status: ""
@@ -2699,12 +2704,12 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 1
+          area_display_order: 6
           features:
           - uuid: uuid
             name: name
             slug: slug
-            number: 6
+            number: 7
             feature_type: ""
             size: ""
             status: ""
@@ -2716,7 +2721,7 @@ components:
           - uuid: uuid
             name: name
             slug: slug
-            number: 6
+            number: 7
             feature_type: ""
             size: ""
             status: ""
@@ -2736,7 +2741,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 7
+          capacity: 1
           shuttle: true
           paid: true
           reservation_required: true
@@ -2750,7 +2755,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 7
+          capacity: 1
           shuttle: true
           paid: true
           reservation_required: true
@@ -2764,7 +2769,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 1
+          number: 4
           trail_type:
           - hiking
           - hiking
@@ -2773,7 +2778,7 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 4
+          area_display_order: 5
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2783,7 +2788,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 1
+          number: 4
           trail_type:
           - hiking
           - hiking
@@ -2792,7 +2797,7 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 4
+          area_display_order: 5
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2916,7 +2921,7 @@ components:
         weather:
         - area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 9
           current: ""
           hourly_forecast:
           - timestamp: 2000-01-23T04:56:07.000+00:00
@@ -2937,7 +2942,7 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           - date: 2000-01-23
@@ -2945,14 +2950,14 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           attribution: attribution
           updated_at: 2000-01-23T04:56:07.000+00:00
         - area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 9
           current: ""
           hourly_forecast:
           - timestamp: 2000-01-23T04:56:07.000+00:00
@@ -2973,7 +2978,7 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           - date: 2000-01-23
@@ -2981,7 +2986,7 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           attribution: attribution
@@ -2991,7 +2996,7 @@ components:
           name: name
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 6
+          area_display_order: 8
           latest_image_url: latest_image_url
           latest_daylight_image_url: latest_daylight_image_url
           latest_thumb_url: latest_thumb_url
@@ -2999,14 +3004,14 @@ components:
           latest_thumbhash: latest_thumbhash
           latest_daylight_thumbhash: latest_daylight_thumbhash
           has_history: true
-          elevation_ft: 8
-          elevation_m: 9
+          elevation_ft: 9
+          elevation_m: 6
           last_frame_at: last_frame_at
         - uuid: uuid
           name: name
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 6
+          area_display_order: 8
           latest_image_url: latest_image_url
           latest_daylight_image_url: latest_daylight_image_url
           latest_thumb_url: latest_thumb_url
@@ -3014,8 +3019,8 @@ components:
           latest_thumbhash: latest_thumbhash
           latest_daylight_thumbhash: latest_daylight_thumbhash
           has_history: true
-          elevation_ft: 8
-          elevation_m: 9
+          elevation_ft: 9
+          elevation_m: 6
           last_frame_at: last_frame_at
       properties:
         resort:
@@ -3241,7 +3246,7 @@ components:
       - summer_trails
       - terrain_parks
     ResortStatus:
-      description: Current operational status of the resort.
+      description: "Whether the resort is open right now, from today's scheduled hours."
       enum:
       - open
       - closed
@@ -3584,18 +3589,19 @@ components:
         high_speed: true
         bubble: true
         heated: true
-        travel_time: 5.637376656633329
-        length_ft: 2
-        length_m: 7
-        vertical_rise_ft: 9
-        vertical_rise_m: 3
+        capacity: 5
+        travel_time: 2.3021358869347655
+        length_ft: 7
+        length_m: 9
+        vertical_rise_ft: 3
+        vertical_rise_m: 2
         status: ""
-        wait_time_minutes: 2
+        wait_time_minutes: 4
         opens_at: opens_at
         closes_at: closes_at
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 4
+        area_display_order: 7
         updated_at: 2000-01-23T04:56:07.000+00:00
         images:
         - url: url
@@ -3630,6 +3636,11 @@ components:
         heated:
           description: Whether the lift has heated seats.
           type: boolean
+        capacity:
+          description: "Riders per chair or cabin, if available."
+          format: int32
+          nullable: true
+          type: integer
         travel_time:
           description: Estimated travel time in minutes.
           format: double
@@ -3762,7 +3773,7 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 7
+        number: 1
         difficulty: ""
         status: ""
         last_groomed: 2000-01-23T04:56:07.000+00:00
@@ -3859,7 +3870,7 @@ components:
       - updated_at
       - uuid
     RunDifficulty:
-      description: Difficulty rating for a ski run.
+      description: Difficulty rating for a ski run. Stored as TEXT in `runs.difficulty`.
       enum:
       - beginner
       - intermediate
@@ -3868,7 +3879,7 @@ components:
       - terrain_park
       type: string
     RunStatus:
-      description: Operational status of a ski run.
+      description: Operational status of a ski run. Stored as TEXT in `runs.status`.
       enum:
       - open
       - closed
@@ -3887,12 +3898,12 @@ components:
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 1
+        area_display_order: 6
         features:
         - uuid: uuid
           name: name
           slug: slug
-          number: 6
+          number: 7
           feature_type: ""
           size: ""
           status: ""
@@ -3904,7 +3915,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 6
+          number: 7
           feature_type: ""
           size: ""
           status: ""
@@ -3996,7 +4007,7 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 6
+        number: 7
         feature_type: ""
         size: ""
         status: ""
@@ -4080,7 +4091,7 @@ components:
         name: name
         slug: slug
         status: ""
-        capacity: 7
+        capacity: 1
         shuttle: true
         paid: true
         reservation_required: true
@@ -4154,7 +4165,7 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 1
+        number: 4
         trail_type:
         - hiking
         - hiking
@@ -4163,7 +4174,7 @@ components:
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 4
+        area_display_order: 5
         updated_at: 2000-01-23T04:56:07.000+00:00
         images:
         - url: url
@@ -4678,7 +4689,7 @@ components:
       example:
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 5
+        area_display_order: 9
         current: ""
         hourly_forecast:
         - timestamp: 2000-01-23T04:56:07.000+00:00
@@ -4699,7 +4710,7 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 9
+          precipitation_probability: 6
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         - date: 2000-01-23
@@ -4707,7 +4718,7 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 9
+          precipitation_probability: 6
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         attribution: attribution
@@ -5018,7 +5029,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 9
+        precipitation_probability: 6
         sunrise: 2000-01-23T04:56:07.000+00:00
         sunset: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -5140,7 +5151,7 @@ components:
         name: name
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 6
+        area_display_order: 8
         latest_image_url: latest_image_url
         latest_daylight_image_url: latest_daylight_image_url
         latest_thumb_url: latest_thumb_url
@@ -5148,8 +5159,8 @@ components:
         latest_thumbhash: latest_thumbhash
         latest_daylight_thumbhash: latest_daylight_thumbhash
         has_history: true
-        elevation_ft: 8
-        elevation_m: 9
+        elevation_ft: 9
+        elevation_m: 6
         last_frame_at: last_frame_at
       properties:
         uuid:

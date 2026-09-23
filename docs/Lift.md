@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **HighSpeed** | **bool** | Whether this is a high-speed/detachable lift. | 
 **Bubble** | **bool** | Whether the lift has a bubble/cover for weather protection. | 
 **Heated** | **bool** | Whether the lift has heated seats. | 
+**Capacity** | Pointer to **NullableInt32** | Riders per chair or cabin, if available. | [optional] 
 **TravelTime** | Pointer to **NullableFloat64** | Estimated travel time in minutes. | [optional] 
 **LengthFt** | Pointer to **NullableInt32** | Length of the lift in feet. | [optional] 
 **LengthM** | Pointer to **NullableInt32** | Length of the lift in meters. | [optional] 
@@ -221,6 +222,41 @@ and a boolean to check if the value has been set.
 SetHeated sets Heated field to given value.
 
 
+### GetCapacity
+
+`func (o *Lift) GetCapacity() int32`
+
+GetCapacity returns the Capacity field if non-nil, zero value otherwise.
+
+### GetCapacityOk
+
+`func (o *Lift) GetCapacityOk() (*int32, bool)`
+
+GetCapacityOk returns a tuple with the Capacity field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCapacity
+
+`func (o *Lift) SetCapacity(v int32)`
+
+SetCapacity sets Capacity field to given value.
+
+### HasCapacity
+
+`func (o *Lift) HasCapacity() bool`
+
+HasCapacity returns a boolean if a field has been set.
+
+### SetCapacityNil
+
+`func (o *Lift) SetCapacityNil(b bool)`
+
+ SetCapacityNil sets the value for Capacity to be an explicit nil
+
+### UnsetCapacity
+`func (o *Lift) UnsetCapacity()`
+
+UnsetCapacity ensures that no value is present for Capacity, not even an explicit nil
 ### GetTravelTime
 
 `func (o *Lift) GetTravelTime() float64`

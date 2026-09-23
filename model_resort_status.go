@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ResortStatus Current operational status of the resort.
+// ResortStatus Whether the resort is open right now, from today's scheduled hours.
 type ResortStatus string
 
 // List of ResortStatus

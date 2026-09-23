@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// RunDifficulty Difficulty rating for a ski run.
+// RunDifficulty Difficulty rating for a ski run. Stored as TEXT in `runs.difficulty`.
 type RunDifficulty string
 
 // List of RunDifficulty

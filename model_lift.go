@@ -39,6 +39,8 @@ type Lift struct {
 	Bubble bool `json:"bubble"`
 	// Whether the lift has heated seats.
 	Heated bool `json:"heated"`
+	// Riders per chair or cabin, if available.
+	Capacity NullableInt32 `json:"capacity,omitempty"`
 	// Estimated travel time in minutes.
 	TravelTime NullableFloat64 `json:"travel_time,omitempty"`
 	// Length of the lift in feet.
@@ -305,6 +307,48 @@ func (o *Lift) GetHeatedOk() (*bool, bool) {
 // SetHeated sets field value
 func (o *Lift) SetHeated(v bool) {
 	o.Heated = v
+}
+
+// GetCapacity returns the Capacity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Lift) GetCapacity() int32 {
+	if o == nil || IsNil(o.Capacity.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.Capacity.Get()
+}
+
+// GetCapacityOk returns a tuple with the Capacity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Lift) GetCapacityOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Capacity.Get(), o.Capacity.IsSet()
+}
+
+// HasCapacity returns a boolean if a field has been set.
+func (o *Lift) HasCapacity() bool {
+	if o != nil && o.Capacity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCapacity gets a reference to the given NullableInt32 and assigns it to the Capacity field.
+func (o *Lift) SetCapacity(v int32) {
+	o.Capacity.Set(&v)
+}
+// SetCapacityNil sets the value for Capacity to be an explicit nil
+func (o *Lift) SetCapacityNil() {
+	o.Capacity.Set(nil)
+}
+
+// UnsetCapacity ensures that no value is present for Capacity, not even an explicit nil
+func (o *Lift) UnsetCapacity() {
+	o.Capacity.Unset()
 }
 
 // GetTravelTime returns the TravelTime field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -869,6 +913,9 @@ func (o Lift) ToMap() (map[string]interface{}, error) {
 	toSerialize["high_speed"] = o.HighSpeed
 	toSerialize["bubble"] = o.Bubble
 	toSerialize["heated"] = o.Heated
+	if o.Capacity.IsSet() {
+		toSerialize["capacity"] = o.Capacity.Get()
+	}
 	if o.TravelTime.IsSet() {
 		toSerialize["travel_time"] = o.TravelTime.Get()
 	}
