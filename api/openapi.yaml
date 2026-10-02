@@ -76,6 +76,7 @@ paths:
                     updated_at: 2026-01-26T16:26:33+00:00
                   terrain_parks:
                     open: 3
+                    groomed: 2
                     total: 4
                     updated_at: 2026-01-26T16:26:33+00:00
                 snow:
@@ -147,6 +148,8 @@ paths:
                   slug: main-park
                   number: 1
                   status: open
+                  last_groomed: 2026-01-26T16:26:33+00:00
+                  groomed_today: true
                   condition_notes: "Freshly shaped features, park crew out daily"
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
@@ -420,6 +423,7 @@ paths:
                   updated_at: 2026-01-26T16:26:33+00:00
                 terrain_parks:
                   open: 3
+                  groomed: 2
                   total: 4
                   updated_at: 2026-01-26T16:26:33+00:00
               schema:
@@ -1476,6 +1480,8 @@ paths:
                 slug: main-park
                 number: 1
                 status: open
+                last_groomed: 2026-01-26T16:26:33+00:00
+                groomed_today: true
                 condition_notes: "Freshly shaped features, park crew out daily"
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
@@ -1684,6 +1690,7 @@ paths:
               example:
               - uuid: 550e8400-e29b-41d4-a716-446655440000
                 name: Summit Lodge
+                slug: summit-lodge
                 description: Mid-mountain lodge with full-service restaurant and bar.
                 category: lodge
                 website: https://example.com/summit-lodge
@@ -2165,6 +2172,7 @@ paths:
                     updated_at: 2026-01-26T16:26:33+00:00
                   terrain_parks:
                     open: 3
+                    groomed: 2
                     total: 4
                     updated_at: 2026-01-26T16:26:33+00:00
                 snow:
@@ -2236,6 +2244,8 @@ paths:
                   slug: main-park
                   number: 1
                   status: open
+                  last_groomed: 2026-01-26T16:26:33+00:00
+                  groomed_today: true
                   condition_notes: "Freshly shaped features, park crew out daily"
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
@@ -2396,6 +2406,7 @@ paths:
                 amenities:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Summit Lodge
+                  slug: summit-lodge
                   description: Mid-mountain lodge with full-service restaurant and
                     bar.
                   category: lodge
@@ -2661,6 +2672,8 @@ components:
           slug: slug
           number: 1
           status: ""
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          groomed_today: true
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
@@ -2701,6 +2714,8 @@ components:
           slug: slug
           number: 1
           status: ""
+          last_groomed: 2000-01-23T04:56:07.000+00:00
+          groomed_today: true
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
@@ -3252,7 +3267,10 @@ components:
       - closed
       type: string
     SeasonType:
-      description: Current operating season of the resort.
+      description: |-
+        A resort's season: winter or summer as its weekly operating hours say
+         (`OperatingHoursDb::season_type`), or closed outside every season (see
+         `utils::hours::season_on`).
       enum:
       - winter
       - summer
@@ -3391,12 +3409,20 @@ components:
       - total
       - updated_at
     OverviewTerrainParks:
-      description: "Terrain park statistics: open/total counts and last-updated timestamp."
+      description: "Terrain park statistics: open/groomed/total counts and last-updated\
+        \ timestamp."
       properties:
         open:
           description: |-
             Number of terrain parks currently open.
              Not included if the terrain parks status feature is disabled.
+          format: int64
+          nullable: true
+          type: integer
+        groomed:
+          description: |-
+            Number of terrain parks groomed within the last 24 hours.
+             Not included if the terrain park grooming feature is disabled.
           format: int64
           nullable: true
           type: integer
@@ -3870,16 +3896,15 @@ components:
       - updated_at
       - uuid
     RunDifficulty:
-      description: Difficulty rating for a ski run. Stored as TEXT in `runs.difficulty`.
+      description: Difficulty rating for a ski run.
       enum:
       - beginner
       - intermediate
       - advanced
       - expert
-      - terrain_park
       type: string
     RunStatus:
-      description: Operational status of a ski run. Stored as TEXT in `runs.status`.
+      description: Operational status of a ski run.
       enum:
       - open
       - closed
@@ -3895,6 +3920,8 @@ components:
         slug: slug
         number: 1
         status: ""
+        last_groomed: 2000-01-23T04:56:07.000+00:00
+        groomed_today: true
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
@@ -3949,6 +3976,16 @@ components:
           allOf:
           - $ref: "#/components/schemas/TerrainParkStatus"
           description: "Current operational status (open, closed, or unknown)."
+        last_groomed:
+          description: |-
+            When the terrain park was last groomed.
+             `null` if never groomed, or if the terrain park grooming feature is disabled.
+          format: date-time
+          nullable: true
+          type: string
+        groomed_today:
+          description: Whether the terrain park was groomed within the last 24 hours.
+          type: boolean
         condition_notes:
           description: Notes about current conditions in this terrain park.
           type: string
@@ -3987,6 +4024,7 @@ components:
       required:
       - condition_notes
       - features
+      - groomed_today
       - name
       - slug
       - status
@@ -5360,6 +5398,7 @@ components:
         description: description
         uuid: uuid
         name: name
+        slug: slug
         category: ""
         website: website
         has_operating_hours: true
@@ -5402,6 +5441,9 @@ components:
           type: string
         name:
           description: Display name of the amenity.
+          type: string
+        slug:
+          description: URL-friendly name of the amenity.
           type: string
         category:
           allOf:
@@ -5447,6 +5489,7 @@ components:
       - has_operating_hours
       - name
       - schedules
+      - slug
       - uuid
       - website
     TrailMapsResponse:

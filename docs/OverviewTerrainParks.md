@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Open** | Pointer to **NullableInt64** | Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled. | [optional] 
+**Groomed** | Pointer to **NullableInt64** | Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled. | [optional] 
 **Total** | **int64** | Total number of terrain parks at the resort. | 
 **UpdatedAt** | **time.Time** | When the most recent update to terrain park status was made. | 
 
@@ -62,6 +63,41 @@ HasOpen returns a boolean if a field has been set.
 `func (o *OverviewTerrainParks) UnsetOpen()`
 
 UnsetOpen ensures that no value is present for Open, not even an explicit nil
+### GetGroomed
+
+`func (o *OverviewTerrainParks) GetGroomed() int64`
+
+GetGroomed returns the Groomed field if non-nil, zero value otherwise.
+
+### GetGroomedOk
+
+`func (o *OverviewTerrainParks) GetGroomedOk() (*int64, bool)`
+
+GetGroomedOk returns a tuple with the Groomed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroomed
+
+`func (o *OverviewTerrainParks) SetGroomed(v int64)`
+
+SetGroomed sets Groomed field to given value.
+
+### HasGroomed
+
+`func (o *OverviewTerrainParks) HasGroomed() bool`
+
+HasGroomed returns a boolean if a field has been set.
+
+### SetGroomedNil
+
+`func (o *OverviewTerrainParks) SetGroomedNil(b bool)`
+
+ SetGroomedNil sets the value for Groomed to be an explicit nil
+
+### UnsetGroomed
+`func (o *OverviewTerrainParks) UnsetGroomed()`
+
+UnsetGroomed ensures that no value is present for Groomed, not even an explicit nil
 ### GetTotal
 
 `func (o *OverviewTerrainParks) GetTotal() int64`

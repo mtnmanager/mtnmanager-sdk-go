@@ -33,6 +33,10 @@ type TerrainPark struct {
 	Number NullableInt32 `json:"number,omitempty"`
 	// Current operational status (open, closed, or unknown).
 	Status TerrainParkStatus `json:"status"`
+	// When the terrain park was last groomed.  `null` if never groomed, or if the terrain park grooming feature is disabled.
+	LastGroomed NullableTime `json:"last_groomed,omitempty"`
+	// Whether the terrain park was groomed within the last 24 hours.
+	GroomedToday bool `json:"groomed_today"`
 	// Notes about current conditions in this terrain park.
 	ConditionNotes string `json:"condition_notes"`
 	// UUID of the area this terrain park belongs to, if assigned.
@@ -55,12 +59,13 @@ type _TerrainPark TerrainPark
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerrainPark(uuid string, name string, slug string, status TerrainParkStatus, conditionNotes string, features []TerrainParkFeature, updatedAt time.Time) *TerrainPark {
+func NewTerrainPark(uuid string, name string, slug string, status TerrainParkStatus, groomedToday bool, conditionNotes string, features []TerrainParkFeature, updatedAt time.Time) *TerrainPark {
 	this := TerrainPark{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
 	this.Status = status
+	this.GroomedToday = groomedToday
 	this.ConditionNotes = conditionNotes
 	this.Features = features
 	this.UpdatedAt = updatedAt
@@ -211,6 +216,72 @@ func (o *TerrainPark) GetStatusOk() (*TerrainParkStatus, bool) {
 // SetStatus sets field value
 func (o *TerrainPark) SetStatus(v TerrainParkStatus) {
 	o.Status = v
+}
+
+// GetLastGroomed returns the LastGroomed field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerrainPark) GetLastGroomed() time.Time {
+	if o == nil || IsNil(o.LastGroomed.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastGroomed.Get()
+}
+
+// GetLastGroomedOk returns a tuple with the LastGroomed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerrainPark) GetLastGroomedOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastGroomed.Get(), o.LastGroomed.IsSet()
+}
+
+// HasLastGroomed returns a boolean if a field has been set.
+func (o *TerrainPark) HasLastGroomed() bool {
+	if o != nil && o.LastGroomed.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastGroomed gets a reference to the given NullableTime and assigns it to the LastGroomed field.
+func (o *TerrainPark) SetLastGroomed(v time.Time) {
+	o.LastGroomed.Set(&v)
+}
+// SetLastGroomedNil sets the value for LastGroomed to be an explicit nil
+func (o *TerrainPark) SetLastGroomedNil() {
+	o.LastGroomed.Set(nil)
+}
+
+// UnsetLastGroomed ensures that no value is present for LastGroomed, not even an explicit nil
+func (o *TerrainPark) UnsetLastGroomed() {
+	o.LastGroomed.Unset()
+}
+
+// GetGroomedToday returns the GroomedToday field value
+func (o *TerrainPark) GetGroomedToday() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.GroomedToday
+}
+
+// GetGroomedTodayOk returns a tuple with the GroomedToday field value
+// and a boolean to check if the value has been set.
+func (o *TerrainPark) GetGroomedTodayOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GroomedToday, true
+}
+
+// SetGroomedToday sets field value
+func (o *TerrainPark) SetGroomedToday(v bool) {
+	o.GroomedToday = v
 }
 
 // GetConditionNotes returns the ConditionNotes field value
@@ -460,6 +531,10 @@ func (o TerrainPark) ToMap() (map[string]interface{}, error) {
 		toSerialize["number"] = o.Number.Get()
 	}
 	toSerialize["status"] = o.Status
+	if o.LastGroomed.IsSet() {
+		toSerialize["last_groomed"] = o.LastGroomed.Get()
+	}
+	toSerialize["groomed_today"] = o.GroomedToday
 	toSerialize["condition_notes"] = o.ConditionNotes
 	if o.AreaUuid.IsSet() {
 		toSerialize["area_uuid"] = o.AreaUuid.Get()
@@ -487,6 +562,7 @@ func (o *TerrainPark) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"slug",
 		"status",
+		"groomed_today",
 		"condition_notes",
 		"features",
 		"updated_at",

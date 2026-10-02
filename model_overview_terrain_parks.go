@@ -21,10 +21,12 @@ import (
 // checks if the OverviewTerrainParks type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OverviewTerrainParks{}
 
-// OverviewTerrainParks Terrain park statistics: open/total counts and last-updated timestamp.
+// OverviewTerrainParks Terrain park statistics: open/groomed/total counts and last-updated timestamp.
 type OverviewTerrainParks struct {
 	// Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled.
 	Open NullableInt64 `json:"open,omitempty"`
+	// Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled.
+	Groomed NullableInt64 `json:"groomed,omitempty"`
 	// Total number of terrain parks at the resort.
 	Total int64 `json:"total"`
 	// When the most recent update to terrain park status was made.
@@ -94,6 +96,48 @@ func (o *OverviewTerrainParks) UnsetOpen() {
 	o.Open.Unset()
 }
 
+// GetGroomed returns the Groomed field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OverviewTerrainParks) GetGroomed() int64 {
+	if o == nil || IsNil(o.Groomed.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.Groomed.Get()
+}
+
+// GetGroomedOk returns a tuple with the Groomed field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OverviewTerrainParks) GetGroomedOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Groomed.Get(), o.Groomed.IsSet()
+}
+
+// HasGroomed returns a boolean if a field has been set.
+func (o *OverviewTerrainParks) HasGroomed() bool {
+	if o != nil && o.Groomed.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGroomed gets a reference to the given NullableInt64 and assigns it to the Groomed field.
+func (o *OverviewTerrainParks) SetGroomed(v int64) {
+	o.Groomed.Set(&v)
+}
+// SetGroomedNil sets the value for Groomed to be an explicit nil
+func (o *OverviewTerrainParks) SetGroomedNil() {
+	o.Groomed.Set(nil)
+}
+
+// UnsetGroomed ensures that no value is present for Groomed, not even an explicit nil
+func (o *OverviewTerrainParks) UnsetGroomed() {
+	o.Groomed.Unset()
+}
+
 // GetTotal returns the Total field value
 func (o *OverviewTerrainParks) GetTotal() int64 {
 	if o == nil {
@@ -154,6 +198,9 @@ func (o OverviewTerrainParks) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.Open.IsSet() {
 		toSerialize["open"] = o.Open.Get()
+	}
+	if o.Groomed.IsSet() {
+		toSerialize["groomed"] = o.Groomed.Get()
 	}
 	toSerialize["total"] = o.Total
 	toSerialize["updated_at"] = o.UpdatedAt

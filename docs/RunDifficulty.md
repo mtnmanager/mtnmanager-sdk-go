@@ -11,8 +11,6 @@
 
 * `EXPERT` (value: `"expert"`)
 
-* `TERRAIN_PARK` (value: `"terrain_park"`)
-
 * `RUNDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API` (value: `"unknown_default_open_api"`)
 
 

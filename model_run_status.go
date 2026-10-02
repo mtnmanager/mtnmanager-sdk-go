@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// RunStatus Operational status of a ski run. Stored as TEXT in `runs.status`.
+// RunStatus Operational status of a ski run.
 type RunStatus string
 
 // List of RunStatus

@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the terrain park. | 
 **Number** | Pointer to **NullableInt32** | Optional terrain park number. | [optional] 
 **Status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
+**LastGroomed** | Pointer to **NullableTime** | When the terrain park was last groomed.  &#x60;null&#x60; if never groomed, or if the terrain park grooming feature is disabled. | [optional] 
+**GroomedToday** | **bool** | Whether the terrain park was groomed within the last 24 hours. | 
 **ConditionNotes** | **string** | Notes about current conditions in this terrain park. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this terrain park belongs to, if assigned. | [optional] 
 **AreaName** | Pointer to **NullableString** | Name of the area this terrain park belongs to, if assigned. | [optional] 
@@ -21,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewTerrainPark
 
-`func NewTerrainPark(uuid string, name string, slug string, status TerrainParkStatus, conditionNotes string, features []TerrainParkFeature, updatedAt time.Time, ) *TerrainPark`
+`func NewTerrainPark(uuid string, name string, slug string, status TerrainParkStatus, groomedToday bool, conditionNotes string, features []TerrainParkFeature, updatedAt time.Time, ) *TerrainPark`
 
 NewTerrainPark instantiates a new TerrainPark object
 This constructor will assign default values to properties that have it defined,
@@ -149,6 +151,61 @@ and a boolean to check if the value has been set.
 `func (o *TerrainPark) SetStatus(v TerrainParkStatus)`
 
 SetStatus sets Status field to given value.
+
+
+### GetLastGroomed
+
+`func (o *TerrainPark) GetLastGroomed() time.Time`
+
+GetLastGroomed returns the LastGroomed field if non-nil, zero value otherwise.
+
+### GetLastGroomedOk
+
+`func (o *TerrainPark) GetLastGroomedOk() (*time.Time, bool)`
+
+GetLastGroomedOk returns a tuple with the LastGroomed field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastGroomed
+
+`func (o *TerrainPark) SetLastGroomed(v time.Time)`
+
+SetLastGroomed sets LastGroomed field to given value.
+
+### HasLastGroomed
+
+`func (o *TerrainPark) HasLastGroomed() bool`
+
+HasLastGroomed returns a boolean if a field has been set.
+
+### SetLastGroomedNil
+
+`func (o *TerrainPark) SetLastGroomedNil(b bool)`
+
+ SetLastGroomedNil sets the value for LastGroomed to be an explicit nil
+
+### UnsetLastGroomed
+`func (o *TerrainPark) UnsetLastGroomed()`
+
+UnsetLastGroomed ensures that no value is present for LastGroomed, not even an explicit nil
+### GetGroomedToday
+
+`func (o *TerrainPark) GetGroomedToday() bool`
+
+GetGroomedToday returns the GroomedToday field if non-nil, zero value otherwise.
+
+### GetGroomedTodayOk
+
+`func (o *TerrainPark) GetGroomedTodayOk() (*bool, bool)`
+
+GetGroomedTodayOk returns a tuple with the GroomedToday field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGroomedToday
+
+`func (o *TerrainPark) SetGroomedToday(v bool)`
+
+SetGroomedToday sets GroomedToday field to given value.
 
 
 ### GetConditionNotes

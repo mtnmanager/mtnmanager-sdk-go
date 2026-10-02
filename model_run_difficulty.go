@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// RunDifficulty Difficulty rating for a ski run. Stored as TEXT in `runs.difficulty`.
+// RunDifficulty Difficulty rating for a ski run.
 type RunDifficulty string
 
 // List of RunDifficulty
@@ -25,7 +25,6 @@ const (
 	INTERMEDIATE RunDifficulty = "intermediate"
 	ADVANCED RunDifficulty = "advanced"
 	EXPERT RunDifficulty = "expert"
-	TERRAIN_PARK RunDifficulty = "terrain_park"
 	RUNDIFFICULTY_UNKNOWN_DEFAULT_OPEN_API RunDifficulty = "unknown_default_open_api"
 )
 
@@ -35,7 +34,6 @@ var AllowedRunDifficultyEnumValues = []RunDifficulty{
 	"intermediate",
 	"advanced",
 	"expert",
-	"terrain_park",
 	"unknown_default_open_api",
 }
 

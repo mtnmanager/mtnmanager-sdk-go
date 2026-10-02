@@ -28,6 +28,8 @@ type Amenity struct {
 	Uuid string `json:"uuid"`
 	// Display name of the amenity.
 	Name string `json:"name"`
+	// URL-friendly name of the amenity.
+	Slug string `json:"slug"`
 	// Category classification (e.g. restaurant, lodge, ski_school).
 	Category AmenityCategory `json:"category"`
 	// Website URL for the amenity, if available.
@@ -50,11 +52,12 @@ type _Amenity Amenity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule) *Amenity {
+func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule) *Amenity {
 	this := Amenity{}
 	this.Description = description
 	this.Uuid = uuid
 	this.Name = name
+	this.Slug = slug
 	this.Category = category
 	this.Website = website
 	this.HasOperatingHours = hasOperatingHours
@@ -140,6 +143,30 @@ func (o *Amenity) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *Amenity) SetName(v string) {
 	o.Name = v
+}
+
+// GetSlug returns the Slug field value
+func (o *Amenity) GetSlug() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Slug
+}
+
+// GetSlugOk returns a tuple with the Slug field value
+// and a boolean to check if the value has been set.
+func (o *Amenity) GetSlugOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Slug, true
+}
+
+// SetSlug sets field value
+func (o *Amenity) SetSlug(v string) {
+	o.Slug = v
 }
 
 // GetCategory returns the Category field value
@@ -367,6 +394,7 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["uuid"] = o.Uuid
 	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
 	toSerialize["category"] = o.Category
 	toSerialize["website"] = o.Website
 	toSerialize["has_operating_hours"] = o.HasOperatingHours
@@ -391,6 +419,7 @@ func (o *Amenity) UnmarshalJSON(data []byte) (err error) {
 		"description",
 		"uuid",
 		"name",
+		"slug",
 		"category",
 		"website",
 		"has_operating_hours",

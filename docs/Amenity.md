@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Description** | **string** | Description of the amenity. | 
 **Uuid** | **string** | Unique identifier for the amenity. | 
 **Name** | **string** | Display name of the amenity. | 
+**Slug** | **string** | URL-friendly name of the amenity. | 
 **Category** | [**AmenityCategory**](AmenityCategory.md) | Category classification (e.g. restaurant, lodge, ski_school). | 
 **Website** | **string** | Website URL for the amenity, if available. | 
 **HasOperatingHours** | **bool** | Whether this amenity reports operating hours. When false, clients should  not expect &#x60;opens_at&#x60;, &#x60;closes_at&#x60;, or &#x60;schedules&#x60; to ever be populated. | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAmenity
 
-`func NewAmenity(description string, uuid string, name string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
+`func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
 
 NewAmenity instantiates a new Amenity object
 This constructor will assign default values to properties that have it defined,
@@ -92,6 +93,26 @@ and a boolean to check if the value has been set.
 `func (o *Amenity) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetSlug
+
+`func (o *Amenity) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *Amenity) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *Amenity) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
 
 
 ### GetCategory

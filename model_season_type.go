@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// SeasonType Current operating season of the resort.
+// SeasonType A resort's season: winter or summer as its weekly operating hours say  (`OperatingHoursDb::season_type`), or closed outside every season (see  `utils::hours::season_on`).
 type SeasonType string
 
 // List of SeasonType
