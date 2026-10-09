@@ -30,6 +30,10 @@ type Overview struct {
 	ClosesAt NullableString `json:"closes_at,omitempty"`
 	// Current operating season (winter, summer, or closed/off-season).
 	Season SeasonType `json:"season"`
+	// The last season to end before today, from the resort's operating  hours of the past year. `null` if there was none. While `season` is  `closed`, this and `next_season` tell an off-season that just ended a  winter from one leading up to a summer.
+	PreviousSeason NullableSeasonPeriod `json:"previous_season,omitempty"`
+	// The next season to start after today, from the resort's scheduled  operating hours. `null` if none is scheduled yet.
+	NextSeason NullableSeasonPeriod `json:"next_season,omitempty"`
 	// Written news — daily update, announcements, etc. The resort's primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  `raw` and `html`.
 	News []OverviewNews `json:"news"`
 	// Run statistics: counts, acres, and last-updated timestamp.
@@ -40,6 +44,8 @@ type Overview struct {
 	SummerTrails OverviewSummerTrails `json:"summer_trails"`
 	// Terrain park statistics: counts and last-updated timestamp.
 	TerrainParks OverviewTerrainParks `json:"terrain_parks"`
+	// Guest powder alerts the resort offers, by channel.
+	PowderAlerts PowderAlerts `json:"powder_alerts"`
 }
 
 type _Overview Overview
@@ -48,7 +54,7 @@ type _Overview Overview
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks) *Overview {
+func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks, powderAlerts PowderAlerts) *Overview {
 	this := Overview{}
 	this.Status = status
 	this.Season = season
@@ -57,6 +63,7 @@ func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, ru
 	this.Lifts = lifts
 	this.SummerTrails = summerTrails
 	this.TerrainParks = terrainParks
+	this.PowderAlerts = powderAlerts
 	return &this
 }
 
@@ -200,6 +207,90 @@ func (o *Overview) SetSeason(v SeasonType) {
 	o.Season = v
 }
 
+// GetPreviousSeason returns the PreviousSeason field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Overview) GetPreviousSeason() SeasonPeriod {
+	if o == nil || IsNil(o.PreviousSeason.Get()) {
+		var ret SeasonPeriod
+		return ret
+	}
+	return *o.PreviousSeason.Get()
+}
+
+// GetPreviousSeasonOk returns a tuple with the PreviousSeason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Overview) GetPreviousSeasonOk() (*SeasonPeriod, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PreviousSeason.Get(), o.PreviousSeason.IsSet()
+}
+
+// HasPreviousSeason returns a boolean if a field has been set.
+func (o *Overview) HasPreviousSeason() bool {
+	if o != nil && o.PreviousSeason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPreviousSeason gets a reference to the given NullableSeasonPeriod and assigns it to the PreviousSeason field.
+func (o *Overview) SetPreviousSeason(v SeasonPeriod) {
+	o.PreviousSeason.Set(&v)
+}
+// SetPreviousSeasonNil sets the value for PreviousSeason to be an explicit nil
+func (o *Overview) SetPreviousSeasonNil() {
+	o.PreviousSeason.Set(nil)
+}
+
+// UnsetPreviousSeason ensures that no value is present for PreviousSeason, not even an explicit nil
+func (o *Overview) UnsetPreviousSeason() {
+	o.PreviousSeason.Unset()
+}
+
+// GetNextSeason returns the NextSeason field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Overview) GetNextSeason() SeasonPeriod {
+	if o == nil || IsNil(o.NextSeason.Get()) {
+		var ret SeasonPeriod
+		return ret
+	}
+	return *o.NextSeason.Get()
+}
+
+// GetNextSeasonOk returns a tuple with the NextSeason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Overview) GetNextSeasonOk() (*SeasonPeriod, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NextSeason.Get(), o.NextSeason.IsSet()
+}
+
+// HasNextSeason returns a boolean if a field has been set.
+func (o *Overview) HasNextSeason() bool {
+	if o != nil && o.NextSeason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNextSeason gets a reference to the given NullableSeasonPeriod and assigns it to the NextSeason field.
+func (o *Overview) SetNextSeason(v SeasonPeriod) {
+	o.NextSeason.Set(&v)
+}
+// SetNextSeasonNil sets the value for NextSeason to be an explicit nil
+func (o *Overview) SetNextSeasonNil() {
+	o.NextSeason.Set(nil)
+}
+
+// UnsetNextSeason ensures that no value is present for NextSeason, not even an explicit nil
+func (o *Overview) UnsetNextSeason() {
+	o.NextSeason.Unset()
+}
+
 // GetNews returns the News field value
 func (o *Overview) GetNews() []OverviewNews {
 	if o == nil {
@@ -320,6 +411,30 @@ func (o *Overview) SetTerrainParks(v OverviewTerrainParks) {
 	o.TerrainParks = v
 }
 
+// GetPowderAlerts returns the PowderAlerts field value
+func (o *Overview) GetPowderAlerts() PowderAlerts {
+	if o == nil {
+		var ret PowderAlerts
+		return ret
+	}
+
+	return o.PowderAlerts
+}
+
+// GetPowderAlertsOk returns a tuple with the PowderAlerts field value
+// and a boolean to check if the value has been set.
+func (o *Overview) GetPowderAlertsOk() (*PowderAlerts, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PowderAlerts, true
+}
+
+// SetPowderAlerts sets field value
+func (o *Overview) SetPowderAlerts(v PowderAlerts) {
+	o.PowderAlerts = v
+}
+
 func (o Overview) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -338,11 +453,18 @@ func (o Overview) ToMap() (map[string]interface{}, error) {
 		toSerialize["closes_at"] = o.ClosesAt.Get()
 	}
 	toSerialize["season"] = o.Season
+	if o.PreviousSeason.IsSet() {
+		toSerialize["previous_season"] = o.PreviousSeason.Get()
+	}
+	if o.NextSeason.IsSet() {
+		toSerialize["next_season"] = o.NextSeason.Get()
+	}
 	toSerialize["news"] = o.News
 	toSerialize["runs"] = o.Runs
 	toSerialize["lifts"] = o.Lifts
 	toSerialize["summer_trails"] = o.SummerTrails
 	toSerialize["terrain_parks"] = o.TerrainParks
+	toSerialize["powder_alerts"] = o.PowderAlerts
 	return toSerialize, nil
 }
 
@@ -358,6 +480,7 @@ func (o *Overview) UnmarshalJSON(data []byte) (err error) {
 		"lifts",
 		"summer_trails",
 		"terrain_parks",
+		"powder_alerts",
 	}
 
 	allProperties := make(map[string]interface{})

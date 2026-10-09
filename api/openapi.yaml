@@ -53,6 +53,14 @@ paths:
                   opens_at: 09:00
                   closes_at: 16:00
                   season: winter
+                  previous_season:
+                    season_type: summer
+                    starts_on: 2025-06-14
+                    ends_on: 2025-09-28
+                  next_season:
+                    season_type: summer
+                    starts_on: 2026-06-13
+                    ends_on: 2026-09-27
                   news:
                   - uuid: 6f2ea1c4-8b1d-4f9a-9c3e-1a2b3c4d5e6f
                     name: null
@@ -79,6 +87,9 @@ paths:
                     groomed: 2
                     total: 4
                     updated_at: 2026-01-26T16:26:33+00:00
+                  powder_alerts:
+                    text: true
+                    push: true
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -400,6 +411,14 @@ paths:
                 opens_at: 09:00
                 closes_at: 16:00
                 season: winter
+                previous_season:
+                  season_type: summer
+                  starts_on: 2025-06-14
+                  ends_on: 2025-09-28
+                next_season:
+                  season_type: summer
+                  starts_on: 2026-06-13
+                  ends_on: 2026-09-27
                 news:
                 - uuid: 6f2ea1c4-8b1d-4f9a-9c3e-1a2b3c4d5e6f
                   name: null
@@ -426,6 +445,9 @@ paths:
                   groomed: 2
                   total: 4
                   updated_at: 2026-01-26T16:26:33+00:00
+                powder_alerts:
+                  text: true
+                  push: true
               schema:
                 $ref: "#/components/schemas/Overview"
           description: ""
@@ -2149,6 +2171,14 @@ paths:
                   opens_at: 09:00
                   closes_at: 16:00
                   season: winter
+                  previous_season:
+                    season_type: summer
+                    starts_on: 2025-06-14
+                    ends_on: 2025-09-28
+                  next_season:
+                    season_type: summer
+                    starts_on: 2026-06-13
+                    ends_on: 2026-09-27
                   news:
                   - uuid: 6f2ea1c4-8b1d-4f9a-9c3e-1a2b3c4d5e6f
                     name: null
@@ -2175,6 +2205,9 @@ paths:
                     groomed: 2
                     total: 4
                     updated_at: 2026-01-26T16:26:33+00:00
+                  powder_alerts:
+                    text: true
+                    push: true
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -2530,6 +2563,8 @@ components:
           opens_at: opens_at
           closes_at: closes_at
           season: ""
+          previous_season: ""
+          next_season: ""
           news:
           - uuid: uuid
             name: name
@@ -2547,6 +2582,7 @@ components:
           lifts: ""
           summer_trails: ""
           terrain_parks: ""
+          powder_alerts: ""
         snow:
         - uuid: uuid
           area_uuid: area_uuid
@@ -3186,6 +3222,8 @@ components:
         opens_at: opens_at
         closes_at: closes_at
         season: ""
+        previous_season: ""
+        next_season: ""
         news:
         - uuid: uuid
           name: name
@@ -3203,6 +3241,7 @@ components:
         lifts: ""
         summer_trails: ""
         terrain_parks: ""
+        powder_alerts: ""
       properties:
         status:
           allOf:
@@ -3226,6 +3265,22 @@ components:
           allOf:
           - $ref: "#/components/schemas/SeasonType"
           description: "Current operating season (winter, summer, or closed/off-season)."
+        previous_season:
+          allOf:
+          - $ref: "#/components/schemas/SeasonPeriod"
+          description: |-
+            The last season to end before today, from the resort's operating
+             hours of the past year. `null` if there was none. While `season` is
+             `closed`, this and `next_season` tell an off-season that just ended a
+             winter from one leading up to a summer.
+          nullable: true
+        next_season:
+          allOf:
+          - $ref: "#/components/schemas/SeasonPeriod"
+          description: |-
+            The next season to start after today, from the resort's scheduled
+             operating hours. `null` if none is scheduled yet.
+          nullable: true
         news:
           description: |-
             Written news — daily update, announcements, etc. The resort's primary
@@ -3252,9 +3307,14 @@ components:
           allOf:
           - $ref: "#/components/schemas/OverviewTerrainParks"
           description: "Terrain park statistics: counts and last-updated timestamp."
+        powder_alerts:
+          allOf:
+          - $ref: "#/components/schemas/PowderAlerts"
+          description: "Guest powder alerts the resort offers, by channel."
       required:
       - lifts
       - news
+      - powder_alerts
       - runs
       - season
       - status
@@ -3276,6 +3336,28 @@ components:
       - summer
       - closed
       type: string
+    SeasonPeriod:
+      description: "A season the resort's operating hours define: its type and its\
+        \ days."
+      properties:
+        season_type:
+          allOf:
+          - $ref: "#/components/schemas/SeasonType"
+          description: The season's type (`winter` or `summer`; never `closed`).
+        starts_on:
+          description: "The season's first day (YYYY-MM-DD), in the resort's local\
+            \ timezone."
+          format: date
+          type: string
+        ends_on:
+          description: "The season's last day (YYYY-MM-DD), in the resort's local\
+            \ timezone."
+          format: date
+          type: string
+      required:
+      - ends_on
+      - season_type
+      - starts_on
     OverviewNews:
       description: |-
         Written news — daily update, announcements, etc.
@@ -3437,6 +3519,23 @@ components:
       required:
       - total
       - updated_at
+    PowderAlerts:
+      description: |-
+        Guest powder alerts the resort offers. Both are `false` when the resort
+         doesn't offer powder alerts.
+      properties:
+        text:
+          description: |-
+            Guests can sign up for text alerts via
+             `POST /api/notifications/v1/text/powder/signup` on the resort's host.
+          type: boolean
+        push:
+          description: Guests can subscribe to push alerts in the resort's mobile
+            app.
+          type: boolean
+      required:
+      - push
+      - text
     SnowReport:
       description: |-
         Provides current snow conditions for a specific area or the entire resort,

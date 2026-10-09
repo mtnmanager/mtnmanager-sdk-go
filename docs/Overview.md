@@ -8,17 +8,20 @@ Name | Type | Description | Notes
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM).  &#x60;null&#x60; if the resort is not scheduled to open today. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM).  &#x60;null&#x60; if the resort is not scheduled to open today. | [optional] 
 **Season** | [**SeasonType**](SeasonType.md) | Current operating season (winter, summer, or closed/off-season). | 
+**PreviousSeason** | Pointer to [**NullableSeasonPeriod**](SeasonPeriod.md) | The last season to end before today, from the resort&#39;s operating  hours of the past year. &#x60;null&#x60; if there was none. While &#x60;season&#x60; is  &#x60;closed&#x60;, this and &#x60;next_season&#x60; tell an off-season that just ended a  winter from one leading up to a summer. | [optional] 
+**NextSeason** | Pointer to [**NullableSeasonPeriod**](SeasonPeriod.md) | The next season to start after today, from the resort&#39;s scheduled  operating hours. &#x60;null&#x60; if none is scheduled yet. | [optional] 
 **News** | [**[]OverviewNews**](OverviewNews.md) | Written news — daily update, announcements, etc. The resort&#39;s primary  news comes first, followed by any others it publishes, in the order they  were added. News with nothing written is still listed, with empty  &#x60;raw&#x60; and &#x60;html&#x60;. | 
 **Runs** | [**OverviewRuns**](OverviewRuns.md) | Run statistics: counts, acres, and last-updated timestamp. | 
 **Lifts** | [**OverviewLifts**](OverviewLifts.md) | Lift statistics: counts and last-updated timestamp. | 
 **SummerTrails** | [**OverviewSummerTrails**](OverviewSummerTrails.md) | Summer trail statistics: counts and last-updated timestamp. | 
 **TerrainParks** | [**OverviewTerrainParks**](OverviewTerrainParks.md) | Terrain park statistics: counts and last-updated timestamp. | 
+**PowderAlerts** | [**PowderAlerts**](PowderAlerts.md) | Guest powder alerts the resort offers, by channel. | 
 
 ## Methods
 
 ### NewOverview
 
-`func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks, ) *Overview`
+`func NewOverview(status ResortStatus, season SeasonType, news []OverviewNews, runs OverviewRuns, lifts OverviewLifts, summerTrails OverviewSummerTrails, terrainParks OverviewTerrainParks, powderAlerts PowderAlerts, ) *Overview`
 
 NewOverview instantiates a new Overview object
 This constructor will assign default values to properties that have it defined,
@@ -143,6 +146,76 @@ and a boolean to check if the value has been set.
 SetSeason sets Season field to given value.
 
 
+### GetPreviousSeason
+
+`func (o *Overview) GetPreviousSeason() SeasonPeriod`
+
+GetPreviousSeason returns the PreviousSeason field if non-nil, zero value otherwise.
+
+### GetPreviousSeasonOk
+
+`func (o *Overview) GetPreviousSeasonOk() (*SeasonPeriod, bool)`
+
+GetPreviousSeasonOk returns a tuple with the PreviousSeason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreviousSeason
+
+`func (o *Overview) SetPreviousSeason(v SeasonPeriod)`
+
+SetPreviousSeason sets PreviousSeason field to given value.
+
+### HasPreviousSeason
+
+`func (o *Overview) HasPreviousSeason() bool`
+
+HasPreviousSeason returns a boolean if a field has been set.
+
+### SetPreviousSeasonNil
+
+`func (o *Overview) SetPreviousSeasonNil(b bool)`
+
+ SetPreviousSeasonNil sets the value for PreviousSeason to be an explicit nil
+
+### UnsetPreviousSeason
+`func (o *Overview) UnsetPreviousSeason()`
+
+UnsetPreviousSeason ensures that no value is present for PreviousSeason, not even an explicit nil
+### GetNextSeason
+
+`func (o *Overview) GetNextSeason() SeasonPeriod`
+
+GetNextSeason returns the NextSeason field if non-nil, zero value otherwise.
+
+### GetNextSeasonOk
+
+`func (o *Overview) GetNextSeasonOk() (*SeasonPeriod, bool)`
+
+GetNextSeasonOk returns a tuple with the NextSeason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNextSeason
+
+`func (o *Overview) SetNextSeason(v SeasonPeriod)`
+
+SetNextSeason sets NextSeason field to given value.
+
+### HasNextSeason
+
+`func (o *Overview) HasNextSeason() bool`
+
+HasNextSeason returns a boolean if a field has been set.
+
+### SetNextSeasonNil
+
+`func (o *Overview) SetNextSeasonNil(b bool)`
+
+ SetNextSeasonNil sets the value for NextSeason to be an explicit nil
+
+### UnsetNextSeason
+`func (o *Overview) UnsetNextSeason()`
+
+UnsetNextSeason ensures that no value is present for NextSeason, not even an explicit nil
 ### GetNews
 
 `func (o *Overview) GetNews() []OverviewNews`
@@ -241,6 +314,26 @@ and a boolean to check if the value has been set.
 `func (o *Overview) SetTerrainParks(v OverviewTerrainParks)`
 
 SetTerrainParks sets TerrainParks field to given value.
+
+
+### GetPowderAlerts
+
+`func (o *Overview) GetPowderAlerts() PowderAlerts`
+
+GetPowderAlerts returns the PowderAlerts field if non-nil, zero value otherwise.
+
+### GetPowderAlertsOk
+
+`func (o *Overview) GetPowderAlertsOk() (*PowderAlerts, bool)`
+
+GetPowderAlertsOk returns a tuple with the PowderAlerts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPowderAlerts
+
+`func (o *Overview) SetPowderAlerts(v PowderAlerts)`
+
+SetPowderAlerts sets PowderAlerts field to given value.
 
 
 
