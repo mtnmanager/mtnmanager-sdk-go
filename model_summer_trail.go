@@ -21,7 +21,7 @@ import (
 // checks if the SummerTrail type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SummerTrail{}
 
-// SummerTrail Represents a single summer trail at the resort with its current status,  type (e.g. hiking, mountain biking), and optional difficulty rating.
+// SummerTrail Represents a single summer trail at the resort with its current status,  activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
 type SummerTrail struct {
 	// Unique identifier for the trail.
 	Uuid string `json:"uuid"`
@@ -31,10 +31,12 @@ type SummerTrail struct {
 	Slug string `json:"slug"`
 	// Optional trail number.
 	Number NullableInt32 `json:"number,omitempty"`
-	// Type of trail activity (e.g. hiking, mountain_biking). Can have multiple.
-	TrailType []SummerTrailType `json:"trail_type"`
+	// Activities the trail is open to (e.g. hiking, mountain_biking,  on_leash_dogs). Can have multiple.
+	Activities []SummerTrailActivity `json:"activities"`
 	// Difficulty rating of the trail (optional for summer trails).
 	Difficulty NullableSummerTrailDifficulty `json:"difficulty,omitempty"`
+	// The rating system the difficulty is shown in, which picks its icon:  `null` for the standard one, or a mountain-bike freeride / technical one.
+	DifficultyType NullableSummerTrailDifficultyType `json:"difficulty_type,omitempty"`
 	// Current operational status (open, closed, or unknown).
 	Status SummerTrailStatus `json:"status"`
 	// Notes about current conditions on this trail.
@@ -57,12 +59,12 @@ type _SummerTrail SummerTrail
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSummerTrail(uuid string, name string, slug string, trailType []SummerTrailType, status SummerTrailStatus, conditionNotes string, updatedAt time.Time) *SummerTrail {
+func NewSummerTrail(uuid string, name string, slug string, activities []SummerTrailActivity, status SummerTrailStatus, conditionNotes string, updatedAt time.Time) *SummerTrail {
 	this := SummerTrail{}
 	this.Uuid = uuid
 	this.Name = name
 	this.Slug = slug
-	this.TrailType = trailType
+	this.Activities = activities
 	this.Status = status
 	this.ConditionNotes = conditionNotes
 	this.UpdatedAt = updatedAt
@@ -191,28 +193,28 @@ func (o *SummerTrail) UnsetNumber() {
 	o.Number.Unset()
 }
 
-// GetTrailType returns the TrailType field value
-func (o *SummerTrail) GetTrailType() []SummerTrailType {
+// GetActivities returns the Activities field value
+func (o *SummerTrail) GetActivities() []SummerTrailActivity {
 	if o == nil {
-		var ret []SummerTrailType
+		var ret []SummerTrailActivity
 		return ret
 	}
 
-	return o.TrailType
+	return o.Activities
 }
 
-// GetTrailTypeOk returns a tuple with the TrailType field value
+// GetActivitiesOk returns a tuple with the Activities field value
 // and a boolean to check if the value has been set.
-func (o *SummerTrail) GetTrailTypeOk() ([]SummerTrailType, bool) {
+func (o *SummerTrail) GetActivitiesOk() ([]SummerTrailActivity, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.TrailType, true
+	return o.Activities, true
 }
 
-// SetTrailType sets field value
-func (o *SummerTrail) SetTrailType(v []SummerTrailType) {
-	o.TrailType = v
+// SetActivities sets field value
+func (o *SummerTrail) SetActivities(v []SummerTrailActivity) {
+	o.Activities = v
 }
 
 // GetDifficulty returns the Difficulty field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -255,6 +257,48 @@ func (o *SummerTrail) SetDifficultyNil() {
 // UnsetDifficulty ensures that no value is present for Difficulty, not even an explicit nil
 func (o *SummerTrail) UnsetDifficulty() {
 	o.Difficulty.Unset()
+}
+
+// GetDifficultyType returns the DifficultyType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SummerTrail) GetDifficultyType() SummerTrailDifficultyType {
+	if o == nil || IsNil(o.DifficultyType.Get()) {
+		var ret SummerTrailDifficultyType
+		return ret
+	}
+	return *o.DifficultyType.Get()
+}
+
+// GetDifficultyTypeOk returns a tuple with the DifficultyType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SummerTrail) GetDifficultyTypeOk() (*SummerTrailDifficultyType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DifficultyType.Get(), o.DifficultyType.IsSet()
+}
+
+// HasDifficultyType returns a boolean if a field has been set.
+func (o *SummerTrail) HasDifficultyType() bool {
+	if o != nil && o.DifficultyType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDifficultyType gets a reference to the given NullableSummerTrailDifficultyType and assigns it to the DifficultyType field.
+func (o *SummerTrail) SetDifficultyType(v SummerTrailDifficultyType) {
+	o.DifficultyType.Set(&v)
+}
+// SetDifficultyTypeNil sets the value for DifficultyType to be an explicit nil
+func (o *SummerTrail) SetDifficultyTypeNil() {
+	o.DifficultyType.Set(nil)
+}
+
+// UnsetDifficultyType ensures that no value is present for DifficultyType, not even an explicit nil
+func (o *SummerTrail) UnsetDifficultyType() {
+	o.DifficultyType.Unset()
 }
 
 // GetStatus returns the Status field value
@@ -503,9 +547,12 @@ func (o SummerTrail) ToMap() (map[string]interface{}, error) {
 	if o.Number.IsSet() {
 		toSerialize["number"] = o.Number.Get()
 	}
-	toSerialize["trail_type"] = o.TrailType
+	toSerialize["activities"] = o.Activities
 	if o.Difficulty.IsSet() {
 		toSerialize["difficulty"] = o.Difficulty.Get()
+	}
+	if o.DifficultyType.IsSet() {
+		toSerialize["difficulty_type"] = o.DifficultyType.Get()
 	}
 	toSerialize["status"] = o.Status
 	toSerialize["condition_notes"] = o.ConditionNotes
@@ -533,7 +580,7 @@ func (o *SummerTrail) UnmarshalJSON(data []byte) (err error) {
 		"uuid",
 		"name",
 		"slug",
-		"trail_type",
+		"activities",
 		"status",
 		"condition_notes",
 		"updated_at",

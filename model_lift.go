@@ -53,7 +53,7 @@ type Lift struct {
 	VerticalRiseM NullableInt32 `json:"vertical_rise_m,omitempty"`
 	// Current operational status (open, closed, on_hold, or unknown).
 	Status LiftStatus `json:"status"`
-	// Current estimated wait time in minutes, if available.
+	// Current estimated wait time in minutes, if available.  Always `null` when the lift is closed.
 	WaitTimeMinutes NullableInt64 `json:"wait_time_minutes,omitempty"`
 	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.  `null` if the lift has no scheduled hours for today.
 	OpensAt NullableString `json:"opens_at,omitempty"`

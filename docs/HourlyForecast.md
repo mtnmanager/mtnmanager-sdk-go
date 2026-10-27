@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Timestamp** | **time.Time** | Forecast timestamp | 
 **Imperial** | [**HourlyForecastImperial**](HourlyForecastImperial.md) | Measurements in imperial units | 
 **Metric** | [**HourlyForecastMetric**](HourlyForecastMetric.md) | Measurements in metric units | 
-**Condition** | **string** | Human-readable condition | 
+**Condition** | **string** | Human-readable condition, in the &#x60;Accept-Language&#x60; language | 
 **ConditionCode** | [**WeatherConditionCode**](WeatherConditionCode.md) | Weather condition code | 
 **PrecipitationProbability** | Pointer to **NullableInt32** | Probability of precipitation (0-100%) | [optional] 
 

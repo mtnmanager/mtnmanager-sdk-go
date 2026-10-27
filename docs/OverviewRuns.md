@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Open** | Pointer to **NullableInt64** | Number of runs currently open.  Not included if the runs status feature is disabled. | [optional] 
-**Groomed** | Pointer to **NullableInt64** | Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled. | [optional] 
+**Groomed** | Pointer to **NullableInt64** | Number of runs groomed since the resort last closed (see &#x60;groomed_today&#x60;).  Not included if the runs grooming feature is disabled. | [optional] 
 **Total** | **int64** | Total number of runs at the resort. | 
 **OpenAcres** | Pointer to **NullableInt64** | Total acres of open runs.  Not included if acres are not tracked or the runs status feature is disabled. | [optional] 
 **TotalAcres** | Pointer to **NullableInt64** | Total acres of all runs.  Not included if acres are not tracked. | [optional] 

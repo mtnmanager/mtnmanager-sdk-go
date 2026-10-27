@@ -27,7 +27,7 @@ type CurrentWeather struct {
 	Imperial CurrentWeatherImperial `json:"imperial"`
 	// Measurements in metric units
 	Metric CurrentWeatherMetric `json:"metric"`
-	// Human-readable weather condition
+	// Human-readable weather condition, in the `Accept-Language` language
 	Condition string `json:"condition"`
 	// Weather condition code
 	ConditionCode WeatherConditionCode `json:"condition_code"`

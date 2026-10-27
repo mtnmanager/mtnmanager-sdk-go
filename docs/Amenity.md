@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the amenity. | 
 **Category** | [**AmenityCategory**](AmenityCategory.md) | Category classification (e.g. restaurant, lodge, ski_school). | 
 **Website** | **string** | Website URL for the amenity, if available. | 
+**Status** | [**AmenityStatus**](AmenityStatus.md) | Current operational status (open, closed, or unknown). Always &#x60;unknown&#x60;  when the resort doesn&#39;t track amenity status. | 
 **HasOperatingHours** | **bool** | Whether this amenity reports operating hours. When false, clients should  not expect &#x60;opens_at&#x60;, &#x60;closes_at&#x60;, or &#x60;schedules&#x60; to ever be populated. | 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewAmenity
 
-`func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
+`func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
 
 NewAmenity instantiates a new Amenity object
 This constructor will assign default values to properties that have it defined,
@@ -153,6 +154,26 @@ and a boolean to check if the value has been set.
 `func (o *Amenity) SetWebsite(v string)`
 
 SetWebsite sets Website field to given value.
+
+
+### GetStatus
+
+`func (o *Amenity) GetStatus() AmenityStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *Amenity) GetStatusOk() (*AmenityStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Amenity) SetStatus(v AmenityStatus)`
+
+SetStatus sets Status field to given value.
 
 
 ### GetHasOperatingHours

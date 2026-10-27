@@ -8,8 +8,9 @@ Name | Type | Description | Notes
 **Name** | **string** | Display name of the trail. | 
 **Slug** | **string** | URL-friendly name of the trail. | 
 **Number** | Pointer to **NullableInt32** | Optional trail number. | [optional] 
-**TrailType** | [**[]SummerTrailType**](SummerTrailType.md) | Type of trail activity (e.g. hiking, mountain_biking). Can have multiple. | 
+**Activities** | [**[]SummerTrailActivity**](SummerTrailActivity.md) | Activities the trail is open to (e.g. hiking, mountain_biking,  on_leash_dogs). Can have multiple. | 
 **Difficulty** | Pointer to [**NullableSummerTrailDifficulty**](SummerTrailDifficulty.md) | Difficulty rating of the trail (optional for summer trails). | [optional] 
+**DifficultyType** | Pointer to [**NullableSummerTrailDifficultyType**](SummerTrailDifficultyType.md) | The rating system the difficulty is shown in, which picks its icon:  &#x60;null&#x60; for the standard one, or a mountain-bike freeride / technical one. | [optional] 
 **Status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, or unknown). | 
 **ConditionNotes** | **string** | Notes about current conditions on this trail. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this trail belongs to, if assigned. | [optional] 
@@ -22,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewSummerTrail
 
-`func NewSummerTrail(uuid string, name string, slug string, trailType []SummerTrailType, status SummerTrailStatus, conditionNotes string, updatedAt time.Time, ) *SummerTrail`
+`func NewSummerTrail(uuid string, name string, slug string, activities []SummerTrailActivity, status SummerTrailStatus, conditionNotes string, updatedAt time.Time, ) *SummerTrail`
 
 NewSummerTrail instantiates a new SummerTrail object
 This constructor will assign default values to properties that have it defined,
@@ -132,24 +133,24 @@ HasNumber returns a boolean if a field has been set.
 `func (o *SummerTrail) UnsetNumber()`
 
 UnsetNumber ensures that no value is present for Number, not even an explicit nil
-### GetTrailType
+### GetActivities
 
-`func (o *SummerTrail) GetTrailType() []SummerTrailType`
+`func (o *SummerTrail) GetActivities() []SummerTrailActivity`
 
-GetTrailType returns the TrailType field if non-nil, zero value otherwise.
+GetActivities returns the Activities field if non-nil, zero value otherwise.
 
-### GetTrailTypeOk
+### GetActivitiesOk
 
-`func (o *SummerTrail) GetTrailTypeOk() (*[]SummerTrailType, bool)`
+`func (o *SummerTrail) GetActivitiesOk() (*[]SummerTrailActivity, bool)`
 
-GetTrailTypeOk returns a tuple with the TrailType field if it's non-nil, zero value otherwise
+GetActivitiesOk returns a tuple with the Activities field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetTrailType
+### SetActivities
 
-`func (o *SummerTrail) SetTrailType(v []SummerTrailType)`
+`func (o *SummerTrail) SetActivities(v []SummerTrailActivity)`
 
-SetTrailType sets TrailType field to given value.
+SetActivities sets Activities field to given value.
 
 
 ### GetDifficulty
@@ -187,6 +188,41 @@ HasDifficulty returns a boolean if a field has been set.
 `func (o *SummerTrail) UnsetDifficulty()`
 
 UnsetDifficulty ensures that no value is present for Difficulty, not even an explicit nil
+### GetDifficultyType
+
+`func (o *SummerTrail) GetDifficultyType() SummerTrailDifficultyType`
+
+GetDifficultyType returns the DifficultyType field if non-nil, zero value otherwise.
+
+### GetDifficultyTypeOk
+
+`func (o *SummerTrail) GetDifficultyTypeOk() (*SummerTrailDifficultyType, bool)`
+
+GetDifficultyTypeOk returns a tuple with the DifficultyType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDifficultyType
+
+`func (o *SummerTrail) SetDifficultyType(v SummerTrailDifficultyType)`
+
+SetDifficultyType sets DifficultyType field to given value.
+
+### HasDifficultyType
+
+`func (o *SummerTrail) HasDifficultyType() bool`
+
+HasDifficultyType returns a boolean if a field has been set.
+
+### SetDifficultyTypeNil
+
+`func (o *SummerTrail) SetDifficultyTypeNil(b bool)`
+
+ SetDifficultyTypeNil sets the value for DifficultyType to be an explicit nil
+
+### UnsetDifficultyType
+`func (o *SummerTrail) UnsetDifficultyType()`
+
+UnsetDifficultyType ensures that no value is present for DifficultyType, not even an explicit nil
 ### GetStatus
 
 `func (o *SummerTrail) GetStatus() SummerTrailStatus`

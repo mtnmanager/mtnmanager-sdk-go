@@ -29,7 +29,7 @@ type DailyForecast struct {
 	Imperial DailyForecastImperial `json:"imperial"`
 	// Measurements in metric units
 	Metric DailyForecastMetric `json:"metric"`
-	// Human-readable condition
+	// Human-readable condition, in the `Accept-Language` language
 	Condition string `json:"condition"`
 	// Condition code
 	ConditionCode WeatherConditionCode `json:"condition_code"`

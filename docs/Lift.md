@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **VerticalRiseFt** | Pointer to **NullableInt32** | Vertical rise of the lift in feet. | [optional] 
 **VerticalRiseM** | Pointer to **NullableInt32** | Vertical rise of the lift in meters. | [optional] 
 **Status** | [**LiftStatus**](LiftStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
-**WaitTimeMinutes** | Pointer to **NullableInt64** | Current estimated wait time in minutes, if available. | [optional] 
+**WaitTimeMinutes** | Pointer to **NullableInt64** | Current estimated wait time in minutes, if available.  Always &#x60;null&#x60; when the lift is closed. | [optional] 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone.  &#x60;null&#x60; if the lift has no scheduled hours for today. | [optional] 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this lift belongs to, if assigned. | [optional] 

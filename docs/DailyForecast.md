@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Date** | **string** | Date of forecast (YYYY-MM-DD format) | 
 **Imperial** | [**DailyForecastImperial**](DailyForecastImperial.md) | Measurements in imperial units | 
 **Metric** | [**DailyForecastMetric**](DailyForecastMetric.md) | Measurements in metric units | 
-**Condition** | **string** | Human-readable condition | 
+**Condition** | **string** | Human-readable condition, in the &#x60;Accept-Language&#x60; language | 
 **ConditionCode** | [**WeatherConditionCode**](WeatherConditionCode.md) | Condition code | 
 **PrecipitationProbability** | Pointer to **NullableInt32** | Probability of precipitation (0-100%) | [optional] 
 **Sunrise** | **time.Time** | Sunrise time | 

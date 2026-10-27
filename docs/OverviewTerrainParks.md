@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Open** | Pointer to **NullableInt64** | Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled. | [optional] 
-**Groomed** | Pointer to **NullableInt64** | Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled. | [optional] 
+**Groomed** | Pointer to **NullableInt64** | Number of terrain parks groomed since the resort last closed (see  &#x60;groomed_today&#x60;).  Not included if the terrain park grooming feature is disabled. | [optional] 
 **Total** | **int64** | Total number of terrain parks at the resort. | 
 **UpdatedAt** | **time.Time** | When the most recent update to terrain park status was made. | 
 

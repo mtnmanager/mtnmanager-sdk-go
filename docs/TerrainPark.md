@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the terrain park. | 
 **Number** | Pointer to **NullableInt32** | Optional terrain park number. | [optional] 
 **Status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
-**LastGroomed** | Pointer to **NullableTime** | When the terrain park was last groomed.  &#x60;null&#x60; if never groomed, or if the terrain park grooming feature is disabled. | [optional] 
-**GroomedToday** | **bool** | Whether the terrain park was groomed within the last 24 hours. | 
+**LastGroomed** | Pointer to **NullableTime** | When the terrain park was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. | [optional] 
+**GroomedToday** | **bool** | Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours). | 
+**SnowSinceGroomedCm** | Pointer to **NullableInt32** | New snow (cm) reported since &#x60;last_groomed&#x60;. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report. | [optional] 
+**SnowSinceGroomedIn** | Pointer to **NullableInt32** | New snow (inches) reported since &#x60;last_groomed&#x60;; see  &#x60;snow_since_groomed_cm&#x60;. | [optional] 
 **ConditionNotes** | **string** | Notes about current conditions in this terrain park. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this terrain park belongs to, if assigned. | [optional] 
 **AreaName** | Pointer to **NullableString** | Name of the area this terrain park belongs to, if assigned. | [optional] 
@@ -208,6 +210,76 @@ and a boolean to check if the value has been set.
 SetGroomedToday sets GroomedToday field to given value.
 
 
+### GetSnowSinceGroomedCm
+
+`func (o *TerrainPark) GetSnowSinceGroomedCm() int32`
+
+GetSnowSinceGroomedCm returns the SnowSinceGroomedCm field if non-nil, zero value otherwise.
+
+### GetSnowSinceGroomedCmOk
+
+`func (o *TerrainPark) GetSnowSinceGroomedCmOk() (*int32, bool)`
+
+GetSnowSinceGroomedCmOk returns a tuple with the SnowSinceGroomedCm field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowSinceGroomedCm
+
+`func (o *TerrainPark) SetSnowSinceGroomedCm(v int32)`
+
+SetSnowSinceGroomedCm sets SnowSinceGroomedCm field to given value.
+
+### HasSnowSinceGroomedCm
+
+`func (o *TerrainPark) HasSnowSinceGroomedCm() bool`
+
+HasSnowSinceGroomedCm returns a boolean if a field has been set.
+
+### SetSnowSinceGroomedCmNil
+
+`func (o *TerrainPark) SetSnowSinceGroomedCmNil(b bool)`
+
+ SetSnowSinceGroomedCmNil sets the value for SnowSinceGroomedCm to be an explicit nil
+
+### UnsetSnowSinceGroomedCm
+`func (o *TerrainPark) UnsetSnowSinceGroomedCm()`
+
+UnsetSnowSinceGroomedCm ensures that no value is present for SnowSinceGroomedCm, not even an explicit nil
+### GetSnowSinceGroomedIn
+
+`func (o *TerrainPark) GetSnowSinceGroomedIn() int32`
+
+GetSnowSinceGroomedIn returns the SnowSinceGroomedIn field if non-nil, zero value otherwise.
+
+### GetSnowSinceGroomedInOk
+
+`func (o *TerrainPark) GetSnowSinceGroomedInOk() (*int32, bool)`
+
+GetSnowSinceGroomedInOk returns a tuple with the SnowSinceGroomedIn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSnowSinceGroomedIn
+
+`func (o *TerrainPark) SetSnowSinceGroomedIn(v int32)`
+
+SetSnowSinceGroomedIn sets SnowSinceGroomedIn field to given value.
+
+### HasSnowSinceGroomedIn
+
+`func (o *TerrainPark) HasSnowSinceGroomedIn() bool`
+
+HasSnowSinceGroomedIn returns a boolean if a field has been set.
+
+### SetSnowSinceGroomedInNil
+
+`func (o *TerrainPark) SetSnowSinceGroomedInNil(b bool)`
+
+ SetSnowSinceGroomedInNil sets the value for SnowSinceGroomedIn to be an explicit nil
+
+### UnsetSnowSinceGroomedIn
+`func (o *TerrainPark) UnsetSnowSinceGroomedIn()`
+
+UnsetSnowSinceGroomedIn ensures that no value is present for SnowSinceGroomedIn, not even an explicit nil
 ### GetConditionNotes
 
 `func (o *TerrainPark) GetConditionNotes() string`

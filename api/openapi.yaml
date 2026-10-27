@@ -24,9 +24,9 @@ paths:
       operationId: getFullReport
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -47,7 +47,7 @@ paths:
                   timezone: America/Denver
                   region: na
                   unit_preference: imperial
-                  logo_url: https://powder-mountain.mtnmanager.net/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
+                  logo_url: https://powder-mountain.mtnmanager.net/_mtn/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
                 status:
                   status: open
                   opens_at: 09:00
@@ -145,6 +145,8 @@ paths:
                   status: open
                   last_groomed: 2026-01-26T16:26:33+00:00
                   groomed_today: true
+                  snow_since_groomed_cm: 5
+                  snow_since_groomed_in: 2
                   snowmaking: true
                   night_skiing: false
                   condition_notes: Groomer's choice!
@@ -161,6 +163,8 @@ paths:
                   status: open
                   last_groomed: 2026-01-26T16:26:33+00:00
                   groomed_today: true
+                  snow_since_groomed_cm: 5
+                  snow_since_groomed_in: 2
                   condition_notes: "Freshly shaped features, park crew out daily"
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
@@ -192,9 +196,12 @@ paths:
                   name: Ridgeline Trail
                   slug: ridgeline-trail
                   number: 1
-                  trail_type:
+                  activities:
                   - hiking
+                  - mountain_biking
+                  - on_leash_dogs
                   difficulty: intermediate
+                  difficulty_type: null
                   status: open
                   condition_notes: Trail is dry and in excellent condition.
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -309,10 +316,10 @@ paths:
                 webcams:
                 - uuid: 11111111-1111-1111-1111-111111111111
                   name: Summit
-                  latest_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest.webp
-                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
-                  latest_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
-                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
+                  latest_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest.webp
+                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
+                  latest_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
+                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
                   latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   has_history: true
@@ -391,9 +398,9 @@ paths:
       operationId: getOverview
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -521,9 +528,9 @@ paths:
       operationId: getRuns
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -545,6 +552,8 @@ paths:
                 status: open
                 last_groomed: 2026-01-26T16:26:33+00:00
                 groomed_today: true
+                snow_since_groomed_cm: 5
+                snow_since_groomed_in: 2
                 snowmaking: true
                 night_skiing: false
                 condition_notes: Groomer's choice!
@@ -628,9 +637,9 @@ paths:
       operationId: getSummerTrails
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -648,9 +657,12 @@ paths:
                 name: Ridgeline Trail
                 slug: ridgeline-trail
                 number: 1
-                trail_type:
+                activities:
                 - hiking
+                - mountain_biking
+                - on_leash_dogs
                 difficulty: intermediate
+                difficulty_type: null
                 status: open
                 condition_notes: Trail is dry and in excellent condition.
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -662,7 +674,7 @@ paths:
                 $ref: "#/components/schemas/SummerTrailsResponse"
           description: |-
             List of all summer trails at the resort with their current status,
-             type (e.g. hiking, mountain biking), and optional difficulty rating.
+             activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
         "403":
           description: Endpoint not available for this resort. Feature may be disabled.
         "404":
@@ -733,9 +745,9 @@ paths:
       operationId: getLifts
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -847,9 +859,9 @@ paths:
       operationId: getSnow
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -961,9 +973,9 @@ paths:
       operationId: getHours
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1090,9 +1102,9 @@ paths:
       operationId: getWeather
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1244,9 +1256,9 @@ paths:
       operationId: getWebcams
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1262,10 +1274,10 @@ paths:
               example:
               - uuid: 11111111-1111-1111-1111-111111111111
                 name: Summit
-                latest_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest.webp
-                latest_daylight_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
-                latest_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
-                latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
+                latest_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest.webp
+                latest_daylight_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
+                latest_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
+                latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
                 latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 has_history: true
@@ -1378,9 +1390,9 @@ paths:
           type: string
         style: form
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1397,16 +1409,16 @@ paths:
                 webcam_uuid: 11111111-1111-1111-1111-111111111111
                 frames:
                 - captured_at: 2026-01-15T16:00:00+00:00
-                  image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T16:00:00Z.webp
-                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T16:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T16:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T16:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T15:00:00+00:00
-                  image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T15:00:00Z.webp
-                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T15:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T15:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T15:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                 - captured_at: 2026-01-15T14:00:00+00:00
-                  image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T14:00:00Z.webp
-                  thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T14:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
+                  image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T14:00:00Z.webp
+                  thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/archive/2026-01-15T14:00:00Z-thumb_NAgCBIDnF9d4iHh_cYgAAAAAAA.webp
                   thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
               schema:
                 $ref: "#/components/schemas/WebcamHistoryResponse"
@@ -1481,9 +1493,9 @@ paths:
       operationId: getTerrainParks
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1504,6 +1516,8 @@ paths:
                 status: open
                 last_groomed: 2026-01-26T16:26:33+00:00
                 groomed_today: true
+                snow_since_groomed_cm: 5
+                snow_since_groomed_in: 2
                 condition_notes: "Freshly shaped features, park crew out daily"
                 area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                 area_name: Lower Mountain
@@ -1594,9 +1608,9 @@ paths:
       operationId: getParkingLots
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1694,9 +1708,9 @@ paths:
       operationId: getAmenities
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1716,6 +1730,7 @@ paths:
                 description: Mid-mountain lodge with full-service restaurant and bar.
                 category: lodge
                 website: https://example.com/summit-lodge
+                status: open
                 has_operating_hours: true
                 opens_at: 09:00
                 closes_at: 16:00
@@ -1794,9 +1809,9 @@ paths:
       operationId: getTrailMaps
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -1815,7 +1830,7 @@ paths:
                 season: winter
                 display_order: 0
                 version: 1
-                hosted_url: https://powder-mountain.mtnmanager.net/trail-map/550e8400-e29b-41d4-a716-446655440000
+                hosted_url: https://powder-mountain.mtnmanager.net/_mtn/trail-map/550e8400-e29b-41d4-a716-446655440000
                 geo_bounds:
                   min_lat: 39.6403
                   max_lat: 39.65
@@ -1909,9 +1924,9 @@ paths:
           type: string
         style: simple
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -2017,9 +2032,9 @@ paths:
           type: integer
         style: simple
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -2039,7 +2054,7 @@ paths:
                 season: winter
                 display_order: 0
                 version: 1
-                background_image_url: https://powder-mountain.mtnmanager.net/asset/trail-map/a1b2c3d4-e5f6-7890-abcd-ef1234567890.png
+                background_image_url: https://powder-mountain.mtnmanager.net/_mtn/asset/trail-map/a1b2c3d4-e5f6-7890-abcd-ef1234567890.png
                 elements:
                 - type: lift
                   uuid: b2c3d4e5-f6a7-8901-bcde-f12345678901
@@ -2139,9 +2154,9 @@ paths:
       operationId: getAppReport
       parameters:
       - description: "Preferred language and optional region for human-readable strings\
-          \ in the response (e.g. operating hours summaries). Supports `en`, `fr`,\
-          \ `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`.\
-          \ Defaults to English when omitted or unsupported."
+          \ in the response (e.g. operating hours summaries, weather conditions).\
+          \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
+          \ as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported."
         example: fr-CA
         explode: false
         in: header
@@ -2165,7 +2180,7 @@ paths:
                   timezone: America/Denver
                   region: na
                   unit_preference: imperial
-                  logo_url: https://powder-mountain.mtnmanager.net/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
+                  logo_url: https://powder-mountain.mtnmanager.net/_mtn/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
                 status:
                   status: open
                   opens_at: 09:00
@@ -2263,6 +2278,8 @@ paths:
                   status: open
                   last_groomed: 2026-01-26T16:26:33+00:00
                   groomed_today: true
+                  snow_since_groomed_cm: 5
+                  snow_since_groomed_in: 2
                   snowmaking: true
                   night_skiing: false
                   condition_notes: Groomer's choice!
@@ -2279,6 +2296,8 @@ paths:
                   status: open
                   last_groomed: 2026-01-26T16:26:33+00:00
                   groomed_today: true
+                  snow_since_groomed_cm: 5
+                  snow_since_groomed_in: 2
                   condition_notes: "Freshly shaped features, park crew out daily"
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
                   area_name: Lower Mountain
@@ -2310,9 +2329,12 @@ paths:
                   name: Ridgeline Trail
                   slug: ridgeline-trail
                   number: 1
-                  trail_type:
+                  activities:
                   - hiking
+                  - mountain_biking
+                  - on_leash_dogs
                   difficulty: intermediate
+                  difficulty_type: null
                   status: open
                   condition_notes: Trail is dry and in excellent condition.
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -2427,10 +2449,10 @@ paths:
                 webcams:
                 - uuid: 11111111-1111-1111-1111-111111111111
                   name: Summit
-                  latest_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest.webp
-                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
-                  latest_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
-                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
+                  latest_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest.webp
+                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
+                  latest_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
+                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
                   latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
                   has_history: true
@@ -2444,6 +2466,7 @@ paths:
                     bar.
                   category: lodge
                   website: https://example.com/summit-lodge
+                  status: open
                   has_operating_hours: true
                   opens_at: 09:00
                   closes_at: 16:00
@@ -2455,7 +2478,7 @@ paths:
                   season: winter
                   display_order: 0
                   version: 1
-                  hosted_url: https://powder-mountain.mtnmanager.net/trail-map/550e8400-e29b-41d4-a716-446655440000
+                  hosted_url: https://powder-mountain.mtnmanager.net/_mtn/trail-map/550e8400-e29b-41d4-a716-446655440000
                   geo_bounds:
                     min_lat: 39.6403
                     max_lat: 39.65
@@ -2471,7 +2494,7 @@ paths:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   title: Season Passes On Sale
                   subtitle: Lock in early-bird pricing through October.
-                  image_url: https://powder-mountain.mtnmanager.net/asset/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
+                  image_url: https://powder-mountain.mtnmanager.net/_mtn/asset/mobile-app/banner/a1b2c3d4-e5f6-7890-abcd-ef1234567890.webp
                   url: https://example.com/season-passes
                   thumb_hash: 1QcSHQRnh493V4dIh4eXh1h4kJUI
               schema:
@@ -2670,12 +2693,14 @@ components:
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
+          snow_since_groomed_cm: 1
+          snow_since_groomed_in: 1
           snowmaking: true
           night_skiing: true
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 1
+          area_display_order: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2690,12 +2715,14 @@ components:
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
+          snow_since_groomed_cm: 1
+          snow_since_groomed_in: 1
           snowmaking: true
           night_skiing: true
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 1
+          area_display_order: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2706,19 +2733,21 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 1
+          number: 7
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
+          snow_since_groomed_cm: 1
+          snow_since_groomed_in: 4
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 6
+          area_display_order: 5
           features:
           - uuid: uuid
             name: name
             slug: slug
-            number: 7
+            number: 9
             feature_type: ""
             size: ""
             status: ""
@@ -2730,7 +2759,7 @@ components:
           - uuid: uuid
             name: name
             slug: slug
-            number: 7
+            number: 9
             feature_type: ""
             size: ""
             status: ""
@@ -2748,19 +2777,21 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 1
+          number: 7
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
+          snow_since_groomed_cm: 1
+          snow_since_groomed_in: 4
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 6
+          area_display_order: 5
           features:
           - uuid: uuid
             name: name
             slug: slug
-            number: 7
+            number: 9
             feature_type: ""
             size: ""
             status: ""
@@ -2772,7 +2803,7 @@ components:
           - uuid: uuid
             name: name
             slug: slug
-            number: 7
+            number: 9
             feature_type: ""
             size: ""
             status: ""
@@ -2792,7 +2823,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 1
+          capacity: 9
           shuttle: true
           paid: true
           reservation_required: true
@@ -2806,7 +2837,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 1
+          capacity: 9
           shuttle: true
           paid: true
           reservation_required: true
@@ -2820,16 +2851,17 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 4
-          trail_type:
+          number: 6
+          activities:
           - hiking
           - hiking
           difficulty: ""
+          difficulty_type: ""
           status: ""
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 8
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2839,16 +2871,17 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 4
-          trail_type:
+          number: 6
+          activities:
           - hiking
           - hiking
           difficulty: ""
+          difficulty_type: ""
           status: ""
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 8
           updated_at: 2000-01-23T04:56:07.000+00:00
           images:
           - url: url
@@ -2980,20 +3013,20 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
           - timestamp: 2000-01-23T04:56:07.000+00:00
             imperial: ""
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
           daily_forecast:
           - date: 2000-01-23
             imperial: ""
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 6
+            precipitation_probability: 3
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           - date: 2000-01-23
@@ -3001,7 +3034,7 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 6
+            precipitation_probability: 3
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           attribution: attribution
@@ -3016,20 +3049,20 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
           - timestamp: 2000-01-23T04:56:07.000+00:00
             imperial: ""
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 9
+            precipitation_probability: 6
           daily_forecast:
           - date: 2000-01-23
             imperial: ""
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 6
+            precipitation_probability: 3
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           - date: 2000-01-23
@@ -3037,7 +3070,7 @@ components:
             metric: ""
             condition: condition
             condition_code: ""
-            precipitation_probability: 6
+            precipitation_probability: 3
             sunrise: 2000-01-23T04:56:07.000+00:00
             sunset: 2000-01-23T04:56:07.000+00:00
           attribution: attribution
@@ -3047,7 +3080,7 @@ components:
           name: name
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 8
+          area_display_order: 6
           latest_image_url: latest_image_url
           latest_daylight_image_url: latest_daylight_image_url
           latest_thumb_url: latest_thumb_url
@@ -3055,14 +3088,14 @@ components:
           latest_thumbhash: latest_thumbhash
           latest_daylight_thumbhash: latest_daylight_thumbhash
           has_history: true
-          elevation_ft: 9
-          elevation_m: 6
+          elevation_ft: 1
+          elevation_m: 2
           last_frame_at: last_frame_at
         - uuid: uuid
           name: name
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 8
+          area_display_order: 6
           latest_image_url: latest_image_url
           latest_daylight_image_url: latest_daylight_image_url
           latest_thumb_url: latest_thumb_url
@@ -3070,8 +3103,8 @@ components:
           latest_thumbhash: latest_thumbhash
           latest_daylight_thumbhash: latest_daylight_thumbhash
           has_history: true
-          elevation_ft: 9
-          elevation_m: 6
+          elevation_ft: 1
+          elevation_m: 2
           last_frame_at: last_frame_at
       properties:
         resort:
@@ -3418,7 +3451,7 @@ components:
           type: integer
         groomed:
           description: |-
-            Number of runs groomed within the last 24 hours.
+            Number of runs groomed since the resort last closed (see `groomed_today`).
              Not included if the runs grooming feature is disabled.
           format: int64
           nullable: true
@@ -3503,7 +3536,8 @@ components:
           type: integer
         groomed:
           description: |-
-            Number of terrain parks groomed within the last 24 hours.
+            Number of terrain parks groomed since the resort last closed (see
+             `groomed_today`).
              Not included if the terrain park grooming feature is disabled.
           format: int64
           nullable: true
@@ -3796,7 +3830,9 @@ components:
           - $ref: "#/components/schemas/LiftStatus"
           description: "Current operational status (open, closed, on_hold, or unknown)."
         wait_time_minutes:
-          description: "Current estimated wait time in minutes, if available."
+          description: |-
+            Current estimated wait time in minutes, if available.
+             Always `null` when the lift is closed.
           format: int64
           nullable: true
           type: integer
@@ -3903,12 +3939,14 @@ components:
         status: ""
         last_groomed: 2000-01-23T04:56:07.000+00:00
         groomed_today: true
+        snow_since_groomed_cm: 1
+        snow_since_groomed_in: 1
         snowmaking: true
         night_skiing: true
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 1
+        area_display_order: 6
         updated_at: 2000-01-23T04:56:07.000+00:00
         images:
         - url: url
@@ -3941,13 +3979,31 @@ components:
         last_groomed:
           description: |-
             When the run was last groomed.
-             `null` if never groomed, or if the runs grooming feature is disabled.
+             `null` if not groomed this season (since the snow year began: Aug 1, or
+             Jan 1 in the southern hemisphere), or if the runs grooming feature is disabled.
           format: date-time
           nullable: true
           type: string
         groomed_today:
-          description: Whether the run was groomed within the last 24 hours.
+          description: |-
+            Whether the run has been groomed since the resort last closed (or,
+             for a resort with no operating hours set, within the last 24 hours).
           type: boolean
+        snow_since_groomed_cm:
+          description: |-
+            New snow (cm) reported since `last_groomed` ("groomed with fresh").
+             Absent unless the run was groomed within the last 24 hours and the
+             resort keeps a snow report.
+          format: int32
+          nullable: true
+          type: integer
+        snow_since_groomed_in:
+          description: |-
+            New snow (inches) reported since `last_groomed`; see
+             `snow_since_groomed_cm`.
+          format: int32
+          nullable: true
+          type: integer
         snowmaking:
           description: Whether the run has snowmaking capabilities.
           type: boolean
@@ -4017,19 +4073,21 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 1
+        number: 7
         status: ""
         last_groomed: 2000-01-23T04:56:07.000+00:00
         groomed_today: true
+        snow_since_groomed_cm: 1
+        snow_since_groomed_in: 4
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 6
+        area_display_order: 5
         features:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 9
           feature_type: ""
           size: ""
           status: ""
@@ -4041,7 +4099,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 9
           feature_type: ""
           size: ""
           status: ""
@@ -4078,13 +4136,31 @@ components:
         last_groomed:
           description: |-
             When the terrain park was last groomed.
-             `null` if never groomed, or if the terrain park grooming feature is disabled.
+             `null` if not groomed this season (since the snow year began: Aug 1, or
+             Jan 1 in the southern hemisphere), or if the terrain park grooming feature
+             is disabled.
           format: date-time
           nullable: true
           type: string
         groomed_today:
-          description: Whether the terrain park was groomed within the last 24 hours.
+          description: |-
+            Whether the terrain park has been groomed since the resort last closed
+             (or, for a resort with no operating hours set, within the last 24 hours).
           type: boolean
+        snow_since_groomed_cm:
+          description: |-
+            New snow (cm) reported since `last_groomed`. Absent unless the park
+             was groomed within the last 24 hours and the resort keeps a snow report.
+          format: int32
+          nullable: true
+          type: integer
+        snow_since_groomed_in:
+          description: |-
+            New snow (inches) reported since `last_groomed`; see
+             `snow_since_groomed_cm`.
+          format: int32
+          nullable: true
+          type: integer
         condition_notes:
           description: Notes about current conditions in this terrain park.
           type: string
@@ -4144,7 +4220,7 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 7
+        number: 9
         feature_type: ""
         size: ""
         status: ""
@@ -4182,7 +4258,8 @@ components:
           - $ref: "#/components/schemas/TerrainParkFeatureStatus"
           description: |-
             Current operational status (open, closed, or unknown).
-             `unknown` unless the terrain park feature status is enabled.
+             `unknown` unless the terrain park feature status is enabled; `closed`
+             whenever its terrain park is closed.
         images:
           default: []
           description: |-
@@ -4228,7 +4305,7 @@ components:
         name: name
         slug: slug
         status: ""
-        capacity: 1
+        capacity: 9
         shuttle: true
         paid: true
         reservation_required: true
@@ -4297,21 +4374,22 @@ components:
     SummerTrail:
       description: |-
         Represents a single summer trail at the resort with its current status,
-         type (e.g. hiking, mountain biking), and optional difficulty rating.
+         activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
       example:
         uuid: uuid
         name: name
         slug: slug
-        number: 4
-        trail_type:
+        number: 6
+        activities:
         - hiking
         - hiking
         difficulty: ""
+        difficulty_type: ""
         status: ""
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 5
+        area_display_order: 8
         updated_at: 2000-01-23T04:56:07.000+00:00
         images:
         - url: url
@@ -4333,17 +4411,25 @@ components:
           format: int32
           nullable: true
           type: integer
-        trail_type:
-          description: "Type of trail activity (e.g. hiking, mountain_biking). Can\
-            \ have multiple."
+        activities:
+          description: |-
+            Activities the trail is open to (e.g. hiking, mountain_biking,
+             on_leash_dogs). Can have multiple.
           items:
-            $ref: "#/components/schemas/SummerTrailType"
+            $ref: "#/components/schemas/SummerTrailActivity"
           type: array
           default: null
         difficulty:
           allOf:
           - $ref: "#/components/schemas/SummerTrailDifficulty"
           description: Difficulty rating of the trail (optional for summer trails).
+          nullable: true
+        difficulty_type:
+          allOf:
+          - $ref: "#/components/schemas/SummerTrailDifficultyType"
+          description: |-
+            The rating system the difficulty is shown in, which picks its icon:
+             `null` for the standard one, or a mountain-bike freeride / technical one.
           nullable: true
         status:
           allOf:
@@ -4379,17 +4465,25 @@ components:
             $ref: "#/components/schemas/EntityImage"
           type: array
       required:
+      - activities
       - condition_notes
       - name
       - slug
       - status
-      - trail_type
       - updated_at
       - uuid
-    SummerTrailType:
+    SummerTrailActivity:
+      description: "An activity (or permission, like dogs) a summer trail is open\
+        \ to."
       enum:
       - hiking
       - mountain_biking
+      - e_biking
+      - gravel_biking
+      - trail_running
+      - on_leash_dogs
+      - off_leash_dogs
+      - horseback_riding
       type: string
     SummerTrailDifficulty:
       description: Difficulty rating for a summer trail.
@@ -4398,6 +4492,14 @@ components:
       - intermediate
       - advanced
       - expert
+      type: string
+    SummerTrailDifficultyType:
+      description: |-
+        The rating system a summer trail's difficulty is shown in, which picks its
+         difficulty icon. `None` (on the trail) is the standard system.
+      enum:
+      - mtb_freeride
+      - mtb_technical
       type: string
     SummerTrailStatus:
       description: Operational status of a summer trail.
@@ -4834,20 +4936,20 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 9
+          precipitation_probability: 6
         - timestamp: 2000-01-23T04:56:07.000+00:00
           imperial: ""
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 9
+          precipitation_probability: 6
         daily_forecast:
         - date: 2000-01-23
           imperial: ""
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 6
+          precipitation_probability: 3
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         - date: 2000-01-23
@@ -4855,7 +4957,7 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 6
+          precipitation_probability: 3
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         attribution: attribution
@@ -4916,7 +5018,8 @@ components:
           - $ref: "#/components/schemas/CurrentWeatherMetric"
           description: Measurements in metric units
         condition:
-          description: Human-readable weather condition
+          description: "Human-readable weather condition, in the `Accept-Language`\
+            \ language"
           type: string
         condition_code:
           allOf:
@@ -5058,7 +5161,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 9
+        precipitation_probability: 6
       properties:
         timestamp:
           description: Forecast timestamp
@@ -5073,7 +5176,7 @@ components:
           - $ref: "#/components/schemas/HourlyForecastMetric"
           description: Measurements in metric units
         condition:
-          description: Human-readable condition
+          description: "Human-readable condition, in the `Accept-Language` language"
           type: string
         condition_code:
           allOf:
@@ -5166,7 +5269,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 6
+        precipitation_probability: 3
         sunrise: 2000-01-23T04:56:07.000+00:00
         sunset: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -5183,7 +5286,7 @@ components:
           - $ref: "#/components/schemas/DailyForecastMetric"
           description: Measurements in metric units
         condition:
-          description: Human-readable condition
+          description: "Human-readable condition, in the `Accept-Language` language"
           type: string
         condition_code:
           allOf:
@@ -5288,7 +5391,7 @@ components:
         name: name
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 8
+        area_display_order: 6
         latest_image_url: latest_image_url
         latest_daylight_image_url: latest_daylight_image_url
         latest_thumb_url: latest_thumb_url
@@ -5296,8 +5399,8 @@ components:
         latest_thumbhash: latest_thumbhash
         latest_daylight_thumbhash: latest_daylight_thumbhash
         has_history: true
-        elevation_ft: 9
-        elevation_m: 6
+        elevation_ft: 1
+        elevation_m: 2
         last_frame_at: last_frame_at
       properties:
         uuid:
@@ -5376,7 +5479,7 @@ components:
     SummerTrailsResponse:
       description: |-
         List of all summer trails at the resort with their current status,
-         type (e.g. hiking, mountain biking), and optional difficulty rating.
+         activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
       items:
         $ref: "#/components/schemas/SummerTrail"
       type: array
@@ -5500,6 +5603,7 @@ components:
         slug: slug
         category: ""
         website: website
+        status: ""
         has_operating_hours: true
         opens_at: opens_at
         closes_at: closes_at
@@ -5551,6 +5655,12 @@ components:
         website:
           description: "Website URL for the amenity, if available."
           type: string
+        status:
+          allOf:
+          - $ref: "#/components/schemas/AmenityStatus"
+          description: |-
+            Current operational status (open, closed, or unknown). Always `unknown`
+             when the resort doesn't track amenity status.
         has_operating_hours:
           description: |-
             Whether this amenity reports operating hours. When false, clients should
@@ -5589,8 +5699,16 @@ components:
       - name
       - schedules
       - slug
+      - status
       - uuid
       - website
+    AmenityStatus:
+      description: Operational status of an amenity.
+      enum:
+      - open
+      - closed
+      - unknown
+      type: string
     TrailMapsResponse:
       description: List of trail maps.
       items:

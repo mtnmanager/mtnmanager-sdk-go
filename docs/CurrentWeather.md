@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Imperial** | [**CurrentWeatherImperial**](CurrentWeatherImperial.md) | Measurements in imperial units | 
 **Metric** | [**CurrentWeatherMetric**](CurrentWeatherMetric.md) | Measurements in metric units | 
-**Condition** | **string** | Human-readable weather condition | 
+**Condition** | **string** | Human-readable weather condition, in the &#x60;Accept-Language&#x60; language | 
 **ConditionCode** | [**WeatherConditionCode**](WeatherConditionCode.md) | Weather condition code | 
 **WindDirection** | Pointer to **NullableInt32** | Wind direction in degrees (0-360) | [optional] 
 **WindDirectionCardinal** | Pointer to **NullableString** | Wind direction as cardinal direction (N, NE, E, SE, S, SW, W, NW) | [optional] 

@@ -34,6 +34,8 @@ type Amenity struct {
 	Category AmenityCategory `json:"category"`
 	// Website URL for the amenity, if available.
 	Website string `json:"website"`
+	// Current operational status (open, closed, or unknown). Always `unknown`  when the resort doesn't track amenity status.
+	Status AmenityStatus `json:"status"`
 	// Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
 	HasOperatingHours bool `json:"has_operating_hours"`
 	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.
@@ -52,7 +54,7 @@ type _Amenity Amenity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, hasOperatingHours bool, schedules []Schedule) *Amenity {
+func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, schedules []Schedule) *Amenity {
 	this := Amenity{}
 	this.Description = description
 	this.Uuid = uuid
@@ -60,6 +62,7 @@ func NewAmenity(description string, uuid string, name string, slug string, categ
 	this.Slug = slug
 	this.Category = category
 	this.Website = website
+	this.Status = status
 	this.HasOperatingHours = hasOperatingHours
 	this.Schedules = schedules
 	return &this
@@ -215,6 +218,30 @@ func (o *Amenity) GetWebsiteOk() (*string, bool) {
 // SetWebsite sets field value
 func (o *Amenity) SetWebsite(v string) {
 	o.Website = v
+}
+
+// GetStatus returns the Status field value
+func (o *Amenity) GetStatus() AmenityStatus {
+	if o == nil {
+		var ret AmenityStatus
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *Amenity) GetStatusOk() (*AmenityStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *Amenity) SetStatus(v AmenityStatus) {
+	o.Status = v
 }
 
 // GetHasOperatingHours returns the HasOperatingHours field value
@@ -397,6 +424,7 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 	toSerialize["slug"] = o.Slug
 	toSerialize["category"] = o.Category
 	toSerialize["website"] = o.Website
+	toSerialize["status"] = o.Status
 	toSerialize["has_operating_hours"] = o.HasOperatingHours
 	if o.OpensAt.IsSet() {
 		toSerialize["opens_at"] = o.OpensAt.Get()
@@ -422,6 +450,7 @@ func (o *Amenity) UnmarshalJSON(data []byte) (err error) {
 		"slug",
 		"category",
 		"website",
+		"status",
 		"has_operating_hours",
 		"schedules",
 	}

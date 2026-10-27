@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Number** | Pointer to **NullableInt32** | Optional feature number. | [optional] 
 **FeatureType** | [**FeatureType**](FeatureType.md) | Type of feature (jump, box, rail, other). | 
 **Size** | Pointer to [**NullableFeatureSize**](FeatureSize.md) | Optional size rating of the feature (S, M, L, XL). | [optional] 
-**Status** | [**TerrainParkFeatureStatus**](TerrainParkFeatureStatus.md) | Current operational status (open, closed, or unknown).  &#x60;unknown&#x60; unless the terrain park feature status is enabled. | 
+**Status** | [**TerrainParkFeatureStatus**](TerrainParkFeatureStatus.md) | Current operational status (open, closed, or unknown).  &#x60;unknown&#x60; unless the terrain park feature status is enabled; &#x60;closed&#x60;  whenever its terrain park is closed. | 
 **Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods

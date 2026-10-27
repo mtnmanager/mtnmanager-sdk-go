@@ -25,7 +25,7 @@ var _ MappedNullable = &OverviewRuns{}
 type OverviewRuns struct {
 	// Number of runs currently open.  Not included if the runs status feature is disabled.
 	Open NullableInt64 `json:"open,omitempty"`
-	// Number of runs groomed within the last 24 hours.  Not included if the runs grooming feature is disabled.
+	// Number of runs groomed since the resort last closed (see `groomed_today`).  Not included if the runs grooming feature is disabled.
 	Groomed NullableInt64 `json:"groomed,omitempty"`
 	// Total number of runs at the resort.
 	Total int64 `json:"total"`

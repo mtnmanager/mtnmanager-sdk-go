@@ -202,7 +202,7 @@ type ApiGetAmenitiesRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetAmenitiesRequest) AcceptLanguage(acceptLanguage string) ApiGetAmenitiesRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -309,7 +309,7 @@ type ApiGetFullReportRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetFullReportRequest) AcceptLanguage(acceptLanguage string) ApiGetFullReportRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -416,7 +416,7 @@ type ApiGetHoursRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetHoursRequest) AcceptLanguage(acceptLanguage string) ApiGetHoursRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -523,7 +523,7 @@ type ApiGetLiftsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetLiftsRequest) AcceptLanguage(acceptLanguage string) ApiGetLiftsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -630,7 +630,7 @@ type ApiGetOverviewRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetOverviewRequest) AcceptLanguage(acceptLanguage string) ApiGetOverviewRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -737,7 +737,7 @@ type ApiGetParkingLotsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetParkingLotsRequest) AcceptLanguage(acceptLanguage string) ApiGetParkingLotsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -844,7 +844,7 @@ type ApiGetRunsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetRunsRequest) AcceptLanguage(acceptLanguage string) ApiGetRunsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -951,7 +951,7 @@ type ApiGetSnowRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetSnowRequest) AcceptLanguage(acceptLanguage string) ApiGetSnowRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1058,7 +1058,7 @@ type ApiGetSummerTrailsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetSummerTrailsRequest) AcceptLanguage(acceptLanguage string) ApiGetSummerTrailsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1165,7 +1165,7 @@ type ApiGetTerrainParksRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetTerrainParksRequest) AcceptLanguage(acceptLanguage string) ApiGetTerrainParksRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1272,7 +1272,7 @@ type ApiGetTrailMapsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetTrailMapsRequest) AcceptLanguage(acceptLanguage string) ApiGetTrailMapsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1379,7 +1379,7 @@ type ApiGetWeatherRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetWeatherRequest) AcceptLanguage(acceptLanguage string) ApiGetWeatherRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1501,7 +1501,7 @@ func (r ApiGetWebcamHistoryRequest) To(to string) ApiGetWebcamHistoryRequest {
 	return r
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetWebcamHistoryRequest) AcceptLanguage(acceptLanguage string) ApiGetWebcamHistoryRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r
@@ -1625,7 +1625,7 @@ type ApiGetWebcamsRequest struct {
 	acceptLanguage *string
 }
 
-// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
+// Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported.
 func (r ApiGetWebcamsRequest) AcceptLanguage(acceptLanguage string) ApiGetWebcamsRequest {
 	r.acceptLanguage = &acceptLanguage
 	return r

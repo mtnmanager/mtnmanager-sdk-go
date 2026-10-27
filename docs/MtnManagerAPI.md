@@ -40,7 +40,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -65,7 +65,7 @@ Other parameters are passed through a pointer to a apiGetAmenitiesRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -104,7 +104,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -129,7 +129,7 @@ Other parameters are passed through a pointer to a apiGetFullReportRequest struc
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -168,7 +168,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -193,7 +193,7 @@ Other parameters are passed through a pointer to a apiGetHoursRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -232,7 +232,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -257,7 +257,7 @@ Other parameters are passed through a pointer to a apiGetLiftsRequest struct via
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -296,7 +296,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -321,7 +321,7 @@ Other parameters are passed through a pointer to a apiGetOverviewRequest struct 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -360,7 +360,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -385,7 +385,7 @@ Other parameters are passed through a pointer to a apiGetParkingLotsRequest stru
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -424,7 +424,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -449,7 +449,7 @@ Other parameters are passed through a pointer to a apiGetRunsRequest struct via 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -488,7 +488,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -513,7 +513,7 @@ Other parameters are passed through a pointer to a apiGetSnowRequest struct via 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -552,7 +552,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -577,7 +577,7 @@ Other parameters are passed through a pointer to a apiGetSummerTrailsRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -616,7 +616,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -641,7 +641,7 @@ Other parameters are passed through a pointer to a apiGetTerrainParksRequest str
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -680,7 +680,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -705,7 +705,7 @@ Other parameters are passed through a pointer to a apiGetTrailMapsRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -744,7 +744,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -769,7 +769,7 @@ Other parameters are passed through a pointer to a apiGetWeatherRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -811,7 +811,7 @@ func main() {
 	uuid := "uuid_example" // string | Resource UUID
 	from := "from_example" // string | Inclusive lower bound on `captured_at` (RFC 3339). (optional) (default to "null")
 	to := "to_example" // string | Inclusive upper bound on `captured_at` (RFC 3339). (optional) (default to "null")
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -843,7 +843,7 @@ Name | Type | Description  | Notes
 
  **from** | **string** | Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
  **to** | **string** | Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 
@@ -882,7 +882,7 @@ import (
 )
 
 func main() {
-	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
+	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -907,7 +907,7 @@ Other parameters are passed through a pointer to a apiGetWebcamsRequest struct v
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
+ **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type
 

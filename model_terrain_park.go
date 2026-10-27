@@ -33,10 +33,14 @@ type TerrainPark struct {
 	Number NullableInt32 `json:"number,omitempty"`
 	// Current operational status (open, closed, or unknown).
 	Status TerrainParkStatus `json:"status"`
-	// When the terrain park was last groomed.  `null` if never groomed, or if the terrain park grooming feature is disabled.
+	// When the terrain park was last groomed.  `null` if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled.
 	LastGroomed NullableTime `json:"last_groomed,omitempty"`
-	// Whether the terrain park was groomed within the last 24 hours.
+	// Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours).
 	GroomedToday bool `json:"groomed_today"`
+	// New snow (cm) reported since `last_groomed`. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report.
+	SnowSinceGroomedCm NullableInt32 `json:"snow_since_groomed_cm,omitempty"`
+	// New snow (inches) reported since `last_groomed`; see  `snow_since_groomed_cm`.
+	SnowSinceGroomedIn NullableInt32 `json:"snow_since_groomed_in,omitempty"`
 	// Notes about current conditions in this terrain park.
 	ConditionNotes string `json:"condition_notes"`
 	// UUID of the area this terrain park belongs to, if assigned.
@@ -282,6 +286,90 @@ func (o *TerrainPark) GetGroomedTodayOk() (*bool, bool) {
 // SetGroomedToday sets field value
 func (o *TerrainPark) SetGroomedToday(v bool) {
 	o.GroomedToday = v
+}
+
+// GetSnowSinceGroomedCm returns the SnowSinceGroomedCm field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerrainPark) GetSnowSinceGroomedCm() int32 {
+	if o == nil || IsNil(o.SnowSinceGroomedCm.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.SnowSinceGroomedCm.Get()
+}
+
+// GetSnowSinceGroomedCmOk returns a tuple with the SnowSinceGroomedCm field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerrainPark) GetSnowSinceGroomedCmOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SnowSinceGroomedCm.Get(), o.SnowSinceGroomedCm.IsSet()
+}
+
+// HasSnowSinceGroomedCm returns a boolean if a field has been set.
+func (o *TerrainPark) HasSnowSinceGroomedCm() bool {
+	if o != nil && o.SnowSinceGroomedCm.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowSinceGroomedCm gets a reference to the given NullableInt32 and assigns it to the SnowSinceGroomedCm field.
+func (o *TerrainPark) SetSnowSinceGroomedCm(v int32) {
+	o.SnowSinceGroomedCm.Set(&v)
+}
+// SetSnowSinceGroomedCmNil sets the value for SnowSinceGroomedCm to be an explicit nil
+func (o *TerrainPark) SetSnowSinceGroomedCmNil() {
+	o.SnowSinceGroomedCm.Set(nil)
+}
+
+// UnsetSnowSinceGroomedCm ensures that no value is present for SnowSinceGroomedCm, not even an explicit nil
+func (o *TerrainPark) UnsetSnowSinceGroomedCm() {
+	o.SnowSinceGroomedCm.Unset()
+}
+
+// GetSnowSinceGroomedIn returns the SnowSinceGroomedIn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerrainPark) GetSnowSinceGroomedIn() int32 {
+	if o == nil || IsNil(o.SnowSinceGroomedIn.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.SnowSinceGroomedIn.Get()
+}
+
+// GetSnowSinceGroomedInOk returns a tuple with the SnowSinceGroomedIn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerrainPark) GetSnowSinceGroomedInOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SnowSinceGroomedIn.Get(), o.SnowSinceGroomedIn.IsSet()
+}
+
+// HasSnowSinceGroomedIn returns a boolean if a field has been set.
+func (o *TerrainPark) HasSnowSinceGroomedIn() bool {
+	if o != nil && o.SnowSinceGroomedIn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSnowSinceGroomedIn gets a reference to the given NullableInt32 and assigns it to the SnowSinceGroomedIn field.
+func (o *TerrainPark) SetSnowSinceGroomedIn(v int32) {
+	o.SnowSinceGroomedIn.Set(&v)
+}
+// SetSnowSinceGroomedInNil sets the value for SnowSinceGroomedIn to be an explicit nil
+func (o *TerrainPark) SetSnowSinceGroomedInNil() {
+	o.SnowSinceGroomedIn.Set(nil)
+}
+
+// UnsetSnowSinceGroomedIn ensures that no value is present for SnowSinceGroomedIn, not even an explicit nil
+func (o *TerrainPark) UnsetSnowSinceGroomedIn() {
+	o.SnowSinceGroomedIn.Unset()
 }
 
 // GetConditionNotes returns the ConditionNotes field value
@@ -535,6 +623,12 @@ func (o TerrainPark) ToMap() (map[string]interface{}, error) {
 		toSerialize["last_groomed"] = o.LastGroomed.Get()
 	}
 	toSerialize["groomed_today"] = o.GroomedToday
+	if o.SnowSinceGroomedCm.IsSet() {
+		toSerialize["snow_since_groomed_cm"] = o.SnowSinceGroomedCm.Get()
+	}
+	if o.SnowSinceGroomedIn.IsSet() {
+		toSerialize["snow_since_groomed_in"] = o.SnowSinceGroomedIn.Get()
+	}
 	toSerialize["condition_notes"] = o.ConditionNotes
 	if o.AreaUuid.IsSet() {
 		toSerialize["area_uuid"] = o.AreaUuid.Get()

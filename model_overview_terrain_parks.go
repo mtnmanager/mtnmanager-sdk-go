@@ -25,7 +25,7 @@ var _ MappedNullable = &OverviewTerrainParks{}
 type OverviewTerrainParks struct {
 	// Number of terrain parks currently open.  Not included if the terrain parks status feature is disabled.
 	Open NullableInt64 `json:"open,omitempty"`
-	// Number of terrain parks groomed within the last 24 hours.  Not included if the terrain park grooming feature is disabled.
+	// Number of terrain parks groomed since the resort last closed (see  `groomed_today`).  Not included if the terrain park grooming feature is disabled.
 	Groomed NullableInt64 `json:"groomed,omitempty"`
 	// Total number of terrain parks at the resort.
 	Total int64 `json:"total"`

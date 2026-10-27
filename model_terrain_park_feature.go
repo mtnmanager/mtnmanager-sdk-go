@@ -34,7 +34,7 @@ type TerrainParkFeature struct {
 	FeatureType FeatureType `json:"feature_type"`
 	// Optional size rating of the feature (S, M, L, XL).
 	Size NullableFeatureSize `json:"size,omitempty"`
-	// Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled.
+	// Current operational status (open, closed, or unknown).  `unknown` unless the terrain park feature status is enabled; `closed`  whenever its terrain park is closed.
 	Status TerrainParkFeatureStatus `json:"status"`
 	// Images attached to this feature, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
 	Images []EntityImage `json:"images,omitempty"`
