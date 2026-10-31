@@ -69,6 +69,7 @@ Class | Method | HTTP request | Description
  - [HourlyForecastImperial](docs/HourlyForecastImperial.md)
  - [HourlyForecastMetric](docs/HourlyForecastMetric.md)
  - [LabelOffset](docs/LabelOffset.md)
+ - [Language](docs/Language.md)
  - [Lift](docs/Lift.md)
  - [LiftStatus](docs/LiftStatus.md)
  - [LiftType](docs/LiftType.md)
@@ -127,7 +128,6 @@ Class | Method | HTTP request | Description
  - [WeatherConditionCode](docs/WeatherConditionCode.md)
  - [Webcam](docs/Webcam.md)
  - [WebcamHistoryFrame](docs/WebcamHistoryFrame.md)
- - [WebcamHistoryQuery](docs/WebcamHistoryQuery.md)
  - [WebcamHistoryResponse](docs/WebcamHistoryResponse.md)
 
 

@@ -13,8 +13,6 @@ Name | Type | Description | Notes
 **ParkingLots** | [**[]ParkingLot**](ParkingLot.md) | List of all parking lots at the resort with their current status and amenities. | 
 **SummerTrails** | [**[]SummerTrail**](SummerTrail.md) | List of all summer trails at the resort with their current status,  type (e.g. hiking, mountain biking), and optional difficulty rating. | 
 **Hours** | [**OperatingHours**](OperatingHours.md) |  | 
-**Weather** | Pointer to [**[]Weather**](Weather.md) | Weather entries: the resort-wide entry first (current + forecast), then  any per-area current-conditions entries. Empty when weather is disabled  or unavailable. | [optional] 
-**Webcams** | Pointer to [**[]Webcam**](Webcam.md) | Enabled webcams with the URLs of their current and last-daylight frames  plus thumbnails. Empty when the resort does not have webcams. | [optional] 
 
 ## Methods
 
@@ -214,56 +212,6 @@ and a boolean to check if the value has been set.
 
 SetHours sets Hours field to given value.
 
-
-### GetWeather
-
-`func (o *FullReport) GetWeather() []Weather`
-
-GetWeather returns the Weather field if non-nil, zero value otherwise.
-
-### GetWeatherOk
-
-`func (o *FullReport) GetWeatherOk() (*[]Weather, bool)`
-
-GetWeatherOk returns a tuple with the Weather field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWeather
-
-`func (o *FullReport) SetWeather(v []Weather)`
-
-SetWeather sets Weather field to given value.
-
-### HasWeather
-
-`func (o *FullReport) HasWeather() bool`
-
-HasWeather returns a boolean if a field has been set.
-
-### GetWebcams
-
-`func (o *FullReport) GetWebcams() []Webcam`
-
-GetWebcams returns the Webcams field if non-nil, zero value otherwise.
-
-### GetWebcamsOk
-
-`func (o *FullReport) GetWebcamsOk() (*[]Webcam, bool)`
-
-GetWebcamsOk returns a tuple with the Webcams field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWebcams
-
-`func (o *FullReport) SetWebcams(v []Webcam)`
-
-SetWebcams sets Webcams field to given value.
-
-### HasWebcams
-
-`func (o *FullReport) HasWebcams() bool`
-
-HasWebcams returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

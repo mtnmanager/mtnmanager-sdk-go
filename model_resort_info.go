@@ -34,6 +34,8 @@ type ResortInfo struct {
 	Region Region `json:"region"`
 	// Preferred unit system for measurements (metric or imperial).
 	UnitPreference UnitPreference `json:"unit_preference"`
+	// The language human-readable strings are served in when the request's  `Accept-Language` names no supported language.
+	DefaultLanguage Language `json:"default_language"`
 	// Full public URL to the resort's logo image. `null` if no logo is set.
 	LogoUrl NullableString `json:"logo_url,omitempty"`
 }
@@ -44,7 +46,7 @@ type _ResortInfo ResortInfo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference) *ResortInfo {
+func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference, defaultLanguage Language) *ResortInfo {
 	this := ResortInfo{}
 	this.Uuid = uuid
 	this.Name = name
@@ -52,6 +54,7 @@ func NewResortInfo(uuid string, name string, slug string, timezone string, regio
 	this.Timezone = timezone
 	this.Region = region
 	this.UnitPreference = unitPreference
+	this.DefaultLanguage = defaultLanguage
 	return &this
 }
 
@@ -207,6 +210,30 @@ func (o *ResortInfo) SetUnitPreference(v UnitPreference) {
 	o.UnitPreference = v
 }
 
+// GetDefaultLanguage returns the DefaultLanguage field value
+func (o *ResortInfo) GetDefaultLanguage() Language {
+	if o == nil {
+		var ret Language
+		return ret
+	}
+
+	return o.DefaultLanguage
+}
+
+// GetDefaultLanguageOk returns a tuple with the DefaultLanguage field value
+// and a boolean to check if the value has been set.
+func (o *ResortInfo) GetDefaultLanguageOk() (*Language, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DefaultLanguage, true
+}
+
+// SetDefaultLanguage sets field value
+func (o *ResortInfo) SetDefaultLanguage(v Language) {
+	o.DefaultLanguage = v
+}
+
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ResortInfo) GetLogoUrl() string {
 	if o == nil || IsNil(o.LogoUrl.Get()) {
@@ -265,6 +292,7 @@ func (o ResortInfo) ToMap() (map[string]interface{}, error) {
 	toSerialize["timezone"] = o.Timezone
 	toSerialize["region"] = o.Region
 	toSerialize["unit_preference"] = o.UnitPreference
+	toSerialize["default_language"] = o.DefaultLanguage
 	if o.LogoUrl.IsSet() {
 		toSerialize["logo_url"] = o.LogoUrl.Get()
 	}
@@ -282,6 +310,7 @@ func (o *ResortInfo) UnmarshalJSON(data []byte) (err error) {
 		"timezone",
 		"region",
 		"unit_preference",
+		"default_language",
 	}
 
 	allProperties := make(map[string]interface{})

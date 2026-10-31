@@ -791,7 +791,7 @@ No authorization required
 
 ## GetWebcamHistory
 
-> WebcamHistoryResponse GetWebcamHistory(ctx, uuid).From(from).To(to).AcceptLanguage(acceptLanguage).Execute()
+> WebcamHistoryResponse GetWebcamHistory(ctx, uuid).AcceptLanguage(acceptLanguage).Execute()
 
 Get webcam history
 
@@ -809,13 +809,11 @@ import (
 
 func main() {
 	uuid := "uuid_example" // string | Resource UUID
-	from := "from_example" // string | Inclusive lower bound on `captured_at` (RFC 3339). (optional) (default to "null")
-	to := "to_example" // string | Inclusive upper bound on `captured_at` (RFC 3339). (optional) (default to "null")
 	acceptLanguage := "fr-CA" // string | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such as `fr-CA` or `de-CH`. Defaults to English when omitted or unsupported. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MtnManagerAPI.GetWebcamHistory(context.Background(), uuid).From(from).To(to).AcceptLanguage(acceptLanguage).Execute()
+	resp, r, err := apiClient.MtnManagerAPI.GetWebcamHistory(context.Background(), uuid).AcceptLanguage(acceptLanguage).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `MtnManagerAPI.GetWebcamHistory``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -841,8 +839,6 @@ Other parameters are passed through a pointer to a apiGetWebcamHistoryRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **from** | **string** | Inclusive lower bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
- **to** | **string** | Inclusive upper bound on &#x60;captured_at&#x60; (RFC 3339). | [default to &quot;null&quot;]
  **acceptLanguage** | **string** | Preferred language and optional region for human-readable strings in the response (e.g. operating hours summaries, weather conditions). Supports &#x60;en&#x60;, &#x60;fr&#x60;, &#x60;de&#x60;, &#x60;it&#x60;, and &#x60;es&#x60;, with optional region tags such as &#x60;fr-CA&#x60; or &#x60;de-CH&#x60;. Defaults to English when omitted or unsupported. | 
 
 ### Return type

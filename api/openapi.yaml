@@ -47,6 +47,7 @@ paths:
                   timezone: America/Denver
                   region: na
                   unit_preference: imperial
+                  default_language: en
                   logo_url: https://powder-mountain.mtnmanager.net/_mtn/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
                 status:
                   status: open
@@ -250,81 +251,6 @@ paths:
                       effective_string: "November 1, 2024 to April 15, 2025"
                       effective_from: 2024-11-01
                       effective_to: 2025-04-15
-                weather:
-                - current:
-                    imperial:
-                      temperature: 28
-                      feels_like: 22
-                      snowfall: 2
-                      precipitation: 0
-                      wind_speed: 12
-                      wind_gust: 18
-                    metric:
-                      temperature: -2
-                      feels_like: -6
-                      snowfall: 5
-                      precipitation: 0
-                      wind_speed: 19
-                      wind_gust: 29
-                    condition: Light Snow
-                    condition_code: Snow
-                    wind_direction: 270
-                    wind_direction_cardinal: W
-                    timestamp: 2026-01-26T16:26:33+00:00
-                  hourly_forecast:
-                  - timestamp: 2026-01-26T16:26:33+00:00
-                    imperial:
-                      temperature: 28
-                      feels_like: 22
-                      snowfall: 1
-                      precipitation: 0
-                      wind_speed: 12
-                      wind_gust: 18
-                    metric:
-                      temperature: -2
-                      feels_like: -6
-                      snowfall: 3
-                      precipitation: 0
-                      wind_speed: 19
-                      wind_gust: 29
-                    condition: Light Snow
-                    condition_code: Snow
-                    precipitation_probability: 65
-                  daily_forecast:
-                  - date: 2024-12-26
-                    imperial:
-                      temperature_high: 32
-                      temperature_low: 18
-                      snowfall_total: 6
-                      precipitation_total: 0
-                      wind_speed_max: 25
-                      wind_gust_max: 35
-                    metric:
-                      temperature_high: 0
-                      temperature_low: -8
-                      snowfall_total: 15
-                      precipitation_total: 0
-                      wind_speed_max: 40
-                      wind_gust_max: 56
-                    condition: Light Snow
-                    condition_code: Snow
-                    precipitation_probability: 65
-                    sunrise: 2026-01-26T16:26:33+00:00
-                    sunset: 2026-01-26T16:26:33+00:00
-                  attribution: https://developer.apple.com/weatherkit/data-source-attribution/
-                  updated_at: 2026-01-26T16:26:33+00:00
-                webcams:
-                - uuid: 11111111-1111-1111-1111-111111111111
-                  name: Summit
-                  latest_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest.webp
-                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
-                  latest_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
-                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
-                  latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
-                  latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
-                  has_history: true
-                  elevation_ft: 10800
-                  elevation_m: 3292
               schema:
                 $ref: "#/components/schemas/FullReport"
           description: ""
@@ -1367,28 +1293,6 @@ paths:
           description: Resource UUID
           type: string
         style: simple
-      - description: Inclusive lower bound on `captured_at` (RFC 3339).
-        explode: true
-        in: query
-        name: from
-        required: false
-        schema:
-          default: null
-          description: Inclusive lower bound on `captured_at` (RFC 3339).
-          nullable: true
-          type: string
-        style: form
-      - description: Inclusive upper bound on `captured_at` (RFC 3339).
-        explode: true
-        in: query
-        name: to
-        required: false
-        schema:
-          default: null
-          description: Inclusive upper bound on `captured_at` (RFC 3339).
-          nullable: true
-          type: string
-        style: form
       - description: "Preferred language and optional region for human-readable strings\
           \ in the response (e.g. operating hours summaries, weather conditions).\
           \ Supports `en`, `fr`, `de`, `it`, and `es`, with optional region tags such\
@@ -2180,6 +2084,7 @@ paths:
                   timezone: America/Denver
                   region: na
                   unit_preference: imperial
+                  default_language: en
                   logo_url: https://powder-mountain.mtnmanager.net/_mtn/asset/logo/7c9e6679-7425-40de-944b-e07fc1f90ae7.png
                 status:
                   status: open
@@ -2383,81 +2288,6 @@ paths:
                       effective_string: "November 1, 2024 to April 15, 2025"
                       effective_from: 2024-11-01
                       effective_to: 2025-04-15
-                weather:
-                - current:
-                    imperial:
-                      temperature: 28
-                      feels_like: 22
-                      snowfall: 2
-                      precipitation: 0
-                      wind_speed: 12
-                      wind_gust: 18
-                    metric:
-                      temperature: -2
-                      feels_like: -6
-                      snowfall: 5
-                      precipitation: 0
-                      wind_speed: 19
-                      wind_gust: 29
-                    condition: Light Snow
-                    condition_code: Snow
-                    wind_direction: 270
-                    wind_direction_cardinal: W
-                    timestamp: 2026-01-26T16:26:33+00:00
-                  hourly_forecast:
-                  - timestamp: 2026-01-26T16:26:33+00:00
-                    imperial:
-                      temperature: 28
-                      feels_like: 22
-                      snowfall: 1
-                      precipitation: 0
-                      wind_speed: 12
-                      wind_gust: 18
-                    metric:
-                      temperature: -2
-                      feels_like: -6
-                      snowfall: 3
-                      precipitation: 0
-                      wind_speed: 19
-                      wind_gust: 29
-                    condition: Light Snow
-                    condition_code: Snow
-                    precipitation_probability: 65
-                  daily_forecast:
-                  - date: 2024-12-26
-                    imperial:
-                      temperature_high: 32
-                      temperature_low: 18
-                      snowfall_total: 6
-                      precipitation_total: 0
-                      wind_speed_max: 25
-                      wind_gust_max: 35
-                    metric:
-                      temperature_high: 0
-                      temperature_low: -8
-                      snowfall_total: 15
-                      precipitation_total: 0
-                      wind_speed_max: 40
-                      wind_gust_max: 56
-                    condition: Light Snow
-                    condition_code: Snow
-                    precipitation_probability: 65
-                    sunrise: 2026-01-26T16:26:33+00:00
-                    sunset: 2026-01-26T16:26:33+00:00
-                  attribution: https://developer.apple.com/weatherkit/data-source-attribution/
-                  updated_at: 2026-01-26T16:26:33+00:00
-                webcams:
-                - uuid: 11111111-1111-1111-1111-111111111111
-                  name: Summit
-                  latest_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest.webp
-                  latest_daylight_image_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight.webp
-                  latest_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-thumb.webp
-                  latest_daylight_thumb_url: https://powder-mountain.mtnmanager.net/_mtn/webcam/11111111-1111-1111-1111-111111111111/latest-daylight-thumb.webp
-                  latest_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
-                  latest_daylight_thumbhash: NAgCBIDnF9d4iHh/cYgAAAAAAA==
-                  has_history: true
-                  elevation_ft: 10800
-                  elevation_m: 3292
                 amenities:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   name: Summit Lodge
@@ -2571,7 +2401,8 @@ components:
     FullReport:
       description: |-
         The all-in-one endpoint containing the full report — resort information, current status,
-         runs, lifts, snow, terrain parks, summer trails, hours, and weather.
+         runs, lifts, snow, terrain parks, summer trails, and hours. Weather and webcams
+         have their own endpoints.
       example:
         resort:
           uuid: uuid
@@ -2580,6 +2411,7 @@ components:
           timezone: timezone
           region: ""
           unit_preference: ""
+          default_language: ""
           logo_url: logo_url
         status:
           status: ""
@@ -3002,110 +2834,6 @@ components:
               effective_string: effective_string
               effective_from: 2000-01-23
               effective_to: 2000-01-23
-        weather:
-        - area_uuid: area_uuid
-          area_name: area_name
-          area_display_order: 9
-          current: ""
-          hourly_forecast:
-          - timestamp: 2000-01-23T04:56:07.000+00:00
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 6
-          - timestamp: 2000-01-23T04:56:07.000+00:00
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 6
-          daily_forecast:
-          - date: 2000-01-23
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 3
-            sunrise: 2000-01-23T04:56:07.000+00:00
-            sunset: 2000-01-23T04:56:07.000+00:00
-          - date: 2000-01-23
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 3
-            sunrise: 2000-01-23T04:56:07.000+00:00
-            sunset: 2000-01-23T04:56:07.000+00:00
-          attribution: attribution
-          updated_at: 2000-01-23T04:56:07.000+00:00
-        - area_uuid: area_uuid
-          area_name: area_name
-          area_display_order: 9
-          current: ""
-          hourly_forecast:
-          - timestamp: 2000-01-23T04:56:07.000+00:00
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 6
-          - timestamp: 2000-01-23T04:56:07.000+00:00
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 6
-          daily_forecast:
-          - date: 2000-01-23
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 3
-            sunrise: 2000-01-23T04:56:07.000+00:00
-            sunset: 2000-01-23T04:56:07.000+00:00
-          - date: 2000-01-23
-            imperial: ""
-            metric: ""
-            condition: condition
-            condition_code: ""
-            precipitation_probability: 3
-            sunrise: 2000-01-23T04:56:07.000+00:00
-            sunset: 2000-01-23T04:56:07.000+00:00
-          attribution: attribution
-          updated_at: 2000-01-23T04:56:07.000+00:00
-        webcams:
-        - uuid: uuid
-          name: name
-          area_uuid: area_uuid
-          area_name: area_name
-          area_display_order: 6
-          latest_image_url: latest_image_url
-          latest_daylight_image_url: latest_daylight_image_url
-          latest_thumb_url: latest_thumb_url
-          latest_daylight_thumb_url: latest_daylight_thumb_url
-          latest_thumbhash: latest_thumbhash
-          latest_daylight_thumbhash: latest_daylight_thumbhash
-          has_history: true
-          elevation_ft: 1
-          elevation_m: 2
-          last_frame_at: last_frame_at
-        - uuid: uuid
-          name: name
-          area_uuid: area_uuid
-          area_name: area_name
-          area_display_order: 6
-          latest_image_url: latest_image_url
-          latest_daylight_image_url: latest_daylight_image_url
-          latest_thumb_url: latest_thumb_url
-          latest_daylight_thumb_url: latest_daylight_thumb_url
-          latest_thumbhash: latest_thumbhash
-          latest_daylight_thumbhash: latest_daylight_thumbhash
-          has_history: true
-          elevation_ft: 1
-          elevation_m: 2
-          last_frame_at: last_frame_at
       properties:
         resort:
           $ref: "#/components/schemas/ResortInfo"
@@ -3162,23 +2890,6 @@ components:
           default: null
         hours:
           $ref: "#/components/schemas/OperatingHours"
-        weather:
-          description: |-
-            Weather entries: the resort-wide entry first (current + forecast), then
-             any per-area current-conditions entries. Empty when weather is disabled
-             or unavailable.
-          items:
-            $ref: "#/components/schemas/Weather"
-          type: array
-          default: null
-        webcams:
-          description: |-
-            Enabled webcams with the URLs of their current and last-daylight frames
-             plus thumbnails. Empty when the resort does not have webcams.
-          items:
-            $ref: "#/components/schemas/Webcam"
-          type: array
-          default: null
       required:
       - hours
       - lifts
@@ -3199,6 +2910,7 @@ components:
         timezone: timezone
         region: ""
         unit_preference: ""
+        default_language: ""
         logo_url: logo_url
       properties:
         uuid:
@@ -3221,12 +2933,19 @@ components:
           allOf:
           - $ref: "#/components/schemas/UnitPreference"
           description: Preferred unit system for measurements (metric or imperial).
+        default_language:
+          allOf:
+          - $ref: "#/components/schemas/Language"
+          description: |-
+            The language human-readable strings are served in when the request's
+             `Accept-Language` names no supported language.
         logo_url:
           description: Full public URL to the resort's logo image. `null` if no logo
             is set.
           nullable: true
           type: string
       required:
+      - default_language
       - name
       - region
       - slug
@@ -3244,6 +2963,19 @@ components:
       enum:
       - metric
       - imperial
+      type: string
+    Language:
+      description: |-
+        A language we localize into. Serializes as its BCP-47 tag (`"en"`, `"fr"`,
+         `"de-CH"`, …), which is also the form a resort's news languages are stored
+         and keyed in, and the label an account's `default_language` is stored as.
+      enum:
+      - en
+      - fr
+      - de
+      - de-CH
+      - it
+      - es
       type: string
     Overview:
       description: |-
@@ -4921,6 +4653,40 @@ components:
       - name
       - schedules
       - uuid
+    RunsResponse:
+      description: |-
+        List of all runs at the resort with their current status,
+         grooming information, and difficulty rating.
+      items:
+        $ref: "#/components/schemas/Run"
+      type: array
+      default: null
+    SummerTrailsResponse:
+      description: |-
+        List of all summer trails at the resort with their current status,
+         activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
+      items:
+        $ref: "#/components/schemas/SummerTrail"
+      type: array
+      default: null
+    LiftsResponse:
+      description: |-
+        List of all lifts at the resort with their current operational status,
+         type, and optional wait time information.
+      items:
+        $ref: "#/components/schemas/Lift"
+      type: array
+      default: null
+    SnowResponse:
+      description: |-
+        Provides current snow conditions including base depth, surface conditions,
+         and snowfall totals in both metric and imperial units.
+
+         May contain multiple, representing different reporting areas.
+      items:
+        $ref: "#/components/schemas/SnowReport"
+      type: array
+      default: null
     Weather:
       description: |-
         Current and forecasted weather conditions for the resort's location.
@@ -4928,7 +4694,7 @@ components:
       example:
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 9
+        area_display_order: 0
         current: ""
         hourly_forecast:
         - timestamp: 2000-01-23T04:56:07.000+00:00
@@ -4949,7 +4715,7 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 3
+          precipitation_probability: 1
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         - date: 2000-01-23
@@ -4957,7 +4723,7 @@ components:
           metric: ""
           condition: condition
           condition_code: ""
-          precipitation_probability: 3
+          precipitation_probability: 1
           sunrise: 2000-01-23T04:56:07.000+00:00
           sunset: 2000-01-23T04:56:07.000+00:00
         attribution: attribution
@@ -5269,7 +5035,7 @@ components:
         metric: ""
         condition: condition
         condition_code: ""
-        precipitation_probability: 3
+        precipitation_probability: 1
         sunrise: 2000-01-23T04:56:07.000+00:00
         sunset: 2000-01-23T04:56:07.000+00:00
       properties:
@@ -5391,7 +5157,7 @@ components:
         name: name
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 6
+        area_display_order: 0
         latest_image_url: latest_image_url
         latest_daylight_image_url: latest_daylight_image_url
         latest_thumb_url: latest_thumb_url
@@ -5399,8 +5165,8 @@ components:
         latest_thumbhash: latest_thumbhash
         latest_daylight_thumbhash: latest_daylight_thumbhash
         has_history: true
-        elevation_ft: 1
-        elevation_m: 2
+        elevation_ft: 6
+        elevation_m: 1
         last_frame_at: last_frame_at
       properties:
         uuid:
@@ -5468,40 +5234,6 @@ components:
       - latest_thumbhash
       - name
       - uuid
-    RunsResponse:
-      description: |-
-        List of all runs at the resort with their current status,
-         grooming information, and difficulty rating.
-      items:
-        $ref: "#/components/schemas/Run"
-      type: array
-      default: null
-    SummerTrailsResponse:
-      description: |-
-        List of all summer trails at the resort with their current status,
-         activities (e.g. hiking, mountain biking, dogs), and optional difficulty rating.
-      items:
-        $ref: "#/components/schemas/SummerTrail"
-      type: array
-      default: null
-    LiftsResponse:
-      description: |-
-        List of all lifts at the resort with their current operational status,
-         type, and optional wait time information.
-      items:
-        $ref: "#/components/schemas/Lift"
-      type: array
-      default: null
-    SnowResponse:
-      description: |-
-        Provides current snow conditions including base depth, surface conditions,
-         and snowfall totals in both metric and imperial units.
-
-         May contain multiple, representing different reporting areas.
-      items:
-        $ref: "#/components/schemas/SnowReport"
-      type: array
-      default: null
     PathUuid:
       properties:
         uuid:
@@ -5509,19 +5241,6 @@ components:
           type: string
       required:
       - uuid
-    WebcamHistoryQuery:
-      description: Query parameters for the history endpoint.
-      properties:
-        from:
-          description: Inclusive lower bound on `captured_at` (RFC 3339).
-          nullable: true
-          type: string
-          default: null
-        to:
-          description: Inclusive upper bound on `captured_at` (RFC 3339).
-          nullable: true
-          type: string
-          default: null
     WebcamHistoryResponse:
       description: The historical frame listing for one camera over a time range.
       example:
@@ -6080,23 +5799,6 @@ components:
           default: null
         hours:
           $ref: "#/components/schemas/OperatingHours"
-        weather:
-          description: |-
-            Weather entries: the resort-wide entry first (current + forecast), then
-             any per-area current-conditions entries. Empty when weather is disabled
-             or unavailable.
-          items:
-            $ref: "#/components/schemas/Weather"
-          type: array
-          default: null
-        webcams:
-          description: |-
-            Enabled webcams with the URLs of their current and last-daylight frames
-             plus thumbnails. Empty when the resort does not have webcams.
-          items:
-            $ref: "#/components/schemas/Webcam"
-          type: array
-          default: null
         amenities:
           description: All amenities at the resort — identical to `GET /api/v1/report/amenities`.
           items:

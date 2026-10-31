@@ -10,13 +10,14 @@ Name | Type | Description | Notes
 **Timezone** | **string** | IANA timezone identifier for the resort&#39;s local time. | 
 **Region** | [**Region**](Region.md) | Region, affects difficulty icon style. | 
 **UnitPreference** | [**UnitPreference**](UnitPreference.md) | Preferred unit system for measurements (metric or imperial). | 
+**DefaultLanguage** | [**Language**](Language.md) | The language human-readable strings are served in when the request&#39;s  &#x60;Accept-Language&#x60; names no supported language. | 
 **LogoUrl** | Pointer to **NullableString** | Full public URL to the resort&#39;s logo image. &#x60;null&#x60; if no logo is set. | [optional] 
 
 ## Methods
 
 ### NewResortInfo
 
-`func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference, ) *ResortInfo`
+`func NewResortInfo(uuid string, name string, slug string, timezone string, region Region, unitPreference UnitPreference, defaultLanguage Language, ) *ResortInfo`
 
 NewResortInfo instantiates a new ResortInfo object
 This constructor will assign default values to properties that have it defined,
@@ -149,6 +150,26 @@ and a boolean to check if the value has been set.
 `func (o *ResortInfo) SetUnitPreference(v UnitPreference)`
 
 SetUnitPreference sets UnitPreference field to given value.
+
+
+### GetDefaultLanguage
+
+`func (o *ResortInfo) GetDefaultLanguage() Language`
+
+GetDefaultLanguage returns the DefaultLanguage field if non-nil, zero value otherwise.
+
+### GetDefaultLanguageOk
+
+`func (o *ResortInfo) GetDefaultLanguageOk() (*Language, bool)`
+
+GetDefaultLanguageOk returns a tuple with the DefaultLanguage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDefaultLanguage
+
+`func (o *ResortInfo) SetDefaultLanguage(v Language)`
+
+SetDefaultLanguage sets DefaultLanguage field to given value.
 
 
 ### GetLogoUrl
