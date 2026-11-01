@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Text** | **bool** | Guests can sign up for text alerts via  &#x60;POST /api/notifications/v1/text/powder/signup&#x60; on the resort&#39;s host. | 
 **Push** | **bool** | Guests can subscribe to push alerts in the resort&#39;s mobile app. | 
+**PrivacyPolicyUrl** | Pointer to **NullableString** | Privacy policy to show guests when they sign up for powder alerts.  Present whenever at least one channel is offered. | [optional] 
 
 ## Methods
 
@@ -66,6 +67,41 @@ and a boolean to check if the value has been set.
 SetPush sets Push field to given value.
 
 
+### GetPrivacyPolicyUrl
+
+`func (o *PowderAlerts) GetPrivacyPolicyUrl() string`
+
+GetPrivacyPolicyUrl returns the PrivacyPolicyUrl field if non-nil, zero value otherwise.
+
+### GetPrivacyPolicyUrlOk
+
+`func (o *PowderAlerts) GetPrivacyPolicyUrlOk() (*string, bool)`
+
+GetPrivacyPolicyUrlOk returns a tuple with the PrivacyPolicyUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrivacyPolicyUrl
+
+`func (o *PowderAlerts) SetPrivacyPolicyUrl(v string)`
+
+SetPrivacyPolicyUrl sets PrivacyPolicyUrl field to given value.
+
+### HasPrivacyPolicyUrl
+
+`func (o *PowderAlerts) HasPrivacyPolicyUrl() bool`
+
+HasPrivacyPolicyUrl returns a boolean if a field has been set.
+
+### SetPrivacyPolicyUrlNil
+
+`func (o *PowderAlerts) SetPrivacyPolicyUrlNil(b bool)`
+
+ SetPrivacyPolicyUrlNil sets the value for PrivacyPolicyUrl to be an explicit nil
+
+### UnsetPrivacyPolicyUrl
+`func (o *PowderAlerts) UnsetPrivacyPolicyUrl()`
+
+UnsetPrivacyPolicyUrl ensures that no value is present for PrivacyPolicyUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

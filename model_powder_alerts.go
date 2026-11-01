@@ -20,12 +20,14 @@ import (
 // checks if the PowderAlerts type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PowderAlerts{}
 
-// PowderAlerts Guest powder alerts the resort offers. Both are `false` when the resort  doesn't offer powder alerts.
+// PowderAlerts Guest powder alerts the resort offers. Both channels are `false` (and  `privacy_policy_url` is `null`) when the resort doesn't offer powder alerts.
 type PowderAlerts struct {
 	// Guests can sign up for text alerts via  `POST /api/notifications/v1/text/powder/signup` on the resort's host.
 	Text bool `json:"text"`
 	// Guests can subscribe to push alerts in the resort's mobile app.
 	Push bool `json:"push"`
+	// Privacy policy to show guests when they sign up for powder alerts.  Present whenever at least one channel is offered.
+	PrivacyPolicyUrl NullableString `json:"privacy_policy_url,omitempty"`
 }
 
 type _PowderAlerts PowderAlerts
@@ -97,6 +99,48 @@ func (o *PowderAlerts) SetPush(v bool) {
 	o.Push = v
 }
 
+// GetPrivacyPolicyUrl returns the PrivacyPolicyUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PowderAlerts) GetPrivacyPolicyUrl() string {
+	if o == nil || IsNil(o.PrivacyPolicyUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.PrivacyPolicyUrl.Get()
+}
+
+// GetPrivacyPolicyUrlOk returns a tuple with the PrivacyPolicyUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PowderAlerts) GetPrivacyPolicyUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PrivacyPolicyUrl.Get(), o.PrivacyPolicyUrl.IsSet()
+}
+
+// HasPrivacyPolicyUrl returns a boolean if a field has been set.
+func (o *PowderAlerts) HasPrivacyPolicyUrl() bool {
+	if o != nil && o.PrivacyPolicyUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivacyPolicyUrl gets a reference to the given NullableString and assigns it to the PrivacyPolicyUrl field.
+func (o *PowderAlerts) SetPrivacyPolicyUrl(v string) {
+	o.PrivacyPolicyUrl.Set(&v)
+}
+// SetPrivacyPolicyUrlNil sets the value for PrivacyPolicyUrl to be an explicit nil
+func (o *PowderAlerts) SetPrivacyPolicyUrlNil() {
+	o.PrivacyPolicyUrl.Set(nil)
+}
+
+// UnsetPrivacyPolicyUrl ensures that no value is present for PrivacyPolicyUrl, not even an explicit nil
+func (o *PowderAlerts) UnsetPrivacyPolicyUrl() {
+	o.PrivacyPolicyUrl.Unset()
+}
+
 func (o PowderAlerts) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -109,6 +153,9 @@ func (o PowderAlerts) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["text"] = o.Text
 	toSerialize["push"] = o.Push
+	if o.PrivacyPolicyUrl.IsSet() {
+		toSerialize["privacy_policy_url"] = o.PrivacyPolicyUrl.Get()
+	}
 	return toSerialize, nil
 }
 

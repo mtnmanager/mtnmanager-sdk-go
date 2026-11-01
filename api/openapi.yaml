@@ -91,6 +91,7 @@ paths:
                   powder_alerts:
                     text: true
                     push: true
+                    privacy_policy_url: https://mtnmanager.com/privacy
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -381,6 +382,7 @@ paths:
                 powder_alerts:
                   text: true
                   push: true
+                  privacy_policy_url: https://mtnmanager.com/privacy
               schema:
                 $ref: "#/components/schemas/Overview"
           description: ""
@@ -2128,6 +2130,7 @@ paths:
                   powder_alerts:
                     text: true
                     push: true
+                    privacy_policy_url: https://mtnmanager.com/privacy
                 snow:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
                   area_uuid: a1b2c3d4-e5f6-7890-abcd-ef1234567890
@@ -3287,8 +3290,8 @@ components:
       - updated_at
     PowderAlerts:
       description: |-
-        Guest powder alerts the resort offers. Both are `false` when the resort
-         doesn't offer powder alerts.
+        Guest powder alerts the resort offers. Both channels are `false` (and
+         `privacy_policy_url` is `null`) when the resort doesn't offer powder alerts.
       properties:
         text:
           description: |-
@@ -3299,6 +3302,12 @@ components:
           description: Guests can subscribe to push alerts in the resort's mobile
             app.
           type: boolean
+        privacy_policy_url:
+          description: |-
+            Privacy policy to show guests when they sign up for powder alerts.
+             Present whenever at least one channel is offered.
+          nullable: true
+          type: string
       required:
       - push
       - text
