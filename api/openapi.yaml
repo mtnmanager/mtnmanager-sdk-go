@@ -1211,6 +1211,7 @@ paths:
                 has_history: true
                 elevation_ft: 10800
                 elevation_m: 3292
+                is_daylight: true
               schema:
                 items:
                   $ref: "#/components/schemas/Webcam"
@@ -5177,6 +5178,7 @@ components:
         elevation_ft: 6
         elevation_m: 1
         last_frame_at: last_frame_at
+        is_daylight: true
       properties:
         uuid:
           type: string
@@ -5233,8 +5235,15 @@ components:
             first frame.
           nullable: true
           type: string
+        is_daylight:
+          description: |-
+            Whether it is currently daylight at the resort, counting civil twilight
+             (the sun within 6° below the horizon) as daylight. Always `true` when the
+             resort has no location configured.
+          type: boolean
       required:
       - has_history
+      - is_daylight
       - latest_daylight_image_url
       - latest_daylight_thumb_url
       - latest_daylight_thumbhash
@@ -5290,9 +5299,7 @@ components:
         thumb_url:
           type: string
         thumbhash:
-          description: |-
-            ThumbHash of the frame (standard base64), recovered from the thumb object's
-             key. Empty string for legacy frames archived without one.
+          description: ThumbHash of the frame (standard base64).
           type: string
       required:
       - captured_at

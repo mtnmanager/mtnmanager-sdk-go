@@ -25,7 +25,7 @@ type WebcamHistoryFrame struct {
 	CapturedAt string `json:"captured_at"`
 	ImageUrl string `json:"image_url"`
 	ThumbUrl string `json:"thumb_url"`
-	// ThumbHash of the frame (standard base64), recovered from the thumb object's  key. Empty string for legacy frames archived without one.
+	// ThumbHash of the frame (standard base64).
 	Thumbhash string `json:"thumbhash"`
 }
 

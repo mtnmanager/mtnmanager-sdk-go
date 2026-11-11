@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **ElevationFt** | Pointer to **NullableInt32** | Camera elevation in both units; omitted when unset. | [optional] 
 **ElevationM** | Pointer to **NullableInt32** |  | [optional] 
 **LastFrameAt** | Pointer to **NullableString** | Time of the most recently published frame; omitted until the first frame. | [optional] 
+**IsDaylight** | **bool** | Whether it is currently daylight at the resort, counting civil twilight  (the sun within 6° below the horizon) as daylight. Always &#x60;true&#x60; when the  resort has no location configured. | 
 
 ## Methods
 
 ### NewWebcam
 
-`func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool, ) *Webcam`
+`func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool, isDaylight bool, ) *Webcam`
 
 NewWebcam instantiates a new Webcam object
 This constructor will assign default values to properties that have it defined,
@@ -429,6 +430,26 @@ HasLastFrameAt returns a boolean if a field has been set.
 `func (o *Webcam) UnsetLastFrameAt()`
 
 UnsetLastFrameAt ensures that no value is present for LastFrameAt, not even an explicit nil
+### GetIsDaylight
+
+`func (o *Webcam) GetIsDaylight() bool`
+
+GetIsDaylight returns the IsDaylight field if non-nil, zero value otherwise.
+
+### GetIsDaylightOk
+
+`func (o *Webcam) GetIsDaylightOk() (*bool, bool)`
+
+GetIsDaylightOk returns a tuple with the IsDaylight field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDaylight
+
+`func (o *Webcam) SetIsDaylight(v bool)`
+
+SetIsDaylight sets IsDaylight field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

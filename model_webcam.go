@@ -44,6 +44,8 @@ type Webcam struct {
 	ElevationM NullableInt32 `json:"elevation_m,omitempty"`
 	// Time of the most recently published frame; omitted until the first frame.
 	LastFrameAt NullableString `json:"last_frame_at,omitempty"`
+	// Whether it is currently daylight at the resort, counting civil twilight  (the sun within 6° below the horizon) as daylight. Always `true` when the  resort has no location configured.
+	IsDaylight bool `json:"is_daylight"`
 }
 
 type _Webcam Webcam
@@ -52,7 +54,7 @@ type _Webcam Webcam
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool) *Webcam {
+func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightImageUrl string, latestThumbUrl string, latestDaylightThumbUrl string, latestThumbhash string, latestDaylightThumbhash string, hasHistory bool, isDaylight bool) *Webcam {
 	this := Webcam{}
 	this.Uuid = uuid
 	this.Name = name
@@ -63,6 +65,7 @@ func NewWebcam(uuid string, name string, latestImageUrl string, latestDaylightIm
 	this.LatestThumbhash = latestThumbhash
 	this.LatestDaylightThumbhash = latestDaylightThumbhash
 	this.HasHistory = hasHistory
+	this.IsDaylight = isDaylight
 	return &this
 }
 
@@ -542,6 +545,30 @@ func (o *Webcam) UnsetLastFrameAt() {
 	o.LastFrameAt.Unset()
 }
 
+// GetIsDaylight returns the IsDaylight field value
+func (o *Webcam) GetIsDaylight() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsDaylight
+}
+
+// GetIsDaylightOk returns a tuple with the IsDaylight field value
+// and a boolean to check if the value has been set.
+func (o *Webcam) GetIsDaylightOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsDaylight, true
+}
+
+// SetIsDaylight sets field value
+func (o *Webcam) SetIsDaylight(v bool) {
+	o.IsDaylight = v
+}
+
 func (o Webcam) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -579,6 +606,7 @@ func (o Webcam) ToMap() (map[string]interface{}, error) {
 	if o.LastFrameAt.IsSet() {
 		toSerialize["last_frame_at"] = o.LastFrameAt.Get()
 	}
+	toSerialize["is_daylight"] = o.IsDaylight
 	return toSerialize, nil
 }
 
@@ -596,6 +624,7 @@ func (o *Webcam) UnmarshalJSON(data []byte) (err error) {
 		"latest_thumbhash",
 		"latest_daylight_thumbhash",
 		"has_history",
+		"is_daylight",
 	}
 
 	allProperties := make(map[string]interface{})

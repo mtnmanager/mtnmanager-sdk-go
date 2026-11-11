@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **CapturedAt** | **string** |  | 
 **ImageUrl** | **string** |  | 
 **ThumbUrl** | **string** |  | 
-**Thumbhash** | **string** | ThumbHash of the frame (standard base64), recovered from the thumb object&#39;s  key. Empty string for legacy frames archived without one. | 
+**Thumbhash** | **string** | ThumbHash of the frame (standard base64). | 
 
 ## Methods
 
