@@ -156,6 +156,12 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 terrain_parks:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
@@ -181,6 +187,12 @@ paths:
                     status: unknown
                     images: []
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 parking_lots:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
@@ -210,6 +222,12 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 hours:
                   schedules:
@@ -489,6 +507,12 @@ paths:
                 area_name: Lower Mountain
                 area_display_order: 1
                 updated_at: 2026-01-26T16:26:33+00:00
+                lifts:
+                - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                  name: Summit Express
+                  slug: summit-express
+                  number: 1
+                  lift_type: gondola
                 images: []
               schema:
                 $ref: "#/components/schemas/RunsResponse"
@@ -597,6 +621,12 @@ paths:
                 area_name: Lower Mountain
                 area_display_order: 1
                 updated_at: 2026-01-26T16:26:33+00:00
+                lifts:
+                - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                  name: Summit Express
+                  slug: summit-express
+                  number: 1
+                  lift_type: gondola
                 images: []
               schema:
                 $ref: "#/components/schemas/SummerTrailsResponse"
@@ -1439,6 +1469,12 @@ paths:
                   status: unknown
                   images: []
                 updated_at: 2026-01-26T16:26:33+00:00
+                lifts:
+                - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                  name: Summit Express
+                  slug: summit-express
+                  number: 1
+                  lift_type: gondola
                 images: []
               schema:
                 $ref: "#/components/schemas/TerrainParksResponse"
@@ -1639,6 +1675,7 @@ paths:
                 website: https://example.com/summit-lodge
                 status: open
                 has_operating_hours: true
+                has_status: true
                 opens_at: 09:00
                 closes_at: 16:00
                 schedules: []
@@ -2196,6 +2233,12 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 terrain_parks:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
@@ -2221,6 +2264,12 @@ paths:
                     status: unknown
                     images: []
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 parking_lots:
                 - uuid: 550e8400-e29b-41d4-a716-446655440000
@@ -2250,6 +2299,12 @@ paths:
                   area_name: Lower Mountain
                   area_display_order: 1
                   updated_at: 2026-01-26T16:26:33+00:00
+                  lifts:
+                  - uuid: 7c9e6679-7425-40de-944b-e07fc1f90ae7
+                    name: Summit Express
+                    slug: summit-express
+                    number: 1
+                    lift_type: gondola
                   images: []
                 hours:
                   schedules:
@@ -2302,6 +2357,7 @@ paths:
                   website: https://example.com/summit-lodge
                   status: open
                   has_operating_hours: true
+                  has_status: true
                   opens_at: 09:00
                   closes_at: 16:00
                   schedules: []
@@ -2538,6 +2594,17 @@ components:
           area_name: area_name
           area_display_order: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -2560,6 +2627,17 @@ components:
           area_name: area_name
           area_display_order: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -2569,16 +2647,16 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 1
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
-          snow_since_groomed_cm: 1
-          snow_since_groomed_in: 4
+          snow_since_groomed_cm: 4
+          snow_since_groomed_in: 5
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 9
           features:
           - uuid: uuid
             name: name
@@ -2605,6 +2683,17 @@ components:
             - url: url
               thumb_hash: thumb_hash
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -2613,16 +2702,16 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 7
+          number: 1
           status: ""
           last_groomed: 2000-01-23T04:56:07.000+00:00
           groomed_today: true
-          snow_since_groomed_cm: 1
-          snow_since_groomed_in: 4
+          snow_since_groomed_cm: 4
+          snow_since_groomed_in: 5
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 5
+          area_display_order: 9
           features:
           - uuid: uuid
             name: name
@@ -2649,6 +2738,17 @@ components:
             - url: url
               thumb_hash: thumb_hash
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -2659,7 +2759,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 9
+          capacity: 6
           shuttle: true
           paid: true
           reservation_required: true
@@ -2673,7 +2773,7 @@ components:
           name: name
           slug: slug
           status: ""
-          capacity: 9
+          capacity: 6
           shuttle: true
           paid: true
           reservation_required: true
@@ -2687,7 +2787,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 6
+          number: 8
           activities:
           - hiking
           - hiking
@@ -2697,8 +2797,19 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 8
+          area_display_order: 9
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -2707,7 +2818,7 @@ components:
         - uuid: uuid
           name: name
           slug: slug
-          number: 6
+          number: 8
           activities:
           - hiking
           - hiking
@@ -2717,8 +2828,19 @@ components:
           condition_notes: condition_notes
           area_uuid: area_uuid
           area_name: area_name
-          area_display_order: 8
+          area_display_order: 9
           updated_at: 2000-01-23T04:56:07.000+00:00
+          lifts:
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
+          - uuid: uuid
+            name: name
+            slug: slug
+            number: 7
+            lift_type: ""
           images:
           - url: url
             thumb_hash: thumb_hash
@@ -3690,6 +3812,17 @@ components:
         area_name: area_name
         area_display_order: 6
         updated_at: 2000-01-23T04:56:07.000+00:00
+        lifts:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
         images:
         - url: url
           thumb_hash: thumb_hash
@@ -3717,7 +3850,7 @@ components:
         status:
           allOf:
           - $ref: "#/components/schemas/RunStatus"
-          description: "Current operational status (open, closed, or unknown)."
+          description: "Current operational status (open, closed, on_hold, or unknown)."
         last_groomed:
           description: |-
             When the run was last groomed.
@@ -3773,6 +3906,14 @@ components:
           description: When this run's information was last updated.
           format: date-time
           type: string
+        lifts:
+          default: []
+          description: |-
+            The lifts that give access to this run, in lift display order.
+             Empty when none are set.
+          items:
+            $ref: "#/components/schemas/LinkedLift"
+          type: array
         images:
           default: []
           description: |-
@@ -3805,8 +3946,44 @@ components:
       enum:
       - open
       - closed
+      - on_hold
       - unknown
       type: string
+    LinkedLift:
+      description: |-
+        A lift that gives access to a run, summer trail or terrain park. Its
+         status, hours and wait time are on the lift itself (`/report/lifts`,
+         matched by `uuid`).
+      example:
+        uuid: uuid
+        name: name
+        slug: slug
+        number: 7
+        lift_type: ""
+      properties:
+        uuid:
+          description: Unique identifier for the lift.
+          type: string
+        name:
+          description: Display name of the lift.
+          type: string
+        slug:
+          description: URL-friendly name of the lift.
+          type: string
+        number:
+          description: Optional lift number.
+          format: int32
+          nullable: true
+          type: integer
+        lift_type:
+          allOf:
+          - $ref: "#/components/schemas/LiftType"
+          description: Type of lift.
+      required:
+      - lift_type
+      - name
+      - slug
+      - uuid
     TerrainPark:
       description: |-
         Represents a terrain park at the resort with its current status,
@@ -3815,16 +3992,16 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 7
+        number: 1
         status: ""
         last_groomed: 2000-01-23T04:56:07.000+00:00
         groomed_today: true
-        snow_since_groomed_cm: 1
-        snow_since_groomed_in: 4
+        snow_since_groomed_cm: 4
+        snow_since_groomed_in: 5
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 5
+        area_display_order: 9
         features:
         - uuid: uuid
           name: name
@@ -3851,6 +4028,17 @@ components:
           - url: url
             thumb_hash: thumb_hash
         updated_at: 2000-01-23T04:56:07.000+00:00
+        lifts:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
         images:
         - url: url
           thumb_hash: thumb_hash
@@ -3874,7 +4062,7 @@ components:
         status:
           allOf:
           - $ref: "#/components/schemas/TerrainParkStatus"
-          description: "Current operational status (open, closed, or unknown)."
+          description: "Current operational status (open, closed, on_hold, or unknown)."
         last_groomed:
           description: |-
             When the terrain park was last groomed.
@@ -3930,6 +4118,14 @@ components:
           description: When this terrain park or any of its features was last updated.
           format: date-time
           type: string
+        lifts:
+          default: []
+          description: |-
+            The lifts that give access to this terrain park, in lift display order.
+             Empty when none are set.
+          items:
+            $ref: "#/components/schemas/LinkedLift"
+          type: array
         images:
           default: []
           description: |-
@@ -3952,6 +4148,7 @@ components:
       enum:
       - open
       - closed
+      - on_hold
       - unknown
       type: string
     TerrainParkFeature:
@@ -4047,7 +4244,7 @@ components:
         name: name
         slug: slug
         status: ""
-        capacity: 9
+        capacity: 6
         shuttle: true
         paid: true
         reservation_required: true
@@ -4121,7 +4318,7 @@ components:
         uuid: uuid
         name: name
         slug: slug
-        number: 6
+        number: 8
         activities:
         - hiking
         - hiking
@@ -4131,8 +4328,19 @@ components:
         condition_notes: condition_notes
         area_uuid: area_uuid
         area_name: area_name
-        area_display_order: 8
+        area_display_order: 9
         updated_at: 2000-01-23T04:56:07.000+00:00
+        lifts:
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
+        - uuid: uuid
+          name: name
+          slug: slug
+          number: 7
+          lift_type: ""
         images:
         - url: url
           thumb_hash: thumb_hash
@@ -4176,7 +4384,7 @@ components:
         status:
           allOf:
           - $ref: "#/components/schemas/SummerTrailStatus"
-          description: "Current operational status (open, closed, or unknown)."
+          description: "Current operational status (open, closed, on_hold, or unknown)."
         condition_notes:
           description: Notes about current conditions on this trail.
           type: string
@@ -4198,6 +4406,14 @@ components:
           description: When this trail's information was last updated.
           format: date-time
           type: string
+        lifts:
+          default: []
+          description: |-
+            The lifts that give access to this trail, in lift display order.
+             Empty when none are set.
+          items:
+            $ref: "#/components/schemas/LinkedLift"
+          type: array
         images:
           default: []
           description: |-
@@ -4248,6 +4464,7 @@ components:
       enum:
       - open
       - closed
+      - on_hold
       - unknown
       type: string
     OperatingHours:
@@ -4602,6 +4819,7 @@ components:
       - coffee
       - bar
       - tubing
+      - skating
       - ski_school
       - rental_shop
       - daycare
@@ -5340,6 +5558,7 @@ components:
         website: website
         status: ""
         has_operating_hours: true
+        has_status: true
         opens_at: opens_at
         closes_at: closes_at
         schedules:
@@ -5394,12 +5613,19 @@ components:
           allOf:
           - $ref: "#/components/schemas/AmenityStatus"
           description: |-
-            Current operational status (open, closed, or unknown). Always `unknown`
-             when the resort doesn't track amenity status.
+            Current operational status (open, closed, on_hold, or unknown). Always
+             `unknown` when the resort doesn't track amenity status, or this amenity
+             doesn't report one.
         has_operating_hours:
           description: |-
             Whether this amenity reports operating hours. When false, clients should
              not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
+          type: boolean
+        has_status:
+          description: |-
+            Whether this amenity reports a status. When false, `status` is always
+             `unknown`. (It is also `unknown` while the resort doesn't track amenity
+             status at all.)
           type: boolean
         opens_at:
           description: "Today's scheduled opening time in 24-hour format (HH:MM),\
@@ -5431,6 +5657,7 @@ components:
       - category
       - description
       - has_operating_hours
+      - has_status
       - name
       - schedules
       - slug
@@ -5442,6 +5669,7 @@ components:
       enum:
       - open
       - closed
+      - on_hold
       - unknown
       type: string
     TrailMapsResponse:

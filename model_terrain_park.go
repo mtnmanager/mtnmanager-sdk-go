@@ -31,7 +31,7 @@ type TerrainPark struct {
 	Slug string `json:"slug"`
 	// Optional terrain park number.
 	Number NullableInt32 `json:"number,omitempty"`
-	// Current operational status (open, closed, or unknown).
+	// Current operational status (open, closed, on_hold, or unknown).
 	Status TerrainParkStatus `json:"status"`
 	// When the terrain park was last groomed.  `null` if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled.
 	LastGroomed NullableTime `json:"last_groomed,omitempty"`
@@ -53,6 +53,8 @@ type TerrainPark struct {
 	Features []TerrainParkFeature `json:"features"`
 	// When this terrain park or any of its features was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
+	// The lifts that give access to this terrain park, in lift display order.  Empty when none are set.
+	Lifts []LinkedLift `json:"lifts,omitempty"`
 	// Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads.
 	Images []EntityImage `json:"images,omitempty"`
 }
@@ -570,6 +572,38 @@ func (o *TerrainPark) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetLifts returns the Lifts field value if set, zero value otherwise.
+func (o *TerrainPark) GetLifts() []LinkedLift {
+	if o == nil || IsNil(o.Lifts) {
+		var ret []LinkedLift
+		return ret
+	}
+	return o.Lifts
+}
+
+// GetLiftsOk returns a tuple with the Lifts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerrainPark) GetLiftsOk() ([]LinkedLift, bool) {
+	if o == nil || IsNil(o.Lifts) {
+		return nil, false
+	}
+	return o.Lifts, true
+}
+
+// HasLifts returns a boolean if a field has been set.
+func (o *TerrainPark) HasLifts() bool {
+	if o != nil && !IsNil(o.Lifts) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifts gets a reference to the given []LinkedLift and assigns it to the Lifts field.
+func (o *TerrainPark) SetLifts(v []LinkedLift) {
+	o.Lifts = v
+}
+
 // GetImages returns the Images field value if set, zero value otherwise.
 func (o *TerrainPark) GetImages() []EntityImage {
 	if o == nil || IsNil(o.Images) {
@@ -641,6 +675,9 @@ func (o TerrainPark) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["features"] = o.Features
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Lifts) {
+		toSerialize["lifts"] = o.Lifts
+	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}

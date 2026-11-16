@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | Display name of the terrain park. | 
 **Slug** | **string** | URL-friendly name of the terrain park. | 
 **Number** | Pointer to **NullableInt32** | Optional terrain park number. | [optional] 
-**Status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, or unknown). | 
+**Status** | [**TerrainParkStatus**](TerrainParkStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **LastGroomed** | Pointer to **NullableTime** | When the terrain park was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the terrain park grooming feature  is disabled. | [optional] 
 **GroomedToday** | **bool** | Whether the terrain park has been groomed since the resort last closed  (or, for a resort with no operating hours set, within the last 24 hours). | 
 **SnowSinceGroomedCm** | Pointer to **NullableInt32** | New snow (cm) reported since &#x60;last_groomed&#x60;. Absent unless the park  was groomed within the last 24 hours and the resort keeps a snow report. | [optional] 
@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this terrain park belongs to, if assigned, for sorting purposes. | [optional] 
 **Features** | [**[]TerrainParkFeature**](TerrainParkFeature.md) | Features within this terrain park (jumps, boxes, rails, etc.). | 
 **UpdatedAt** | **time.Time** | When this terrain park or any of its features was last updated. | 
+**Lifts** | Pointer to [**[]LinkedLift**](LinkedLift.md) | The lifts that give access to this terrain park, in lift display order.  Empty when none are set. | [optional] [default to {}]
 **Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this terrain park, ordered for display. Each includes  a ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
@@ -444,6 +445,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
+
+### GetLifts
+
+`func (o *TerrainPark) GetLifts() []LinkedLift`
+
+GetLifts returns the Lifts field if non-nil, zero value otherwise.
+
+### GetLiftsOk
+
+`func (o *TerrainPark) GetLiftsOk() (*[]LinkedLift, bool)`
+
+GetLiftsOk returns a tuple with the Lifts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifts
+
+`func (o *TerrainPark) SetLifts(v []LinkedLift)`
+
+SetLifts sets Lifts field to given value.
+
+### HasLifts
+
+`func (o *TerrainPark) HasLifts() bool`
+
+HasLifts returns a boolean if a field has been set.
 
 ### GetImages
 

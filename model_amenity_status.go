@@ -23,6 +23,7 @@ type AmenityStatus string
 const (
 	OPEN AmenityStatus = "open"
 	CLOSED AmenityStatus = "closed"
+	ON_HOLD AmenityStatus = "on_hold"
 	UNKNOWN AmenityStatus = "unknown"
 	AMENITYSTATUS_UNKNOWN_DEFAULT_OPEN_API AmenityStatus = "unknown_default_open_api"
 )
@@ -31,6 +32,7 @@ const (
 var AllowedAmenityStatusEnumValues = []AmenityStatus{
 	"open",
 	"closed",
+	"on_hold",
 	"unknown",
 	"unknown_default_open_api",
 }

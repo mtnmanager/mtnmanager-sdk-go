@@ -23,6 +23,7 @@ type SummerTrailStatus string
 const (
 	OPEN SummerTrailStatus = "open"
 	CLOSED SummerTrailStatus = "closed"
+	ON_HOLD SummerTrailStatus = "on_hold"
 	UNKNOWN SummerTrailStatus = "unknown"
 	SUMMERTRAILSTATUS_UNKNOWN_DEFAULT_OPEN_API SummerTrailStatus = "unknown_default_open_api"
 )
@@ -31,6 +32,7 @@ const (
 var AllowedSummerTrailStatusEnumValues = []SummerTrailStatus{
 	"open",
 	"closed",
+	"on_hold",
 	"unknown",
 	"unknown_default_open_api",
 }

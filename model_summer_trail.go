@@ -37,7 +37,7 @@ type SummerTrail struct {
 	Difficulty NullableSummerTrailDifficulty `json:"difficulty,omitempty"`
 	// The rating system the difficulty is shown in, which picks its icon:  `null` for the standard one, or a mountain-bike freeride / technical one.
 	DifficultyType NullableSummerTrailDifficultyType `json:"difficulty_type,omitempty"`
-	// Current operational status (open, closed, or unknown).
+	// Current operational status (open, closed, on_hold, or unknown).
 	Status SummerTrailStatus `json:"status"`
 	// Notes about current conditions on this trail.
 	ConditionNotes string `json:"condition_notes"`
@@ -49,6 +49,8 @@ type SummerTrail struct {
 	AreaDisplayOrder NullableInt32 `json:"area_display_order,omitempty"`
 	// When this trail's information was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
+	// The lifts that give access to this trail, in lift display order.  Empty when none are set.
+	Lifts []LinkedLift `json:"lifts,omitempty"`
 	// Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
 	Images []EntityImage `json:"images,omitempty"`
 }
@@ -499,6 +501,38 @@ func (o *SummerTrail) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetLifts returns the Lifts field value if set, zero value otherwise.
+func (o *SummerTrail) GetLifts() []LinkedLift {
+	if o == nil || IsNil(o.Lifts) {
+		var ret []LinkedLift
+		return ret
+	}
+	return o.Lifts
+}
+
+// GetLiftsOk returns a tuple with the Lifts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SummerTrail) GetLiftsOk() ([]LinkedLift, bool) {
+	if o == nil || IsNil(o.Lifts) {
+		return nil, false
+	}
+	return o.Lifts, true
+}
+
+// HasLifts returns a boolean if a field has been set.
+func (o *SummerTrail) HasLifts() bool {
+	if o != nil && !IsNil(o.Lifts) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifts gets a reference to the given []LinkedLift and assigns it to the Lifts field.
+func (o *SummerTrail) SetLifts(v []LinkedLift) {
+	o.Lifts = v
+}
+
 // GetImages returns the Images field value if set, zero value otherwise.
 func (o *SummerTrail) GetImages() []EntityImage {
 	if o == nil || IsNil(o.Images) {
@@ -566,6 +600,9 @@ func (o SummerTrail) ToMap() (map[string]interface{}, error) {
 		toSerialize["area_display_order"] = o.AreaDisplayOrder.Get()
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Lifts) {
+		toSerialize["lifts"] = o.Lifts
+	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}

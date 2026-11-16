@@ -7,6 +7,8 @@
 
 * `CLOSED` (value: `"closed"`)
 
+* `ON_HOLD` (value: `"on_hold"`)
+
 * `UNKNOWN` (value: `"unknown"`)
 
 * `SUMMERTRAILSTATUS_UNKNOWN_DEFAULT_OPEN_API` (value: `"unknown_default_open_api"`)

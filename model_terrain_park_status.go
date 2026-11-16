@@ -23,6 +23,7 @@ type TerrainParkStatus string
 const (
 	OPEN TerrainParkStatus = "open"
 	CLOSED TerrainParkStatus = "closed"
+	ON_HOLD TerrainParkStatus = "on_hold"
 	UNKNOWN TerrainParkStatus = "unknown"
 	TERRAINPARKSTATUS_UNKNOWN_DEFAULT_OPEN_API TerrainParkStatus = "unknown_default_open_api"
 )
@@ -31,6 +32,7 @@ const (
 var AllowedTerrainParkStatusEnumValues = []TerrainParkStatus{
 	"open",
 	"closed",
+	"on_hold",
 	"unknown",
 	"unknown_default_open_api",
 }

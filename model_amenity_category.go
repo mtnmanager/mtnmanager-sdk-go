@@ -25,6 +25,7 @@ const (
 	COFFEE AmenityCategory = "coffee"
 	BAR AmenityCategory = "bar"
 	TUBING AmenityCategory = "tubing"
+	SKATING AmenityCategory = "skating"
 	SKI_SCHOOL AmenityCategory = "ski_school"
 	RENTAL_SHOP AmenityCategory = "rental_shop"
 	DAYCARE AmenityCategory = "daycare"
@@ -43,6 +44,7 @@ var AllowedAmenityCategoryEnumValues = []AmenityCategory{
 	"coffee",
 	"bar",
 	"tubing",
+	"skating",
 	"ski_school",
 	"rental_shop",
 	"daycare",

@@ -23,6 +23,7 @@ type RunStatus string
 const (
 	OPEN RunStatus = "open"
 	CLOSED RunStatus = "closed"
+	ON_HOLD RunStatus = "on_hold"
 	UNKNOWN RunStatus = "unknown"
 	RUNSTATUS_UNKNOWN_DEFAULT_OPEN_API RunStatus = "unknown_default_open_api"
 )
@@ -31,6 +32,7 @@ const (
 var AllowedRunStatusEnumValues = []RunStatus{
 	"open",
 	"closed",
+	"on_hold",
 	"unknown",
 	"unknown_default_open_api",
 }

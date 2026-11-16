@@ -33,7 +33,7 @@ type Run struct {
 	Number NullableInt32 `json:"number,omitempty"`
 	// Difficulty rating of the run.
 	Difficulty RunDifficulty `json:"difficulty"`
-	// Current operational status (open, closed, or unknown).
+	// Current operational status (open, closed, on_hold, or unknown).
 	Status RunStatus `json:"status"`
 	// When the run was last groomed.  `null` if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the runs grooming feature is disabled.
 	LastGroomed NullableTime `json:"last_groomed,omitempty"`
@@ -57,6 +57,8 @@ type Run struct {
 	AreaDisplayOrder NullableInt32 `json:"area_display_order,omitempty"`
 	// When this run's information was last updated.
 	UpdatedAt time.Time `json:"updated_at"`
+	// The lifts that give access to this run, in lift display order.  Empty when none are set.
+	Lifts []LinkedLift `json:"lifts,omitempty"`
 	// Images attached to this run, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads.
 	Images []EntityImage `json:"images,omitempty"`
 }
@@ -624,6 +626,38 @@ func (o *Run) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
+// GetLifts returns the Lifts field value if set, zero value otherwise.
+func (o *Run) GetLifts() []LinkedLift {
+	if o == nil || IsNil(o.Lifts) {
+		var ret []LinkedLift
+		return ret
+	}
+	return o.Lifts
+}
+
+// GetLiftsOk returns a tuple with the Lifts field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Run) GetLiftsOk() ([]LinkedLift, bool) {
+	if o == nil || IsNil(o.Lifts) {
+		return nil, false
+	}
+	return o.Lifts, true
+}
+
+// HasLifts returns a boolean if a field has been set.
+func (o *Run) HasLifts() bool {
+	if o != nil && !IsNil(o.Lifts) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifts gets a reference to the given []LinkedLift and assigns it to the Lifts field.
+func (o *Run) SetLifts(v []LinkedLift) {
+	o.Lifts = v
+}
+
 // GetImages returns the Images field value if set, zero value otherwise.
 func (o *Run) GetImages() []EntityImage {
 	if o == nil || IsNil(o.Images) {
@@ -697,6 +731,9 @@ func (o Run) ToMap() (map[string]interface{}, error) {
 		toSerialize["area_display_order"] = o.AreaDisplayOrder.Get()
 	}
 	toSerialize["updated_at"] = o.UpdatedAt
+	if !IsNil(o.Lifts) {
+		toSerialize["lifts"] = o.Lifts
+	}
 	if !IsNil(o.Images) {
 		toSerialize["images"] = o.Images
 	}

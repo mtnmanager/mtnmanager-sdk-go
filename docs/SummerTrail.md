@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **Activities** | [**[]SummerTrailActivity**](SummerTrailActivity.md) | Activities the trail is open to (e.g. hiking, mountain_biking,  on_leash_dogs). Can have multiple. | 
 **Difficulty** | Pointer to [**NullableSummerTrailDifficulty**](SummerTrailDifficulty.md) | Difficulty rating of the trail (optional for summer trails). | [optional] 
 **DifficultyType** | Pointer to [**NullableSummerTrailDifficultyType**](SummerTrailDifficultyType.md) | The rating system the difficulty is shown in, which picks its icon:  &#x60;null&#x60; for the standard one, or a mountain-bike freeride / technical one. | [optional] 
-**Status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, or unknown). | 
+**Status** | [**SummerTrailStatus**](SummerTrailStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **ConditionNotes** | **string** | Notes about current conditions on this trail. | 
 **AreaUuid** | Pointer to **NullableString** | UUID of the area this trail belongs to, if assigned. | [optional] 
 **AreaName** | Pointer to **NullableString** | Name of the area this trail belongs to, if assigned. | [optional] 
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this trail belongs to, if assigned, for sorting purposes. | [optional] 
 **UpdatedAt** | **time.Time** | When this trail&#39;s information was last updated. | 
+**Lifts** | Pointer to [**[]LinkedLift**](LinkedLift.md) | The lifts that give access to this trail, in lift display order.  Empty when none are set. | [optional] [default to {}]
 **Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this trail, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
@@ -387,6 +388,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
+
+### GetLifts
+
+`func (o *SummerTrail) GetLifts() []LinkedLift`
+
+GetLifts returns the Lifts field if non-nil, zero value otherwise.
+
+### GetLiftsOk
+
+`func (o *SummerTrail) GetLiftsOk() (*[]LinkedLift, bool)`
+
+GetLiftsOk returns a tuple with the Lifts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifts
+
+`func (o *SummerTrail) SetLifts(v []LinkedLift)`
+
+SetLifts sets Lifts field to given value.
+
+### HasLifts
+
+`func (o *SummerTrail) HasLifts() bool`
+
+HasLifts returns a boolean if a field has been set.
 
 ### GetImages
 

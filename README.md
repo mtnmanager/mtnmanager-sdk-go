@@ -73,6 +73,7 @@ Class | Method | HTTP request | Description
  - [Lift](docs/Lift.md)
  - [LiftStatus](docs/LiftStatus.md)
  - [LiftType](docs/LiftType.md)
+ - [LinkedLift](docs/LinkedLift.md)
  - [MarkerIcon](docs/MarkerIcon.md)
  - [OperatingHours](docs/OperatingHours.md)
  - [Overview](docs/Overview.md)

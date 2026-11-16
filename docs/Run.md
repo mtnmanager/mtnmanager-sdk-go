@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Slug** | **string** | URL-friendly name of the run. | 
 **Number** | Pointer to **NullableInt32** | Optional run number. | [optional] 
 **Difficulty** | [**RunDifficulty**](RunDifficulty.md) | Difficulty rating of the run. | 
-**Status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, or unknown). | 
+**Status** | [**RunStatus**](RunStatus.md) | Current operational status (open, closed, on_hold, or unknown). | 
 **LastGroomed** | Pointer to **NullableTime** | When the run was last groomed.  &#x60;null&#x60; if not groomed this season (since the snow year began: Aug 1, or  Jan 1 in the southern hemisphere), or if the runs grooming feature is disabled. | [optional] 
 **GroomedToday** | **bool** | Whether the run has been groomed since the resort last closed (or,  for a resort with no operating hours set, within the last 24 hours). | 
 **SnowSinceGroomedCm** | Pointer to **NullableInt32** | New snow (cm) reported since &#x60;last_groomed&#x60; (\&quot;groomed with fresh\&quot;).  Absent unless the run was groomed within the last 24 hours and the  resort keeps a snow report. | [optional] 
@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AreaName** | Pointer to **NullableString** | Name of the area this run belongs to, if assigned. | [optional] 
 **AreaDisplayOrder** | Pointer to **NullableInt32** | Display order of the area this run belongs to, if assigned, for sorting purposes. | [optional] 
 **UpdatedAt** | **time.Time** | When this run&#39;s information was last updated. | 
+**Lifts** | Pointer to [**[]LinkedLift**](LinkedLift.md) | The lifts that give access to this run, in lift display order.  Empty when none are set. | [optional] [default to {}]
 **Images** | Pointer to [**[]EntityImage**](EntityImage.md) | Images attached to this run, ordered for display. Each includes a  ThumbHash for rendering a blurred placeholder while the image loads. | [optional] [default to {}]
 
 ## Methods
@@ -486,6 +487,31 @@ and a boolean to check if the value has been set.
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
+
+### GetLifts
+
+`func (o *Run) GetLifts() []LinkedLift`
+
+GetLifts returns the Lifts field if non-nil, zero value otherwise.
+
+### GetLiftsOk
+
+`func (o *Run) GetLiftsOk() (*[]LinkedLift, bool)`
+
+GetLiftsOk returns a tuple with the Lifts field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifts
+
+`func (o *Run) SetLifts(v []LinkedLift)`
+
+SetLifts sets Lifts field to given value.
+
+### HasLifts
+
+`func (o *Run) HasLifts() bool`
+
+HasLifts returns a boolean if a field has been set.
 
 ### GetImages
 
