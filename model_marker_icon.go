@@ -28,6 +28,7 @@ const (
 	SKI_SCHOOL MarkerIcon = "ski_school"
 	RENTAL_SHOP MarkerIcon = "rental_shop"
 	TUBING MarkerIcon = "tubing"
+	SKATING MarkerIcon = "skating"
 	DAYCARE MarkerIcon = "daycare"
 	TICKETING MarkerIcon = "ticketing"
 	LODGE MarkerIcon = "lodge"
@@ -56,6 +57,7 @@ var AllowedMarkerIconEnumValues = []MarkerIcon{
 	"ski_school",
 	"rental_shop",
 	"tubing",
+	"skating",
 	"daycare",
 	"ticketing",
 	"lodge",

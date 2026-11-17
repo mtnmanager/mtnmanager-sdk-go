@@ -1675,7 +1675,6 @@ paths:
                 website: https://example.com/summit-lodge
                 status: open
                 has_operating_hours: true
-                has_status: true
                 opens_at: 09:00
                 closes_at: 16:00
                 schedules: []
@@ -2357,7 +2356,6 @@ paths:
                   website: https://example.com/summit-lodge
                   status: open
                   has_operating_hours: true
-                  has_status: true
                   opens_at: 09:00
                   closes_at: 16:00
                   schedules: []
@@ -5558,7 +5556,6 @@ components:
         website: website
         status: ""
         has_operating_hours: true
-        has_status: true
         opens_at: opens_at
         closes_at: closes_at
         schedules:
@@ -5621,12 +5618,6 @@ components:
             Whether this amenity reports operating hours. When false, clients should
              not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
           type: boolean
-        has_status:
-          description: |-
-            Whether this amenity reports a status. When false, `status` is always
-             `unknown`. (It is also `unknown` while the resort doesn't track amenity
-             status at all.)
-          type: boolean
         opens_at:
           description: "Today's scheduled opening time in 24-hour format (HH:MM),\
             \ in resort's local timezone."
@@ -5657,7 +5648,6 @@ components:
       - category
       - description
       - has_operating_hours
-      - has_status
       - name
       - schedules
       - slug
@@ -5848,6 +5838,7 @@ components:
       - ski_school
       - rental_shop
       - tubing
+      - skating
       - daycare
       - ticketing
       - lodge

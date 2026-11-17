@@ -38,8 +38,6 @@ type Amenity struct {
 	Status AmenityStatus `json:"status"`
 	// Whether this amenity reports operating hours. When false, clients should  not expect `opens_at`, `closes_at`, or `schedules` to ever be populated.
 	HasOperatingHours bool `json:"has_operating_hours"`
-	// Whether this amenity reports a status. When false, `status` is always  `unknown`. (It is also `unknown` while the resort doesn't track amenity  status at all.)
-	HasStatus bool `json:"has_status"`
 	// Today's scheduled opening time in 24-hour format (HH:MM), in resort's local timezone.
 	OpensAt NullableString `json:"opens_at,omitempty"`
 	// Today's scheduled closing time in 24-hour format (HH:MM), in resort's local timezone.
@@ -56,7 +54,7 @@ type _Amenity Amenity
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, hasStatus bool, schedules []Schedule) *Amenity {
+func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, schedules []Schedule) *Amenity {
 	this := Amenity{}
 	this.Description = description
 	this.Uuid = uuid
@@ -66,7 +64,6 @@ func NewAmenity(description string, uuid string, name string, slug string, categ
 	this.Website = website
 	this.Status = status
 	this.HasOperatingHours = hasOperatingHours
-	this.HasStatus = hasStatus
 	this.Schedules = schedules
 	return &this
 }
@@ -271,30 +268,6 @@ func (o *Amenity) SetHasOperatingHours(v bool) {
 	o.HasOperatingHours = v
 }
 
-// GetHasStatus returns the HasStatus field value
-func (o *Amenity) GetHasStatus() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.HasStatus
-}
-
-// GetHasStatusOk returns a tuple with the HasStatus field value
-// and a boolean to check if the value has been set.
-func (o *Amenity) GetHasStatusOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.HasStatus, true
-}
-
-// SetHasStatus sets field value
-func (o *Amenity) SetHasStatus(v bool) {
-	o.HasStatus = v
-}
-
 // GetOpensAt returns the OpensAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Amenity) GetOpensAt() string {
 	if o == nil || IsNil(o.OpensAt.Get()) {
@@ -453,7 +426,6 @@ func (o Amenity) ToMap() (map[string]interface{}, error) {
 	toSerialize["website"] = o.Website
 	toSerialize["status"] = o.Status
 	toSerialize["has_operating_hours"] = o.HasOperatingHours
-	toSerialize["has_status"] = o.HasStatus
 	if o.OpensAt.IsSet() {
 		toSerialize["opens_at"] = o.OpensAt.Get()
 	}
@@ -480,7 +452,6 @@ func (o *Amenity) UnmarshalJSON(data []byte) (err error) {
 		"website",
 		"status",
 		"has_operating_hours",
-		"has_status",
 		"schedules",
 	}
 

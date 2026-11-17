@@ -17,6 +17,8 @@
 
 * `TUBING` (value: `"tubing"`)
 
+* `SKATING` (value: `"skating"`)
+
 * `DAYCARE` (value: `"daycare"`)
 
 * `TICKETING` (value: `"ticketing"`)

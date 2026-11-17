@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **Website** | **string** | Website URL for the amenity, if available. | 
 **Status** | [**AmenityStatus**](AmenityStatus.md) | Current operational status (open, closed, on_hold, or unknown). Always  &#x60;unknown&#x60; when the resort doesn&#39;t track amenity status, or this amenity  doesn&#39;t report one. | 
 **HasOperatingHours** | **bool** | Whether this amenity reports operating hours. When false, clients should  not expect &#x60;opens_at&#x60;, &#x60;closes_at&#x60;, or &#x60;schedules&#x60; to ever be populated. | 
-**HasStatus** | **bool** | Whether this amenity reports a status. When false, &#x60;status&#x60; is always  &#x60;unknown&#x60;. (It is also &#x60;unknown&#x60; while the resort doesn&#39;t track amenity  status at all.) | 
 **OpensAt** | Pointer to **NullableString** | Today&#39;s scheduled opening time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **ClosesAt** | Pointer to **NullableString** | Today&#39;s scheduled closing time in 24-hour format (HH:MM), in resort&#39;s local timezone. | [optional] 
 **Schedules** | [**[]Schedule**](Schedule.md) | Recurring operating schedules for this amenity (e.g. \&quot;Saturday &amp; Sunday,  9:00 a.m. to 4:00 p.m.\&quot;), with both human-readable and structured fields. | 
@@ -22,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewAmenity
 
-`func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, hasStatus bool, schedules []Schedule, ) *Amenity`
+`func NewAmenity(description string, uuid string, name string, slug string, category AmenityCategory, website string, status AmenityStatus, hasOperatingHours bool, schedules []Schedule, ) *Amenity`
 
 NewAmenity instantiates a new Amenity object
 This constructor will assign default values to properties that have it defined,
@@ -195,26 +194,6 @@ and a boolean to check if the value has been set.
 `func (o *Amenity) SetHasOperatingHours(v bool)`
 
 SetHasOperatingHours sets HasOperatingHours field to given value.
-
-
-### GetHasStatus
-
-`func (o *Amenity) GetHasStatus() bool`
-
-GetHasStatus returns the HasStatus field if non-nil, zero value otherwise.
-
-### GetHasStatusOk
-
-`func (o *Amenity) GetHasStatusOk() (*bool, bool)`
-
-GetHasStatusOk returns a tuple with the HasStatus field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHasStatus
-
-`func (o *Amenity) SetHasStatus(v bool)`
-
-SetHasStatus sets HasStatus field to given value.
 
 
 ### GetOpensAt
